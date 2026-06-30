@@ -1,0 +1,78 @@
+{
+  "ingestion_run": "2026-05-13T01:39:25",
+  "schema_version": "v2",
+  "embedding_model": "paraphrase-multilingual-mpnet-base-v2",
+  "target_chars": 1800,
+  "overlap_sentences": 2,
+  "files": [
+    {
+      "pdf_file": "Nota_01.pdf",
+      "nota_id": "01",
+      "pdf_sha256": "502c2095c3498ba09866e73e01b78b6c137a5073bbf15277f02348dddd36d336",
+      "n_pages": 5,
+      "n_sentences": 117,
+      "n_chunks": 15,
+      "n_table_chunks": 4,
+      "n_upserted": 15,
+      "elapsed_s": 0.82
+    },
+    {
+      "pdf_file": "Nota_66.pdf",
+      "nota_id": "66",
+      "pdf_sha256": "bfd134c23bc1d8ff43e5cc3a699320cc6f0a5a816a8c1df7b9a2e181f30ed4e8",
+      "n_pages": 6,
+      "n_sentences": 211,
+      "n_chunks": 30,
+      "n_table_chunks": 7,
+      "n_upserted": 30,
+      "elapsed_s": 1.01
+    },
+    {
+      "pdf_file": "nota-13.pdf",
+      "nota_id": "13",
+      "pdf_sha256": "83c327ea2fe8d757afd21488bafce50810dcd3667b5772e89104c5c008731a18",
+      "n_pages": 13,
+      "n_sentences": 185,
+      "n_chunks": 81,
+      "n_table_chunks": 52,
+      "n_upserted": 81,
+      "elapsed_s": 1.11
+    },
+    {
+      "pdf_file": "nota-97.pdf",
+      "nota_id": "97",
+      "pdf_sha256": "464e17ff5127a6135453f27df4efa8aae5e5ef35931a28e51c5ade4795b3a6a9",
+      "n_pages": 6,
+      "n_sentences": 128,
+      "n_chunks": 36,
+      "n_table_chunks": 27,
+      "n_upserted": 36,
+      "elapsed_s": 0.65
+    },
+    {
+      "pdf_file": "nota-97-all-2.pdf",
+      "nota_id": "97",
+      "pdf_sha256": "1e47391422f22c13ac837002737b633f863448aa01acb6182acc844a51606b8a",
+      "n_pages": 8,
+      "n_sentences": 76,
+      "n_chunks": 52,
+      "n_table_chunks": 38,
+      "n_upserted": 52,
+      "elapsed_s": 0.56
+    },
+    {
+      "pdf_file": "nota-97-all-3.pdf",
+      "nota_id": "97",
+      "pdf_sha256": "463bd0e7490e9f7986c171feb6f2b300164e8a8280d3cefb3917bfed298bd032",
+      "n_pages": 3,
+      "n_sentences": 29,
+      "n_chunks": 6,
+      "n_table_chunks": 0,
+      "n_upserted": 6,
+      "elapsed_s": 0.22
+    }
+  ],
+  "total_chunks": 220,
+  "total_table_chunks": 128,
+  "total_elapsed_s": 4.37
+}

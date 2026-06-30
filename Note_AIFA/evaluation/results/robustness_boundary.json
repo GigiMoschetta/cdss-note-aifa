@@ -1,0 +1,127 @@
+{
+  "test": "boundary_perturbation",
+  "n_probes": 9,
+  "n_pass": 9,
+  "n_fail": 0,
+  "pass_rate": 1.0,
+  "probes": [
+    {
+      "probe_name": "apixaban_eta_threshold_80",
+      "value": 79,
+      "compose": null,
+      "expected": {
+        "expected_dose_ridotta": false
+      },
+      "actual_decision": "RIMBORSABILE",
+      "actual_dose_ridotta": false,
+      "rationale": "eta=79 (F) + peso=55≤60 (T) + creat=1.0 (F) → COUNT=1 < 2 → no DOSE_RIDOTTA",
+      "pass": true
+    },
+    {
+      "probe_name": "apixaban_eta_threshold_80",
+      "value": 80,
+      "compose": null,
+      "expected": {
+        "expected_dose_ridotta": true
+      },
+      "actual_decision": "RIMBORSABILE",
+      "actual_dose_ridotta": true,
+      "rationale": "eta=80 (T inclusive GTE) + peso=55 (T) + creat=1.0 (F) → COUNT=2 ≥ 2 → DOSE_RIDOTTA",
+      "pass": true
+    },
+    {
+      "probe_name": "apixaban_eta_threshold_80",
+      "value": 81,
+      "compose": null,
+      "expected": {
+        "expected_dose_ridotta": true
+      },
+      "actual_decision": "RIMBORSABILE",
+      "actual_dose_ridotta": true,
+      "rationale": "eta=81 (T) + peso=55 (T) + creat=1.0 (F) → COUNT=2 ≥ 2 → DOSE_RIDOTTA",
+      "pass": true
+    },
+    {
+      "probe_name": "dabigatran_vfg_excl_30",
+      "value": 29.0,
+      "compose": null,
+      "expected": {
+        "expected_decision": "NON_RIMBORSABILE"
+      },
+      "actual_decision": "NON_RIMBORSABILE",
+      "actual_dose_ridotta": false,
+      "rationale": "VFG 29 < 30 → N97_EXCL_HARD_003 fires → NON_RIMB",
+      "pass": true
+    },
+    {
+      "probe_name": "dabigatran_vfg_excl_30",
+      "value": 30.0,
+      "compose": null,
+      "expected": {
+        "expected_decision": "RIMBORSABILE"
+      },
+      "actual_decision": "RIMBORSABILE",
+      "actual_dose_ridotta": false,
+      "rationale": "VFG 30 NOT < 30 (LT strict) → not blocked",
+      "pass": true
+    },
+    {
+      "probe_name": "dabigatran_vfg_excl_30",
+      "value": 31.0,
+      "compose": null,
+      "expected": {
+        "expected_decision": "RIMBORSABILE"
+      },
+      "actual_decision": "RIMBORSABILE",
+      "actual_dose_ridotta": false,
+      "rationale": "VFG 31 > 30 → not blocked",
+      "pass": true
+    },
+    {
+      "probe_name": "cha2ds2vasc_male_threshold_2",
+      "value": null,
+      "compose": {
+        "scompenso_cardiaco": false,
+        "ipertensione_arteriosa": true
+      },
+      "expected": {
+        "expected_decision": "NON_RIMBORSABILE"
+      },
+      "actual_decision": "NON_RIMBORSABILE",
+      "actual_dose_ridotta": false,
+      "rationale": "score=1 (HTN only, M) < threshold 2 → NON_RIMB",
+      "pass": true
+    },
+    {
+      "probe_name": "cha2ds2vasc_male_threshold_2",
+      "value": null,
+      "compose": {
+        "scompenso_cardiaco": true,
+        "ipertensione_arteriosa": true
+      },
+      "expected": {
+        "expected_decision": "RIMBORSABILE"
+      },
+      "actual_decision": "RIMBORSABILE",
+      "actual_dose_ridotta": false,
+      "rationale": "score=2 (HTN+CHF, M) ≥ threshold 2 (V3.4 ESC interpretation) → RIMB. NOTE: PDF letterale `>2` strict richiederebbe score ≥3",
+      "pass": true
+    },
+    {
+      "probe_name": "cha2ds2vasc_male_threshold_2",
+      "value": null,
+      "compose": {
+        "scompenso_cardiaco": true,
+        "ipertensione_arteriosa": true,
+        "diabete_mellito": true
+      },
+      "expected": {
+        "expected_decision": "RIMBORSABILE"
+      },
+      "actual_decision": "RIMBORSABILE",
+      "actual_dose_ridotta": false,
+      "rationale": "score=3 (HTN+CHF+DM, M) → RIMB indipendentemente dall'interpretazione",
+      "pass": true
+    }
+  ]
+}

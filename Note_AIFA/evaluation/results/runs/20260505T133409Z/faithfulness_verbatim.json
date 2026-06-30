@@ -1,0 +1,1463 @@
+{
+  "metric": "faithfulness_verbatim",
+  "method": "3-gram coverage (threshold 0.8) of quoted spans against retrieved chunks",
+  "n_cases_evaluated": 122,
+  "n_cases_skipped": 0,
+  "aggregate": {
+    "mean_verbatim_quote_rate": 1.0,
+    "mean_3gram_coverage": 0.9979,
+    "perfect_verbatim_rate": 1.0,
+    "median_quotes_per_explanation": 0.0,
+    "max_quotes_per_explanation": 3
+  },
+  "per_case": [
+    {
+      "case_id": "N97-001",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-002",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-003",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 132,
+          "n_matched": 132,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 132,
+          "n_matched": 132,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-004",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 132,
+          "n_matched": 132,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 132,
+          "n_matched": 132,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-005",
+      "n_quoted_spans": 3,
+      "n_verbatim_supported": 3,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 112,
+          "n_matched": 112,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 112,
+          "n_matched": 112,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 14,
+          "n_matched": 14,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-006",
+      "n_quoted_spans": 3,
+      "n_verbatim_supported": 3,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 148,
+          "n_matched": 148,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 148,
+          "n_matched": 148,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 2,
+          "n_matched": 2,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-007",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 120,
+          "n_matched": 120,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 120,
+          "n_matched": 120,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-008",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-009",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-010",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-011",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-012",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-013",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-014",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-015",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 120,
+          "n_matched": 120,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 120,
+          "n_matched": 120,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-016",
+      "n_quoted_spans": 3,
+      "n_verbatim_supported": 3,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 112,
+          "n_matched": 112,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 112,
+          "n_matched": 112,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 14,
+          "n_matched": 14,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-017",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-018",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-019",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-020",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-021",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-022",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-023",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-024",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-025",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-026",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-027",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-028",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-029",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-030",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-031",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-032",
+      "n_quoted_spans": 3,
+      "n_verbatim_supported": 3,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 148,
+          "n_matched": 148,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 148,
+          "n_matched": 148,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 2,
+          "n_matched": 2,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-033",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-034",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-035",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-036",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 120,
+          "n_matched": 120,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 120,
+          "n_matched": 120,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-037",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 117,
+          "n_matched": 117,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 117,
+          "n_matched": 117,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-038",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 117,
+          "n_matched": 117,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 117,
+          "n_matched": 117,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-039",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N97-040",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-001",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 99,
+          "n_matched": 99,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 99,
+          "n_matched": 99,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N01-002",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-003",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-004",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-005",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 99,
+          "n_matched": 99,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 99,
+          "n_matched": 99,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N01-006",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-007",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-008",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-009",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-010",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-011",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-012",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-013",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-014",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-015",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 99,
+          "n_matched": 99,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 99,
+          "n_matched": 99,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N01-016",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-017",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-018",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-019",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-020",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-021",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-022",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-023",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N01-024",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-001",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-002",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 126,
+          "n_matched": 126,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 126,
+          "n_matched": 126,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-003",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 126,
+          "n_matched": 126,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 126,
+          "n_matched": 126,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-004",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-005",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-006",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-007",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-008",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-009",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-010",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-011",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-012",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-013",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-014",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-015",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-016",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-017",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-018",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-019",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-020",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-021",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-022",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-023",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-024",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-025",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-026",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-027",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-028",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-029",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        },
+        {
+          "verbatim": true,
+          "n_grams": 130,
+          "n_matched": 130,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-030",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-031",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N13-032",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N66-001",
+      "n_quoted_spans": 1,
+      "n_verbatim_supported": 1,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 38,
+          "n_matched": 38,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-002",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.985,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        },
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        }
+      ]
+    },
+    {
+      "case_id": "N66-003",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.985,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        },
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        }
+      ]
+    },
+    {
+      "case_id": "N66-004",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.985,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        },
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        }
+      ]
+    },
+    {
+      "case_id": "N66-005",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.9828,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        },
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        }
+      ]
+    },
+    {
+      "case_id": "N66-006",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N66-007",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N66-008",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.9828,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        },
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        }
+      ]
+    },
+    {
+      "case_id": "N66-009",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.985,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        },
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        }
+      ]
+    },
+    {
+      "case_id": "N66-010",
+      "n_quoted_spans": 1,
+      "n_verbatim_supported": 1,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 25,
+          "n_matched": 25,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-011",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.9828,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        },
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        }
+      ]
+    },
+    {
+      "case_id": "N66-012",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.9828,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        },
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        }
+      ]
+    },
+    {
+      "case_id": "N66-013",
+      "n_quoted_spans": 1,
+      "n_verbatim_supported": 1,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 38,
+          "n_matched": 38,
+          "coverage": 1.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-014",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N66-015",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.985,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        },
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        }
+      ]
+    },
+    {
+      "case_id": "N66-016",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.985,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        },
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        }
+      ]
+    },
+    {
+      "case_id": "N66-017",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.985,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        },
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        }
+      ]
+    },
+    {
+      "case_id": "N66-018",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N66-019",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N66-020",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N66-021",
+      "n_quoted_spans": 0,
+      "n_verbatim_supported": 0,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 1.0
+    },
+    {
+      "case_id": "N66-022",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.985,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        },
+        {
+          "verbatim": true,
+          "n_grams": 133,
+          "n_matched": 131,
+          "coverage": 0.985
+        }
+      ]
+    },
+    {
+      "case_id": "N66-023",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.9828,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        },
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        }
+      ]
+    },
+    {
+      "case_id": "N66-024",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.9828,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        },
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        }
+      ]
+    },
+    {
+      "case_id": "N66-025",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.9828,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        },
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        }
+      ]
+    },
+    {
+      "case_id": "N66-026",
+      "n_quoted_spans": 2,
+      "n_verbatim_supported": 2,
+      "verbatim_rate": 1.0,
+      "avg_coverage": 0.9828,
+      "span_details": [
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        },
+        {
+          "verbatim": true,
+          "n_grams": 116,
+          "n_matched": 114,
+          "coverage": 0.9828
+        }
+      ]
+    }
+  ]
+}

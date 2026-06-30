@@ -1,0 +1,61 @@
+{
+  "baseline": "majority_class",
+  "majority_label": "RIMBORSABILE",
+  "metrics": {
+    "accuracy": 0.5656,
+    "macro_f1": 0.2408,
+    "per_class": {
+      "RIMBORSABILE": {
+        "precision": 0.5656,
+        "recall": 1.0,
+        "f1": 0.7225,
+        "support": 69
+      },
+      "NON_RIMBORSABILE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 39
+      },
+      "NON_DETERMINABILE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 9
+      },
+      "ROUTED": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      }
+    },
+    "confusion_matrix": {
+      "RIMBORSABILE": {
+        "RIMBORSABILE": 69,
+        "NON_RIMBORSABILE": 0,
+        "NON_DETERMINABILE": 0,
+        "ROUTED": 0
+      },
+      "NON_RIMBORSABILE": {
+        "RIMBORSABILE": 39,
+        "NON_RIMBORSABILE": 0,
+        "NON_DETERMINABILE": 0,
+        "ROUTED": 0
+      },
+      "NON_DETERMINABILE": {
+        "RIMBORSABILE": 9,
+        "NON_RIMBORSABILE": 0,
+        "NON_DETERMINABILE": 0,
+        "ROUTED": 0
+      },
+      "ROUTED": {
+        "RIMBORSABILE": 5,
+        "NON_RIMBORSABILE": 0,
+        "NON_DETERMINABILE": 0,
+        "ROUTED": 0
+      }
+    },
+    "total_cases": 122
+  }
+}

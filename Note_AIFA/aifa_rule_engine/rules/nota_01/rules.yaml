@@ -1,0 +1,120 @@
+- rule_id: N01_SCOPE_001
+  rule_type: SCOPE
+  nota: '01'
+  version: 3.3.0
+  description_it: 'Prescrivibilità a carico SSN: trattamento cronico con FANS oppure
+    terapia antiaggregante con ASA a basse dosi (Nota_01.pdf p.2 Box).'
+  evaluation_order: 1
+  normative_anchor:
+    pdf_file: Nota_01.pdf
+    page: 2
+    section: Box prescrittivo
+    excerpt: 'farmaci antinfiammatori non steroidei (FANS)
+
+      in terapia antiaggregante con ASA a basse dosi'
+  structured_motivation:
+    rationale_it: 'Prerequisito di indicazione: il farmaco gastroprotettore è rimborsabile
+      solo se il paziente è in trattamento cronico con FANS oppure con ASA antiaggregante.'
+    clinical_impact: Se né FANS né ASA antiaggregante sono in corso, nessuna prescrivibilità
+      SSN.
+  condition:
+    operator: OR
+    operands:
+    - operator: IS_TRUE
+      var: trattamento_cronico_fans
+    - operator: IS_TRUE
+      var: terapia_antiaggregante_asa
+- rule_id: N01_EXCEPT_001
+  rule_type: EXCEPTION
+  nota: '01'
+  version: 3.3.0
+  description_it: Diclofenac+misoprostolo è soggetto alla Nota 66 (non Nota 01).
+  evaluation_order: 2
+  outcome_if_true: ROUTE
+  route_to_nota: '66'
+  normative_anchor:
+    pdf_file: Nota_01.pdf
+    page: 2
+    section: Box prescrittivo (asterisco)
+    excerpt: '"L''associazione misoprostolo + diclofenac è rimborsata alle condizioni
+      previste dalla Nota 66"'
+  structured_motivation:
+    rationale_it: Il medicinale diclofenac+misoprostolo (combinazione fissa) è disciplinato
+      dalla Nota 66, non dalla Nota 01.
+    clinical_impact: Instradamento nella Nota 66 per la valutazione del rimborso.
+  condition:
+    operator: EQ
+    left:
+      operator: VAR
+      name: farmaco
+    right:
+      operator: LITERAL
+      value: diclofenac_misoprostolo
+    type_domain: string
+- rule_id: N01_INCL_001
+  rule_type: INCLUSION
+  nota: '01'
+  version: 3.4.0
+  description_it: 'Almeno uno dei fattori di rischio: pregresse emorragie digestive,
+    ulcera peptica non guarita, terapia anticoagulante concomitante, cortisonici concomitanti,
+    età avanzata (clinician-asserted).'
+  evaluation_order: 10
+  normative_anchor:
+    pdf_file: Nota_01.pdf
+    page: 2
+    section: Box prescrittivo
+    # Audit fix V3-NEW-H9 (2026-05-06): excerpt riallineato all'elenco effettivo dei
+    # fattori di rischio (pregresse emorragie, anticoagulanti/cortisonici, età
+    # avanzata) che la condition OR di questa regola verifica. Pre-fix l'excerpt
+    # si fermava prima dell'elenco e non era dimostrativo della condizione.
+    # Estratto da audit/pdf_text/nota_01.txt:16-19.
+    excerpt: 'purché sussista una delle seguenti condizioni di rischio: storia
+      di pregresse emorragie digestive o di ulcera peptica non guarita con
+      terapia eradicante; concomitante terapia con anticoagulanti o cortisonici;
+      età avanzata.'
+  structured_motivation:
+    rationale_it: Il rimborso è condizionato alla presenza di almeno un fattore di
+      rischio gastrointestinale documentato o clinicamente stimato.
+    clinical_impact: In assenza di tutti i fattori di rischio elencati, il gastroprotettore
+      non è rimborsabile a carico SSN.
+  condition:
+    operator: OR
+    operands:
+    - operator: IS_TRUE
+      var: pregresse_emorragie_digestive
+    - operator: IS_TRUE
+      var: ulcera_peptica_non_guarita
+    - operator: IS_TRUE
+      var: terapia_concomitante_anticoagulanti
+    - operator: IS_TRUE
+      var: terapia_concomitante_cortisonici
+    - operator: IS_TRUE
+      var: eta_avanzata
+- rule_id: N01_GWARN_001
+  rule_type: GUIDANCE_WARN
+  nota: '01'
+  version: 3.3.0
+  description_it: 'AVVISO: triplice terapia anticoagulante + FANS + PPI — rischio
+    emorragico elevato.'
+  evaluation_order: 20
+  detail: 'Triplice terapia (anticoagulante + FANS + PPI): rischio emorragico significativamente
+    aumentato. Monitorare attentamente.'
+  normative_anchor:
+    pdf_file: Nota_01.pdf
+    page: 3
+    section: Particolari avvertenze
+    excerpt: '"la gastroprotezione nei soggetti a rischio emorragico trattati ''long-term''
+      con ASA potrebbe essere giustificata specie in presenza dei fattori di rischio
+      più rilevanti (emorragia pregressa e pazienti in trattamento con anticoagulanti
+      e cortisonici)"'
+  structured_motivation:
+    rationale_it: La combinazione anticoagulante + FANS è ad alto rischio emorragico;
+      l'aggiunta del PPI non azzera tale rischio.
+    clinical_impact: Segnalazione di rischio emorragico elevato per triplice terapia.
+  condition:
+    operator: AND
+    operands:
+    - operator: IS_TRUE
+      var: terapia_concomitante_anticoagulanti
+    - operator: IS_TRUE
+      var: trattamento_cronico_fans

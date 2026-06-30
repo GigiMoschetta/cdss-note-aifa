@@ -1,0 +1,417 @@
+{
+  "case_id": "N13-021",
+  "nota_id": "13",
+  "drug_id": "atorvastatina",
+  "category": "RIMBORSABILE_standard",
+  "description": "RIMBORSABILE — rischio moderato standard (SCORE=3.0%, moderato), dieta e primo livello tentati",
+  "tags": [
+    "rimborsabile",
+    "atorvastatina",
+    "nota13",
+    "moderato_rischio"
+  ],
+  "input": {
+    "patient_data": {
+      "dislipidemia_diagnosticata": true,
+      "ipotiroidismo_escluso": true,
+      "dieta_seguita_almeno_3_mesi": true,
+      "terapia_primo_livello_tentata": true,
+      "risk_score_cvd_fatale_10y": 3.0,
+      "malattia_coronarica_documentata": false,
+      "pregresso_ictus_ischemico": false,
+      "arteriopatia_periferica": false,
+      "diabete_con_fattori_rischio_cv": false,
+      "irc_moderata": false,
+      "irc_grave": false,
+      "in_terapia_haart": false,
+      "tipo_dislipidemia_familiare": false,
+      "intolleranza_statine": false,
+      "colesterolo_ldl": 115.0,
+      "trigliceridi": 180.0
+    },
+    "clinician_asserted": {
+      "dieta_seguita_almeno_3_mesi": true,
+      "terapia_primo_livello_tentata": true
+    }
+  },
+  "gold": {
+    "expected_decision": "RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Moderato rischio (SCORE 1-5%) passes N13_PATH_001; full step-care met; confirms moderato pathway"
+    },
+    "pdf_reference": {
+      "rule_id": "N13_SCOPE_001",
+      "pdf_file": "nota-13.pdf",
+      "page": 1,
+      "section": "Presupposti",
+      "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+    }
+  },
+  "engine": {
+    "actual_decision": "RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 0.6667,
+    "recall_at_5": 0.6667,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "nota-13_0062_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 5,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "nota-13_0063_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 5,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "nota-13_0049_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "nota-13_0050_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "nota-13_0051_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "nota-13_0061_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "nota-13_0000_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "nota-13_0001_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "nota-13_0002_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "nota-13_0003_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "nota-13_0004_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "nota-13_0005_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 13,
+        "chunk_id": "nota-13_0006_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 14,
+        "chunk_id": "nota-13_0007_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 15,
+        "chunk_id": "nota-13_0008_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 16,
+        "chunk_id": "nota-13_0009_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 17,
+        "chunk_id": "nota-13_0010_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 18,
+        "chunk_id": "nota-13_0011_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 19,
+        "chunk_id": "nota-13_0012_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 20,
+        "chunk_id": "nota-13_0013_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 21,
+        "chunk_id": "nota-13_0052_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 22,
+        "chunk_id": "nota-13_0053_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 23,
+        "chunk_id": "nota-13_0054_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 24,
+        "chunk_id": "nota-13_0055_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 25,
+        "chunk_id": "nota-13_0058_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.6767839193344116,
+        "text": ""
+      },
+      {
+        "rank": 26,
+        "chunk_id": "nota-13_0057_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 2,
+        "section": "PARTICOLARI CATEGORIE DI PAZIENTI",
+        "stage": "semantic",
+        "score": 0.613935112953186,
+        "text": ""
+      },
+      {
+        "rank": 27,
+        "chunk_id": "nota-13_0077_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 11,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.6083270311355591,
+        "text": ""
+      },
+      {
+        "rank": 28,
+        "chunk_id": "nota-13_0064_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 6,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.6016464233398438,
+        "text": ""
+      },
+      {
+        "rank": 29,
+        "chunk_id": "nota-13_0065_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 6,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5691264271736145,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: RIMBORSABILE\n   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dalla sola dieta e dell'ipercolesterolemia poligenica, come specificato nella FONTE 1 (nota-13.pdf p.5). Inoltre, l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazienti nei quali le statine a dose considerata ottimale non consentono di raggiungere il target terapeutico, come indicato nella FONTE 2 (nota-13.pdf p.5).\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Informazione non disponibile nel testo normativo.\n\n5. FONTI\n- nota-13.pdf, p. 5, righe 13-32, char 903-2549, sha:1afaf422a5\n- nota-13.pdf, p. 4, riga 4, char 138-176, sha:be32dd7356\n- nota-13.pdf, p. 1, riga 2, char 9-24, sha:be2bd8a91b\n- nota-13.pdf, p. 3, righe 1-90, char 0-2112, sha:77c647f9dc\n- nota-13.pdf, p. 2, sha:b97e0389e9\n- nota-13.pdf, p. 11, sha:c7bc800980\n- nota-13.pdf, p. 6, righe 2-22, char 18-1745, sha:d7018df5e0",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'RIMBORSABILE'": true,
+        "not_contains:'NON_RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 8796,
+      "completion_tokens": 302,
+      "total_tokens": 9098
+    },
+    "latency_s": 12.2
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N13-021",
+      "gold_pdf_file": "nota-13.pdf",
+      "gold_page": 1,
+      "gold_excerpt_len": 74,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.0,
+      "gold_anchor_in_top_3": false,
+      "gold_anchor_in_top_5": false,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

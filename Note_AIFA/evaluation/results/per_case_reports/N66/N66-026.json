@@ -1,0 +1,249 @@
+{
+  "case_id": "N66-026",
+  "nota_id": "66",
+  "drug_id": "acido_mefenamico",
+  "category": "NON_RIMBORSABILE_scope",
+  "description": "NON_RIMBORSABILE — acido_mefenamico, wrong indication (not in Nota 66 scope)",
+  "tags": [
+    "non_rimborsabile",
+    "acido_mefenamico",
+    "nota66",
+    "new_drug",
+    "scope"
+  ],
+  "input": {
+    "patient_data": {
+      "indicazione_clinica": "cefalea_tensiva",
+      "uso_breve_durata": true,
+      "seconda_linea": true,
+      "ulcera_peptica_attiva_pregressa": false,
+      "scompenso_cardiaco_grave": false,
+      "cardiopatia_ischemica": false,
+      "patologia_cerebrovascolare": false,
+      "patologia_arteriosa_periferica": false,
+      "scompenso_cardiaco_moderato_grave": false,
+      "epatopatia": false,
+      "terapia_antiaggregante_asa": false,
+      "dolore_acuto_moderato": false,
+      "non_controllato_con_singoli": false,
+      "abuso_alcool": false,
+      "farmaci_epatotossici_concomitanti": false,
+      "allergia_asa_o_fans": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N66_SCOPE_001"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Acido mefenamico (new drug in P2-3) with cefalea_tensiva — not in Nota 66 scope"
+    },
+    "pdf_reference": {
+      "rule_id": "N66_SCOPE_001",
+      "pdf_file": "Nota_66.pdf",
+      "page": 2,
+      "section": "Box prescrittivo",
+      "excerpt": "\"Artropatie su base connettivale, osteoartrosi in fase algica, dolore neoplastico, gotta acuta\""
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N66_SCOPE_001"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_66_0000_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_66_0001_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_66_0002_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_66_0003_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_66_0004_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_66_0008_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_66_0009_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_66_0007_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5068175792694092,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_66_0011_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.37074366211891174,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_66_0018_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3485826551914215,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "Nota_66_0012_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.33929288387298584,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "Nota_66_0019_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.32927608489990234,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco acido mefenamico è stato valutato e la decisione di non rimborsarlo è stata presa in base alla Nota AIFA. La Nota AIFA stabilisce che la prescrizione dei farmaci antinfiammatori non steroidei (FANS) è limitata alle seguenti condizioni patologiche (FONTE 8: Nota_66.pdf p.1). In particolare, la combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del dolore da lieve a moderato negli adulti se non adeguatamente alleviato dagli altri antidolorifici (FONTE 9: Nota_66.pdf p.3). Tuttavia, il farmaco acido mefenamico non è incluso nella lista dei farmaci ammessi alla rimborsabilità (FONTE 8: Nota_66.pdf p.1). Pertanto, la decisione di non rimborsarlo è stata presa in base a questa valutazione.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- Nota_66.pdf, p. 2, riga 41, char 809-856, sha:a76cd6a3b7\n- Nota_66.pdf, p. 1, righe 1-54, char 0-1576, sha:6d5d39cf1a\n- Nota_66.pdf, p. 3, righe 15-27, char 1450-3208, sha:07239bafa4\n- Nota_66.pdf, p. 4, righe 7-17, char 958-2581, sha:74ea4ed25e\n\n\n--- PROVA NORMATIVA ---\nRegola: N66_SCOPE_001\nsnippet_id: 1ec2f77838\nFonte: Nota_66.pdf, p. 2\nTesto verbatim: «FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti principi\nattivi Trattamento di breve durata del dolore acuto di\nentità moderata nei soggetti in cui il sintomo non\nsia adeguatamente controllato con altri\nantidolorifici assunti singolarmente. Ibuprofene/Codeina Ibuprofene/Codeina\n \nBackground\nLa categoria dei farmaci antinfiammatori non steroidei (FANS) comprende una varietà di principi attivi differenti appartenenti a classi chimiche diverse che agiscono\nmediante inibizione della ciclo-ossigenasi (COX) dell’acido arachidonico, inibendo cosi la produzione di prostaglandine (PG) e trombossani. I principali effetti farmacologici dei FANS sono rappresentati dall’azione analgesica, antiinfiammatoria, e antipiretica. Per tali caratteristiche essi hanno ruoli consolidati\nnella gestione del dolore negli stati artritici, nel dolore neoplastico e negli attacchi acuti di gotta.»\nSHA256 chunk: 6d5d39cf1aff7f5e\nVerificato: NO\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 4747,
+      "completion_tokens": 515,
+      "total_tokens": 5262
+    },
+    "latency_s": 12.77
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N66-026",
+      "gold_pdf_file": "Nota_66.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 95,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.3,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

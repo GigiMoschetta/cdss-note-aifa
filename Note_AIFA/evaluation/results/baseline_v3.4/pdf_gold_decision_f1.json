@@ -1,0 +1,73 @@
+{
+  "metric": "M7_pdf_gold_decision_f1",
+  "description": "Macro F1 of rule_engine decisions vs PDF-anchored expected_outputs_v2",
+  "tautological": false,
+  "anchor_coverage": {
+    "n_blocking_total": 39,
+    "n_blocking_with_pdf_anchor": 39,
+    "rate": 1.0,
+    "by_status": {
+      "VERBATIM_FOUND": 26,
+      "APPROX_FOUND": 13
+    }
+  },
+  "aggregate": {
+    "n_cases": 122,
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "n_missing_in_gold": 0
+  },
+  "per_class": {
+    "NON_DETERMINABILE": {
+      "tp": 9,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 9
+    },
+    "NON_RIMBORSABILE": {
+      "tp": 39,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 39
+    },
+    "RIMBORSABILE": {
+      "tp": 69,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 69
+    },
+    "ROUTED": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 5
+    }
+  },
+  "confusion_matrix": {
+    "RIMBORSABILE": {
+      "RIMBORSABILE": 69
+    },
+    "NON_RIMBORSABILE": {
+      "NON_RIMBORSABILE": 39
+    },
+    "NON_DETERMINABILE": {
+      "NON_DETERMINABILE": 9
+    },
+    "ROUTED": {
+      "ROUTED": 5
+    }
+  },
+  "missing_in_gold": []
+}

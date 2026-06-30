@@ -1,0 +1,38 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborso è stata determinata dalla valutazione delle regole decisive, come indicato nella FONTE 1. La regola N66_INCL_001 ha valutato FALSE, determinando la copertura come NON_RIMBORSABILE. Inoltre, la Nota AIFA valuta che l'aspirina non sia inclusa nella lista dei farmaci antinfiammatori non steroidei (FANS) per cui è prevista la copertura, come indicato nella FONTE 10.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 5
+- Nota_66.pdf, p. 3
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_INCL_001
+snippet_id: 6f4dc43a00
+Fonte: Nota_66.pdf, p. 2
+Testo: "flurbiprofene;
+furprofene;
+ibuprofene;
+indometacina;
+ketoprofene;
+Lornoxicam;
+meloxicam;
+nabumetone;
+naprossene;
+oxaprozina;
+piroxicam;
+proglumetacina..."
+--- FINE ---

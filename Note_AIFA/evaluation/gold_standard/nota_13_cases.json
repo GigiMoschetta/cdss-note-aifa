@@ -1,0 +1,2842 @@
+{
+  "schema_version": "1.0",
+  "nota_id": "13",
+  "generated": "2026-02-24",
+  "description": "Gold standard test cases for Nota 13 — Ipolipemizzanti (statine, ezetimibe, PUFA-N3). Covers scope (dislipidemia + ipotiroidismo_escluso), risk category pathway, diet inclusion with bypass exceptions (high risk, statin intolerance), and clinical dose guidance for IRC+hypertriglyceridemia.",
+  "cases": [
+    {
+      "id": "N13-001",
+      "description": "RIMBORSABILE — standard case: alto rischio (risk_score=6%), dieta tentata, terapia primo livello tentata, atorvastatina",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "alto_rischio"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must reference alto rischio CV (SCORE ≥5%) and the step-care requirements (diet + first-line attempt)"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-002",
+      "description": "NON_RIMBORSABILE — scope failure: dislipidemia not diagnosed",
+      "category": "NON_RIMBORSABILE_scope",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "scope"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": false,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_SCOPE_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain that a confirmed diagnosis of dyslipidemia is a prerequisite for reimbursement under Nota 13"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: La rimborsabilità degli ipolipemizzanti presuppone diagnosi di dislipidemia e esclusione di cause secondarie (in particolare ipotiroidismo) (Fonte: nota-13.pdf p.5). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "blocking"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Prerequisiti non soddisfatti → NON_RIMBORSABILE",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-003",
+      "description": "NON_RIMBORSABILE — scope failure: secondary cause (hypothyroidism) not excluded",
+      "category": "NON_RIMBORSABILE_scope",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "scope",
+        "ipotiroidismo"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": false,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_SCOPE_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain that secondary causes of dyslipidemia (hypothyroidism) must be excluded before pharmacological treatment is reimbursed"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: La rimborsabilità degli ipolipemizzanti presuppone diagnosi di dislipidemia e esclusione di cause secondarie (in particolare ipotiroidismo) (Fonte: nota-13.pdf p.5). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "blocking"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Prerequisiti non soddisfatti → NON_RIMBORSABILE",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-004",
+      "description": "NON_RIMBORSABILE — pathway failure: low CV risk (SCORE<1%, rischio basso)",
+      "category": "NON_RIMBORSABILE_pathway",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "pathway",
+        "basso_rischio"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 0.5,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_PATH_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain that reimbursement is not granted for low CV risk patients (SCORE <1%); treatment cost-effectiveness not justified by regulatory criteria"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_PATH_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Criteri di prescrivibilità",
+        "excerpt": "Rischio cardiovascolare non basso"
+      },
+      "gold_answer": "Il farmaco atorvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: Il rimborso non si applica alle dislipidemie a basso rischio CV (Fonte: nota-13.pdf p.1). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_PATH_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "section": "Criteri di prescrivibilità",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Rischio basso → NON_RIMBORSABILE",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-005",
+      "description": "NON_RIMBORSABILE — inclusion failure: diet not followed for 3 months (no bypass applies)",
+      "category": "NON_RIMBORSABILE_inclusion",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "inclusion",
+        "dieta"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": false,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 3.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_INCL_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain the 3-month dietary prerequisite and clarify that the bypass exceptions (molto_alto+LDL≥70 or statin intolerance) do not apply in this case"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Condizioni di prescrizione",
+        "excerpt": "adeguata dieta per almeno 3 mesi"
+      },
+      "gold_answer": "Il farmaco atorvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: Il trattamento farmacologico è rimborsabile solo se è stata tentata la correzione dietetica per almeno 3 mesi (salvo eccezioni bypass) (Fonte: nota-13.pdf p.1). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "section": "Condizioni di prescrizione",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Dieta non tentata → NON_RIMBORSABILE (salvo bypass)",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-006",
+      "description": "RIMBORSABILE — bypass N13_EXCEPT_001: molto_alto rischio + LDL≥70 (diet wait waived)",
+      "category": "RIMBORSABILE_bypass_exception",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "bypass",
+        "molto_alto_rischio",
+        "ldl"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": false,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": null,
+          "malattia_coronarica_documentata": true,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 120.0,
+          "trigliceridi": 200.0
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain that the bypass exception N13_EXCEPT_001 applies: very high CV risk (malattia coronarica documentata) with LDL≥70 mg/dL permits immediate pharmacological therapy without waiting for the 3-month dietary period"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-007",
+      "description": "RIMBORSABILE — bypass N13_EXCEPT_002: documented statin intolerance, ezetimibe in monotherapy",
+      "category": "RIMBORSABILE_bypass_exception",
+      "tags": [
+        "rimborsabile",
+        "ezetimibe",
+        "nota13",
+        "bypass",
+        "intolleranza_statine"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "ezetimibe",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": false,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": true,
+          "colesterolo_ldl": 95.0,
+          "trigliceridi": 180.0
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE",
+          "ezetimibe"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain bypass N13_EXCEPT_002: documented statin intolerance allows ezetimibe in monotherapy without the 3-month dietary wait"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco ezetimibe è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-008",
+      "description": "RIMBORSABILE with DOSE_STANDARD — IRC moderata + trigliceridi≥500 triggers N13_GDOSE_001 (PUFA-N3 indication)",
+      "category": "RIMBORSABILE_with_guidance",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "dose_standard",
+        "irc",
+        "trigliceridi"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": true,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0,
+          "trigliceridi": 620.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": [
+          "N13_GDOSE_001"
+        ]
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "N13_GDOSE_001 flag must appear in RACCOMANDAZIONI: moderate CKD with severe hypertriglyceridemia (≥500 mg/dL) → consider PUFA-N3 (omega-3 fatty acids)"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Considerazioni cliniche: Indicazione d'uso PUFA-N3. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_GDOSE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 3,
+          "section": "IRC e PUFA",
+          "decision_role": "guidance"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Indicazione d'uso PUFA-N3",
+          "must_appear": false,
+          "preferred": true
+        }
+      ]
+    },
+    {
+      "id": "N13-009",
+      "description": "RIMBORSABILE — terapia primo livello non tentata, fires N13_GWARN_001 [V3.4: ex-PATHWAY downgraded to GUIDANCE_WARN]",
+      "category": "RIMBORSABILE_with_warning",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "pathway",
+        "primo_livello"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": false,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": [
+          "N13_GWARN_001"
+        ]
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "N13_PATH_002 must appear as blocking rule; explanation must cite step-care requirement (terapia primo livello tentata)"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_PATH_002",
+        "pdf_file": "nota-13.pdf",
+        "page": 2,
+        "section": "Step-care",
+        "excerpt": "terapia di primo livello già tentata"
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Considerazioni cliniche: AVVISO informativo — non blocca la decisione. Riferimento normativo principale: nota-13.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_GWARN_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Approfondimenti — step-care",
+          "decision_role": "guidance"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "AVVISO informativo — non blocca la decisione",
+          "must_appear": false,
+          "preferred": true
+        }
+      ]
+    },
+    {
+      "id": "N13-010",
+      "description": "NON_DETERMINABILE — scope: dislipidemia_diagnosticata=null (prerequisito indeterminabile); colesterolo_ldl mancante rende EXCEPT_001 UNKNOWN",
+      "category": "NON_DETERMINABILE_scope",
+      "tags": [
+        "non_determinabile",
+        "atorvastatina",
+        "nota13",
+        "missing_data",
+        "scope"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": null,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_DETERMINABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [
+          "colesterolo_ldl",
+          "dislipidemia_diagnosticata"
+        ],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_DETERMINABILE"
+        ],
+        "must_not_contain_strings": [],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "dislipidemia_diagnosticata is a decisive field (AND scope); must appear in DATI MANCANTI"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "La rimborsabilità del farmaco atorvastatina secondo la Nota AIFA 13 è NON DETERMINABILE per dati clinici insufficienti. Dati mancanti rilevanti per la decisione: colesterolo_ldl, dislipidemia_diagnosticata. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_DETERMINABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-011",
+      "description": "NON_DETERMINABILE — inclusione: dieta=null, rischio moderato (SCORE=3%), nessun bypass applicabile",
+      "category": "NON_DETERMINABILE_inclusion",
+      "tags": [
+        "non_determinabile",
+        "atorvastatina",
+        "nota13",
+        "missing_data",
+        "inclusion",
+        "dieta"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": null,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 3.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 95.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_DETERMINABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [
+          "dieta_seguita_almeno_3_mesi"
+        ],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_DETERMINABILE"
+        ],
+        "must_not_contain_strings": [],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "dieta=null with no active bypass (moderato rischio, LDL<100, no statin intolerance) → decisive missing field"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "La rimborsabilità del farmaco atorvastatina secondo la Nota AIFA 13 è NON DETERMINABILE per dati clinici insufficienti. Dati mancanti rilevanti per la decisione: dieta_seguita_almeno_3_mesi. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_DETERMINABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-012",
+      "description": "RIMBORSABILE — terapia_primo_livello_tentata=null no longer blocks (V3.4 FIX: ex-PATHWAY downgraded to GUIDANCE_WARN, decision=RIMBORSABILE)",
+      "category": "RIMBORSABILE_with_warning",
+      "tags": [
+        "non_determinabile",
+        "atorvastatina",
+        "nota13",
+        "missing_data",
+        "pathway",
+        "primo_livello"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": null,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "terapia_primo_livello_tentata=null is decisive for N13_PATH_002; must appear in DATI MANCANTI"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-013",
+      "description": "NON_RIMBORSABILE — valore soglia: alto rischio + LDL=100 mg/dL esatto (GT stricto >100, bypass NON attivato, dieta non seguita)",
+      "category": "NON_RIMBORSABILE_boundary",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "bypass",
+        "boundary",
+        "ldl",
+        "alto_rischio"
+      ],
+      "audit_provenance": {
+        "status": "RESOLVED",
+        "reviewed_by": "Improvement plan v1.1.2",
+        "review_date": "2026-02-28",
+        "boundary_note": "PDF says \">100 mg/dL\" (strict GT). LDL=100 does NOT satisfy strict GT. Changed GTE→GT.",
+        "pdf_citation": "nota-13.pdf (p.5, APPROFONDIMENTI): \"e in quelli a rischio alto con livelli di LDL-C >100 mg/dL\""
+      },
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": false,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 7.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 100.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_INCL_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "BOUNDARY: LDL=100 does NOT satisfy GT(100) for alto category; N13_EXCEPT_001 bypass not triggered; dieta non seguita → N13_INCL_001 blocks"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Condizioni di prescrizione",
+        "excerpt": "adeguata dieta per almeno 3 mesi"
+      },
+      "gold_answer": "Il farmaco atorvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: Il trattamento farmacologico è rimborsabile solo se è stata tentata la correzione dietetica per almeno 3 mesi (salvo eccezioni bypass) (Fonte: nota-13.pdf p.1). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "section": "Condizioni di prescrizione",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Dieta non tentata → NON_RIMBORSABILE (salvo bypass)",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-014",
+      "description": "NON_RIMBORSABILE — valore soglia: alto rischio (SCORE=7%) + LDL=99 mg/dL (<100, bypass NON attivato)",
+      "category": "NON_RIMBORSABILE_inclusion",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "boundary",
+        "ldl",
+        "alto_rischio"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": false,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 7.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 99.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_INCL_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "BOUNDARY: LDL=99 is below the GTE(100) threshold for alto category; N13_EXCEPT_001 does NOT trigger; diet wait remains mandatory"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Condizioni di prescrizione",
+        "excerpt": "adeguata dieta per almeno 3 mesi"
+      },
+      "gold_answer": "Il farmaco atorvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: Il trattamento farmacologico è rimborsabile solo se è stata tentata la correzione dietetica per almeno 3 mesi (salvo eccezioni bypass) (Fonte: nota-13.pdf p.1). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "section": "Condizioni di prescrizione",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Dieta non tentata → NON_RIMBORSABILE (salvo bypass)",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-015",
+      "description": "NON_RIMBORSABILE — boundary: molto_alto rischio (malattia coronarica) + LDL=70 mg/dL esatto; PDF usa '>70' (strict GT), LDL=70 NON attiva il bypass; attesa dieta obbligatoria",
+      "category": "NON_RIMBORSABILE_inclusion",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "boundary",
+        "ldl",
+        "molto_alto_rischio"
+      ],
+      "audit_provenance": {
+        "patched_by": "06_tier2_pdf_audit_report.md",
+        "patch_date": "2026-02-26",
+        "reason": "MISMATCH: PDF says '>70 mg/dL' (strict GT). LDL=70 is not >70. Bypass not triggered. Previous expected RIMBORSABILE was incorrect.",
+        "pdf_citation": "nota-13.pdf (p.5, APPROFONDIMENTI section 1): 'pazienti a rischio molto alto con livelli di C-LDL >70 mg/dL'"
+      },
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": false,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": null,
+          "malattia_coronarica_documentata": true,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 70.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_INCL_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "BOUNDARY (PATCHED): PDF text says '>70 mg/dL' (strict greater-than). LDL=70 is exactly at the threshold and does NOT satisfy strict GT. Bypass N13_EXCEPT_001 is NOT triggered. Patient must wait the 3-month dietary period. Compare with N13-016 (LDL=69, also NON_RIMBORSABILE)."
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Condizioni di prescrizione",
+        "excerpt": "adeguata dieta per almeno 3 mesi"
+      },
+      "gold_answer": "Il farmaco atorvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: Il trattamento farmacologico è rimborsabile solo se è stata tentata la correzione dietetica per almeno 3 mesi (salvo eccezioni bypass) (Fonte: nota-13.pdf p.1). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "section": "Condizioni di prescrizione",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Dieta non tentata → NON_RIMBORSABILE (salvo bypass)",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-016",
+      "description": "NON_RIMBORSABILE — valore soglia: molto_alto rischio + LDL=69 mg/dL (<70, bypass NON attivato)",
+      "category": "NON_RIMBORSABILE_inclusion",
+      "tags": [
+        "non_rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "boundary",
+        "ldl",
+        "molto_alto_rischio"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": false,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": null,
+          "malattia_coronarica_documentata": true,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 69.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_INCL_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "BOUNDARY: LDL=69 is strictly below GTE(70) for molto_alto; bypass not triggered; must wait 3-month dietary period"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Condizioni di prescrizione",
+        "excerpt": "adeguata dieta per almeno 3 mesi"
+      },
+      "gold_answer": "Il farmaco atorvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: Il trattamento farmacologico è rimborsabile solo se è stata tentata la correzione dietetica per almeno 3 mesi (salvo eccezioni bypass) (Fonte: nota-13.pdf p.1). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "section": "Condizioni di prescrizione",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Dieta non tentata → NON_RIMBORSABILE (salvo bypass)",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-017",
+      "description": "RIMBORSABILE — molto_alto rischio via pregresso ictus ischemico (percorso diverso da malattia coronarica)",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "molto_alto_rischio",
+        "ictus"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": null,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": true,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "molto_alto determined by pregresso_ictus_ischemico; confirms alternative molto_alto pathway"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-018",
+      "description": "RIMBORSABILE — molto_alto rischio via arteriopatia periferica (terzo percorso di rischio molto alto)",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "molto_alto_rischio",
+        "arteriopatia"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": null,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": true,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0,
+          "trigliceridi": 150.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "molto_alto via arteriopatia_periferica; confirms third molto_alto trigger pathway"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-019",
+      "description": "RIMBORSABILE con DOSE_STANDARD — valore soglia N13_GDOSE_001: TG=500 mg/dL esatto (GTE inclusivo, flag PUFA-N3 attivato)",
+      "category": "RIMBORSABILE_with_guidance",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "dose_standard",
+        "boundary",
+        "irc",
+        "trigliceridi"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": null,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": true,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0,
+          "trigliceridi": 500.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": [
+          "N13_GDOSE_001"
+        ]
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "BOUNDARY: TG=500 exactly satisfies GTE(500); N13_GDOSE_001 fires confirming inclusive operator"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Considerazioni cliniche: Indicazione d'uso PUFA-N3. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_GDOSE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 3,
+          "section": "IRC e PUFA",
+          "decision_role": "guidance"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Indicazione d'uso PUFA-N3",
+          "must_appear": false,
+          "preferred": true
+        }
+      ]
+    },
+    {
+      "id": "N13-020",
+      "description": "RIMBORSABILE senza flag — N13_GDOSE_001 NON attivato: TG=499 mg/dL (<500), IRC moderata presente",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "boundary",
+        "irc",
+        "trigliceridi"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": null,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": true,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 105.0,
+          "trigliceridi": 499.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "BOUNDARY: TG=499 is strictly below GTE(500); N13_GDOSE_001 does NOT fire; patient still RIMBORSABILE but no PUFA-N3 flag"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-021",
+      "description": "RIMBORSABILE — rischio moderato standard (SCORE=3.0%, moderato), dieta e primo livello tentati",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "moderato_rischio"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": 3.0,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": false,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 115.0,
+          "trigliceridi": 180.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Moderato rischio (SCORE 1-5%) passes N13_PATH_001; full step-care met; confirms moderato pathway"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-022",
+      "description": "RIMBORSABILE — molto_alto rischio via dislipidemia familiare (tipo_dislipidemia_familiare=True)",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "molto_alto_rischio",
+        "familiare"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "risk_score_cvd_fatale_10y": null,
+          "malattia_coronarica_documentata": false,
+          "pregresso_ictus_ischemico": false,
+          "arteriopatia_periferica": false,
+          "diabete_con_fattori_rischio_cv": false,
+          "irc_moderata": false,
+          "irc_grave": false,
+          "in_terapia_haart": false,
+          "tipo_dislipidemia_familiare": true,
+          "intolleranza_statine": false,
+          "colesterolo_ldl": 200.0,
+          "trigliceridi": 180.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "molto_alto via tipo_dislipidemia_familiare; confirms fourth molto_alto trigger pathway"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_SCOPE_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Presupposti",
+        "excerpt": "\"Diagnosi di dislipidemia; esclusione di cause secondarie (ipotiroidismo)\""
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-023",
+      "description": "RIMBORSABILE — simvastatina, rischio alto (score=6%), terapia 1° livello attempted",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "simvastatina",
+        "nota13",
+        "drug_diversity"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "simvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "colesterolo_ldl": 130.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "intolleranza_statine": false
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Drug diversity case — simvastatina (1st-line statin)"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Box prescrittivo",
+        "excerpt": "Ipercolesterolemia non corretta dalla sola dieta, seguita per almeno tre mesi"
+      },
+      "gold_answer": "Il farmaco simvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-024",
+      "description": "RIMBORSABILE — pravastatina, rischio alto, copertura drug diversity",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "pravastatina",
+        "nota13",
+        "drug_diversity"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "pravastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "colesterolo_ldl": 130.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "intolleranza_statine": false
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Drug diversity case — pravastatina"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Box prescrittivo",
+        "excerpt": "Ipercolesterolemia non corretta dalla sola dieta"
+      },
+      "gold_answer": "Il farmaco pravastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-025",
+      "description": "RIMBORSABILE — fluvastatina, rischio alto, drug diversity",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "fluvastatina",
+        "nota13",
+        "drug_diversity"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "fluvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "colesterolo_ldl": 130.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "intolleranza_statine": false
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Drug diversity case — fluvastatina"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Box prescrittivo",
+        "excerpt": "Ipercolesterolemia non corretta dalla sola dieta"
+      },
+      "gold_answer": "Il farmaco fluvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-026",
+      "description": "RIMBORSABILE — lovastatina, rischio alto, drug diversity",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "lovastatina",
+        "nota13",
+        "drug_diversity"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "lovastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "colesterolo_ldl": 130.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "intolleranza_statine": false
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Drug diversity case — lovastatina"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Box prescrittivo",
+        "excerpt": "Ipercolesterolemia non corretta dalla sola dieta"
+      },
+      "gold_answer": "Il farmaco lovastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-027",
+      "description": "RIMBORSABILE — rosuvastatina, rischio molto alto (score=12%), 1st-line statin",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "rosuvastatina",
+        "nota13",
+        "molto_alto_rischio",
+        "drug_diversity"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "rosuvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 12.0,
+          "colesterolo_ldl": 80.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "intolleranza_statine": false
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Drug diversity — rosuvastatina in molto_alto risk"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 2,
+        "section": "Tabella categorie di rischio",
+        "excerpt": "rosuvastatina nei pazienti in cui ci sia stata evidenza di effetti collaterali severi"
+      },
+      "gold_answer": "Il farmaco rosuvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-028",
+      "description": "RIMBORSABILE — ezetimibe in monoterapia con intolleranza statine (V3.4 with new fields)",
+      "category": "RIMBORSABILE_bypass_exception",
+      "tags": [
+        "rimborsabile",
+        "ezetimibe",
+        "nota13",
+        "intolleranza_statine",
+        "drug_diversity"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "ezetimibe",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "colesterolo_ldl": 130.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": false,
+          "intolleranza_statine": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Ezetimibe via intolleranza statine bypass"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_EXCEPT_002",
+        "pdf_file": "nota-13.pdf",
+        "page": 2,
+        "section": "Footnote (**)",
+        "excerpt": "Nei pazienti che siano intolleranti alle statine, per il conseguimento del target terapeutico è rimborsato il trattamento con ezetimibe in monoterapia"
+      },
+      "gold_answer": "Il farmaco ezetimibe è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-029",
+      "description": "NON_RIMBORSABILE — simvastatina prescritta a paziente neo-diagnosticato senza dieta tentata (regression test for V3.4 step-care fix) [v2: score=4.5 moderato, no bypass]",
+      "category": "NON_RIMBORSABILE_inclusion",
+      "tags": [
+        "non_rimborsabile",
+        "simvastatina",
+        "nota13",
+        "step_care_test"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "simvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 4.5,
+          "colesterolo_ldl": 120.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": false,
+          "terapia_primo_livello_tentata": false,
+          "intolleranza_statine": false
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N13_INCL_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Step-care V3.4 regression: dieta NOT tried + 1st-line NOT tried → INCL_001 blocks"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "Box prescrittivo",
+        "excerpt": "Ipercolesterolemia non corretta dalla sola dieta, seguita per almeno tre mesi"
+      },
+      "gold_answer": "Il farmaco simvastatina NON È RIMBORSABILE secondo la Nota AIFA 13. Motivazione: Il trattamento farmacologico è rimborsabile solo se è stata tentata la correzione dietetica per almeno 3 mesi (salvo eccezioni bypass) (Fonte: nota-13.pdf p.1). Riferimento normativo principale: nota-13.pdf p.1.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "section": "Condizioni di prescrizione",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Dieta non tentata → NON_RIMBORSABILE (salvo bypass)",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-030",
+      "description": "RIMBORSABILE con WARNING — atorvastatina prescritta come 1st-line a neo-diagnosticato (Day 2 GUIDANCE_WARN — non blocca)",
+      "category": "RIMBORSABILE_with_guidance",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "step_care_warning"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "colesterolo_ldl": 130.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": false,
+          "intolleranza_statine": false
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": [
+          "N13_GWARN_001"
+        ]
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "V3.4: neo-prescribed atorvastatina with no prior 1st-line → RIMB + WARN"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_GWARN_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "Approfondimenti",
+        "excerpt": "L'impiego di farmaci di seconda ed eventualmente terza scelta può essere ammesso solo quando il trattamento di prima linea"
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Considerazioni cliniche: AVVISO informativo — non blocca la decisione. Riferimento normativo principale: nota-13.pdf p.4.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N13_GWARN_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Approfondimenti — step-care",
+          "decision_role": "guidance"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "AVVISO informativo — non blocca la decisione",
+          "must_appear": false,
+          "preferred": true
+        }
+      ]
+    },
+    {
+      "id": "N13-031",
+      "description": "RIMBORSABILE — categoria_medio (score=2.5%, V3.4 new category) target LDL 130",
+      "category": "RIMBORSABILE_standard",
+      "tags": [
+        "rimborsabile",
+        "atorvastatina",
+        "nota13",
+        "categoria_medio_v34"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "atorvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 2.5,
+          "colesterolo_ldl": 140.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": true,
+          "terapia_primo_livello_tentata": true,
+          "intolleranza_statine": false
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "V3.4 new category 'medio' (score >1% e <4% per PDF p.6)"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_INCL_001",
+        "pdf_file": "nota-13.pdf",
+        "page": 6,
+        "section": "Classificazione in base al livello di rischio",
+        "excerpt": "I pazienti con risk score >1% e <4% sono da considerare a rischio medio"
+      },
+      "gold_answer": "Il farmaco atorvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.6.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N13-032",
+      "description": "RIMBORSABILE_bypass — paziente intollerante statine, exception N13_EXCEPT_INTOLLERANZA bypass (note: drug-aware refinement is FUTURE work)",
+      "category": "RIMBORSABILE_bypass_exception",
+      "tags": [
+        "rimborsabile",
+        "simvastatina",
+        "nota13",
+        "intolleranza_test"
+      ],
+      "input": {
+        "nota_id": "13",
+        "drug_id": "simvastatina",
+        "patient_data": {
+          "dislipidemia_diagnosticata": true,
+          "ipotiroidismo_escluso": true,
+          "risk_score_cvd_fatale_10y": 6.0,
+          "colesterolo_ldl": 130.0
+        },
+        "clinician_asserted": {
+          "dieta_seguita_almeno_3_mesi": false,
+          "intolleranza_statine": true,
+          "terapia_primo_livello_tentata": true
+        }
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Bypass intolleranza_statine fires for any drug (current; F1-N13-Div#6 ALTO future fix would require drug-aware bypass)"
+      },
+      "pdf_reference": {
+        "rule_id": "N13_EXCEPT_002",
+        "pdf_file": "nota-13.pdf",
+        "page": 2,
+        "section": "Footnote (**)",
+        "excerpt": "Nei pazienti che siano intolleranti alle statine, per il conseguimento del target terapeutico è rimborsato il trattamento con ezetimibe in monoterapia"
+      },
+      "gold_answer": "Il farmaco simvastatina è RIMBORSABILE secondo la Nota AIFA 13. Riferimento normativo principale: nota-13.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "section": "Premesse al trattamento farmacologico",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    }
+  ]
+}

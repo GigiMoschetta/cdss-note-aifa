@@ -1,0 +1,128 @@
+version: "3.9"
+
+# ── AIFA CDSS — Docker Compose ────────────────────────────────────────────────
+# Services:
+#   rule_engine   — Deterministic Rule Engine API  (CPU, port 8000)
+#   rag_pipeline  — RAG Orchestrator API           (GPU, port 8001)
+#   ingestion     — One-time PDF ingestion job     (GPU, profile: ingestion)
+#
+# Usage:
+#   make build          → build images
+#   make up             → start rule_engine + rag_pipeline
+#   make ingest         → run one-time PDF ingestion (requires --profile ingestion)
+#   make down           → stop all services
+#
+# Requirements on host:
+#   - Docker Engine + NVIDIA Container Toolkit installed
+#   - nvidia-smi shows CUDA 12.x driver
+#   - Copy .env.example → .env and fill in any secrets (e.g. OPENAI_API_KEY)
+
+services:
+
+  # ── Rule Engine ──────────────────────────────────────────────────────────────
+  rule_engine:
+    build:
+      context: .
+      dockerfile: docker/rule_engine/Dockerfile
+    image: aifa_rule_engine:3.4.0
+    container_name: aifa_rule_engine
+    ports:
+      - "${RULE_ENGINE_HOST_PORT:-8000}:8000"
+    environment:
+      AIFA_RULES_DIR: /app/aifa_rule_engine/rules
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - aifa_net
+
+  # ── RAG Pipeline / Orchestrator ──────────────────────────────────────────────
+  rag_pipeline:
+    build:
+      context: .
+      dockerfile: docker/rag_pipeline/Dockerfile
+    image: aifa_rag_pipeline:3.4.0
+    container_name: aifa_rag_pipeline
+    ports:
+      - "${RAG_HOST_PORT:-8001}:8001"
+    volumes:
+      # Persist ChromaDB vector store (survives container restart/rebuild)
+      - chroma_data:/app/rag_pipeline/chroma_db
+      # Persist downloaded embedding model (avoids re-downloading on every start)
+      - model_cache:/app/model_cache
+    environment:
+      RULE_ENGINE_URL: http://rule_engine:8000
+      CHROMA_DB_DIR: /app/rag_pipeline/chroma_db
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-paraphrase-multilingual-mpnet-base-v2}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-}
+      CUDA_VISIBLE_DEVICES: "0"
+    # ── GPU access (requires NVIDIA Container Toolkit on host) ─────────────────
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # Linux: lets container reach host Ollama
+    depends_on:
+      rule_engine:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s   # generous: embedder + cross-encoder warm-up on first start
+    networks:
+      - aifa_net
+
+  # ── Ingestion Job (one-time, run with: make ingest) ───────────────────────
+  ingestion:
+    build:
+      context: .
+      dockerfile: docker/rag_pipeline/Dockerfile
+    image: aifa_rag_pipeline:3.4.0
+    container_name: aifa_ingestion
+    volumes:
+      - chroma_data:/app/rag_pipeline/chroma_db
+      - model_cache:/app/model_cache
+      # Mount the project root read-only so the PDFs in Note_AIFA/ are accessible
+      - .:/app/pdfs:ro
+    environment:
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-paraphrase-multilingual-mpnet-base-v2}
+      CUDA_VISIBLE_DEVICES: "0"
+    command: >
+      python3 rag_pipeline/ingest.py
+        --pdf-dir /app/pdfs
+        --db-dir  /app/rag_pipeline/chroma_db
+        --reset
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    profiles: ["ingestion"]   # only runs with: docker compose --profile ingestion up ingestion
+    networks:
+      - aifa_net
+
+# ── Named volumes ─────────────────────────────────────────────────────────────
+volumes:
+  chroma_data:
+    driver: local
+  model_cache:
+    driver: local
+
+# ── Internal network ──────────────────────────────────────────────────────────
+networks:
+  aifa_net:
+    driver: bridge

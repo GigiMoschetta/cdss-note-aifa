@@ -1,0 +1,21 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La rosuvastatina è stata valutata come trattamento di seconda scelta per i pazienti con rischio molto alto di malattia cardiovascolare, come indicato nella FONTE 5. In particolare, è stata indicata come trattamento preferenziale per i pazienti con livelli di colesterolo LDL > 100 mg/dL e per quelli con dislipidemia familiare. La Nota AIFA ha anche considerato la sicurezza e l'efficacia della rosuvastatina in associazione con altri farmaci, come l'ezetimibe, come indicato nella FONTE 2.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 6
+- nota-13.pdf, p. 10

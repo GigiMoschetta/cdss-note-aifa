@@ -1,0 +1,87 @@
+{
+  "ragas_version": "0.4.3",
+  "original_hash": 1779149466306586521,
+  "language": "italian",
+  "instruction": "Given a ground truth and an answer statements, analyze each statement and classify them in one of the following categories: TP (true positive): statements that are present in answer that are also directly supported by the one or more statements in ground truth, FP (false positive): statements present in the answer but not directly supported by any statement in ground truth, FN (false negative): statements found in the ground truth but not present in answer. Each statement can only belong to one of the categories. Provide a reason for each classification.",
+  "examples": [
+    {
+      "input": {
+        "question": "Cosa alimenta il sole e cosa è la sua funzione primaria?",
+        "answer": [
+          "Il sole è alimentato dalla fissione nucleare, simile ai reattori nucleari sulla Terra.",
+          "La funzione primaria del sole è fornire luce al sistema solare."
+        ],
+        "ground_truth": [
+          "Il sole è alimentato dalla fusione nucleare, dove gli atomi di idrogeno si fondono per formare elio.",
+          "Questo processo di fusione nel nucleo del sole rilascia una quantità enorme di energia.",
+          "L'energia del sole fornisce calore e luce, che sono essenziali per la vita sulla Terra.",
+          "La luce del sole gioca un ruolo critico nel sistema climatico della Terra.",
+          "La luce solare aiuta a guidare il tempo e i flussi oceane."
+        ]
+      },
+      "output": {
+        "TP": [
+          {
+            "statement": "La funzione primaria del sole è fornire luce al sistema solare.",
+            "reason": "Questa affermazione è in parte supportata dalla verità di base che menziona il sole che fornisce luce e i suoi ruoli, anche se si concentra più ampiamente sull'energia del sole, anche se si concentra più ampiamente sull'energia del sole."
+          }
+        ],
+        "FP": [
+          {
+            "statement": "Il sole è alimentato dalla fissione nucleare, simile ai reattori nucleari sulla Terra.",
+            "reason": "Questa affermazione è scorretta e contraddice la verità di base che afferma che il sole è alimentato dalla fusione nucleare."
+          }
+        ],
+        "FN": [
+          {
+            "statement": "Il sole è alimentato dalla fusione nucleare, dove gli atomi di idrogeno si fondono per formare elio.",
+            "reason": "Questa descrizione precisa della fonte di energia del sole non è inclusa nella risposta."
+          },
+          {
+            "statement": "Questo processo di fusione nel nucleo del sole rilascia una quantità enorme di energia.",
+            "reason": "Questo processo e la sua importanza non sono menzionati nella risposta."
+          },
+          {
+            "statement": "L'energia del sole fornisce calore e luce, che sono essenziali per la vita sulla Terra.",
+            "reason": "La risposta menziona solo la luce, omettendo gli aspetti essenziali del calore e la sua necessità per la vita, che la verità di base copre."
+          },
+          {
+            "statement": "La luce del sole gioca un ruolo critico nel sistema climatico della Terra.",
+            "reason": "Questo impatto più ampio della luce del sole sul sistema climatico della Terra non è trattato nella risposta."
+          },
+          {
+            "statement": "La luce solare aiuta a guidare il tempo e i flussi oceane.",
+            "reason": "L'effetto della luce solare sui modelli meteorologici e sui flussi oceani è omesso nella risposta."
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "question": "Cosa è il punto di ebollizione dell'acqua?",
+        "answer": [
+          "Il punto di ebollizione dell'acqua è 100 gradi Celsius a livello del mare"
+        ],
+        "ground_truth": [
+          "Il punto di ebollizione dell'acqua è 100 gradi Celsius (212 gradi Fahrenheit) a livello del mare.",
+          "Il punto di ebollizione dell'acqua può variare con l'altitudine."
+        ]
+      },
+      "output": {
+        "TP": [
+          {
+            "statement": "Il punto di ebollizione dell'acqua è 100 gradi Celsius a livello del mare",
+            "reason": "Questa affermazione è direttamente supportata dalla verità di base che specifica il punto di ebollizione dell'acqua come 100 gradi Celsius a livello del mare."
+          }
+        ],
+        "FP": [],
+        "FN": [
+          {
+            "statement": "Il punto di ebollizione dell'acqua può variare con l'altitudine.",
+            "reason": "Questa informazione aggiuntiva su come il punto di ebollizione dell'acqua può variare con l'altitudine non è menzionata nella risposta."
+          }
+        ]
+      }
+    }
+  ]
+}

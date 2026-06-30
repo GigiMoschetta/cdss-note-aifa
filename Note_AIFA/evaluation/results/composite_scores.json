@@ -1,0 +1,3190 @@
+{
+  "metric": "composite_scores",
+  "weights": {
+    "alpha_decision": 0.4,
+    "beta_evidence": 0.3,
+    "gamma_utility": 0.2,
+    "delta_quality": 0.1
+  },
+  "n_cases": 122,
+  "aggregate": {
+    "DecisionScore": {
+      "mean": 1,
+      "median": 1.0,
+      "trimmed_mean": 1,
+      "std": 0.0,
+      "n": 122
+    },
+    "EvidenceSupport": {
+      "mean": 0.4075,
+      "median": 0.4905,
+      "trimmed_mean": 0.405,
+      "std": 0.3079,
+      "n": 122
+    },
+    "ContextualUtility": {
+      "mean": 0.6442,
+      "median": 0.6068,
+      "trimmed_mean": 0.6424,
+      "std": 0.1616,
+      "n": 81
+    },
+    "AnswerQuality": {
+      "mean": 0.3008,
+      "median": 0.2742,
+      "trimmed_mean": 0.2993,
+      "std": 0.1277,
+      "n": 122
+    },
+    "ALES": {
+      "mean": 0.681,
+      "median": 0.6874,
+      "trimmed_mean": 0.6802,
+      "std": 0.1083,
+      "n": 122
+    },
+    "ALES_breakdown": {
+      "complete": {
+        "mean": 0.7008,
+        "n": 81
+      },
+      "partial": {
+        "mean": 0.6419,
+        "n": 41
+      }
+    }
+  },
+  "per_case": [
+    {
+      "case_id": "N01-001",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.75,
+      "ContextualUtility": 0.9087,
+      "AnswerQuality": 0.1888,
+      "ALES": 0.8256,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.8333333333333334,
+        "ragas_answer_relevancy": 0.6292308882537822,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-002",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.2571,
+      "ContextualUtility": 0.7185,
+      "AnswerQuality": 0.3013,
+      "ALES": 0.651,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.42857142857142855,
+        "ragas_answer_relevancy": 0.5376555215617795,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-003",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.3,
+      "ContextualUtility": 0.7694,
+      "AnswerQuality": 0.2839,
+      "ALES": 0.6723,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.5574740697527013,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-004",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.4286,
+      "ContextualUtility": 0.7185,
+      "AnswerQuality": 0.2969,
+      "ALES": 0.702,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.7142857142857143,
+        "ragas_answer_relevancy": 0.5521525162244484,
+        "qaeval_f1": 0.1875,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-005",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8667,
+      "ContextualUtility": 0.5699,
+      "AnswerQuality": 0.0842,
+      "ALES": 0.7824,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.2805835389049239,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-006",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5667,
+      "ContextualUtility": 0.5201,
+      "AnswerQuality": 0.2229,
+      "ALES": 0.6963,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.3054674717695482,
+        "qaeval_f1": 0.1875,
+        "ragas_context_recall": 0.8,
+        "claim_coverage": 0.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-007",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.225,
+      "ContextualUtility": 0.7185,
+      "AnswerQuality": 0.3411,
+      "ALES": 0.6453,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.375,
+        "ragas_answer_relevancy": 0.6701784934272039,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-008",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.3,
+      "ContextualUtility": 0.7972,
+      "AnswerQuality": 0.2211,
+      "ALES": 0.6715,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.4452160986713058,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-009",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.12,
+      "ContextualUtility": 0.7185,
+      "AnswerQuality": 0.2996,
+      "ALES": 0.6096,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.2,
+        "ragas_answer_relevancy": 0.5125176784507331,
+        "qaeval_f1": 0.2083,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-010",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.3429,
+      "ContextualUtility": 0.5957,
+      "AnswerQuality": 0.3207,
+      "ALES": 0.6541,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5714285714285714,
+        "ragas_answer_relevancy": 0.5830240368959586,
+        "qaeval_f1": 0.2083,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-011",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.375,
+      "ContextualUtility": 0.4375,
+      "AnswerQuality": 0.4715,
+      "ALES": 0.6472,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.625,
+        "ragas_answer_relevancy": 0.6967484392158029,
+        "qaeval_f1": 0.375,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-012",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6,
+      "ContextualUtility": 0.6083,
+      "AnswerQuality": 0.3003,
+      "ALES": 0.7317,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.7094198848229439,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-013",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6333,
+      "ContextualUtility": 0.5917,
+      "AnswerQuality": 0.1875,
+      "ALES": 0.7271,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.8333333333333334,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.1875,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-014",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.4286,
+      "ContextualUtility": 0.9133,
+      "AnswerQuality": 0.352,
+      "ALES": 0.7464,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.7142857142857143,
+        "ragas_answer_relevancy": 0.7067769376901349,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-015",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6333,
+      "ContextualUtility": 0.8111,
+      "AnswerQuality": 0.1888,
+      "ALES": 0.7711,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.4444444444444444,
+        "ragas_answer_relevancy": 0.6292308882537822,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-016",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.225,
+      "ContextualUtility": 0.5414,
+      "AnswerQuality": 0.2236,
+      "ALES": 0.5981,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.375,
+        "ragas_answer_relevancy": 0.45374992753303456,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": 0.375,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-017",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.3,
+      "ContextualUtility": 0.7972,
+      "AnswerQuality": 0.2349,
+      "ALES": 0.6729,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.7831303171293692,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-018",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.3,
+      "ContextualUtility": 0.5728,
+      "AnswerQuality": 0.3408,
+      "ALES": 0.6386,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.6985189058853781,
+        "qaeval_f1": 0.1875,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-019",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5667,
+      "ContextualUtility": 0.5415,
+      "AnswerQuality": 0.2502,
+      "ALES": 0.7033,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.36723257816223226,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 0.8,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-020",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5667,
+      "ContextualUtility": 0.5461,
+      "AnswerQuality": 0.2407,
+      "ALES": 0.7033,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.335769849160374,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 0.8181818181818182,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-021",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5667,
+      "ContextualUtility": 0.5812,
+      "AnswerQuality": 0.2316,
+      "ALES": 0.7094,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.3054674717695482,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 0.8181818181818182,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-022",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5667,
+      "ContextualUtility": 0.4286,
+      "AnswerQuality": 0.2407,
+      "ALES": 0.6798,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.335769849160374,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 0.5185185185185185,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-023",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.15,
+      "ContextualUtility": 0.6768,
+      "AnswerQuality": 0.4456,
+      "ALES": 0.6249,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.25,
+        "ragas_answer_relevancy": 0.6103119698079352,
+        "qaeval_f1": 0.375,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N01-024",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6,
+      "ContextualUtility": 0.8667,
+      "AnswerQuality": 0.4585,
+      "ALES": 0.7992,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.6207453334379051,
+        "qaeval_f1": 0.3889,
+        "ragas_context_recall": 0.5,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-001",
+      "DecisionScore": 1,
+      "EvidenceSupport": 1.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.3179,
+      "ALES": 0.9147,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 1.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5490205494109112,
+        "qaeval_f1": 0.2188,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-002",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.53,
+      "ContextualUtility": 0.6138,
+      "AnswerQuality": 0.216,
+      "ALES": 0.7034,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.1,
+        "ragas_answer_relevancy": 0.7199705537248531,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 0.6666666666666666,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-003",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5,
+      "ContextualUtility": 0.5551,
+      "AnswerQuality": 0.209,
+      "ALES": 0.6819,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.0,
+        "ragas_answer_relevancy": 0.6966589517918225,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 0.6666666666666666,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-004",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4661,
+      "ALES": 0.8261,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7758887991639319,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-005",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8095,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2165,
+      "ALES": 0.8306,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7217583092439185,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-006",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.5641,
+      "AnswerQuality": 0.6104,
+      "ALES": 0.5739,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.8097560595005273,
+        "qaeval_f1": 0.525,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-007",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.481,
+      "ContextualUtility": 0.5,
+      "AnswerQuality": 0.4026,
+      "ALES": 0.6845,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.35714285714285715,
+        "ragas_answer_relevancy": 0.8752988388353783,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 0.5,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-008",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.3787,
+      "ALES": 0.5473,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4845378585595225,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-009",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4238,
+      "ALES": 0.553,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5377229186739197,
+        "qaeval_f1": 0.375,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-010",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6,
+      "ContextualUtility": 1.0,
+      "AnswerQuality": 0.4383,
+      "ALES": 0.8238,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.6832487472731877,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-011",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.25,
+      "ContextualUtility": 0.4722,
+      "AnswerQuality": 0.1975,
+      "ALES": 0.5892,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.25,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.6582797936137816,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-012",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6667,
+      "ContextualUtility": 0.5745,
+      "AnswerQuality": 0.2934,
+      "ALES": 0.7442,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.46742176350155606,
+        "qaeval_f1": 0.2188,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-013",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8095,
+      "ContextualUtility": 0.6742,
+      "AnswerQuality": 0.2161,
+      "ALES": 0.7993,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7204829509423144,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-014",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8095,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2213,
+      "ALES": 0.8312,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7378024667104873,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-015",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8095,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.1697,
+      "ALES": 0.8248,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5655728206736104,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-016",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8095,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.1965,
+      "ALES": 0.8281,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.655115701043055,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-017",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.5696,
+      "AnswerQuality": 0.6104,
+      "ALES": 0.575,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.8097560595005274,
+        "qaeval_f1": 0.525,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-018",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.5683,
+      "AnswerQuality": 0.2923,
+      "ALES": 0.5429,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4637286802903708,
+        "qaeval_f1": 0.2188,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-019",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.6253,
+      "AnswerQuality": 0.3935,
+      "ALES": 0.5644,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5338785385409449,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-020",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.5474,
+      "AnswerQuality": 0.6104,
+      "ALES": 0.5705,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.8095628592053803,
+        "qaeval_f1": 0.525,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-021",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4358,
+      "ALES": 0.5545,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5453820244464382,
+        "qaeval_f1": 0.3889,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-022",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.5657,
+      "AnswerQuality": 0.3565,
+      "ALES": 0.5488,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.6777540856216123,
+        "qaeval_f1": 0.2188,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-023",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6667,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4568,
+      "ALES": 0.8071,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7449106939261947,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-024",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.3333,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4988,
+      "ALES": 0.6873,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.6625899857822309,
+        "qaeval_f1": 0.4286,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-025",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6667,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4846,
+      "ALES": 0.8106,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7080232453689872,
+        "qaeval_f1": 0.3889,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-026",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.3333,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4772,
+      "ALES": 0.6846,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7158009670348436,
+        "qaeval_f1": 0.375,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-027",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.3333,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.3826,
+      "ALES": 0.6728,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7894540161115503,
+        "qaeval_f1": 0.2083,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-028",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8667,
+      "ContextualUtility": 1.0,
+      "AnswerQuality": 0.2626,
+      "ALES": 0.8863,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.8752988388353783,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-029",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2143,
+      "ALES": 0.7946,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7142016353899248,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-030",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.3881,
+      "ALES": 0.5485,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5938026224059,
+        "qaeval_f1": 0.3,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-031",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.5029,
+      "ALES": 0.5629,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.8012892812569982,
+        "qaeval_f1": 0.375,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N13-032",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6667,
+      "ContextualUtility": 1.0,
+      "AnswerQuality": 0.3687,
+      "ALES": 0.8369,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.6667,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7106336961871826,
+        "qaeval_f1": 0.2222,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-001",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.525,
+      "ContextualUtility": 0.6586,
+      "AnswerQuality": 0.2935,
+      "ALES": 0.7186,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.875,
+        "ragas_answer_relevancy": 0.3949551179152396,
+        "qaeval_f1": 0.25,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-002",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.7242,
+      "AnswerQuality": 0.2095,
+      "ALES": 0.7801,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.6982267019696096,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-003",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.5521,
+      "AnswerQuality": 0.1936,
+      "ALES": 0.7441,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.6454288329633285,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-004",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.628,
+      "AnswerQuality": 0.3031,
+      "ALES": 0.7702,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7187430930847896,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-005",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.77,
+      "ContextualUtility": 0.6454,
+      "AnswerQuality": 0.1663,
+      "ALES": 0.7767,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.9,
+        "ragas_answer_relevancy": 0.5542525383687535,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-006",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.48,
+      "ContextualUtility": 0.4494,
+      "AnswerQuality": 0.6299,
+      "ALES": 0.6969,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.8,
+        "ragas_answer_relevancy": 0.8033227748797566,
+        "qaeval_f1": 0.5556,
+        "ragas_context_recall": 0.3333333333333333,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-007",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5,
+      "ContextualUtility": 0.6042,
+      "AnswerQuality": 0.3044,
+      "ALES": 0.7013,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.5,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5773098983863622,
+        "qaeval_f1": 0.1875,
+        "ragas_context_recall": 0.6666666666666666,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-008",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.675,
+      "ContextualUtility": 0.4817,
+      "AnswerQuality": 0.2109,
+      "ALES": 0.7199,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.5833333333333334,
+        "ragas_answer_relevancy": 0.7029008086791398,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 0.3333333333333333,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-009",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.8414,
+      "AnswerQuality": 0.4606,
+      "ALES": 0.8286,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7576699762586285,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-010",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.536,
+      "AnswerQuality": 0.307,
+      "ALES": 0.5379,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5371883517536219,
+        "qaeval_f1": 0.2083,
+        "ragas_context_recall": 0.5,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-011",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.6875,
+      "AnswerQuality": 0.3967,
+      "ALES": 0.7915,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7390533988944932,
+        "qaeval_f1": 0.25,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-012",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.702,
+      "AnswerQuality": 0.2944,
+      "ALES": 0.7841,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.7142857142857143,
+        "ragas_answer_relevancy": 0.5922416394342324,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-013",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6,
+      "ContextualUtility": 0.6994,
+      "AnswerQuality": 0.3178,
+      "ALES": 0.7517,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.4759378836414652,
+        "qaeval_f1": 0.25,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-014",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.4677,
+      "AnswerQuality": 0.2785,
+      "ALES": 0.5214,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4615146087952389,
+        "qaeval_f1": 0.2,
+        "ragas_context_recall": 0.5,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-015",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.6068,
+      "AnswerQuality": 0.239,
+      "ALES": 0.7595,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7967405489014845,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-016",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.6134,
+      "AnswerQuality": 0.3132,
+      "ALES": 0.7683,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7522364157795224,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-017",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6714,
+      "ContextualUtility": 0.6868,
+      "AnswerQuality": 0.2166,
+      "ALES": 0.7605,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.5714285714285714,
+        "ragas_answer_relevancy": 0.7220198380641899,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-018",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.4141,
+      "AnswerQuality": 0.4695,
+      "ALES": 0.5298,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7873644588220182,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": 0.5,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-019",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.45,
+      "ContextualUtility": 0.516,
+      "AnswerQuality": 0.3771,
+      "ALES": 0.6759,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.75,
+        "ragas_answer_relevancy": 0.4792113463918158,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": 0.6666666666666666,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-020",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6,
+      "ContextualUtility": 0.3138,
+      "AnswerQuality": 0.3341,
+      "ALES": 0.6762,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.7245905878536009,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": 0.23076923076923078,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-021",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.3561,
+      "AnswerQuality": 0.4592,
+      "ALES": 0.5171,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.6556562134591654,
+        "qaeval_f1": 0.375,
+        "ragas_context_recall": 0.5,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-022",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.8364,
+      "AnswerQuality": 0.461,
+      "ALES": 0.8277,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7589704247187484,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-023",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.5939,
+      "AnswerQuality": 0.2269,
+      "ALES": 0.7558,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7564590397231856,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-024",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7857,
+      "ContextualUtility": 0.5608,
+      "AnswerQuality": 0.2433,
+      "ALES": 0.7722,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.25,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.8110402951581869,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-025",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6786,
+      "ContextualUtility": 0.5734,
+      "AnswerQuality": 0.2922,
+      "ALES": 0.7475,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.25,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.42857142857142855,
+        "ragas_answer_relevancy": 0.5851898909347752,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N66-026",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5667,
+      "ContextualUtility": 0.5812,
+      "AnswerQuality": 0.7416,
+      "ALES": 0.7604,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.2222222222222222,
+        "ragas_answer_relevancy": 0.7416263753765273,
+        "qaeval_f1": null,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-001",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2928,
+      "ALES": 0.5366,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.6844022483599427,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-002",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2275,
+      "ALES": 0.5284,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.46673747722695397,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-003",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8,
+      "ContextualUtility": 0.8281,
+      "AnswerQuality": 0.3109,
+      "ALES": 0.8367,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.6472303976448064,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-004",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.65,
+      "ContextualUtility": 0.75,
+      "AnswerQuality": 0.1938,
+      "ALES": 0.7644,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.5,
+        "ragas_answer_relevancy": 0.6458823253674044,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 0.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-005",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6267,
+      "ContextualUtility": 0.5,
+      "AnswerQuality": 0.2209,
+      "ALES": 0.7101,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.2,
+        "ragas_answer_relevancy": 0.7364275519032796,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 0.75,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-006",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.775,
+      "ContextualUtility": 0.6074,
+      "AnswerQuality": 0.2375,
+      "ALES": 0.7777,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.25,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.75,
+        "ragas_answer_relevancy": 0.791525747918302,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 0.6666666666666666,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-007",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.7143,
+      "ContextualUtility": 0.638,
+      "AnswerQuality": 0.2295,
+      "ALES": 0.7648,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.764895590640983,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-008",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.6,
+      "ContextualUtility": 0.3333,
+      "AnswerQuality": 0.418,
+      "ALES": 0.6885,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.61563666502051,
+        "qaeval_f1": 0.3333,
+        "ragas_context_recall": 0.3333333333333333,
+        "claim_coverage": 1.0,
+        "citation_f1": 0.9474
+      }
+    },
+    {
+      "case_id": "N97-009",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.525,
+      "ContextualUtility": 1.0,
+      "AnswerQuality": 0.2039,
+      "ALES": 0.7779,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.875,
+        "ragas_answer_relevancy": 0.6796721420285482,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-010",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.2,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2492,
+      "ALES": 0.6061,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.2,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4416840283481245,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-011",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2485,
+      "ALES": 0.5311,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4393574009015584,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-012",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.0,
+      "ALES": 0.6875,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.5,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-013",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.4631,
+      "AnswerQuality": 0.1667,
+      "ALES": 0.5093,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-014",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.2,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2275,
+      "ALES": 0.6034,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.2,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.46673747722695397,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-015",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8095,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.228,
+      "ALES": 0.8321,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.759896057370138,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-016",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5818,
+      "ContextualUtility": 0.9125,
+      "AnswerQuality": 0.2289,
+      "ALES": 0.7799,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.2727272727272727,
+        "ragas_answer_relevancy": 0.7629376401458124,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-017",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2293,
+      "ALES": 0.5287,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4726804384772387,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-018",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2141,
+      "ALES": 0.5268,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.42188460596737426,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-019",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.5975,
+      "AnswerQuality": 0.3442,
+      "ALES": 0.5539,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7097417935301245,
+        "qaeval_f1": 0.1875,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-020",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.2,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.1418,
+      "ALES": 0.5927,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.2,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4726804384772387,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-021",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.25,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.1388,
+      "ALES": 0.6111,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.25,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4627974944233915,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-022",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.5723,
+      "AnswerQuality": 0.25,
+      "ALES": 0.5395,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.25,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-023",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.125,
+      "ALES": 0.5156,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-024",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.2,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2344,
+      "ALES": 0.6043,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.2,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.48951934462075536,
+        "qaeval_f1": 0.125,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-025",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.2,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.0,
+      "ALES": 0.575,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.2,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-026",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4495,
+      "ALES": 0.5562,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7984872241786762,
+        "qaeval_f1": 0.3,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-027",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2698,
+      "ALES": 0.5337,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4616830848077049,
+        "qaeval_f1": 0.1875,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-028",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.4908,
+      "ALES": 0.5614,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.8029154712977413,
+        "qaeval_f1": 0.3571,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-029",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.15,
+      "ContextualUtility": 1.0,
+      "AnswerQuality": 0.1948,
+      "ALES": 0.6645,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": 0.25,
+        "ragas_answer_relevancy": 0.6493041290117323,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-030",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.2492,
+      "ALES": 0.5311,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4416840283481245,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-031",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.0,
+      "ALES": 0.5,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-032",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8,
+      "ContextualUtility": 0.6667,
+      "AnswerQuality": 0.2284,
+      "ALES": 0.7962,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.7613609148112824,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 0.6666666666666666,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-033",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.3996,
+      "ALES": 0.5499,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.4569986463459472,
+        "qaeval_f1": 0.375,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-034",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.25,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.269,
+      "ALES": 0.6274,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.25,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5075602194932446,
+        "qaeval_f1": 0.1667,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-035",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": 0.494,
+      "AnswerQuality": 0.4191,
+      "ALES": 0.5407,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.5637511344341818,
+        "qaeval_f1": 0.3571,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-036",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8095,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.229,
+      "ALES": 0.8322,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.3333,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": 0.7634378699815286,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": null,
+        "claim_coverage": 0.5,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-037",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.5857,
+      "ContextualUtility": 0.7594,
+      "AnswerQuality": 0.2236,
+      "ALES": 0.75,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 0.2857142857142857,
+        "ragas_answer_relevancy": 0.7454799670208946,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 0.9091
+      }
+    },
+    {
+      "case_id": "N97-038",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.8,
+      "ContextualUtility": 0.9479,
+      "AnswerQuality": 0.193,
+      "ALES": 0.8489,
+      "ALES_partial": false,
+      "n_components_used": 4,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "ContextualUtility",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": 1.0,
+        "ragas_faithfulness": 1.0,
+        "ragas_answer_relevancy": 0.6432064164318798,
+        "qaeval_f1": 0.0,
+        "ragas_context_recall": 1.0,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-039",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.1875,
+      "ALES": 0.5234,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.1875,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    },
+    {
+      "case_id": "N97-040",
+      "DecisionScore": 1,
+      "EvidenceSupport": 0.0,
+      "ContextualUtility": null,
+      "AnswerQuality": 0.3571,
+      "ALES": 0.5446,
+      "ALES_partial": true,
+      "n_components_used": 3,
+      "components_used": [
+        "Decision",
+        "Evidence",
+        "AnswerQuality"
+      ],
+      "components": {
+        "nli_entailment_rate": 0.0,
+        "verbatim_quote_rate": null,
+        "ragas_faithfulness": null,
+        "ragas_answer_relevancy": null,
+        "qaeval_f1": 0.3571,
+        "ragas_context_recall": null,
+        "claim_coverage": 1.0,
+        "citation_f1": 1.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco è motivata dalla sua inclusione nella lista dei farmaci non rimborsabili stabilita dalla Nota AIFA. Come indicato nella FONTE 10, la prescrizione dei farmaci antinfiammatori non steroidei a carico del SSN è limitata alle seguenti condizioni patologiche e principi attivi. Il farmaco in questione non risulta incluso in questa lista. Inoltre, come riportato nella FONTE 1, la Nota AIFA stabilisce che i FANS sono controindicati in alcune condizioni patologiche e che devono essere utilizzati con cautela in altre. Il farmaco in questione non risulta essere uno di quelli elencati come non rimborsabili o da utilizzare con cautela.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 5
+- Nota_66.pdf, p. 3
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_INCL_001
+snippet_id: 6f4dc43a00
+Fonte: Nota_66.pdf, p. 2
+Testo: "flurbiprofene;
+furprofene;
+ibuprofene;
+indometacina;
+ketoprofene;
+Lornoxicam;
+meloxicam;
+nabumetone;
+naprossene;
+oxaprozina;
+piroxicam;
+proglumetacina..."
+--- FINE ---

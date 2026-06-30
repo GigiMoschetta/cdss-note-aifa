@@ -1,0 +1,212 @@
+{
+  "case_id": "N97-038",
+  "nota_id": "97",
+  "drug_id": "apixaban",
+  "category": "NON_RIMBORSABILE_excl_hard",
+  "description": "NON_RIMBORSABILE — emorragia maggiore in atto (V3.4 EXCL_HARD_ALL2_EMORRAGIA)",
+  "tags": [
+    "non_rimborsabile",
+    "apixaban",
+    "nota97",
+    "emorragia_atto",
+    "v3_4_allegato2"
+  ],
+  "input": {
+    "patient_data": {
+      "diagnosi_fanv": true,
+      "ecg_confermato": true,
+      "valutazione_clinica_eseguita": true,
+      "paziente_sesso": "M",
+      "paziente_eta": 72,
+      "scompenso_cardiaco": true,
+      "ipertensione_arteriosa": true,
+      "diabete_mellito": true,
+      "pregresso_ictus_tia_te": false,
+      "vasculopatia": false,
+      "protesi_valvolari_meccaniche": false,
+      "fa_valvolare": false,
+      "vfg_cockroft_gault": 85.0,
+      "paziente_peso_kg": 75.0,
+      "creatinina_sierica": 0.9,
+      "emorragia_maggiore_in_atto": true,
+      "diatesi_emorragica_congenita": false,
+      "gravidanza": false,
+      "ipersensibilita_farmaco": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N97_EXCL_HARD_ALL2_EMORRAGIA"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "V3.4 Allegato 2: emorragia maggiore in atto"
+    },
+    "pdf_reference": {
+      "rule_id": "N97_EXCL_HARD_ALL2_EMORRAGIA",
+      "pdf_file": "nota-97-all-2.pdf",
+      "page": 2,
+      "section": "Principali controindicazioni/avvertenze",
+      "excerpt": "una emorragia maggiore in atto"
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N97_EXCL_HARD_ALL2_EMORRAGIA"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "nota-97-all-2_0042_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "nota-97_0027_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "nota-97_0028_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "nota-97-all-2_0048_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 7,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.49657371640205383,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "nota-97_0029_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.459890216588974,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "nota-97_0030_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.45684561133384705,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "nota-97-all-2_0043_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.43411684036254883,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "nota-97-all-2_0039_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4208086431026459,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco apixaban è stato valutato come NON_RIMBORSABILE a causa di una regola esclusiva (N97_EXCL_HARD_ALL2_EMORRAGIA) che è stata valutata come vera (valutata=TRUE). Questa regola è indicata nella FONTE 1 (nota-97-all-2.pdf p.2) e riguarda le principali controindicazioni/avvertenze. Il punteggio CHA2DS2-VASc è stato calcolato come [4, 4] e la soglia è ≥2, come indicato nella FONTE 2 (nota-97.pdf p.3).\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- nota-97-all-2.pdf, p. 2, sha:22dee22ddc\n- nota-97.pdf, p. 1, righe 1-3, char 0-17, sha:43defa75d8\n- nota-97-all-2.pdf, p. 7, righe 10-28, char 626-1719, sha:2c6a362971\n- nota-97.pdf, p. 3, righe 7-46, char 295-2070, sha:d1d7a85a22\n- nota-97-all-2.pdf, p. 3, righe 12-36, char 778-2422, sha:7a13ce05ef\n- nota-97-all-2.pdf, p. 1, righe 1-120, char 0-1881, sha:b3b4a1d5d9\n\n\n--- PROVA NORMATIVA ---\nRegola: N97_EXCL_HARD_ALL2_EMORRAGIA\nsnippet_id: 2497b17c7c\nFonte: nota-97-all-2.pdf, p. 2\nTesto verbatim: « \nrecente emorragia intracranica, intraoculare, spinale, retroperitoneale \n \nvarici esofagee accertate o sospette, malformazioni arterovenose, aneurismi \nvascolari o anomalie vascolari maggiori o intracerebrali \n \npiastrinopenia/piastrinopatia \n \nipertensione arteriosa grave/non controllata \n \naltre condizioni ad elevato rischio di sanguinamento (es. pericardite, endocardite \nin atto, ecc) \nPer una trattazione completa si rimanda alle schede tecniche dei singoli farmaci:  \nhttps://www.aifa.gov.it/trova-farmaco  \nPer la gestione delle terapie anticoagulanti con AVK e NAO/DOAC in corso di procedure \nchirurgiche o manovre invasive si rimanda all’allegato 3. NOTA 97 – Allegato 2 \nAVK (warfarin e acenocumarolo) \nSi tratta di farmaci a basso indice terapeutico la cui appropriata gestione prevede che la \nposologia venga periodicamente rivalutata in funzione dell’esito della determinazione \ndell’attività anticoagulante (INR).»\nSHA256 chunk: 22dee22ddc1a9a64\nVerificato: SI\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 5622,
+      "completion_tokens": 276,
+      "total_tokens": 5898
+    },
+    "latency_s": 8.81
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N97-038",
+      "gold_pdf_file": "nota-97-all-2.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 30,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.0,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

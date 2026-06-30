@@ -1,0 +1,37 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco acido mefenamico è motivata dalla valutazione della regola N66_SCOPE_001, che è stata valutata come FALSE. Questa regola è indicata nella FONTE 1 (Nota_66.pdf p.2) e specifica che i FANS sono non rimborsabili se non sono utilizzati per il trattamento di breve durata del dolore acuto nelle patologie indicate. Inoltre, la FONTE 4 (Nota_66.pdf p.4) sottolinea che tutti i FANS sono associati a tossicità gastrointestinale grave e che il rischio maggiore è per gli anziani.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 3
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_SCOPE_001
+snippet_id: 6f4dc43a00
+Fonte: Nota_66.pdf, p. 2
+Testo: "flurbiprofene;
+furprofene;
+ibuprofene;
+indometacina;
+ketoprofene;
+Lornoxicam;
+meloxicam;
+nabumetone;
+naprossene;
+oxaprozina;
+piroxicam;
+proglumetacina..."
+--- FINE ---

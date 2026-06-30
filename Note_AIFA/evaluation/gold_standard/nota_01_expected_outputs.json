@@ -1,0 +1,4233 @@
+{
+  "schema_version": "1.0",
+  "nota_id": "01",
+  "generated": "2026-04-28",
+  "engine_version": "3.4.0",
+  "total_cases": 24,
+  "errors": [],
+  "outputs": [
+    {
+      "case_id": "N01-001",
+      "description": "NON_RIMBORSABILE — base case: FANS=True, ASA=False, no risk factors for inclusion",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "NON_RIMBORSABILE",
+          "blocking_rules": [
+            {
+              "rule_id": "N01_INCL_001",
+              "rule_type": "INCLUSION",
+              "truth_value": "FALSE",
+              "rule_evaluated_as": "FALSE",
+              "reason": "Rule N01_INCL_001 evaluated FALSE → NON_RIMBORSABILE",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001. Controindicazioni: N01_INCL_001. Decisione: NON_RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "FALSE",
+            "outcome": "NON_RIMBORSABILE",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "FALSE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.220865Z"
+      }
+    },
+    {
+      "case_id": "N01-002",
+      "description": "RIMBORSABILE — pregresse emorragie digestive (high GI risk factor triggers inclusion)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": true,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.220935Z"
+      }
+    },
+    {
+      "case_id": "N01-003",
+      "description": "RIMBORSABILE — eta avanzata as inclusion criterion",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "pantoprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "pantoprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: pantoprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "pantoprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": true,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.220990Z"
+      }
+    },
+    {
+      "case_id": "N01-004",
+      "description": "RIMBORSABILE — concurrent anticoagulant therapy (high bleeding risk triggers inclusion)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": true,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [
+          {
+            "rule_id": "N01_GWARN_001",
+            "flag_type": "WARNING",
+            "informational_only": false,
+            "detail": "Triplice terapia (anticoagulante + FANS + PPI): rischio emorragico significativamente aumentato. Monitorare attentamente.",
+            "facts_used": {
+              "terapia_concomitante_anticoagulanti": true,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 3,
+              "section": "Particolari avvertenze",
+              "excerpt": "\"la gastroprotezione nei soggetti a rischio emorragico trattati 'long-term' con ASA potrebbe essere giustificata specie in presenza dei fattori di rischio più rilevanti (emorragia pregressa e pazienti in trattamento con anticoagulanti e cortisonici)\""
+            }
+          }
+        ],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": true,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "TRUE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221045Z"
+      }
+    },
+    {
+      "case_id": "N01-005",
+      "description": "NON_RIMBORSABILE — scope failure: neither FANS nor ASA (out of Nota 01 scope entirely)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "NON_RIMBORSABILE",
+          "blocking_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "rule_type": "SCOPE",
+              "truth_value": "FALSE",
+              "rule_evaluated_as": "FALSE",
+              "reason": "Rule N01_SCOPE_001 evaluated FALSE → NON_RIMBORSABILE",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            }
+          ],
+          "passed_rules": [],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Controindicazioni: N01_SCOPE_001. Decisione: NON_RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "FALSE",
+            "outcome": "NON_RIMBORSABILE",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "FALSE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221085Z"
+      }
+    },
+    {
+      "case_id": "N01-006",
+      "description": "ROUTED to Nota 66 — diclofenac+misoprostolo is a NSAID combination, routed to NSAID-specific note",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "ROUTED",
+        "reimbursement_decision": null,
+        "nota_evaluated": "01",
+        "drug_evaluated": "diclofenac_misoprostolo",
+        "route_to": "66",
+        "route_reason": "Diclofenac+misoprostolo è soggetto alla Nota 66 (non Nota 01).",
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "ROUTED",
+          "reimbursement_decision": null,
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: diclofenac_misoprostolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001. Decisione: ROUTED (rimandato ad altra Nota)."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "outcome": "ROUTE",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "diclofenac_misoprostolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221123Z"
+      }
+    },
+    {
+      "case_id": "N01-007",
+      "description": "RIMBORSABILE — OR short-circuit: ASA=True with FANS=null, missing coverage field empty",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": null,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": true,
+              "trattamento_cronico_fans": null
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": true,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221173Z"
+      }
+    },
+    {
+      "case_id": "N01-008",
+      "description": "RIMBORSABILE with WARNING — FANS + anticoagulante = triple therapy (N01_GWARN_001 fires)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": true,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [
+          {
+            "rule_id": "N01_GWARN_001",
+            "flag_type": "WARNING",
+            "informational_only": false,
+            "detail": "Triplice terapia (anticoagulante + FANS + PPI): rischio emorragico significativamente aumentato. Monitorare attentamente.",
+            "facts_used": {
+              "terapia_concomitante_anticoagulanti": true,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 3,
+              "section": "Particolari avvertenze",
+              "excerpt": "\"la gastroprotezione nei soggetti a rischio emorragico trattati 'long-term' con ASA potrebbe essere giustificata specie in presenza dei fattori di rischio più rilevanti (emorragia pregressa e pazienti in trattamento con anticoagulanti e cortisonici)\""
+            }
+          }
+        ],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": true,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "TRUE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221224Z"
+      }
+    },
+    {
+      "case_id": "N01-009",
+      "description": "RIMBORSABILE — ulcera peptica non guarita come fattore di rischio GI (N01_INCL_001 via ulcera path)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": true,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221275Z"
+      }
+    },
+    {
+      "case_id": "N01-010",
+      "description": "RIMBORSABILE — terapia concomitante con cortisonici come fattore di rischio GI (N01_INCL_001 via cortisonici path)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": true,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": true,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221324Z"
+      }
+    },
+    {
+      "case_id": "N01-011",
+      "description": "NON_DETERMINABILE — scope indeterminabile: entrambi FANS=null e ASA=null (OR di due UNKNOWN), con emorragie=True che fa passare l'inclusione",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": null,
+          "terapia_antiaggregante_asa": null,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "NON_DETERMINABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [
+          "terapia_antiaggregante_asa",
+          "trattamento_cronico_fans"
+        ],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "NON_DETERMINABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              },
+              "missing_fields": [
+                "terapia_antiaggregante_asa",
+                "trattamento_cronico_fans"
+              ]
+            }
+          ],
+          "missing_fields": [
+            "terapia_antiaggregante_asa",
+            "trattamento_cronico_fans"
+          ],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_EXCEPT_001, N01_INCL_001. Decisione: NON_DETERMINABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "UNKNOWN",
+            "outcome": "UNKNOWN_PENDING",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": null,
+              "trattamento_cronico_fans": null
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": [
+              "terapia_antiaggregante_asa",
+              "trattamento_cronico_fans"
+            ]
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": true,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "UNKNOWN",
+            "phase": 1,
+            "missing_fields": [
+              "terapia_antiaggregante_asa",
+              "trattamento_cronico_fans"
+            ],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221373Z"
+      }
+    },
+    {
+      "case_id": "N01-012",
+      "description": "NON_DETERMINABILE — scope: FANS=null, ASA=False → OR(UNKNOWN, FALSE) = UNKNOWN in Kleene 3VL",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": null,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "NON_DETERMINABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [
+          "trattamento_cronico_fans"
+        ],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "NON_DETERMINABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              },
+              "missing_fields": [
+                "trattamento_cronico_fans"
+              ]
+            }
+          ],
+          "missing_fields": [
+            "trattamento_cronico_fans"
+          ],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_EXCEPT_001, N01_INCL_001. Decisione: NON_DETERMINABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "UNKNOWN",
+            "outcome": "UNKNOWN_PENDING",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": null
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": [
+              "trattamento_cronico_fans"
+            ]
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": true,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "UNKNOWN",
+            "phase": 1,
+            "missing_fields": [
+              "trattamento_cronico_fans"
+            ],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221424Z"
+      }
+    },
+    {
+      "case_id": "N01-013",
+      "description": "NON_DETERMINABILE — inclusione indeterminabile: FANS=True, ASA=False, tutti i 5 fattori di rischio GI = null",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": null,
+          "ulcera_peptica_non_guarita": null,
+          "terapia_concomitante_anticoagulanti": null,
+          "terapia_concomitante_cortisonici": null,
+          "eta_avanzata": null
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "NON_DETERMINABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [
+          "eta_avanzata",
+          "pregresse_emorragie_digestive",
+          "terapia_concomitante_anticoagulanti",
+          "terapia_concomitante_cortisonici",
+          "ulcera_peptica_non_guarita"
+        ],
+        "missing_fields_guidance": [
+          "terapia_concomitante_anticoagulanti"
+        ],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "NON_DETERMINABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            }
+          ],
+          "unknown_rules": [
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              },
+              "missing_fields": [
+                "eta_avanzata",
+                "pregresse_emorragie_digestive",
+                "terapia_concomitante_anticoagulanti",
+                "terapia_concomitante_cortisonici",
+                "ulcera_peptica_non_guarita"
+              ]
+            }
+          ],
+          "missing_fields": [
+            "eta_avanzata",
+            "pregresse_emorragie_digestive",
+            "terapia_concomitante_anticoagulanti",
+            "terapia_concomitante_cortisonici",
+            "ulcera_peptica_non_guarita"
+          ],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001. Decisione: NON_DETERMINABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "UNKNOWN",
+            "outcome": "UNKNOWN_PENDING",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": null,
+              "pregresse_emorragie_digestive": null,
+              "terapia_concomitante_anticoagulanti": null,
+              "terapia_concomitante_cortisonici": null,
+              "ulcera_peptica_non_guarita": null
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": [
+              "eta_avanzata",
+              "pregresse_emorragie_digestive",
+              "terapia_concomitante_anticoagulanti",
+              "terapia_concomitante_cortisonici",
+              "ulcera_peptica_non_guarita"
+            ]
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "UNKNOWN",
+            "phase": 4,
+            "missing_fields": [
+              "eta_avanzata",
+              "pregresse_emorragie_digestive",
+              "terapia_concomitante_anticoagulanti",
+              "terapia_concomitante_cortisonici",
+              "ulcera_peptica_non_guarita"
+            ],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "UNKNOWN",
+            "phase": 8,
+            "missing_fields": [
+              "terapia_concomitante_anticoagulanti"
+            ],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221477Z"
+      }
+    },
+    {
+      "case_id": "N01-014",
+      "description": "RIMBORSABILE — scope via ASA solo (FANS=False, ASA=True) + pregresse emorragie digestive",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": true,
+              "trattamento_cronico_fans": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": true,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221529Z"
+      }
+    },
+    {
+      "case_id": "N01-015",
+      "description": "NON_RIMBORSABILE — scope via ASA solo (FANS=False, ASA=True) ma nessun fattore di rischio GI (N01_INCL_001 fails)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "NON_RIMBORSABILE",
+          "blocking_rules": [
+            {
+              "rule_id": "N01_INCL_001",
+              "rule_type": "INCLUSION",
+              "truth_value": "FALSE",
+              "rule_evaluated_as": "FALSE",
+              "reason": "Rule N01_INCL_001 evaluated FALSE → NON_RIMBORSABILE",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001. Controindicazioni: N01_INCL_001. Decisione: NON_RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": true,
+              "trattamento_cronico_fans": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "FALSE",
+            "outcome": "NON_RIMBORSABILE",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "FALSE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221578Z"
+      }
+    },
+    {
+      "case_id": "N01-016",
+      "description": "RIMBORSABILE con GWARN — tutti i 5 fattori di rischio GI presenti simultaneamente + FANS + anticoagulanti (N01_GWARN_001 fires)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": true,
+          "terapia_concomitante_anticoagulanti": true,
+          "terapia_concomitante_cortisonici": true,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "omeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [
+          {
+            "rule_id": "N01_GWARN_001",
+            "flag_type": "WARNING",
+            "informational_only": false,
+            "detail": "Triplice terapia (anticoagulante + FANS + PPI): rischio emorragico significativamente aumentato. Monitorare attentamente.",
+            "facts_used": {
+              "terapia_concomitante_anticoagulanti": true,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 3,
+              "section": "Particolari avvertenze",
+              "excerpt": "\"la gastroprotezione nei soggetti a rischio emorragico trattati 'long-term' con ASA potrebbe essere giustificata specie in presenza dei fattori di rischio più rilevanti (emorragia pregressa e pazienti in trattamento con anticoagulanti e cortisonici)\""
+            }
+          }
+        ],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: omeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "omeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": true,
+              "pregresse_emorragie_digestive": true,
+              "terapia_concomitante_anticoagulanti": true,
+              "terapia_concomitante_cortisonici": true,
+              "ulcera_peptica_non_guarita": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "TRUE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221629Z"
+      }
+    },
+    {
+      "case_id": "N01-017",
+      "description": "RIMBORSABILE — esomeprazolo (IPP diverso da omeprazolo/pantoprazolo) con scope via ASA + ulcera_peptica_non_guarita",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "esomeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": true,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "esomeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: esomeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": true,
+              "trattamento_cronico_fans": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "esomeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221683Z"
+      }
+    },
+    {
+      "case_id": "N01-018",
+      "description": "RIMBORSABILE — lansoprazolo con scope FANS + cortisonici, nessun GWARN (anticoagulanti assenti)",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "lansoprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": true,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "lansoprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: lansoprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "lansoprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": true,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221733Z"
+      }
+    },
+    {
+      "case_id": "N01-019",
+      "description": "ROUTED to Nota 66 — età avanzata + ASA antiaggregante; diclofenac+misoprostolo routed",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "ROUTED",
+        "reimbursement_decision": null,
+        "nota_evaluated": "01",
+        "drug_evaluated": "diclofenac_misoprostolo",
+        "route_to": "66",
+        "route_reason": "Diclofenac+misoprostolo è soggetto alla Nota 66 (non Nota 01).",
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "ROUTED",
+          "reimbursement_decision": null,
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: diclofenac_misoprostolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001. Decisione: ROUTED (rimandato ad altra Nota)."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": true,
+              "trattamento_cronico_fans": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "outcome": "ROUTE",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "diclofenac_misoprostolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221775Z"
+      }
+    },
+    {
+      "case_id": "N01-020",
+      "description": "ROUTED to Nota 66 — paziente con ulcera peptica non guarita; diclofenac+misoprostolo routed",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": true,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "ROUTED",
+        "reimbursement_decision": null,
+        "nota_evaluated": "01",
+        "drug_evaluated": "diclofenac_misoprostolo",
+        "route_to": "66",
+        "route_reason": "Diclofenac+misoprostolo è soggetto alla Nota 66 (non Nota 01).",
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "ROUTED",
+          "reimbursement_decision": null,
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: diclofenac_misoprostolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001. Decisione: ROUTED (rimandato ad altra Nota)."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "outcome": "ROUTE",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "diclofenac_misoprostolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221812Z"
+      }
+    },
+    {
+      "case_id": "N01-021",
+      "description": "ROUTED to Nota 66 — terapia anticoagulante concomitante; diclofenac+misoprostolo routed",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": true,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "ROUTED",
+        "reimbursement_decision": null,
+        "nota_evaluated": "01",
+        "drug_evaluated": "diclofenac_misoprostolo",
+        "route_to": "66",
+        "route_reason": "Diclofenac+misoprostolo è soggetto alla Nota 66 (non Nota 01).",
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "ROUTED",
+          "reimbursement_decision": null,
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: diclofenac_misoprostolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001. Decisione: ROUTED (rimandato ad altra Nota)."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "outcome": "ROUTE",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "diclofenac_misoprostolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221891Z"
+      }
+    },
+    {
+      "case_id": "N01-022",
+      "description": "ROUTED to Nota 66 — cortisonici concomitanti; diclofenac+misoprostolo routed",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": true,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "ROUTED",
+        "reimbursement_decision": null,
+        "nota_evaluated": "01",
+        "drug_evaluated": "diclofenac_misoprostolo",
+        "route_to": "66",
+        "route_reason": "Diclofenac+misoprostolo è soggetto alla Nota 66 (non Nota 01).",
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "ROUTED",
+          "reimbursement_decision": null,
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: diclofenac_misoprostolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001. Decisione: ROUTED (rimandato ad altra Nota)."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "outcome": "ROUTE",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "diclofenac_misoprostolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "TRUE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221930Z"
+      }
+    },
+    {
+      "case_id": "N01-023",
+      "description": "RIMBORSABILE — rabeprazolo (PPI farmaco nuovo nel gold standard) con FANS cronico + età avanzata",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "rabeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "rabeprazolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: rabeprazolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "rabeprazolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": true,
+              "pregresse_emorragie_digestive": false,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.221980Z"
+      }
+    },
+    {
+      "case_id": "N01-024",
+      "description": "RIMBORSABILE — misoprostolo standalone (gastroprotettore alternativo ai PPI) con FANS cronico + emorragie pregresse",
+      "input": {
+        "nota_id": "01",
+        "drug_id": "misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "actual_result": {
+        "schema_version": "3.3",
+        "decision_status": "FINAL",
+        "reimbursement_decision": "RIMBORSABILE",
+        "nota_evaluated": "01",
+        "drug_evaluated": "misoprostolo",
+        "route_to": null,
+        "route_reason": null,
+        "clinical_flags": [],
+        "missing_fields_coverage": [],
+        "missing_fields_guidance": [],
+        "rag_payload": {
+          "decision_status": "FINAL",
+          "reimbursement_decision": "RIMBORSABILE",
+          "blocking_rules": [],
+          "passed_rules": [
+            {
+              "rule_id": "N01_SCOPE_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+              }
+            },
+            {
+              "rule_id": "N01_EXCEPT_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo (asterisco)",
+                "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+              }
+            },
+            {
+              "rule_id": "N01_INCL_001",
+              "anchor": {
+                "pdf_file": "Nota_01.pdf",
+                "page": 2,
+                "section": "Box prescrittivo",
+                "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+              }
+            }
+          ],
+          "unknown_rules": [],
+          "missing_fields": [],
+          "computed_scores": {
+            "cha2ds2vasc": {
+              "score_name": "CHA2DS2-VASc",
+              "min_score": 0,
+              "max_score": 9,
+              "threshold": null,
+              "eligible": "UNKNOWN",
+              "missing_components": [
+                "scompenso_cardiaco",
+                "ipertensione_arteriosa",
+                "diabete_mellito",
+                "pregresso_ictus_tia_te",
+                "vasculopatia",
+                "paziente_sesso",
+                "paziente_eta"
+              ],
+              "anchor": {
+                "pdf_file": "nota-97.pdf",
+                "page": 3,
+                "section": "Percorso C",
+                "excerpt": "CHA2DS2-VASc threshold ≥2 M / ≥3 F (OCR-corrected)"
+              }
+            }
+          },
+          "clinical_context_summary": "Nota 01 | Farmaco: misoprostolo CHA2DS2-VASc range [0,9] ≥ N/D (threshold). Eligible: UNKNOWN. Regole attivate: N01_SCOPE_001, N01_EXCEPT_001, N01_INCL_001. Decisione: RIMBORSABILE."
+        },
+        "coverage_trace": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 1,
+            "facts_used": {
+              "terapia_antiaggregante_asa": false,
+              "trattamento_cronico_fans": true
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "outcome": "PROCEED",
+            "phase": 2,
+            "facts_used": {
+              "farmaco": "misoprostolo"
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo (asterisco)",
+              "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+            },
+            "missing_fields": []
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "outcome": "PROCEED",
+            "phase": 4,
+            "facts_used": {
+              "eta_avanzata": false,
+              "pregresse_emorragie_digestive": true,
+              "terapia_concomitante_anticoagulanti": false,
+              "terapia_concomitante_cortisonici": false,
+              "ulcera_peptica_non_guarita": false
+            },
+            "anchor": {
+              "pdf_file": "Nota_01.pdf",
+              "page": 2,
+              "section": "Box prescrittivo",
+              "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+            },
+            "missing_fields": []
+          }
+        ],
+        "audit_trail": [
+          {
+            "rule_id": "N01_SCOPE_001",
+            "rule_type": "SCOPE",
+            "truth_value": "TRUE",
+            "phase": 1,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_EXCEPT_001",
+            "rule_type": "EXCEPTION",
+            "truth_value": "FALSE",
+            "phase": 2,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_INCL_001",
+            "rule_type": "INCLUSION",
+            "truth_value": "TRUE",
+            "phase": 4,
+            "missing_fields": [],
+            "note": ""
+          },
+          {
+            "rule_id": "N01_GWARN_001",
+            "rule_type": "GUIDANCEWARN",
+            "truth_value": "FALSE",
+            "phase": 8,
+            "missing_fields": [],
+            "note": ""
+          }
+        ],
+        "engine_version": "3.4.0",
+        "rule_catalog_version": "01:2024-11",
+        "evaluation_timestamp": "2026-04-28T14:20:44.222029Z"
+      }
+    }
+  ]
+}

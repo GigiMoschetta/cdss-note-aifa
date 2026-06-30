@@ -1,0 +1,198 @@
+{
+  "case_id": "N97-004",
+  "nota_id": "97",
+  "drug_id": "apixaban",
+  "category": "NON_RIMBORSABILE_scope",
+  "description": "NON_RIMBORSABILE — Scope failure: FANV diagnosis absent",
+  "tags": [
+    "non_rimborsabile",
+    "apixaban",
+    "nota97",
+    "scope",
+    "diagnosis"
+  ],
+  "input": {
+    "patient_data": {
+      "diagnosi_fanv": false,
+      "ecg_confermato": true,
+      "valutazione_clinica_eseguita": true,
+      "paziente_sesso": "M",
+      "paziente_eta": 72,
+      "scompenso_cardiaco": true,
+      "ipertensione_arteriosa": true,
+      "diabete_mellito": true,
+      "protesi_valvolari_meccaniche": false,
+      "fa_valvolare": false,
+      "vfg_cockroft_gault": 85.0,
+      "emorragia_maggiore_in_atto": false,
+      "diatesi_emorragica_congenita": false,
+      "gravidanza": false,
+      "ipersensibilita_farmaco": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N97_SCOPE_001"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Explanation must cite that FANV diagnosis is a prerequisite for Nota 97 reimbursement"
+    },
+    "pdf_reference": {
+      "rule_id": "N97_SCOPE_001",
+      "pdf_file": "nota-97.pdf",
+      "page": 1,
+      "section": "Percorso A",
+      "excerpt": "Diagnosi di FA non valvolare confermata da ECG e valutazione clinica"
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N97_SCOPE_001"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "nota-97_0027_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "nota-97_0028_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "nota-97_0029_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.475141704082489,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "nota-97-all-2_0048_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 7,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4300859868526459,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "nota-97_0030_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4154890179634094,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "nota-97-all-2_0039_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.37061047554016113,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "nota-97-all-2_0038_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3691365122795105,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco apixaban è stato valutato e la decisione è stata presa in base alla Nota AIFA 97. Come indicato nella FONTE 1, la Nota AIFA 97 stabilisce che la prescrizione della terapia anticoagulante orale è a carico del SSN limitatamente alla FANV e al rispetto del percorso decisionale illustrato ai punti A, B, C, D. Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere nel range [4,7], ma la soglia per la copertura è ≥2. Pertanto, nonostante il punteggio sia nel range, la soglia non è stata superata e quindi il farmaco non è coperto.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Informazione non disponibile nel testo normativo.\n\n5. FONTI\n- nota-97.pdf, p. 1, righe 1-3, char 0-17, sha:43defa75d8\n- nota-97.pdf, p. 3, righe 7-46, char 295-2070, sha:d1d7a85a22\n- nota-97-all-2.pdf, p. 7, righe 10-28, char 626-1719, sha:2c6a362971\n- nota-97-all-2.pdf, p. 1, righe 1-120, char 0-1881, sha:b3b4a1d5d9\n\n\n--- PROVA NORMATIVA ---\nRegola: N97_SCOPE_001\nsnippet_id: c4911ddf45\nFonte: nota-97.pdf, p. 1\nTesto verbatim: «NOTA 97 \nFarmaci inclusi \nnella Nota AIFA:   \n  \nAVK:  \n Warfarin \n Acenocumarolo  \n  \nNAO/DOAC:  \n Dabigatran \n Apixaban \n Edoxaban \n Rivaroxaban \nLa prescrizione della terapia anticoagulante orale è a carico del \nSSN limitatamente alla FANV e al rispetto del percorso \ndecisionale illustrato ai punti A, B, C, D. La prescrizione dovrà essere accompagnata dalla compilazione \ndella scheda di valutazione prescrizione e follow-up di cui \nall’allegato 1 da parte dello specialista o del Medico di Medicina \nGenerale. Una copia della scheda dovrà essere conservata dal \nprescrittore e una consegnata al paziente, in previsione del \nsuccessivo aggiornamento periodico in occasione del follow-up. Il regime di fornitura delle altre indicazioni di AVK e NAO/NOAC \nrimane invariato. PERCORSO DECISIONALE  \nA. La diagnosi di FANV deve essere sempre confermata da un \nelettrocardiogramma e dalla valutazione clinica del paziente. B.»\nSHA256 chunk: 43defa75d8983436\nVerificato: SI\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 5236,
+      "completion_tokens": 323,
+      "total_tokens": 5559
+    },
+    "latency_s": 6.77
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N97-004",
+      "gold_pdf_file": "nota-97.pdf",
+      "gold_page": 1,
+      "gold_excerpt_len": 68,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.1111,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.1111,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

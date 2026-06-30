@@ -1,0 +1,29 @@
+# ── AIFA RAG Orchestrator — Phase 2 Dependencies ─────────────────────────────
+# Inherits all RAG ingestion dependencies
+-r requirements_rag.txt
+
+# ── HTTP client (for calling the Rule Engine REST API) ────────────────────────
+httpx>=0.27.0
+
+# ── FastAPI (orchestrator service endpoint) ───────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.7.0
+
+# ── LLM backends (install at least one) ──────────────────────────────────────
+# Option A: OpenAI API (gpt-4o-mini — fast, cheap, strong Italian)
+openai>=1.35.0
+
+# Option B: Ollama (local models — llama3.1:8b, mistral:7b)
+# Install Ollama on host: https://ollama.com/download
+# Then: ollama pull llama3.1:8b
+ollama>=0.2.0
+
+# ── LlamaIndex (reranking post-processor) ─────────────────────────────────────
+llama-index-core>=0.11.0
+llama-index-postprocessor-sbert-rerank>=0.2.0
+
+# ── Evaluation (Phase 4 — can be removed until needed) ───────────────────────
+scikit-learn>=1.5.0
+pandas>=2.2.0
+# ragas>=0.1.0  # uncomment when starting Phase 4 evaluation

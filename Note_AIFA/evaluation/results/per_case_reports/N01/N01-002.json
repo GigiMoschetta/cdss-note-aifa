@@ -1,0 +1,215 @@
+{
+  "case_id": "N01-002",
+  "nota_id": "01",
+  "drug_id": "omeprazolo",
+  "category": "RIMBORSABILE_inclusion",
+  "description": "RIMBORSABILE — pregresse emorragie digestive (high GI risk factor triggers inclusion)",
+  "tags": [
+    "rimborsabile",
+    "omeprazolo",
+    "nota01",
+    "emorragie"
+  ],
+  "input": {
+    "patient_data": {
+      "trattamento_cronico_fans": true,
+      "terapia_antiaggregante_asa": false,
+      "pregresse_emorragie_digestive": true,
+      "ulcera_peptica_non_guarita": false,
+      "terapia_concomitante_anticoagulanti": false,
+      "terapia_concomitante_cortisonici": false,
+      "eta_avanzata": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Explanation must cite pregresse emorragie digestive as a decisive risk factor for gastroprotection"
+    },
+    "pdf_reference": {
+      "rule_id": "N01_SCOPE_001",
+      "pdf_file": "Nota_01.pdf",
+      "page": 2,
+      "section": "Box prescrittivo",
+      "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+    }
+  },
+  "engine": {
+    "actual_decision": "RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_01_0005_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_01_0006_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_01_0007_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_01_0008_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_01_0009_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_01_0004_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5997487902641296,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_01_0014_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5182015299797058,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_01_0000_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "TABLE",
+        "stage": "semantic",
+        "score": 0.4580062925815582,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_01_0010_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4439989924430847,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_01_0011_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4180903732776642,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: RIMBORSABILE\n   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco omeprazolo è rimborsabile in quanto è stato valutato come efficace nella prevenzione delle complicanze gravi del tratto gastrointestinale superiore, come indicato nella FONTE 6. In particolare, la Nota AIFA valuta che l'omeprazolo sia efficace nella prevenzione delle ulcere gastriche e duodenali, nonché delle loro complicanze gravi, in pazienti trattati con farmaci antinfiammatori non steroidei (FANS) e in terapia antiaggregante con ASA a basse dosi. Ciò è confermato anche dalle evidenze disponibili riportate nella FONTE 2, che mostrano la superiorità dell'omeprazolo rispetto a misoprostolo e a dosi standard di H2 bloccanti nella prevenzione delle ulcere da FANS.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Informazione non disponibile nel testo normativo.\n\n5. FONTI\n- Nota_01.pdf, p. 2, righe 14-26, char 944-2465, sha:1acab81b63\n- Nota_01.pdf, p. 1, righe 1-16, char 0-1404, sha:097a83fcbe\n- Nota_01.pdf, p. 3, sha:be80034ea9",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'RIMBORSABILE'": true,
+        "not_contains:'NON_RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 5744,
+      "completion_tokens": 414,
+      "total_tokens": 6158
+    },
+    "latency_s": 11.51
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N01-002",
+      "gold_pdf_file": "Nota_01.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 87,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.5,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.6667,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

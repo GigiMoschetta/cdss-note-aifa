@@ -1,0 +1,328 @@
+{
+  "case_id": "N66-019",
+  "nota_id": "66",
+  "drug_id": "diclofenac",
+  "category": "RIMBORSABILE_with_guidance",
+  "description": "RIMBORSABILE con WARNING — diclofenac + ASA antiaggregante (N66_GWARN_002 fires su farmaco diverso da ibuprofene)",
+  "tags": [
+    "rimborsabile",
+    "diclofenac",
+    "nota66",
+    "warning",
+    "fans_asa"
+  ],
+  "input": {
+    "patient_data": {
+      "indicazione_clinica": "osteoartrosi_algica",
+      "uso_breve_durata": true,
+      "seconda_linea": true,
+      "ulcera_peptica_attiva_pregressa": false,
+      "scompenso_cardiaco_grave": false,
+      "cardiopatia_ischemica": false,
+      "patologia_cerebrovascolare": false,
+      "patologia_arteriosa_periferica": false,
+      "scompenso_cardiaco_moderato_grave": false,
+      "is_coxib": false,
+      "epatopatia": false,
+      "terapia_antiaggregante_asa": true,
+      "dolore_acuto_moderato": false,
+      "non_controllato_con_singoli": false,
+      "abuso_alcool": false,
+      "farmaci_epatotossici_concomitanti": false,
+      "allergia_asa_o_fans": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [],
+    "expected_clinical_flag_rule_ids": [
+      "N66_GWARN_002"
+    ],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "N66_GWARN_002 fires for diclofenac+ASA (diclofenac is in lista_fans); confirms GWARN applies beyond ibuprofene"
+    },
+    "pdf_reference": {
+      "rule_id": "N66_SCOPE_001",
+      "pdf_file": "Nota_66.pdf",
+      "page": 2,
+      "section": "Box prescrittivo",
+      "excerpt": "\"Artropatie su base connettivale, osteoartrosi in fase algica, dolore neoplastico, gotta acuta\""
+    }
+  },
+  "engine": {
+    "actual_decision": "RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 0.5,
+    "recall_at_5": 0.5,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_66_0000_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_66_0001_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_66_0002_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_66_0003_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_66_0004_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_66_0008_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_66_0009_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_66_0006_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_66_0018_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_66_0019_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "Nota_66_0020_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "Nota_66_0021_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 13,
+        "chunk_id": "Nota_66_0022_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 14,
+        "chunk_id": "Nota_66_0023_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 15,
+        "chunk_id": "Nota_66_0024_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 16,
+        "chunk_id": "Nota_66_0007_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.6508174538612366,
+        "text": ""
+      },
+      {
+        "rank": 17,
+        "chunk_id": "Nota_66_0011_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5209340453147888,
+        "text": ""
+      },
+      {
+        "rank": 18,
+        "chunk_id": "Nota_66_0017_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4874323904514313,
+        "text": ""
+      },
+      {
+        "rank": 19,
+        "chunk_id": "Nota_66_0010_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3721993565559387,
+        "text": ""
+      },
+      {
+        "rank": 20,
+        "chunk_id": "Nota_66_0012_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3640134930610657,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: RIMBORSABILE\n   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco valutato è il diclofenac, come indicato nella FONTE 16. La combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del dolore da lieve a moderato negli adulti se non adeguatamente alleviato dagli altri antidolorifici quali paracetamolo o ibuprofene, come riportato nella FONTE 17. Il dosaggio autorizzato nella popolazione adulta è di 1 compressa ogni 4-6 ore, con una dose massima giornaliera di 6 compresse (2.400 mg ibuprofene/180 mg codeina fosfato emidrato) nelle 24 ore, come riportato nella FONTE 17.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Informazione non disponibile nel testo normativo.\n\n5. FONTI\n- Nota_66.pdf, p. 2, riga 41, char 809-856, sha:a76cd6a3b7\n- Nota_66.pdf, p. 4, riga 1, char 0-74, sha:4eee68e67a\n- Nota_66.pdf, p. 1, righe 1-54, char 0-1576, sha:6d5d39cf1a\n- Nota_66.pdf, p. 3, righe 15-27, char 1450-3208, sha:07239bafa4",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'RIMBORSABILE'": true,
+        "not_contains:'NON_RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 8527,
+      "completion_tokens": 296,
+      "total_tokens": 8823
+    },
+    "latency_s": 11.57
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N66-019",
+      "gold_pdf_file": "Nota_66.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 95,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.3,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

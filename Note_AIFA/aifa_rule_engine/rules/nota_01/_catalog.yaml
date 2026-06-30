@@ -1,0 +1,21 @@
+version: "01:2024-11"
+description: "Nota 01 — Gastroprotettori (PPI / misoprostolo) in trattamento cronico con FANS o ASA"
+
+# PDF normativo (audit Day 1 fix F6-G3 BLOC):
+# checksum, fonte AIFA e data download per riproducibilità documentata.
+pdf_files:
+  - filename: "Nota_01.pdf"
+    md5: "6d0df64a737e0bd9c1635ce9ecfb7680"
+    sha256: "502c2095c3498ba0..."  # truncated; full hash in audit/pdf_checksums.json
+    size_bytes: 343114
+    pdf_url: "https://www.aifa.gov.it/-/nota-01"
+    pdf_published: "2009-12-13"  # data publicazione Nota AIFA (footer p.4)
+    pdf_downloaded_at: "2026-01-XX"  # data approssimativa download per progetto tesi
+    normative_reference: "Determina AIFA, pubblicato 13/12/2009"
+
+# Rule IDs declared in rules.yaml (audit V4 2026-05-12 — kept in sync via test_catalog_in_sync_with_rules)
+rules:
+  - N01_SCOPE_001
+  - N01_EXCEPT_001
+  - N01_INCL_001
+  - N01_GWARN_001

@@ -1,0 +1,15 @@
+[theme]
+# Palette "clinical editorial" — deep teal + warm off-white,
+# scelta sui modelli NEJM / NHS Digital / Epic clinical UIs.
+primaryColor = "#1e4d5e"
+backgroundColor = "#fafaf7"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#1a1a1a"
+font = "serif"
+
+[server]
+headless = true
+runOnSave = true
+
+[browser]
+gatherUsageStats = false

@@ -1,0 +1,24 @@
+1. DECISIONE
+   Il farmaco è: NON_DETERMINABILE
+   Dichiara che il farmaco è NON_DETERMINABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di NON_DETERMINABILE per l'atorvastatina è motivata dalla presenza di dati mancanti relativi al colesterolo LDL e alla dislipidemia diagnosticata. Come indicato nella FONTE 1, la Nota 13 richiede che i pazienti siano sottoposti a dieta e modifica dello stile di vita per almeno tre mesi prima di iniziare la terapia farmacologica. Inoltre, la FONTE 2 specifica che l'atorvastatina è preferenzialmente utilizzata nei pazienti con rischio molto alto e livelli di colesterolo LDL > 70 mg/dL.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   I campi mancanti sono:
+   - colesterolo LDL
+   - dislipidemia diagnosticata
+   L'assenza di questi dati può influire sulla scelta del trattamento e sulla valutazione del rischio cardiovascolare del paziente.
+
+5. FONTI
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 6
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 10

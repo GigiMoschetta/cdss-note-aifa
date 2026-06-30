@@ -1,0 +1,315 @@
+%% ============================================================
+%%  CAPITOLO 1 — Il contesto clinico delle Note AIFA
+%%  Tesi triennale — Francesco Zamar, UniTS, a.a. 2025/2026
+%%  Relatore: Prof. Andrea De Lorenzo
+%%  Stile: prosa narrativa fluente, nessun itemize/enumerate.
+%%  Macro canoniche da macros_finale.tex.
+%% ============================================================
+
+\chapter{Il contesto clinico delle Note AIFA}
+\label{ch:contesto}
+
+Il Servizio Sanitario Nazionale (SSN) italiano garantisce l'accesso ai farmaci essenziali
+attraverso un sistema di rimborsabilità che tiene insieme sostenibilità economica e
+appropriatezza clinica.
+Per un sottoinsieme rilevante dei medicinali di fascia~A, la rimborsabilità non è
+automatica: il prescrittore deve verificare che il paziente soddisfi i criteri
+definiti in atti normativi di dettaglio denominati \emph{Note AIFA}.
+Questa tesi si occupa di automatizzare tale verifica per quattro Note selezionate,
+costruendo un sistema di supporto alla decisione clinica capace di produrre un
+esito motivato e tracciabile a partire dal profilo clinico del paziente e dal testo
+normativo ufficiale~\cite{aifa2024note}.
+Il corpus di valutazione comprende \goldn\ casi gold distribuiti su 122 scenari
+clinici realistici; la distribuzione delle etichette riflette l'eterogeneità
+delle situazioni prescrittive: \goldRimb\ casi \decision{RIMBORSABILE},
+\goldNonRimb\ casi \decision{NON\_RIMBORSABILE}, \goldNonDet\ casi
+\decision{NON\_DETERMINABILE} e \goldRouted\ casi instradati verso una Nota
+dipendente.
+
+% ------------------------------------------------------------------
+\section{Sistemi di supporto alla decisione clinica}
+\label{sec:cdss-overview}
+% ------------------------------------------------------------------
+
+Un sistema di supporto alla decisione clinica (CDSS, \emph{Clinical Decision
+Support System}) è un software progettato per assistere il professionista sanitario
+nell'elaborazione di informazioni cliniche al fine di migliorare la qualità
+delle decisioni~\cite{greenes2007cdss}.
+La definizione è intenzionalmente ampia: include sistemi di allerta per le
+interazioni farmacologiche, strumenti di scoring prognostico, motori di verifica
+normativa e raccomandatori terapeutici.
+La distinzione rilevante per questo lavoro è quella tra sistemi attivi, che
+intervengono proattivamente nel flusso di lavoro clinico, e sistemi passivi, che
+rispondono a una richiesta puntuale del medico~\cite{berner2007cdss}.
+
+La storia dei CDSS inizia nel 1974 con MYCIN~\cite{shortliffe1974mycin}, un
+sistema per la selezione della terapia antibiotica sviluppato a Stanford da
+Shortliffe.
+MYCIN codificava la conoscenza clinica esperta come insieme di regole di produzione
+\emph{if-then} pesate con fattori di certezza, e dimostrava per la prima volta che
+un software poteva raggiungere prestazioni paragonabili a quelle del clinico esperto
+su un dominio ben delimitato.
+Negli anni successivi, il modello si è evoluto verso linguaggi formali interoperabili:
+l'Arden Syntax~\cite{hripcsak1994arden}, standardizzato da Health Level Seven (HL7) nel 1992, ha fornito
+un framework per specificare moduli di logica clinica integrabili nelle cartelle
+elettroniche, spostando l'enfasi dalla knowledge base monolitica alla modularità
+delle regole.
+Il decennio 2010 ha visto l'integrazione progressiva di metodi probabilistici
+e di apprendimento automatico nei CDSS, con guadagni sulla generalizzazione ma
+perdite sulla tracciabilità: un modello che impara pattern dai dati non produce
+per costruzione una catena di giustificazioni verificabile~\cite{sutton2020overview}.
+
+Il contesto delle Note AIFA pone requisiti specifici che limitano l'applicabilità
+dei soli modelli probabilistici.
+La decisione di rimborsabilità ha effetto economico e amministrativo diretto: ogni
+prescrizione non conforme genera oneri sul SSN e può comportare responsabilità
+disciplinare per il medico.
+Una componente rule-based deterministica è dunque indispensabile per garantire
+l'auditabilità del percorso decisionale.
+Al tempo stesso, i dati clinici reali sono raramente completi, e la Nota può
+contemplare parametri non rilevati al momento della prescrizione: è necessario
+gestire formalmente l'incertezza senza rinunciare alla tracciabilità.
+Il sistema descritto in questa tesi risponde a questi requisiti combinando un
+motore di regole simbolico con un modulo di Retrieval-Augmented Generation, il
+cui ruolo complementare è analizzato a partire dal \Cref{ch:progettazione}.
+
+% ------------------------------------------------------------------
+\section{La regolamentazione AIFA della rimborsabilità}
+\label{sec:aifa-regolamentazione}
+% ------------------------------------------------------------------
+
+L'Agenzia Italiana del Farmaco (AIFA) è l'ente pubblico indipendente, posto
+sotto la vigilanza del Ministero della Salute e del Ministero dell'Economia e delle
+Finanze, che regola l'intero ciclo di vita del medicinale in Italia: valutazione
+tecnico-scientifica, negoziazione del prezzo con il produttore, classificazione in
+fascia di rimborsabilità e farmacovigilanza post-marketing~\cite{aifa2024note}.
+La spesa farmaceutica pubblica si attesta intorno ai quindici miliardi di euro
+annui, ed è il perimetro all'interno del quale l'AIFA esercita il suo mandato di
+sostenibilità.
+
+I medicinali commercializzati in Italia vengono classificati in tre grandi fasce:
+la fascia~A comprende i farmaci essenziali e quelli per patologie croniche ad elevato
+impatto sociale, erogati gratuitamente salvo eventuale ticket regionale; la fascia~H
+riguarda i medicinali riservati all'uso ospedaliero o specialistico, anch'essi
+a carico del SSN nelle strutture pubbliche; la fascia~C include i farmaci il cui
+costo ricade interamente sul cittadino.
+Per un sottoinsieme significativo dei farmaci di fascia~A, la rimborsabilità
+non è incondizionata ma vincolata al rispetto dei criteri definiti nelle
+\emph{Note AIFA}, atti pubblicati in Gazzetta Ufficiale e aggiornati con cadenza
+variabile al ritmo delle evidenze cliniche.
+Attualmente sono vigenti oltre cinquanta Note, numerate progressivamente, che coprono aree terapeutiche eterogenee:
+cardiovascolare, metabolica, neurologica, reumatologica, gastroenterologica,
+oncologica.
+
+Ogni Nota è identificata da un numero progressivo e specifica, per una o più
+categorie farmacologiche, le indicazioni cliniche rimborsabili, le controindicazioni
+assolute, i percorsi terapeutici di primo e di secondo livello e i parametri di
+stratificazione del rischio.
+La complessità strutturale delle Note è molto variabile: una Nota semplice si
+riduce a una singola condizione booleana (il farmaco è rimborsabile se la diagnosi
+corrisponde a un codice ICD (\emph{International Classification of Diseases}) specifico), mentre una Nota complessa come la
+\notenova\ richiede il calcolo di uno score composito, la verifica di soglie
+differenziali per sesso, la presenza di una tabella di dosaggio con criteri di
+riduzione multipla e la gestione di controindicazioni assolute che escludono intere
+sotto-classi terapeutiche.
+Tale eterogeneità strutturale è costitutiva, non accessoria: è esattamente il
+motivo per cui la sola memorizzazione delle regole da parte del prescrittore è
+una strategia insufficiente su scala.
+
+% ------------------------------------------------------------------
+\section{Le quattro Note oggetto di studio}
+\label{sec:quattro-note}
+% ------------------------------------------------------------------
+
+Il sistema implementato in questa tesi codifica quattro Note AIFA selezionate
+secondo un criterio di eterogeneità clinica e di complessità logica crescente.
+La \notezero\ costituisce il caso logicamente più semplice, riducibile a una
+congiunzione di due disgiunzioni.
+La \notetredici\ introduce la stratificazione del rischio cardiovascolare con
+soglie di colesterolo LDL (\emph{Low-Density Lipoprotein}) variabili per classe di rischio.
+La \notesessanta\ aggiunge liste chiuse di farmaci e controindicazioni
+farmaco-specifiche per singola molecola.
+La \notenova\ è la più articolata dell'insieme: score composito, aritmetica
+d'intervallo, soglie differenziali per sesso e tabella di dosaggio con criteri
+di riduzione multipla~\cite{aifa2024note}.
+Complessivamente, le quattro Note coprono 122 scenari gold con distribuzione
+\decision{RIMB}/\decision{NON\_RIMB}/\decision{NON\_DET}/\decision{ROUTED}
+pari a 69/39/9/5 casi.
+
+% - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Nota \notezero: gastroprotezione cronica}
+\label{subsec:nota01}
+% - - - - - - - - - - - - - - - - - - - - - - -
+
+La \notezero\ regola la rimborsabilità degli inibitori di pompa protonica (IPP)
+nella prevenzione delle complicanze gravi del tratto gastrointestinale superiore
+in pazienti in terapia cronica con farmaci ulcerogeni~\cite{nota01aifa}.
+Gli IPP agiscono bloccando irreversibilmente la pompa
+H\textsuperscript{+}/K\textsuperscript{+}-ATPasi delle cellule parietali gastriche,
+sopprimendo la secrezione acida basale e stimolata; i cinque principi attivi
+rimborsabili ai sensi della Nota sono omeprazolo, esomeprazolo, lansoprazolo,
+pantoprazolo e rabeprazolo.
+
+Il razionale clinico della Nota poggia sul rischio di ospedalizzazione per
+complicanze gravi (emorragia, perforazione, ostruzione pilorica), stimato tra
+l'1 e il 2\% annuo nella popolazione generale in terapia con antinfiammatori non steroidei (FANS), e aumentato
+fino a quattro-cinque volte nelle categorie a rischio specificate dalla Nota stessa.
+La condizione necessaria di contesto è la co-somministrazione di un FANS o di
+acido acetilsalicilico a basse dosi; la condizione sufficiente per la rimborsabilità
+è la presenza di almeno uno tra i fattori di rischio elencati, fra i quali figurano
+pregressa emorragia digestiva, ulcera peptica non guarita, terapia anticoagulante
+concomitante, terapia corticosteroidea concomitante ed età avanzata (criterio
+asserted dal clinico, non definito numericamente nel testo normativo).
+La struttura logica è dunque una congiunzione tra la condizione di contesto e
+la disgiunzione dei fattori di rischio: la semplicità di questa topologia non
+elimina però la complessità operativa, poiché la Nota~\notezero\ presenta un
+meccanismo di \emph{routing} inter-Nota, in cui la rimborsabilità dell'associazione
+diclofenac/misoprostolo dipende dall'esito della \notesessanta\, introducendo
+una dipendenza tra documenti normativi distinti.
+
+% - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Nota \notetredici: ipolipemizzanti nella dislipidemia}
+\label{subsec:nota13}
+% - - - - - - - - - - - - - - - - - - - - - - -
+
+La \notetredici\ regola la rimborsabilità degli ipolipemizzanti nel trattamento
+delle dislipidemie, introducendo un principio di proporzionalità tra rischio
+cardiovascolare e soglia di trattamento~\cite{aifa2018nota13}.
+L'ipercolesterolemia è il principale fattore di rischio cardiovascolare
+modificabile su scala di popolazione: una riduzione dell'LDL-C di 1~mmol/L
+si associa a una riduzione del rischio di eventi cardiovascolari maggiori di
+circa il 22\%~\cite{atp2014cardio}.
+La Nota non prescrive di trattare ogni paziente iperlipemico, ma afferma che
+la soglia dell'LDL-C che giustifica la rimborsabilità è tanto più bassa quanto
+più elevato è il rischio cardiovascolare stimato: un paziente a rischio molto
+alto deve raggiungere un target LDL inferiore a 70~mg/dL, mentre un paziente
+a rischio medio può restare non trattato farmacologicamente se il colesterolo
+non supera 130~mg/dL.
+
+I farmaci in scope comprendono le statine (simvastatina, pravastatina, fluvastatina,
+lovastatina, atorvastatina, rosuvastatina), l'ezetimibe, i fibrati e gli acidi
+grassi polinsaturi omega-3.
+La stratificazione del rischio segue le linee guida della \emph{European Society of Cardiology} (ESC) e della \emph{European Atherosclerosis Society} (EAS)~\cite{escic2019dyslip}
+e definisce cinque classi: basso (rischio SCORE $\leq$1\%), medio (2--3\%),
+moderato (4--5\%), alto (5--10\%) e molto alto ($\geq$10\% o malattia
+cardiovascolare conclamata), con target LDL rispettivamente di sola modifica
+dello stile di vita, inferiore a 130, 115, 100 e 70~mg/dL.
+Un'eccezione trasversale riguarda i pazienti con dislipidemie familiari
+monogeniche: per questi, indipendentemente dallo score calcolato, i farmaci
+di primo e secondo livello sono rimborsabili senza la necessità di dimostrare
+il mancato raggiungimento del target con la sola dieta.
+Questa regola di \emph{bypass} a priorità superiore rispecchia la logica clinica
+secondo cui il rischio genetico assoluto giustifica l'intervento farmacologico
+indipendentemente dal rischio epidemiologico calcolato.
+
+% - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Nota \notesessanta: antinfiammatori non steroidei}
+\label{subsec:nota66}
+% - - - - - - - - - - - - - - - - - - - - - - -
+
+La \notesessanta\ regola la rimborsabilità degli antinfiammatori non steroidei
+nella gestione del dolore e dell'infiammazione in quattro contesti
+clinici specifici: artropatie su base connettivitica, osteoartrosi in fase
+algica o infiammatoria, dolore neoplastico, attacco acuto di gotta~\cite{nota66aifa}.
+I FANS agiscono mediante inibizione della ciclo-ossigenasi (COX) dell'acido
+arachidonico, bloccando la sintesi di prostaglandine e trombossani responsabili
+della risposta infiammatoria; la distinzione farmacologicamente rilevante è
+tra gli inibitori non selettivi della COX, che espongono il paziente a rischio
+gastrointestinale elevato, e i coxib (celecoxib, etoricoxib), inibitori
+selettivi della COX-2 a minor rischio gastrointestinale ma con profilo di
+rischio cardiovascolare aumentato.
+
+La Nota disciplina 28 principi attivi, e la rimborsabilità non è un attributo
+della categoria FANS in generale ma di ciascun principio attivo singolarmente.
+La nimesulide è ammessa solo per il trattamento di breve durata del dolore
+acuto; l'associazione ibuprofene/codeina è rimborsabile quando il dolore non
+sia adeguatamente controllato con analgesici singoli; i coxib sono esclusi
+dalla rimborsabilità nei pazienti con malattia cardiovascolare conclamata o
+insufficienza renale grave, indipendentemente dall'indicazione.
+Quest'ultimo meccanismo, una controindicazione farmaco-specifica che sovrascrive
+l'esito positivo della verifica dell'indicazione, è la caratteristica logicamente
+più impegnativa della Nota e motiva l'introduzione dell'operatore
+\texttt{IN}$(\text{farmaco},\,\mathcal{L}_\text{FANS})$ nel linguaggio
+del motore di regole.
+
+% - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Nota \notenova: anticoagulanti orali nella fibrillazione atriale}
+\label{subsec:nota97}
+% - - - - - - - - - - - - - - - - - - - - - - -
+
+La \notenova\ regola la rimborsabilità di quattro anticoagulanti orali diretti
+(DOAC), ossia dabigatran, rivaroxaban, apixaban ed edoxaban, nella fibrillazione
+atriale non valvolare (FANV)~\cite{aifa2018nota97}.
+La FANV è la più comune aritmia cardiaca sostenuta nella popolazione adulta: in
+assenza di profilassi anticoagulante, il rischio di ictus ischemico è aumentato
+da due a sette volte rispetto alla popolazione generale, ragione per cui
+l'anticoagulazione a lungo termine è indicata per la maggior parte dei pazienti
+con diagnosi confermata~\cite{esc2020afib}.
+
+Il percorso decisionale della Nota segue quattro fasi sequenziali: conferma
+elettrocardiografica della FANV; quantificazione del rischio tromboembolico
+mediante il punteggio CHA\textsubscript{2}DS\textsubscript{2}-VASc; valutazione
+del rischio emorragico con la scala HAS-BLED, che pesa fattori quali ipertensione, alterata funzione renale o epatica, pregresso ictus o sanguinamento ed età avanzata; selezione del farmaco e del
+dosaggio appropriato in base alle comorbilità renali ed epatiche.
+Il punteggio CHA\textsubscript{2}DS\textsubscript{2}-VASc assegna pesi a sette
+condizioni cliniche: scompenso cardiaco ($+1$), ipertensione ($+1$), età
+$\geq$75~anni ($+2$), diabete mellito ($+1$), pregresso ictus o attacco ischemico transitorio (TIA) ($+2$),
+vasculopatia ($+1$) e sesso femminile ($+1$), per un massimo di 9 punti.
+La soglia di rimborsabilità dipende dal sesso: un punteggio
+CHA\textsubscript{2}DS\textsubscript{2}-VASc $\geq$2 nei maschi e $\geq$3 nelle
+femmine è necessario per giustificare il trattamento rimborsabile.
+Le controindicazioni assolute, ossia emorragia maggiore in atto, diatesi emorragica
+congenita, gravidanza, ipersensibilità documentata al farmaco, protesi valvolare
+meccanica o FANV valvolare (per i soli DOAC), producono un esito
+\decision{NON\_RIMBORSABILE} immediato, verificato prima di qualsiasi altra
+condizione.
+La \notenova\ conta ventidue regole nel formato YAML del motore di regole ed è
+l'unica delle quattro Note a richiedere l'intera gamma degli operatori logici
+implementati, inclusa l'aritmetica d'intervallo per la gestione dei parametri
+clinici parzialmente noti.
+
+% ------------------------------------------------------------------
+\section{Il problema della verifica della rimborsabilità}
+\label{sec:problema-verifica}
+% ------------------------------------------------------------------
+
+La verifica della conformità di una prescrizione a una Nota AIFA è, nella pratica
+corrente, affidata alla memoria e alla competenza del clinico senza alcun ausilio
+sistematico.
+L'errore prescrittivo non è un evento raro né privo di conseguenze: l'inappropriatezza
+di una singola prescrizione si traduce in spesa farmaceutica non dovuta per il SSN
+ma può anche determinare danno clinico quando una controindicazione assoluta,
+come l'insufficienza renale grave nei pazienti trattati con determinati DOAC,
+viene trascurata in favore dell'indicazione principale.
+La letteratura documenta come la complessità cognitiva del processo prescrittivo,
+amplificata dal numero e dalla densità normativa delle Note, sia associata a tassi
+non trascurabili di non conformità con oneri tanto economici quanto di sicurezza
+per il paziente~\cite{berner2007cdss}.
+
+La difficoltà è strutturale.
+Una Nota complessa come la \notenova\ richiede al medico di tenere simultaneamente
+in mente la diagnosi di FANV, il calcolo di uno score a otto variabili con
+aritmetica intera, le soglie differenziali per sesso, una tabella di dosaggio
+dipendente dalla funzione renale e un insieme di controindicazioni assolute che
+si applicano in modo disomogeneo ai quattro principi attivi.
+Ogni parametro clinico non rilevato introduce un margine di incertezza che il
+giudizio umano gestisce implicitamente, mentre un sistema formale richiede regole
+esplicite per la propagazione del valore ignoto attraverso la catena decisionale.
+
+L'automazione di questa verifica, mediante un sistema che integri la lettura delle
+Note con i dati clinici del paziente e produca un esito motivato e tracciabile,
+è la motivazione applicativa centrale di questa tesi.
+La progettazione dell'architettura, la scelta del formalismo logico per la gestione
+dell'incertezza e il protocollo di valutazione empirica sono descritti a partire
+dal \Cref{ch:progettazione}.
+
+È su questo terreno clinico e regolatorio che prendono forma le domande di ricerca
+che guidano il lavoro. L'eterogeneità logica delle quattro Note (dalla semplice
+congiunzione della \notezero\ allo score composito della \notenova) è ciò che rende
+non banale la prima domanda, se cioè un componente simbolico possa replicare il
+giudizio dell'annotatore umano sull'intera varietà dei casi (RQ1); la posta clinica
+della verifica, in cui una controindicazione trascurata può tradursi in danno, è ciò
+che impone alle domande successive di misurare non solo l'utilità del sistema, ma la
+sua sicurezza, la fedeltà della spiegazione alle fonti e la tracciabilità dell'intero
+percorso decisionale. Il capitolo seguente introduce gli strumenti tecnici con cui
+queste domande verranno affrontate.

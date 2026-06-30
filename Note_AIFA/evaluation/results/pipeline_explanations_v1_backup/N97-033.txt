@@ -1,0 +1,24 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco rivaroxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione degli ictus ed embolia sistemica in pazienti adulti con fibrillazione atriale non valvolare (FANV). La decisione di rimborsarlo è stata presa in base al punteggio CHA2DS2-VASc, che è stato calcolato come [4, 4] e risulta superiore alla soglia di 2. Ciò indica un rischio trombo-embolico elevato per il paziente. Come indicato nella FONTE 1, il percorso decisionale per la prescrizione di un trattamento anticoagulante per la prevenzione degli ictus ed embolia sistemica in pazienti adulti con FANV prevede l'accurata valutazione del rischio trombo-embolico e del rischio emorragico del singolo paziente. La Nota AIFA valuta che il rivaroxaban sia un trattamento efficace e sicuro per i pazienti con FANV e rischio trombo-embolico elevato.
+
+3. RACCOMANDAZIONI
+   La raccomandazione di posologia per il rivaroxaban è di 15 mg/die per pazienti con funzionalità renale ridotta (VFG 15-49 ml/min), come indicato nella FONTE 5.
+
+4. DATI MANCANTI
+   I campi mancanti per la guida clinica sono: difficolta_monitoraggio_inr, interazioni_farmacologiche_doac, pregressa_emorragia_intracranica, ttr_sotto_70. Questi dati sono necessari per una valutazione completa del rischio emorragico e del rischio trombo-embolico del paziente.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-1.pdf, p. 1
+- nota-97-all-3.pdf, p. 2

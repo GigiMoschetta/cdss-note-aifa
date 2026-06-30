@@ -1,0 +1,17 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco rabeprazolo è rimborsabile in quanto è stato valutato come efficace nella prevenzione delle complicanze gravi del tratto gastrointestinale superiore, come indicato nella FONTE 1. In particolare, lo studio MUCOSA ha documentato una riduzione del 40% delle complicanze gravi rispetto al placebo. Inoltre, la Nota AIFA limita la prescrizione a carico del SSN alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con farmaci antinfiammatori non steroidei (FANS) e in terapia antiaggregante con ASA a basse dosi, purché sussista una delle seguenti condizioni di rischio (FONTE 7).
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_01.pdf, p. 2
+- Nota_01.pdf, p. 1
+- Nota_01.pdf, p. 3

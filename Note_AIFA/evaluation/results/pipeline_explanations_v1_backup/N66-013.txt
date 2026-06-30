@@ -1,0 +1,19 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco ibuprofene è rimborsabile in quanto è indicato per il trattamento di breve durata del dolore acuto di entità moderata nei soggetti in cui il sintomo non sia adeguatamente controllato con altri antidolorifici assunti singolarmente. Ciò è confermato nella FONTE 11, dove si specifica che la combinazione a dose fissa a base di ibuprofene/codeina viene ammessa alla rimborsabilità limitatamente al trattamento di breve durata del dolore acuto di entità moderata nei soggetti in cui il sintomo non sia adeguatamente controllato con altri antidolorifici assunti singolarmente.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 3
+- Nota_66.pdf, p. 5

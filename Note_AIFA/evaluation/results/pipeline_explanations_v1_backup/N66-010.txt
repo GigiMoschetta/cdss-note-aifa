@@ -1,0 +1,19 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco ibuprofene/codeina è stato valutato per la rimborsabilità in base alla Nota AIFA 66. Come indicato nella FONTE 11, la combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del dolore da lieve a moderato negli adulti se non adeguatamente alleviato dagli altri antidolorifici. La Nota AIFA 66 specifica che la combinazione ibuprofene/codeina è ammessa alla rimborsabilità limitatamente al trattamento di breve durata del dolore acuto di entità moderata nei soggetti in cui il sintomo non sia adeguatamente controllato con altri antidolorifici assunti singolarmente.
+
+3. RACCOMANDAZIONI
+   La Nota AIFA 66 raccomanda di utilizzare la dose minima efficace per la durata di trattamento più breve possibile necessaria per controllare i sintomi. Inoltre, è importante valutare i benefici e i possibili effetti collaterali prima di intraprendere la terapia.
+
+4. DATI MANCANTI
+   Nessuno.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 3
+- Nota_66.pdf, p. 5

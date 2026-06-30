@@ -1,0 +1,220 @@
+{
+  "case_id": "N01-015",
+  "nota_id": "01",
+  "drug_id": "omeprazolo",
+  "category": "NON_RIMBORSABILE_no_inclusion",
+  "description": "NON_RIMBORSABILE — scope via ASA solo (FANS=False, ASA=True) ma nessun fattore di rischio GI (N01_INCL_001 fails)",
+  "tags": [
+    "non_rimborsabile",
+    "omeprazolo",
+    "nota01",
+    "asa_solo",
+    "inclusion_failure"
+  ],
+  "input": {
+    "patient_data": {
+      "trattamento_cronico_fans": false,
+      "terapia_antiaggregante_asa": true,
+      "pregresse_emorragie_digestive": false,
+      "ulcera_peptica_non_guarita": false,
+      "terapia_concomitante_anticoagulanti": false,
+      "terapia_concomitante_cortisonici": false,
+      "eta_avanzata": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N01_INCL_001"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "ASA scope passes but no risk factor triggers inclusion; confirms that ASA alone without GI risk is insufficient"
+    },
+    "pdf_reference": {
+      "rule_id": "N01_INCL_001",
+      "pdf_file": "Nota_01.pdf",
+      "page": 2,
+      "section": "Box prescrittivo",
+      "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N01_INCL_001"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_01_0005_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_01_0006_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_01_0007_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_01_0008_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_01_0009_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_01_0004_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5215392708778381,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_01_0014_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.44202008843421936,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_01_0000_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "TABLE",
+        "stage": "semantic",
+        "score": 0.4178592562675476,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_01_0010_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4105618894100189,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_01_0011_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.38580551743507385,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   La decisione di non rimborsare il farmaco omeprazolo è motivata dalla presenza di condizioni di rischio che rendono necessaria la gastroprotezione farmacologica. Come indicato nella FONTE 6, la prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con farmaci antinfiammatori non steroidei (FANS) e in terapia antiaggregante con ASA a basse dosi. Inoltre, la FONTE 1 sottolinea l'importanza della considerazione delle condizioni di rischio, tra cui storia di pregresse emorragie digestive o di ulcera peptica non guarita con terapia eradicante, concomitante terapia con anticoagulanti o cortisonici e età avanzata.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- Nota_01.pdf, p. 2, righe 14-26, char 944-2465, sha:1acab81b63\n- Nota_01.pdf, p. 1, righe 1-16, char 0-1404, sha:097a83fcbe\n- Nota_01.pdf, p. 3, sha:be80034ea9\n\n\n--- PROVA NORMATIVA ---\nRegola: N01_INCL_001\nsnippet_id: 24f379924e\nFonte: Nota_01.pdf, p. 2, righe 14-26 (char 944-2465)\nTesto verbatim: «Sulla base di studi clinici randomizzati e osservazionali anche l’uso di anticoagulanti e l’età avanzata (65-75 anni) sono risultate essere condizioni predisponenti al\nrischio di complicanze gravi del tratto gastrointestinale superiore. Pertanto tali condizioni devono essere considerate fattori suggestivi di popolazioni a maggior rischio\nma non raccomandazioni tassative per trattare, ad esempio, tutti gli anziani o tutti coloro che assumono anticoagulanti. Data la rilevanza clinica della tossicità gastroduodenale indotta dai FANS, numerosi sono stati gli studi che hanno valutato l’efficacia di una “gastroprotezione”\nutilizzando accanto agli inibitori di pompa anche gli analoghi delle prostaglandine (misoprostolo) e gli anti secretivi (H2 antagonisti).»\nSHA256 chunk: 1acab81b63ebc2cd\nVerificato: SI\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 5799,
+      "completion_tokens": 460,
+      "total_tokens": 6259
+    },
+    "latency_s": 12.48
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N01-015",
+      "gold_pdf_file": "Nota_01.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 166,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.2273,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.2727,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

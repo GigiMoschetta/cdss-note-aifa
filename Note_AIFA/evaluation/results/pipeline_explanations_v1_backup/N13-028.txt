@@ -1,0 +1,20 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco ezetimibe è rimborsabile secondo la Nota AIFA 13, come indicato nella FONTE 1 (nota-13.pdf p.5). La Nota 13 ha riconsiderato il ruolo dell'associazione tra ezetimibe e statine, e ha stabilito che l'associazione tra ezetimibe e statine sia utile e rimborsata dal SSN solo nei pazienti nei quali le statine a dose considerata ottimale non consentono di raggiungere il target terapeutico. Inoltre, nei pazienti che siano intolleranti alle statine, è altresì ammessa, a carico del SSN, la monoterapia con ezetimibe.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 6
+- nota-13.pdf, p. 2

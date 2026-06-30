@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aifa-rule-engine"
+version = "3.4.0"
+description = "Deterministic Rule Engine for AIFA Note (Nota 01, 66, 97, 13) — schema v3.4 (post-audit)"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Francesco Zamar", email = "francesco.zamar@studenti.units.it"},
+]
+keywords = ["aifa", "cdss", "rule-engine", "kleene", "neuro-symbolic", "rag"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "Operating System :: POSIX :: Linux",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.111.0",
+    "uvicorn[standard]>=0.29.0",
+    "pydantic>=2.7.0",
+    "pyyaml>=6.0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/anpiglaucoma/aifa-cdss-thesis"
+Repository = "https://github.com/anpiglaucoma/aifa-cdss-thesis"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+    "ruff>=0.6.0",
+    "bandit>=1.7.9",
+    "mypy>=1.10.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aifa_rule_engine*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+pythonpath = [".."]   # adds Note_AIFA/ to sys.path so rag_pipeline is importable
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = [".venv", "build", "dist"]
+
+[tool.ruff.lint]
+# Conservative rule set for thesis triennale: catch real bugs without
+# triggering on stylistic preferences. E/W = pycodestyle, F = pyflakes,
+# B = bugbear, I = isort, UP = pyupgrade, ASYNC = async pitfalls.
+select = ["E", "W", "F", "B", "I", "UP", "ASYNC"]
+ignore = [
+    "E501",  # line too long — handled informally
+    "B008",  # function call in arg defaults — frequent FastAPI pattern
+    "UP038", # isinstance(x, (A, B)) — readability ≥ tuple unpacking
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["F401", "F841"]  # unused imports/locals in tests are OK
+
+[tool.mypy]
+python_version = "3.12"
+strict_optional = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+ignore_missing_imports = true
+# Strict only for the safety-critical core; rest is "best-effort".
+files = ["aifa_rule_engine/logic", "aifa_rule_engine/engine"]
+
+[tool.bandit]
+# Only flag real security findings; suppress assert_used (legitimate in tests
+# and startup invariants) and try_except_pass (used intentionally in some
+# parsers as documented fallbacks).
+skips = ["B101", "B110"]
+exclude_dirs = ["tests", ".venv", "build"]

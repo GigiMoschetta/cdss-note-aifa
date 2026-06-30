@@ -1,0 +1,24 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco rivaroxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione degli ictus ed embolia sistemica in pazienti adulti con fibrillazione atriale non valvolare (FANV). La decisione di rimborsarlo è stata presa in base al punteggio CHA2DS2-VASc, che è stato calcolato come [4, 4] e risulta superiore alla soglia di 2. Ciò indica un alto rischio trombo-embolico per il paziente. Come indicato nella FONTE 1, il percorso decisionale per la terapia anticoagulante nella FANV prevede la valutazione del rischio trombo-embolico e del rischio emorragico individuale. In questo caso, il punteggio CHA2DS2-VASc è stato utilizzato per valutare il rischio trombo-embolico.
+
+3. RACCOMANDAZIONI
+   La Nota AIFA raccomanda di preferire il rivaroxaban rispetto all'anticoagulante orale classico (AVK) in pazienti con pregressa emorragia intracranica o ad alto rischio di svilupparla. Inoltre, il rivaroxaban è preferibile per i pazienti che sono già in trattamento con AVK con scarsa qualità del controllo (Tempo nel Range Terapeutico (TTR) <70% o percentuale dei controlli in range < 60% negli ultimi 6 mesi) e/o oggettive difficoltà ad accedere ad un regolare monitoraggio dell'INR. Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   I campi mancanti per la guida clinica sono: difficolta_monitoraggio_inr, pregressa_emorragia_intracranica, ttr_sotto_70. Questi dati sono necessari per una valutazione più completa del rischio emorragico e del rischio trombo-embolico del paziente.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-1.pdf, p. 1
+- nota-97-all-3.pdf, p. 2

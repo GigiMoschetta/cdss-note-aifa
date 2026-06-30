@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — tono "dispositivo medico": sobrio, chiaro, leggibile */
+/* ------------------------------------------------------------------ */
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+
+  /* superfici */
+  --color-canvas: #f3f5f8;
+  --color-surface: #ffffff;
+  --color-line: #e4e7ec;
+  --color-line-soft: #eef0f3;
+
+  /* testo */
+  --color-ink: #101828;
+  --color-ink-2: #475467;
+  --color-ink-3: #98a2b3;
+
+  /* brand clinico (teal) */
+  --color-brand: #0e7c7b;
+  --color-brand-600: #0b6463;
+  --color-brand-50: #e6f4f4;
+
+  /* semantica decisione */
+  --color-ok: #16a34a;
+  --color-ok-fg: #0f7a3d;
+  --color-ok-bg: #e7f5ec;
+  --color-ok-br: #9bd3ae;
+
+  --color-no: #dc2626;
+  --color-no-fg: #b42318;
+  --color-no-bg: #fdecea;
+  --color-no-br: #f2b8b1;
+
+  --color-warn: #d97706;
+  --color-warn-fg: #b25e00;
+  --color-warn-bg: #fef3e2;
+  --color-warn-br: #f5ce92;
+
+  --color-route: #2563eb;
+  --color-route-fg: #0b4f9c;
+  --color-route-bg: #e8f1fd;
+  --color-route-br: #a9c9f2;
+
+  --radius-card: 16px;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-brand-50);
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d0d5dd;
+    border-radius: 999px;
+    border: 2px solid var(--color-canvas);
+  }
+}
+
+@layer components {
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  }
+}

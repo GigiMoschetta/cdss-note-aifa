@@ -1,0 +1,327 @@
+{
+  "case_id": "N66-007",
+  "nota_id": "66",
+  "drug_id": "ibuprofene",
+  "category": "RIMBORSABILE_with_guidance",
+  "description": "RIMBORSABILE with WARNING — FANS + antiplatelet ASA combination (N66_GWARN_002): increased GI risk",
+  "tags": [
+    "rimborsabile",
+    "ibuprofene",
+    "nota66",
+    "warning",
+    "fans_asa"
+  ],
+  "input": {
+    "patient_data": {
+      "indicazione_clinica": "osteoartrosi_algica",
+      "uso_breve_durata": true,
+      "seconda_linea": true,
+      "ulcera_peptica_attiva_pregressa": false,
+      "scompenso_cardiaco_grave": false,
+      "cardiopatia_ischemica": false,
+      "patologia_cerebrovascolare": false,
+      "patologia_arteriosa_periferica": false,
+      "scompenso_cardiaco_moderato_grave": false,
+      "epatopatia": false,
+      "terapia_antiaggregante_asa": true,
+      "dolore_acuto_moderato": false,
+      "non_controllato_con_singoli": false,
+      "abuso_alcool": false,
+      "farmaci_epatotossici_concomitanti": false,
+      "allergia_asa_o_fans": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [],
+    "expected_clinical_flag_rule_ids": [
+      "N66_GWARN_002"
+    ],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "N66_GWARN_002 must appear in RACCOMANDAZIONI: concurrent FANS+ASA increases GI bleeding risk; consider gastroprotection with PPI"
+    },
+    "pdf_reference": {
+      "rule_id": "N66_SCOPE_001",
+      "pdf_file": "Nota_66.pdf",
+      "page": 2,
+      "section": "Box prescrittivo",
+      "excerpt": "\"Artropatie su base connettivale, osteoartrosi in fase algica, dolore neoplastico, gotta acuta\""
+    }
+  },
+  "engine": {
+    "actual_decision": "RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 0.5,
+    "recall_at_5": 0.5,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_66_0000_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_66_0001_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_66_0002_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_66_0003_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_66_0004_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_66_0008_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_66_0009_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_66_0006_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_66_0018_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_66_0019_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "Nota_66_0020_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "Nota_66_0021_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 13,
+        "chunk_id": "Nota_66_0022_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 14,
+        "chunk_id": "Nota_66_0023_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 15,
+        "chunk_id": "Nota_66_0024_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 16,
+        "chunk_id": "Nota_66_0011_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.6536672115325928,
+        "text": ""
+      },
+      {
+        "rank": 17,
+        "chunk_id": "Nota_66_0007_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.631320595741272,
+        "text": ""
+      },
+      {
+        "rank": 18,
+        "chunk_id": "Nota_66_0017_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4911172688007355,
+        "text": ""
+      },
+      {
+        "rank": 19,
+        "chunk_id": "Nota_66_0012_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.489745169878006,
+        "text": ""
+      },
+      {
+        "rank": 20,
+        "chunk_id": "Nota_66_0015_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.48313671350479126,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: RIMBORSABILE\n   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco ibuprofene è rimborsabile in quanto è indicato per il trattamento di breve durata del dolore acuto di entità moderata nei soggetti in cui il sintomo non sia adeguatamente controllato con altri antidolorifici assunti singolarmente. Ciò è confermato dalla FONTE 16, che specifica che la combinazione ibuprofene/codeina è ammessa alla rimborsabilità limitatamente al trattamento di breve durata del dolore acuto di entità moderata nei soggetti in cui il sintomo non sia adeguatamente controllato con altri antidolorifici assunti singolarmente.\n\n3. RACCOMANDAZIONI\n   La combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del dolore da lieve a moderato negli adulti se non adeguatamente alleviato dagli altri antidolorifici quali paracetamolo o ibuprofene. Il dosaggio autorizzato nella popolazione adulta è di 1 compressa ogni 4-6 ore, con una dose massima giornaliera di 6 compresse (2.400 mg ibuprofene/180 mg codeina fosfato emidrato) nelle 24 ore. Gli effetti indesiderati possono essere minimizzati con l'uso della dose minima efficace per la durata di trattamento più breve possibile necessaria per controllare i sintomi.\n\n4. DATI MANCANTI\n   Nessuno.\n\n5. FONTI\n- Nota_66.pdf, p. 2, riga 41, char 809-856, sha:a76cd6a3b7\n- Nota_66.pdf, p. 4, riga 1, char 0-74, sha:4eee68e67a\n- Nota_66.pdf, p. 3, righe 15-27, char 1450-3208, sha:07239bafa4\n- Nota_66.pdf, p. 1, righe 1-54, char 0-1576, sha:6d5d39cf1a",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'RIMBORSABILE'": true,
+        "not_contains:'NON_RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 8487,
+      "completion_tokens": 425,
+      "total_tokens": 8912
+    },
+    "latency_s": 14.36
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N66-007",
+      "gold_pdf_file": "Nota_66.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 95,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.3,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

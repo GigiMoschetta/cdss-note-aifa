@@ -1,0 +1,22 @@
+1. DECISIONE
+   Il farmaco è: NON_DETERMINABILE
+   Dichiara che il farmaco è NON_DETERMINABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco valutato è l'apixaban, e la decisione è NON_DETERMINABILE. Questo significa che non è possibile determinare la copertura del farmaco in base alle informazioni disponibili. La motivazione per questa decisione è che il punteggio CHA2DS2-VASc è compreso nel range [2,3], ma la soglia per la copertura è ≥3. Ciò significa che il paziente non raggiunge la soglia per la copertura, ma non è possibile determinare se il farmaco sia coperto o meno. Come indicato nella FONTE 1, la prescrizione della terapia anticoagulante orale è a carico del SSN limitatamente alla FANV e al rispetto del percorso decisionale illustrato ai punti A, B, C, D.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   I campi mancanti sono: scompenso_cardiaco. Questo campo è importante per determinare la copertura del farmaco, ma non è disponibile. L'assenza di questo campo può influire sulla decisione di copertura del farmaco.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-1.pdf, p. 1
+- nota-97-all-2.pdf, p. 3

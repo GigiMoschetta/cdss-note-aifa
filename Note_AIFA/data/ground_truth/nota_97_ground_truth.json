@@ -1,0 +1,147 @@
+{
+  "nota": "97",
+  "title": "Anticoagulanti orali - Fibrillazione atriale non valvolare (FANV)",
+  "source_pdfs": ["nota-97.pdf", "nota-97-all-1.pdf", "nota-97-all-2.pdf"],
+  "extracted": "2026-02-25",
+  "drugs_in_scope": {
+    "AVK": ["warfarin", "acenocumarolo"],
+    "NAO_DOAC": ["dabigatran", "apixaban", "edoxaban", "rivaroxaban"]
+  },
+  "scope_criterion": {
+    "description": "La prescrizione della terapia anticoagulante orale è a carico del SSN limitatamente alla FANV e al rispetto del percorso decisionale A, B, C, D.",
+    "required_fields": ["diagnosi_fanv", "ecg_fanv"],
+    "source": "nota-97.pdf p.1"
+  },
+  "decision_pathway": {
+    "A": "Diagnosi clinica e elettrocardiografica di FANV",
+    "B": "Valutazione rischio trombo-embolico (CHA2DS2-VASc)",
+    "C": "Terapia iniziata se CHA2DS2-VASc >= 2 (M) o >= 3 (F)",
+    "D": "Scelta dell'anticoagulante da utilizzare"
+  },
+  "cha2ds2vasc_components": {
+    "C": {"name": "Scompenso cardiaco congestizio / LVEF ridotta", "weight": 1, "field": "scompenso_cardiaco"},
+    "H": {"name": "Ipertensione arteriosa (PA >140/90 o terapia)", "weight": 1, "field": "ipertensione_arteriosa"},
+    "A2": {"name": "Età >= 75 anni", "weight": 2, "field": "eta_75_o_piu", "note": "MUTUALLY EXCLUSIVE with A (65-74)"},
+    "D": {"name": "Diabete mellito (glicemia a digiuno >126 mg/dL o antidiabetici)", "weight": 1, "field": "diabete_mellito"},
+    "S2": {"name": "Pregresso ICTUS o TIA o tromboembolismo arterioso", "weight": 2, "field": "pregresso_ictus_tia"},
+    "V": {"name": "Vasculopatia (cardiopatia ischemica, arteriopatia periferica)", "weight": 1, "field": "vasculopatia"},
+    "A": {"name": "Età 65-74 anni", "weight": 1, "field": "eta_65_74", "note": "MUTUALLY EXCLUSIVE with A2 (>=75)"},
+    "Sc": {"name": "Sesso femminile", "weight": 1, "field": "paziente_sesso == F"}
+  },
+  "cha2ds2vasc_max_score": 9,
+  "cha2ds2vasc_age_note": "A2 (+2) and A (+1) are mutually exclusive. Max age contribution = +2.",
+  "inclusion_thresholds": {
+    "male": {"operator": "GTE", "value": 2, "pdf_verbatim": ">=2 (se maschi)"},
+    "female": {"operator": "GTE", "value": 3, "pdf_verbatim": ">=3 (se femmine)"},
+    "source": "nota-97.pdf p.3 section C bold box"
+  },
+  "risk_table": {
+    "description": "Tab. 2 Rischio cardio-embolico per punteggio totale CHA2DS2-VASc",
+    "source": "nota-97.pdf p.2",
+    "rows": [
+      {"score": 0, "events_per_100_patient_years": 0.78},
+      {"score": 1, "events_per_100_patient_years": 2.01},
+      {"score": 2, "events_per_100_patient_years": 3.71},
+      {"score": 3, "events_per_100_patient_years": 5.92},
+      {"score": 4, "events_per_100_patient_years": 9.27},
+      {"score": 5, "events_per_100_patient_years": 15.26},
+      {"score": 6, "events_per_100_patient_years": 19.74},
+      {"score": 7, "events_per_100_patient_years": 21.50},
+      {"score": 8, "events_per_100_patient_years": 22.38},
+      {"score": 9, "events_per_100_patient_years": 23.64}
+    ]
+  },
+  "exclusions": [
+    {
+      "rule_id": "N97_EXCL_HARD_001",
+      "description": "Valvular AF / mechanical prosthetic heart valves — NAO/DOAC not safe",
+      "condition": "fibrillazione_atriale_valvolare = TRUE OR protesi_valvolari_cardiache = TRUE",
+      "action": "NON_RIMBORSABILE for DOAC; AVK only",
+      "pdf_verbatim": "Gli AVK sono l'unico trattamento anticoagulante indicato per i pazienti con protesi valvolari cardiache meccaniche e/o fibrillazione atriale valvolare. I NAO/NOAC non si sono dimostrati né efficaci né sicuri in tali pazienti.",
+      "source": "nota-97.pdf p.3"
+    }
+  ],
+  "dosing_guidance": {
+    "source": "nota-97-all-2.pdf p.7 Tab.4 + nota-97-all-1.pdf p.1",
+    "apixaban": {
+      "standard_dose": "5 mg x 2/die",
+      "reduced_dose": "2,5 mg x 2/die",
+      "reduction_criteria": {
+        "rule": "COUNT_GEQ(2, [eta_piu_80, peso_meno_60kg, creatinina_piu_1_5])",
+        "conditions": [
+          {"field": "eta_piu_80", "description": "Età > 80 anni"},
+          {"field": "peso_meno_60kg", "description": "Peso < 60 kg"},
+          {"field": "creatinina_piu_1_5", "description": "Creatinina > 1,5 mg/dL"}
+        ],
+        "threshold": "almeno 2 delle 3 condizioni",
+        "pdf_verbatim": "In presenza di almeno 2 delle seguenti caratteristiche: Età >80 anni, Peso <60 kg, Creatinina >1,5 mg/dl → 2,5 mg x 2/die"
+      },
+      "also_reduced_if": "VFG 15-29 ml/min → 2,5 mg x 2/die",
+      "contraindicated_if": "VFG < 15 ml/min o in dialisi"
+    },
+    "dabigatran": {
+      "standard_dose": "150 mg x 2/die",
+      "reduced_dose": "110 mg x 2/die",
+      "reduction_criteria": [
+        "Età > 80 anni OPPURE associato a verapamil",
+        "Fra 75 e 80 anni CON VFG 30-50 ml/min oppure aumentato rischio sanguinamento"
+      ],
+      "contraindicated_if": "VFG < 30 ml/min"
+    },
+    "edoxaban": {
+      "standard_dose": "60 mg/die (monosomministrazione)",
+      "reduced_dose": "30 mg/die",
+      "reduction_criteria": [
+        "VFG 15-50 ml/min",
+        "Peso < 60 kg",
+        "Associato con inibitori P-glicoproteina (ciclosporina, dronedarone, eritromicina, ketoconazolo)"
+      ],
+      "not_recommended_if": "VFG < 15 ml/min o in dialisi"
+    },
+    "rivaroxaban": {
+      "standard_dose": "20 mg/die (monosomministrazione)",
+      "reduced_dose": "15 mg/die",
+      "reduction_criteria": [
+        "VFG 30-49 ml/min (insufficienza renale moderata)",
+        "VFG 15-29 ml/min (insufficienza renale grave)"
+      ],
+      "not_recommended_if": "VFG < 15 ml/min"
+    },
+    "avk": {
+      "dose": "Personalizzata in base a INR (target INR 2-3 per FANV)",
+      "monitoring": "Determinazione periodica INR"
+    }
+  },
+  "general_contraindications_allegato2": {
+    "strong_discourage": [
+      "Emorragia maggiore in atto",
+      "Diatesi emorragica congenita nota",
+      "Gravidanza",
+      "Ipersensibilità documentata al farmaco"
+    ],
+    "source": "nota-97-all-2.pdf p.3"
+  },
+  "rules": [
+    {"rule_id": "N97_SCOPE_001", "phase": 1, "type": "SCOPE"},
+    {"rule_id": "N97_SCOPE_002", "phase": 1, "type": "SCOPE"},
+    {"rule_id": "N97_EXCL_HARD_001", "phase": 3, "type": "EXCL_HARD"},
+    {"rule_id": "N97_EXCL_HARD_002", "phase": 3, "type": "EXCL_HARD"},
+    {"rule_id": "N97_PATH_001", "phase": 5, "type": "PATHWAY"},
+    {"rule_id": "N97_GDOSE_001", "phase": 6, "type": "GUIDANCE_DOSE"},
+    {"rule_id": "N97_GDOSE_002", "phase": 6, "type": "GUIDANCE_DOSE"},
+    {"rule_id": "N97_GDOSE_003", "phase": 6, "type": "GUIDANCE_DOSE"},
+    {"rule_id": "N97_GDOSE_004", "phase": 6, "type": "GUIDANCE_DOSE"},
+    {"rule_id": "N97_GDOSE_005", "phase": 6, "type": "GUIDANCE_DOSE"},
+    {"rule_id": "N97_GDOSE_006", "phase": 6, "type": "GUIDANCE_DOSE"},
+    {"rule_id": "N97_GWARN_001", "phase": 7, "type": "GUIDANCE_WARN"},
+    {"rule_id": "N97_GWARN_002", "phase": 7, "type": "GUIDANCE_WARN"},
+    {"rule_id": "N97_GWARN_003", "phase": 7, "type": "GUIDANCE_WARN"}
+  ],
+  "out_of_scope": {
+    "perioperative_management": {
+      "source": "nota-97-all-3.pdf",
+      "status": "TODO — intentionally deferred",
+      "rules_yaml_reference": "rules/nota_97/rules.yaml L695-701"
+    }
+  }
+}

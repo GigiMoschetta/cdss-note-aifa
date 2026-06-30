@@ -1,0 +1,884 @@
+{
+  "baseline": "llm_only",
+  "model": "llama3.1:8b",
+  "n_cases": 122,
+  "accuracy": 0.5656,
+  "macro_f1": 0.2408,
+  "parse_failures": 0,
+  "per_class": {
+    "RIMBORSABILE": {
+      "precision": 0.5656,
+      "recall": 1.0,
+      "f1": 0.7225,
+      "support": 69
+    },
+    "NON_RIMBORSABILE": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 39
+    },
+    "NON_DETERMINABILE": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 9
+    }
+  },
+  "case_results": [
+    {
+      "case_id": "N01-001",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-002",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-003",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-004",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-005",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-006",
+      "true": "ROUTED",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-007",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-008",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-009",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-010",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-011",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-012",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-013",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-014",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-015",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-016",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-017",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-018",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-019",
+      "true": "ROUTED",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-020",
+      "true": "ROUTED",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-021",
+      "true": "ROUTED",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-022",
+      "true": "ROUTED",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N01-023",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N01-024",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-001",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-002",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-003",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-004",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-005",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-006",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-007",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-008",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-009",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-010",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-011",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-012",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-013",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-014",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-015",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-016",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-017",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-018",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-019",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-020",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-021",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-022",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-023",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-024",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-025",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-026",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-027",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-028",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-029",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N13-030",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-031",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N13-032",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-001",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-002",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-003",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-004",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-005",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-006",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-007",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-008",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-009",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-010",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-011",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-012",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-013",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-014",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-015",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-016",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-017",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-018",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-019",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-020",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-021",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N66-022",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-023",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-024",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-025",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N66-026",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-001",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-002",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-003",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-004",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-005",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-006",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-007",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-008",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-009",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-010",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-011",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-012",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-013",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-014",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-015",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-016",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-017",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-018",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-019",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-020",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-021",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-022",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-023",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-024",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-025",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-026",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-027",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-028",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-029",
+      "true": "NON_DETERMINABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-030",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-031",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-032",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-033",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-034",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-035",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-036",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-037",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-038",
+      "true": "NON_RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": false
+    },
+    {
+      "case_id": "N97-039",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    },
+    {
+      "case_id": "N97-040",
+      "true": "RIMBORSABILE",
+      "pred": "RIMBORSABILE",
+      "raw_response": "RIMBORSABILE",
+      "match": true
+    }
+  ]
+}

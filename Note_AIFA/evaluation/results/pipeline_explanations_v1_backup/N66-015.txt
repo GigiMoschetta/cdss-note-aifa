@@ -1,0 +1,28 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco etoricoxib è motivata dalla presenza di regole esclusive che hanno bloccato la copertura. In particolare, la regola N66_EXCL_HARD_003 è stata valutata come vera, escludendo quindi la copertura del farmaco. Questa regola è indicata nella FONTE 1, che specifica che il diclofenac e l'etoricoxib aumentano il rischio trombotico, mentre il naprossene è associato a un rischio inferiore. Inoltre, la FONTE 2 e la FONTE 3 evidenziano la presenza di tossicità gastrointestinale grave associata a tutti i FANS, con il rischio maggiore per gli anziani.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 3
+- Nota_66.pdf, p. 5
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_EXCL_HARD_003
+snippet_id: 0b5b378e8b
+Fonte: Nota_66.pdf, p. 4
+Testo: "A dosi elevate e nel trattamento a lungo termine, i FANS non selettivi potrebbero comportare un lieve aumento del rischio di
+eventi trombotici (come..."
+--- FINE ---

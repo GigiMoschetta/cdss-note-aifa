@@ -1,0 +1,17 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco omeprazolo è rimborsabile in quanto è stato valutato nella Nota AIFA e risulta essere efficace nella prevenzione delle complicanze gravi del tratto gastrointestinale superiore, come indicato nella FONTE 7. In particolare, la Nota AIFA limita la prescrizione a carico del SSN alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con farmaci antinfiammatori non steroidei (FANS) e in terapia antiaggregante con ASA a basse dosi, purché sussista una delle seguenti condizioni di rischio. La Nota AIFA cita anche studi clinici che hanno dimostrato l'efficacia dell'omeprazolo nella prevenzione delle ulcere gastriche e duodenali, come indicato nella FONTE 3.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_01.pdf, p. 2
+- Nota_01.pdf, p. 1
+- Nota_01.pdf, p. 3

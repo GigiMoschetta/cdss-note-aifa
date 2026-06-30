@@ -1,0 +1,418 @@
+{
+  "case_id": "N13-029",
+  "nota_id": "13",
+  "drug_id": "simvastatina",
+  "category": "NON_RIMBORSABILE_inclusion",
+  "description": "NON_RIMBORSABILE — simvastatina prescritta a paziente neo-diagnosticato senza dieta tentata (regression test for V3.4 step-care fix) [v2: score=4.5 moderato, no bypass]",
+  "tags": [
+    "non_rimborsabile",
+    "simvastatina",
+    "nota13",
+    "step_care_test"
+  ],
+  "input": {
+    "patient_data": {
+      "dislipidemia_diagnosticata": true,
+      "ipotiroidismo_escluso": true,
+      "risk_score_cvd_fatale_10y": 4.5,
+      "colesterolo_ldl": 120.0
+    },
+    "clinician_asserted": {
+      "dieta_seguita_almeno_3_mesi": false,
+      "terapia_primo_livello_tentata": false,
+      "intolleranza_statine": false
+    }
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N13_INCL_001"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Step-care V3.4 regression: dieta NOT tried + 1st-line NOT tried → INCL_001 blocks"
+    },
+    "pdf_reference": {
+      "rule_id": "N13_INCL_001",
+      "pdf_file": "nota-13.pdf",
+      "page": 1,
+      "section": "Box prescrittivo",
+      "excerpt": "Ipercolesterolemia non corretta dalla sola dieta, seguita per almeno tre mesi"
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N13_INCL_001"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 0.3333,
+    "recall_at_5": 0.3333,
+    "recall_at_10": 0.3333,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "nota-13_0000_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "nota-13_0001_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "nota-13_0002_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "nota-13_0003_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "nota-13_0004_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "nota-13_0005_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "nota-13_0006_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "nota-13_0007_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "nota-13_0008_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "nota-13_0009_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "nota-13_0010_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "nota-13_0011_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 13,
+        "chunk_id": "nota-13_0012_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 14,
+        "chunk_id": "nota-13_0013_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 15,
+        "chunk_id": "nota-13_0052_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 16,
+        "chunk_id": "nota-13_0053_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 17,
+        "chunk_id": "nota-13_0054_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 18,
+        "chunk_id": "nota-13_0055_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 19,
+        "chunk_id": "nota-13_0062_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 5,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 20,
+        "chunk_id": "nota-13_0063_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 5,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 21,
+        "chunk_id": "nota-13_0049_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 22,
+        "chunk_id": "nota-13_0050_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 23,
+        "chunk_id": "nota-13_0051_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 24,
+        "chunk_id": "nota-13_0061_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 25,
+        "chunk_id": "nota-13_0064_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 6,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5561180710792542,
+        "text": ""
+      },
+      {
+        "rank": 26,
+        "chunk_id": "nota-13_0058_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5329921245574951,
+        "text": ""
+      },
+      {
+        "rank": 27,
+        "chunk_id": "nota-13_0065_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 6,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4814779758453369,
+        "text": ""
+      },
+      {
+        "rank": 28,
+        "chunk_id": "nota-13_0077_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 11,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.47412046790122986,
+        "text": ""
+      },
+      {
+        "rank": 29,
+        "chunk_id": "nota-13_0059_v2",
+        "pdf_file": "nota-13.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4632408618927002,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   La decisione di non rimborsare il farmaco simvastatina è motivata dalla valutazione della regola N13_INCL_001, che è stata valutata come FALSE. Ciò è indicato nella FONTE 1 (nota-13.pdf p.1). Inoltre, la Nota 13 specifica che la terapia farmacologica dovrebbe essere intrapresa contemporaneamente alla modifica dello stile di vita nei pazienti a rischio molto alto con livelli di C-LDL >70 mg/dL e in quelli a rischio alto con livelli di LDL-C >100 mg/dL (FONTE 17, nota-13.pdf p.5).\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- nota-13.pdf, p. 1, riga 2, char 9-24, sha:be2bd8a91b\n- nota-13.pdf, p. 5, righe 13-32, char 903-2549, sha:1afaf422a5\n- nota-13.pdf, p. 4, riga 4, char 138-176, sha:be32dd7356\n- nota-13.pdf, p. 6, righe 2-22, char 18-1745, sha:d7018df5e0\n- nota-13.pdf, p. 3, righe 1-90, char 0-2112, sha:77c647f9dc\n- nota-13.pdf, p. 11, sha:c7bc800980\n\n\n--- PROVA NORMATIVA ---\nRegola: N13_INCL_001\nsnippet_id: c81222c813\nFonte: nota-13.pdf, p. 1, righe 38-78 (char 663-2200)\nTesto verbatim: «Ipolipemizzanti  bezafibrato\n fenofibrato\n gemfibrozil  simvastatina\n pravastatina\n fluvastatina\n lovastatina\n atorvastatina\n rosuvastatina  PUFA-N3\n ezetimibe Classificazione dei\npazienti Target terapeutico\n(Colesterolo LDL in\nmg/dL) Farmaci prescrivibili a carico del SSN in\nfunzione del raggiungimento del target\nterapeutico CATEGORIE DI\nRISCHIO* Trattamento di\n1° livello Trattamento di\n2° livello Pazienti con\nrischio medio:\nscore 2-3% Colesterolo LDL <130 Modifica dello stile\ndi vita per almeno\n6 mesi simvastatina\npravastatina\nfluvastatina\nlovastatina\natorvastatina (**) NOTA 13 \nIpolipemizzanti \nFibrati \nStatine \nAltri \n \nbezafibrato \n \nfenofibrato \n \ngemfibrozil \n \n \nsimvastatina \n \npravastatina \n \nfluvastatina \n \nlovastatina \n \natorvastatina \n \nrosuvastatina \n \n \nPUFA-N3 \n \nezetimibe \n \n \n \nPRECISAZIONI  \nLa categoria di rischio moderato contenuta dalle linee guida ESC per il trattamento delle \ndislipidemie (basata sui valori di colesterolo totale), è stata»\nSHA256 chunk: b9dfe36c46a599ea\nVerificato: NO\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 9344,
+      "completion_tokens": 279,
+      "total_tokens": 9623
+    },
+    "latency_s": 12.18
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N13-029",
+      "gold_pdf_file": "nota-13.pdf",
+      "gold_page": 1,
+      "gold_excerpt_len": 77,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": true,
+      "excerpt_coverage_retrieval": 1.0,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {
+      "case_id": "N13-029",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": 0.9300144300040966,
+      "context_recall": null,
+      "answer_similarity": 0.24598544131953476,
+      "answer_correctness": 0.21149636032988373
+    }
+  }
+}

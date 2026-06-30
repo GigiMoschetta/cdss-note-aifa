@@ -1,0 +1,24 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco rivaroxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione del trombo-embolismo in pazienti con fibrillazione atriale non valvolare (FANV). Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4, 4], che supera la soglia di 2. Ciò significa che il paziente ha un alto rischio di trombo-embolismo e quindi è indicato per un trattamento anticoagulante. Come indicato nella FONTE 1, il percorso decisionale per la scelta del trattamento anticoagulante prevede la valutazione del rischio trombo-embolico e del rischio emorragico individuale. Il rivaroxaban è stato selezionato come trattamento preferito per il paziente in questione.
+
+3. RACCOMANDAZIONI
+   La raccomandazione per il rivaroxaban è di utilizzare la dose ridotta di 15 mg/die per pazienti con funzione renale ridotta (VFG 15-29 ml/min). Inoltre, è importante utilizzare il rivaroxaban con cautela in pazienti con funzione renale grave (VFG < 15 ml/min).
+
+4. DATI MANCANTI
+   I campi mancanti sono: difficolta_monitoraggio_inr, interazioni_farmacologiche_doac, pregressa_emorragia_intracranica, ttr_sotto_70. Questi dati sono necessari per una valutazione più completa del rischio emorragico e del rischio trombo-embolico del paziente.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-1.pdf, p. 1
+- nota-97-all-3.pdf, p. 2

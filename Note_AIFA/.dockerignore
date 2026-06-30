@@ -1,0 +1,36 @@
+# ── Python artifacts ──────────────────────────────────────────────────────────
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.egg-info/
+**/.pytest_cache/
+
+# ── Virtual environments (rebuild inside container) ───────────────────────────
+aifa_rule_engine/.venv/
+
+# ── ChromaDB data (injected via volume mount) ─────────────────────────────────
+rag_pipeline/chroma_db/
+
+# ── Model cache (injected via volume mount) ───────────────────────────────────
+rag_pipeline/model_cache/
+
+# ── NLTK data (pre-baked in Dockerfile RUN step) ─────────────────────────────
+**/nltk_data/
+
+# ── Jupyter / IDE artifacts ───────────────────────────────────────────────────
+**/.ipynb_checkpoints/
+**/.idea/
+**/.vscode/
+
+# ── Git ───────────────────────────────────────────────────────────────────────
+.git/
+.gitignore
+
+# ── Documentation (not needed inside image) ───────────────────────────────────
+*.md
+*.txt
+!rag_pipeline/requirements_rag.txt
+!rag_pipeline/requirements_orchestrator.txt
+
+# ── PDFs are not needed inside the image (ingestion mounts host directory) ────
+*.pdf

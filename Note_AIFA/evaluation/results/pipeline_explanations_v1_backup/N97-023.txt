@@ -1,0 +1,23 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di rimborso del farmaco edoxaban è motivata dal fatto che il paziente ha un punteggio CHA2DS2-VASc di [4,4] e la soglia è di ≥2, come indicato nella FONTE 1 (nota-97.pdf p.3). Ciò significa che il paziente ha un rischio trombo-embolico elevato e quindi è indicato per il trattamento con un anticoagulante orale. Inoltre, non sono presenti condizioni che sconsigliano fortemente l'inizio di una terapia anticoagulante con AVK o NAO/DOAC, come indicato nella FONTE 2 (nota-97-all-2.pdf p.2).
+
+3. RACCOMANDAZIONI
+   La raccomandazione è di preferire l'AVK se il paziente ha una funzione renale grave (VFG < 15 mL/min) o se è in dialisi, come indicato nella FONTE 5 (nota-97-all-2.pdf p.6). Inoltre, è consigliabile utilizzare il farmaco con cautela se il paziente ha una funzione renale moderata (VFG 15-29 mL/min).
+
+4. DATI MANCANTI
+   Sono presenti alcuni campi mancanti, come la difficoltà di monitoraggio dell'INR, la pregressa emorragia intracranica e la TTR (Tempo nel Range Terapeutico) inferiore al 70%. Ciò potrebbe influire sulla scelta del farmaco e sulla gestione della terapia.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-3.pdf, p. 2
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-2.pdf, p. 1

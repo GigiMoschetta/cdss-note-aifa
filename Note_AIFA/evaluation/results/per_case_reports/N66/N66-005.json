@@ -1,0 +1,337 @@
+{
+  "case_id": "N66-005",
+  "nota_id": "66",
+  "drug_id": "nimesulide",
+  "category": "NON_RIMBORSABILE_inclusion",
+  "description": "NON_RIMBORSABILE — inclusion failure: nimesulide without second-line requirement",
+  "tags": [
+    "non_rimborsabile",
+    "nimesulide",
+    "nota66",
+    "inclusion",
+    "seconda_linea"
+  ],
+  "input": {
+    "patient_data": {
+      "indicazione_clinica": "osteoartrosi_algica",
+      "uso_breve_durata": true,
+      "seconda_linea": false,
+      "ulcera_peptica_attiva_pregressa": false,
+      "scompenso_cardiaco_grave": false,
+      "cardiopatia_ischemica": false,
+      "patologia_cerebrovascolare": false,
+      "patologia_arteriosa_periferica": false,
+      "scompenso_cardiaco_moderato_grave": false,
+      "epatopatia": false,
+      "terapia_antiaggregante_asa": false,
+      "dolore_acuto_moderato": false,
+      "non_controllato_con_singoli": false,
+      "abuso_alcool": false,
+      "farmaci_epatotossici_concomitanti": false,
+      "allergia_asa_o_fans": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N66_INCL_002"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Must explain that nimesulide is only reimbursed as a second-line NSAID (after first-line NSAID failure); being a second-line drug is a mandatory inclusion criterion"
+    },
+    "pdf_reference": {
+      "rule_id": "N66_INCL_002",
+      "pdf_file": "Nota_66.pdf",
+      "page": 2,
+      "section": "Nimesulide",
+      "excerpt": "nimesulide: breve durata, seconda linea"
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N66_INCL_002"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 0.5,
+    "recall_at_5": 0.5,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_66_0000_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_66_0001_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_66_0002_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_66_0003_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_66_0004_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_66_0008_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_66_0009_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_66_0006_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_66_0018_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_66_0019_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "Nota_66_0020_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "Nota_66_0021_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 13,
+        "chunk_id": "Nota_66_0022_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 14,
+        "chunk_id": "Nota_66_0023_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 15,
+        "chunk_id": "Nota_66_0024_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 16,
+        "chunk_id": "Nota_66_0007_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5752019882202148,
+        "text": ""
+      },
+      {
+        "rank": 17,
+        "chunk_id": "Nota_66_0029_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 6,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3464447557926178,
+        "text": ""
+      },
+      {
+        "rank": 18,
+        "chunk_id": "Nota_66_0010_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3354242742061615,
+        "text": ""
+      },
+      {
+        "rank": 19,
+        "chunk_id": "Nota_66_0012_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.327739953994751,
+        "text": ""
+      },
+      {
+        "rank": 20,
+        "chunk_id": "Nota_66_0015_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3232079744338989,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco nimesulide è stato valutato e classificato come NON_RIMBORSABILE in base alla Nota AIFA. Ciò è stato determinato dalle regole decisive presenti nella Nota AIFA, in particolare la regola N66_INCL_002, che ha valutato FALSE e ha determinato la NON_RIMBORSABILITÀ. Inoltre, la Nota AIFA ha stabilito che il nimesulide non è indicato per il trattamento di breve durata del dolore acuto di entità moderata, come riportato nella FONTE 16.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- Nota_66.pdf, p. 2, riga 41, char 809-856, sha:a76cd6a3b7\n- Nota_66.pdf, p. 4, riga 1, char 0-74, sha:4eee68e67a\n- Nota_66.pdf, p. 1, righe 1-54, char 0-1576, sha:6d5d39cf1a\n- Nota_66.pdf, p. 6, righe 5-43, char 13-758, sha:9353e3a493\n- Nota_66.pdf, p. 3, righe 1-18, char 106-1839, sha:709776001d\n\n\n--- PROVA NORMATIVA ---\nRegola: N66_INCL_002\nsnippet_id: 1ec2f77838\nFonte: Nota_66.pdf, p. 2, righe 45-48 (char 940-1116)\nTesto verbatim: «FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti principi\nattivi Trattamento di breve durata del dolore acuto di\nentità moderata nei soggetti in cui il sintomo non\nsia adeguatamente controllato con altri\nantidolorifici assunti singolarmente. Ibuprofene/Codeina Ibuprofene/Codeina\n \nBackground\nLa categoria dei farmaci antinfiammatori non steroidei (FANS) comprende una varietà di principi attivi differenti appartenenti a classi chimiche diverse che agiscono\nmediante inibizione della ciclo-ossigenasi (COX) dell’acido arachidonico, inibendo cosi la produzione di prostaglandine (PG) e trombossani. I principali effetti farmacologici dei FANS sono rappresentati dall’azione analgesica, antiinfiammatoria, e antipiretica. Per tali caratteristiche essi hanno ruoli consolidati\nnella gestione del dolore negli stati artritici, nel dolore neoplastico e negli attacchi acuti di gotta.»\nSHA256 chunk: cc265b0092ce12e0\nVerificato: NO\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 8260,
+      "completion_tokens": 689,
+      "total_tokens": 8949
+    },
+    "latency_s": 19.85
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N66-005",
+      "gold_pdf_file": "Nota_66.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 39,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.0,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {
+      "case_id": "N66-005",
+      "faithfulness": 0.5714285714285714,
+      "answer_relevancy": 0.7461353149976245,
+      "context_precision": 0.4733516483398145,
+      "context_recall": 1.0,
+      "answer_similarity": 0.541020478645112,
+      "answer_correctness": 0.28525511966127803
+    }
+  }
+}

@@ -1,0 +1,29 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di NON_RIMBORSABILITÀ del farmaco warfarin è stata determinata dalla regola N97_EXCL_HARD_ALL2_GRAVIDANZA, che è stata valutata come TRUE (vera). Questa regola è indicata nella FONTE 1 (nota-97-all-2.pdf, p. 2), dove si elencano le principali controindicazioni e avvertenze al trattamento anticoagulante con AVK o NAO/DOAC. In particolare, la gravidanza è indicata come una condizione che sconsiglia fortemente l'inizio di una terapia anticoagulante con AVK o NAO/DOAC. Il punteggio CHA2DS2-VASc è stato calcolato in [2, 2], ma la soglia per la copertura è ≥ 3, quindi il paziente non è eleggibile per la copertura. La regola N97_EXCL_HARD_ALL2_GRAVIDANZA ha bloccato la copertura.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+
+
+--- PROVA NORMATIVA ---
+Regola: N97_EXCL_HARD_ALL2_GRAVIDANZA
+snippet_id: 6fe429ab60
+Fonte: nota-97-all-2.pdf, p. 2
+Testo: "NOTA 97 – Allegato 2
+Principali controindicazioni/avvertenze al trattamento anticoagulante con AVK o NAO/DOAC
+Di seguito vengono elencate le..."
+--- FINE ---

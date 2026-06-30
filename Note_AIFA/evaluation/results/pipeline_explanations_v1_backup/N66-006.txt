@@ -1,0 +1,19 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco nimesulide è stato valutato e dichiarato RIMBORSABILE in base alla Nota AIFA. La motivazione principale per questa decisione è che il nimesulide è stato valutato come efficace per il trattamento del dolore acuto e della osteoartrosi dolorosa, come indicato nella FONTE 10. Inoltre, la combinazione di ibuprofene e codeina, che include il nimesulide, è stata ammessa alla rimborsabilità limitatamente al trattamento di breve durata del dolore acuto di entità moderata, come indicato nella FONTE 12.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 5
+- Nota_66.pdf, p. 3

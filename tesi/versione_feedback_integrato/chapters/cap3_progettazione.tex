@@ -1,0 +1,589 @@
+% ============================================================
+%  Capitolo 3 — Architettura del sistema CDSS neuro-simbolico
+%  Tesi Triennale Francesco Zamar — UniTS 2026
+%  Versione finale (rifatta da cap3 v4 + estratti architetturali cap4)
+% ============================================================
+\chapter{Architettura del sistema}
+\label{ch:progettazione}
+
+Il \Cref{ch:background} ha definito tre strumenti: un linguaggio per
+rappresentare l'incertezza, una pipeline per ancorare le risposte ai
+documenti, un confine concettuale fra ragionamento simbolico e generativo.
+La domanda di progetto è come comporli in un sistema unico che rimanga
+clinicamente sicuro, cioè in cui i fallimenti possibili del componente
+generativo, che è intrinsecamente non verificabile per costruzione
+\cite{ji2023hallucination, thirunavukarasu2023llm}, non possano mai
+ribaltare una decisione di rimborsabilità. La risposta che questo capitolo
+sviluppa è la \emph{separazione neuro-simbolica delle responsabilità}: la
+correttezza normativa è interamente affidata a un rule engine deterministico
+ispezionabile, mentre il modello generativo riceve la decisione già calcolata
+e ha l'unico compito di articolarne la motivazione in linguaggio clinico
+ancorato alle Note. La discussione procede dai requisiti che il sistema deve
+soddisfare, attraverso il principio architetturale che li governa, fino alla
+descrizione analitica di ciascun componente e del contratto che li lega.
+
+% ─────────────────────────────────────────────────────────────
+\section{Requisiti e separazione neuro-simbolica}
+\label{sec:requisiti}
+
+Il sistema viene progettato per operare su quattro Note AIFA (Agenzia Italiana del Farmaco): la Nota~01
+(inibitori di pompa protonica), la Nota~13 (ipolipemizzanti), la Nota~66
+(antinfiammatori non steroidei) e la Nota~97 (anticoagulanti orali nella
+fibrillazione atriale non valvolare).
+Il corpus di valutazione comprende \goldn{} casi gold standard raccolti
+per coprire tutti i percorsi decisionali ammissibili.
+
+Sul piano funzionale, il sistema deve soddisfare sette obiettivi distinti,
+ciascuno con un criterio di accettazione misurabile.
+Il primo è la verifica formale della rimborsabilità: il sistema deve produrre
+un esito appartenente all'insieme $\{\textsc{rimborsabile},
+\textsc{non\_rimborsabile}, \textsc{non\_determinabile}, \textsc{routed}\}$
+con Macro-F1 pari a~1,0 sull'intero corpus gold standard.
+Il secondo è la spiegazione in linguaggio naturale: ogni risposta deve contenere
+almeno un'evidenza che citi esplicitamente il PDF sorgente, il numero di pagina
+e un estratto verbatim dalla norma applicata.
+Il terzo è la citazione di estratti normativi verificabili: la copertura
+delle citazioni deve essere del 100\,\%, nel senso che ogni decisione deve
+associare almeno un'ancora \emph{file\,+\,page\,+\,excerpt} al testo PDF.
+Il quarto requisito riguarda la gestione dell'incertezza: l'assenza di un
+campo clinico nel profilo paziente si deve propagare come
+\texttt{UNKNOWN} nella logica a tre valori, senza imporre valori di default
+né degradare silenziosamente verso \texttt{FALSE}, il che trasformerebbe
+un caso indeterminato in un rifiuto non fondato.
+Il quinto requisito è la modalità what-if: deve essere possibile modificare
+un campo del profilo paziente e rieseguire la sola valutazione simbolica
+senza reinvocare il layer linguistico, qualora la decisione non sia cambiata.
+Il sesto è la segnalazione strutturata dei campi mancanti: in caso di esito
+\decision{NON\_DETERMINABILE}, la risposta deve riportare la lista esatta
+delle variabili cliniche la cui assenza ha causato l'indeterminazione,
+in modo che il clinico sappia quali informazioni raccogliere per risolvere
+l'ambiguità.
+Il settimo e ultimo requisito funzionale è la tracciabilità e l'audit
+della catena decisionale: l'oggetto di risposta deve includere la sequenza
+ordinata delle regole valutate, con l'identificatore, il valore Kleene
+e l'ancora normativa per ciascuna, esportabile ai fini di verifica regolatoria.
+
+Sul piano non funzionale, quattro proprietà condizionano l'intera architettura.
+Il \emph{determinismo} delle decisioni cliniche richiede che,
+a parità di input, l'esito simbolico sia sempre identico, indipendentemente
+dall'ordine di valutazione o dallo stato interno dei processi;
+questo esclude qualsiasi fonte di stocasticità nel layer decisionale.
+La \emph{verificabilità per-caso} impone che ogni singola decisione possa
+essere rieseguita e auditata in isolamento, senza bisogno di avviare
+l'intero sistema: il rule engine simbolico deve essere esercitabile
+autonomamente sul gold standard anche quando il layer RAG (\emph{Retrieval-Augmented Generation}) non è attivo.
+La \emph{riproducibilità canonica} della valutazione richiede che
+le metriche siano misurabili su un ambiente riproducibile da zero:
+wipe del database vettoriale, re-ingestione da PDF puliti e valutazione
+end-to-end, con dipendenze Python fissate tramite hash crittografici.
+Infine, la \emph{latenza accettabile per uso clinico interattivo} non
+impone requisiti sub-secondo (l'interazione con un medico prescrivente
+tollera qualche secondo di elaborazione), ma esclude tempi di risposta
+dell'ordine dei minuti che renderebbero il sistema inutilizzabile nella
+pratica quotidiana.
+Un vincolo trasversale di progetto è il deployment interamente locale:
+nessun dato clinico deve lasciare la macchina su cui il sistema è installato,
+in coerenza con i requisiti di riservatezza dei dati sanitari e con
+le limitazioni infrastrutturali degli ambienti ospedalieri italiani.
+
+La separazione fra decisione e spiegazione non è soltanto una scelta
+architetturale: è un vincolo di sicurezza.
+Un large language model, per quanto accurato nelle sue previsioni medie,
+non offre garanzie formali sulla coerenza fra il suo output e una specifica
+normativa scritta~\cite{ji2023hallucination}.
+L'allucinazione, la produzione di affermazioni plausibili ma non fondate,
+è una proprietà intrinseca dei modelli autoregressivi, non un difetto
+che la selezione del modello o l'aumento della scala risolvono
+completamente~\cite{thirunavukarasu2023llm}.
+Un rule engine, al contrario, è verificabile per costruzione:
+ogni decisione è la conseguenza deterministica di una catena di regole
+esplicite e ispezionabili.
+Per questo motivo, nel sistema proposto, l'unica responsabilità del
+modello generativo è la produzione del testo esplicativo, mentre
+la determinazione della rimborsabilità è interamente affidata
+al layer simbolico.
+
+Il trade-off è reale e va riconosciuto onestamente.
+Il layer simbolico richiede che le regole normative siano trascritte
+manualmente in un formato strutturato, un lavoro che introduce la possibilità
+di errori di codifica non presenti nel testo PDF originale;
+il sistema di test e il gold standard mitigano questo rischio
+ma non lo eliminano del tutto.
+Il layer linguistico introduce latenza aggiuntiva, stocasticità residua
+anche con temperatura fissata a zero, e la necessità di un controllo
+post-generazione che verifichi la coerenza fra il testo prodotto e la
+decisione deterministica già calcolata.
+Entrambi i layer, inoltre, hanno footprint computazionale e devono
+coesistere su hardware commodity.
+La scelta di separarli architetturalmente trasforma questi rischi in
+dipendenze gestibili: il rule engine può essere testato esaustivamente
+in isolamento, e il layer linguistico può essere sostituito o aggiornato
+senza toccare la logica decisionale.
+
+\begin{definition}[Architettura neuro-simbolica con separazione delle responsabilità]
+\label{def:separazione}
+Il sistema $\mathcal{S}$ è detto \emph{neuro-simbolico con separazione
+delle responsabilità} se e solo se esiste una partizione
+$\mathcal{S} = \mathcal{S}_{\text{sym}} \cup \mathcal{S}_{\text{neu}}$
+tale che: (i)~$\mathcal{S}_{\text{sym}}$ è verificabile formalmente
+su un test set $\mathcal{T}$ senza invocare alcun componente di
+$\mathcal{S}_{\text{neu}}$; (ii)~$\mathcal{S}_{\text{neu}}$ riceve
+come input l'output già calcolato di $\mathcal{S}_{\text{sym}}$
+e non può modificarlo; (iii)~il contratto fra i due strati è espresso
+da un tipo strutturato con schema validato a runtime.
+\end{definition}
+
+Il secondo principio architetturale che governa il design è il
+\emph{fail-fast}: ogni fase di validazione deve fallire immediatamente
+e in modo esplicito al primo invariante violato.
+Nel rule engine questo si traduce in fasi ordinate con uscite di
+short-circuit esplicite; nel layer RAG si traduce nel controllo
+post-generazione che rileva le contraddizioni fra la decisione
+deterministica e il testo prodotto dall'LLM prima che raggiungano
+il clinico.
+Uno stato corrotto silenzioso è più pericoloso di un errore esplicito
+in un sistema che supporta decisioni cliniche.
+
+I principi di \emph{single source of truth} e di \emph{traceability}
+completano il quadro: le regole normative hanno un'unica rappresentazione
+(i file YAML versionati), e ogni decisione deve essere ricondotta a una
+catena esplicita e riproducibile di passi, ognuno con l'ancora nel PDF
+che ne è la fonte autorizzativa.
+
+% ─────────────────────────────────────────────────────────────
+\section{Architettura complessiva}
+\label{sec:architettura}
+
+Il sistema è articolato in sei componenti principali, organizzati in
+tre livelli funzionali: il livello decisionale simbolico, il livello
+esplicativo neurale e il livello di presentazione.
+La \Cref{fig:architettura} ne illustra la \emph{deployment view},
+mostrando i confini di processo, i protocolli di comunicazione e
+il flusso di dati sia nella fase online di valutazione sia nella
+fase offline di ingestione dei PDF.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  box/.style={
+    rectangle, draw=black!70, thick,
+    minimum width=3.2cm, minimum height=1.1cm,
+    align=center, font=\small
+  },
+  store/.style={
+    rectangle, draw=black!50, dashed, thick,
+    minimum width=3.2cm, minimum height=0.9cm,
+    align=center, font=\small
+  },
+  arrow/.style={-Stealth, thick},
+  dasharrow/.style={-Stealth, thick, dashed},
+  lbl/.style={font=\scriptsize, fill=white, inner sep=1pt},
+  node distance=1.8cm and 3.2cm
+]
+
+%% Riga superiore — Demo
+\node[box] (demo)
+  {Demo Streamlit\\{\footnotesize porta 8501}};
+
+%% Riga centrale — Orchestratore
+\node[box, below=of demo] (orch)
+  {\texttt{CDSSOrchestrator}\\{\footnotesize porta 8001 · FastAPI}};
+
+%% Colonna sinistra — Rule Engine
+\node[box, left=of orch] (re)
+  {Rule Engine\\{\footnotesize porta 8000 · FastAPI}};
+
+%% Storage collegato al Rule Engine
+\node[store, above=1.2cm of re] (yaml)
+  {Regole YAML\\{\footnotesize + catalogo principi attivi}};
+\node[store, below=1.2cm of re] (pdf)
+  {PDF Store\\{\footnotesize 4 Note AIFA}};
+
+%% Colonna destra — Ollama
+\node[box, right=of orch] (ollama)
+  {Ollama\\{\footnotesize porta 11434}\\{\footnotesize \llmmodel}};
+
+%% ChromaDB — sotto l'orchestratore
+\node[store, below=1.4cm of orch] (chroma)
+  {ChromaDB\\{\footnotesize embedded · 4 collezioni}};
+
+%% Frecce online
+\draw[arrow] (demo.south) -- node[lbl,right]{\texttt{CDSSRequest}} (orch.north);
+\draw[arrow] (orch.north) -- node[lbl,left]{\texttt{CDSSResponse}} (demo.south);
+
+\draw[arrow] (orch.west) -- node[lbl,above]{\texttt{/evaluate}} (re.east);
+\draw[arrow] (re.east)   -- node[lbl,below]{\texttt{EvaluationResult}} (orch.west);
+
+\draw[arrow] (yaml.south) -- (re.north);
+
+\draw[arrow] (orch.east) -- node[lbl,above]{\textit{prompt}} (ollama.west);
+\draw[arrow] (ollama.west) -- node[lbl,below]{\textit{spiegazione}} (orch.east);
+
+\draw[arrow] (orch.south) -- node[lbl,right]{\texttt{retrieve()}} (chroma.north);
+\draw[arrow] (chroma.north) -- node[lbl,left]{\textit{chunks}} (orch.south);
+
+%% Freccia offline (ingestione)
+\draw[dasharrow] (pdf.east) to[out=0, in=220]
+  node[lbl, below right]{\texttt{ingest\_v2} (offline)} (chroma.west);
+
+\end{tikzpicture}
+\caption{Deployment view dell'architettura a componenti. Le frecce continue
+  rappresentano il flusso online durante la valutazione (REST/HTTP tra processi
+  separati; filesystem per ChromaDB e PDF); la freccia tratteggiata indica
+  la fase offline di ingestione: i PDF normativi vengono estratti, segmentati
+  e indicizzati nelle quattro collezioni ChromaDB~\cite{chromadb}.}
+\label{fig:architettura}
+\end{figure}
+
+Il Rule Engine risiede in un microservizio autonomo esposto sulla porta~8000
+tramite FastAPI~\cite{fastapi} e Pydantic~\cite{pydantic}.
+La scelta di isolarlo come processo separato risponde direttamente al requisito
+di verificabilità per-caso: l'intero gold standard di \goldn{} casi
+può essere esercitato senza che Ollama sia in esecuzione, riducendo
+drasticamente il tempo di ogni ciclo test-fix-verify.
+Il costo di questa scelta è un'interfaccia REST intermedia che introduce
+una latenza aggiuntiva nell'ordine dei millisecondi, trade-off accettabile
+dato che l'interazione clinica non impone requisiti sub-secondo.
+
+L'Orchestratore, in esecuzione sulla porta~8001, costituisce il componente
+di integrazione: interroga il Rule Engine tramite HTTP/REST~\cite{fielding2000rest},
+raccoglie i chunk pertinenti da ChromaDB e compone il prompt strutturato per
+Ollama~\cite{ollama2024}.
+Il canale REST fra Rule Engine e Orchestratore è formalmente tipizzato tramite
+Pydantic: ogni scambio di dati attraversa uno schema validato, eliminando
+la categoria di errori dovuta a contratti impliciti.
+
+ChromaDB opera in modalità embedded con persistenza su filesystem locale,
+eliminando i rischi di disponibilità connessi al teorema CAP (\emph{Consistency, Availability, Partition tolerance})~\cite{brewer2000cap}
+che affliggono le soluzioni distribuite.
+Il deployment è interamente locale: nessun dato clinico lascia la macchina
+su cui il sistema è installato, in coerenza con i requisiti di riservatezza
+dei dati sanitari e con le limitazioni infrastrutturali degli ambienti
+ospedalieri italiani.
+La containerizzazione Docker, coordinata da un \texttt{docker-compose.yml}
+che fissa le versioni di tutti i servizi, garantisce la riproducibilità
+dell'ambiente di esecuzione indipendentemente dall'hardware host.
+
+La demo interattiva Streamlit (porta~8501) fornisce un'interfaccia grafica
+per la valutazione manuale dei casi: riceve il profilo paziente, invoca
+l'Orchestratore e presenta la decisione simbolica insieme alla spiegazione
+testuale con le evidenze citate.
+
+% ─────────────────────────────────────────────────────────────
+\section{Il layer simbolico: rule engine}
+\label{sec:layer-simbolico}
+
+Il Rule Engine implementa la componente simbolica del sistema.
+La sua responsabilità esclusiva è la determinazione dell'esito di
+rimborsabilità: dato un profilo paziente e una prescrizione, restituisce
+un oggetto \texttt{EvaluationResult} strutturato che incapsula la decisione,
+la traccia di copertura per ogni regola valutata, i flag clinici derivati
+e la lista dei campi mancanti che hanno causato eventuali indeterminazioni.
+
+\subsection{Modello dei dati e schema YAML}
+\label{subsec:modello-dati}
+
+Il profilo paziente è rappresentato dal tipo \texttt{PatientProfile},
+che aggrega tre sotto-profili: dati anagrafici (età, sesso, peso, altezza),
+profilo clinico (diagnosi attive, comorbidità, terapie in corso) e profilo
+cardiovascolare (componenti dello score CHA$_2$DS$_2$-VASc, funzionalità
+renale ed epatica~\cite{lip2010cha2ds2vasc}).
+Tutti i campi sono opzionali per costruzione: l'assenza di un valore è
+rappresentata come \texttt{None} Python e si propaga come \texttt{UNKNOWN}
+nella logica di Kleene a tre valori (\Cref{sec:rule-based}).
+La scelta di rendere tutti i campi opzionali, anziché definire un sottoinsieme
+obbligatorio, risponde a un'esigenza del dominio: nella pratica clinica reale
+il profilo paziente è spesso incompleto al momento della prescrizione, e
+un sistema che rigettasse le richieste incomplete risulterebbe inutilizzabile
+proprio nei casi più frequenti e più bisognosi di supporto.
+Il campo \texttt{missing\_fields} di \texttt{EvaluationResult} costituisce
+il canale strutturato attraverso cui il sistema comunica al clinico
+esattamente quali informazioni aggiuntive permetterebbero di risolvere
+un esito \decision{NON\_DETERMINABILE}.
+
+Le regole normative sono codificate in un Domain-Specific Language (DSL)
+in formato YAML~\cite{yamlspec}, che trasforma ogni regola in un dato
+strutturato: un file di testo versionabile, leggibile da personale clinico
+non tecnico e aggiornabile al ritmo degli aggiornamenti normativi senza
+che l'interprete debba essere ricompilato.
+Ogni regola include obbligatoriamente cinque campi: un identificatore univoco
+(\texttt{rule\_id}), il tipo di regola nell'insieme
+\{\texttt{SCOPE}, \texttt{PATH}, \texttt{DOSE}, \texttt{EXCEPTION},
+\texttt{EXCLUSION}\}, un campo \texttt{evaluation\_order} che determina
+la posizione nella pipeline, un'ancora normativa con file PDF, pagina
+e estratto verbatim, e un albero di condizioni espresso tramite operatori
+logici componibili (\texttt{AND}, \texttt{OR}, \texttt{NOT}, \texttt{IS\_TRUE},
+\texttt{SCORE\_RANGE\_GTE} e altri).
+Si è preferito YAML rispetto a JSON per la leggibilità della sintassi e
+rispetto a un linguaggio di regole proprietario per la disponibilità di
+tooling standard; il costo è l'assenza di tipizzazione statica,
+compensata dalla validazione Pydantic all'avvio del servizio.
+
+\subsection{Tre famiglie di regole e logica Kleene}
+\label{subsec:famiglie-regole}
+
+Le regole del DSL si articolano in tre famiglie logiche distinte, corrispondenti
+ai nodi decisionali delle Note AIFA.
+Le \emph{regole di inclusione} (tipo \texttt{PATH} e \texttt{INCLUSION})
+verificano che il paziente soddisfi almeno uno dei criteri positivi previsti
+dalla Nota: se nessun criterio di inclusione risulta soddisfatto,
+l'esito è \decision{NON\_RIMBORSABILE} con short-circuit immediato.
+Le \emph{regole di esclusione} (tipo \texttt{EXCLUSION}) verificano
+l'assenza di controindicazioni assolute: se almeno una esclusione vale
+\texttt{TRUE}, l'esito è \decision{NON\_RIMBORSABILE} con priorità
+sulle inclusioni.
+Le \emph{regole di eccezione} (tipo \texttt{EXCEPTION}) gestiscono
+i casi di routing verso un'altra Nota o di bypass anticipato della pipeline:
+il loro esito non è né rimborsabilità né non-rimborsabilità, ma
+\decision{ROUTED}, che indica al clinico di rivolgersi al percorso
+prescrittivo di una Nota diversa.
+
+\begin{definition}[Processo decisionale del Rule Engine]
+\label{def:decisione}
+Sia $\mathcal{R}$ l'insieme ordinato delle regole applicabili a una coppia
+$(\text{nota\_id}, \text{drug\_id})$, e sia
+$v_\mathcal{K} \colon \text{Regola} \times \text{PatientProfile}
+\to \{\texttt{TRUE}, \texttt{FALSE}, \texttt{UNKNOWN}\}$
+la funzione di valutazione Kleene.
+Il processo decisionale del Rule Engine è la funzione
+$\delta \colon \mathcal{R} \times \text{PatientProfile}
+\to \{\decision{rimborsabile}, \decision{non\_rimborsabile},
+\decision{non\_determinabile}, \decision{routed}\}$
+definita dalla pipeline a undici fasi: le fasi~0--5 corrispondono ai nodi
+SCOPE, EXCEPTION, EXCL\_HARD, INCLUSION e PATHWAY, ciascuna con uscita
+di short-circuit immediata; le fasi~6--8 accumulano flag clinici;
+la fase~10 applica l'invariante di sicurezza e produce l'esito finale.
+Il risultato è \decision{non\_determinabile} se e solo se nessuna
+regola ha prodotto un short-circuit e almeno una condizione ha
+propagato \texttt{UNKNOWN}.
+\end{definition}
+
+La logica di Kleene a tre valori~\cite{kleene1952introduction} permea l'intero
+processo di valutazione: ogni operatore del DSL è implementato in aritmetica
+Kleene, garantendo che l'incertezza si propaghi correttamente attraverso
+le composizioni logiche.
+In particolare, l'operatore \texttt{SCORE\_RANGE\_GTE} opera in aritmetica
+Kleene sui punteggi parziali: se uno o più componenti dello score sono
+\texttt{UNKNOWN}, il confronto con la soglia non degrada a \texttt{FALSE}
+ma rimane \texttt{UNKNOWN}, cosicché il sistema segnali l'indeterminazione
+anziché negare erroneamente la rimborsabilità.
+
+% ─────────────────────────────────────────────────────────────
+\section{Il layer esplicativo: pipeline RAG}
+\label{sec:layer-esplicativo}
+
+La componente neurale del sistema è una pipeline RAG progettata per fornire
+all'LLM una finestra di contesto strettamente ancorata al testo PDF delle
+Note AIFA~\cite{lewis2020rag}.
+La progettazione affronta quattro problemi specifici del dominio normativo
+italiano: la natura tabellare e a clausole annidate dei PDF; il vocabolario
+ibrido (terminologia latina farmacologica, acronimi inglesi, perifrasi
+cliniche italiane); la necessità di recuperare chunk che mantengano l'unità
+sintattica delle clausole booleane composte; e il rischio di allucinazione
+nelle citazioni normative.
+
+\subsection{Ingestione e chunking}
+\label{subsec:ingestione}
+
+La fase di ingestione, denominata \texttt{ingest\_v2}, è una fase offline
+che si esegue una tantum su ogni aggiornamento dei PDF.
+L'estrazione del testo grezzo è realizzata tramite PyMuPDF~\cite{pymupdf},
+che preserva la struttura a pagina dei documenti e consente di associare
+ogni chunk al numero di pagina sorgente, informazione indispensabile per
+le ancore normative.
+Il chunker adottato è \emph{sentence-aware}: il target è di $1800$ caratteri
+per chunk, con un overlap di due frasi fra chunk consecutivi.
+La scelta del target a $1800$ caratteri è motivata dalla finestra di $512$
+token del modello di embedding: a una densità media di circa $4$ caratteri
+per token sull'italiano normativo, $1800$ caratteri sono codificabili senza
+troncamento.
+L'overlap a livello di frase, anziché a livello di caratteri, preserva
+l'unità sintattica delle clausole normative, in particolare le condizioni
+booleane composte (``in pazienti con\ldots oppure\ldots''), che un overlap
+fisso a caratteri spezzerebbe a metà.
+Un manifest di ingestione registra il checksum SHA-256 di ogni PDF e di
+ogni chunk indicizzato, garantendo la tracciabilità della base documentale.
+
+\subsection{Modello di embedding, indice e retriever}
+\label{subsec:embedding-retriever}
+
+Il modello di embedding è \embedmodel, a $768$ dimensioni.
+La scelta del multilinguismo è motivata dal vocabolario ibrido dei PDF AIFA,
+che alternano terminologia latina farmacologica, acronimi clinici
+(CHA$_2$DS$_2$-VASc, NAO per nuovi anticoagulanti orali, VFG per velocità di filtrazione glomerulare) e perifrasi cliniche in italiano.
+Un modello monolingue italiano non gestirebbe la sottocomponente latina;
+un modello generalista inglese degraderebbe la qualità sulle perifrasi
+normative italiane~\cite{reimers2019sbert}.
+I vettori sono indicizzati in ChromaDB con metrica coseno, organizzati
+in quattro collezioni distinte (una per Nota), così da concentrare il
+retrieval sulla Nota pertinente alla richiesta in esame.
+
+Il retriever applica una strategia in due passi: recupero top-$k$ per
+similarità coseno, seguito da un reranker cross-encoder \reranker{}
+che riordina i candidati per rilevanza contestuale~\cite{nogueira2019passage}.
+Il reranker è stato scelto specificamente per il dominio italiano, in quanto
+è addestrato su coppie di frasi in italiano, e consente di distinguere
+chunk tematicamente vicini ma normalmente irrilevanti (ad esempio,
+tabelle di dosaggio) da chunk che contengono la clausola condizionale
+pertinente al caso in esame.
+
+\subsection{Generazione e vincolo di fedeltà}
+\label{subsec:generazione}
+
+Il modello generativo è \llmmodel, eseguito localmente tramite
+Ollama~\cite{ollama2024} con parametri fissi (\texttt{temperature=0},
+\texttt{seed=42}) per garantire la riproducibilità della generazione.
+Il prompt è strutturato in sezioni rigide: la \emph{decisione del Rule Engine}
+viene iniettata prima del contesto normativo, in una sezione marcata
+\texttt{[DECISIONE DETERMINISTICA --- NON CONTRADDIRE]};
+il \emph{contesto normativo} contiene i chunk recuperati, ognuno preceduto
+da un'etichetta \texttt{[FONTE: \textit{pdf}, p.\,\textit{n}]};
+una sezione \emph{FONTI} in coda al prompt è ricomposta deterministicamente
+dal sistema, non dall'LLM.
+
+\begin{definition}[Insieme dei chunk rilevanti]
+\label{def:chunk-rilevanti}
+Sia $\mathcal{C}$ l'insieme di tutti i chunk indicizzati per una Nota.
+Dato un profilo paziente $p$ e un \texttt{EvaluationResult} $e$,
+l'insieme dei chunk rilevanti $\mathcal{C}^*(p, e) \subseteq \mathcal{C}$
+è l'output del retriever a due stadi: la prima fase seleziona i $k_1$
+chunk con similarità coseno massima rispetto alla query $q(p, e)$;
+la seconda fase applica il reranker \reranker{} e seleziona i $k_2 \leq k_1$
+chunk con score cross-encoder più alto, dove $k_2$ è un parametro
+del sistema fissato a progetto.
+Il testo della spiegazione finale deve citare almeno un chunk in
+$\mathcal{C}^*(p, e)$ e non può contraddire la decisione contenuta in $e$.
+\end{definition}
+
+Un controllo post-generazione, l'\emph{invariante di sicurezza},
+confronta la decisione testuale prodotta dall'LLM con la decisione
+deterministica del Rule Engine: in caso di divergenza, la spiegazione
+viene scartata e sostituita da un template conservativo che riporta
+la decisione corretta e invita il clinico a consultare direttamente
+il testo normativo.
+La \Cref{fig:pipeline-rag} illustra il flusso complessivo dalla richiesta
+al testo di risposta.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  phase/.style={
+    rectangle, draw=black!70, thick,
+    minimum width=4.4cm, minimum height=0.85cm,
+    text centered, font=\small
+  },
+  decision/.style={
+    diamond, draw=black!70, thick, aspect=2.2,
+    minimum width=4.4cm, minimum height=0.75cm,
+    text centered, font=\small
+  },
+  store/.style={
+    rectangle, draw=black!50, dashed,
+    minimum width=3.0cm, minimum height=0.75cm,
+    text centered, font=\small
+  },
+  arrow/.style={-Stealth, thick},
+  lbl/.style={font=\scriptsize, fill=white, inner sep=1pt},
+  node distance=0.65cm and 3.2cm
+]
+
+\node[phase] (query)  {Query: $(p,\, \text{nota\_id})$};
+\node[phase, below=of query] (re) {Rule Engine \texttt{/evaluate}};
+\node[phase, below=of re] (embed) {Embedding query ($\embedmodel$)};
+\node[phase, below=of embed] (cosine) {Retrieval coseno top-$k_1$ su ChromaDB};
+\node[phase, below=of cosine] (rerank) {Reranking cross-encoder ($k_2 \leq k_1$)};
+\node[phase, below=of rerank] (prompt) {Composizione prompt strutturato};
+\node[phase, below=of prompt] (llm) {Generazione testo (\llmmodel, $T{=}0$)};
+\node[decision, below=of llm] (check) {Invariante di sicurezza rispettato?};
+\node[phase, below left=0.8cm and 1.2cm of check] (ok) {\texttt{CDSSResponse} finale};
+\node[phase, below right=0.8cm and 1.2cm of check] (fallback) {Template conservativo};
+
+\draw[arrow] (query.south)  -- (re.north);
+\draw[arrow] (re.south)     -- (embed.north);
+\draw[arrow] (embed.south)  -- (cosine.north);
+\draw[arrow] (cosine.south) -- (rerank.north);
+\draw[arrow] (rerank.south) -- (prompt.north);
+\draw[arrow] (prompt.south) -- (llm.north);
+\draw[arrow] (llm.south)    -- (check.north);
+\draw[arrow] (check.south west) -- node[lbl,left]{Sì} (ok.north);
+\draw[arrow] (check.south east) -- node[lbl,right]{No} (fallback.north);
+
+\end{tikzpicture}
+\caption{Flusso della pipeline RAG dalla richiesta al testo di risposta.
+  Il Rule Engine viene invocato per primo e la sua decisione è iniettata
+  nel prompt prima del contesto documentale. Il controllo dell'invariante
+  di sicurezza in uscita dalla generazione garantisce che la spiegazione
+  testuale non contraddica mai la decisione deterministica.}
+\label{fig:pipeline-rag}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────
+\section{Contratto API e flusso end-to-end}
+\label{sec:orchestrazione}
+
+L'Orchestratore è il componente di integrazione del sistema.
+Esso espone verso l'esterno due endpoint: \texttt{/explain} e \texttt{/health}.
+L'endpoint \texttt{/explain} riceve una \texttt{CDSSRequest} in formato JSON,
+invoca il Rule Engine tramite \texttt{/evaluate} e, condizionatamente
+all'esito simbolico, attiva la pipeline RAG per la generazione della
+spiegazione.
+L'endpoint \texttt{/health} consente al sistema di monitoraggio e al
+processo di ingestione di verificare la raggiungibilità del servizio
+prima di avviare operazioni critiche.
+
+Il contratto API è versionato tramite i campi \texttt{schema\_version}
+(\schemaversion) e \texttt{engine\_version} (\engineversion), esposti
+in ogni risposta.
+La relazione fra i due campi è deliberata: \texttt{schema\_version}
+identifica il contratto JSON degli oggetti scambiati, mentre
+\texttt{engine\_version} identifica la versione del codice che interpreta
+le regole YAML; un aggiornamento normativo che non modifica il contratto
+JSON incrementa soltanto \texttt{engine\_version}, mentre un cambiamento
+nello schema degli oggetti Pydantic richiede l'aggiornamento di entrambi.
+Questo disaccoppiamento consente ai client (la demo, gli script di valutazione)
+di gestire la compatibilità in modo esplicito.
+
+La gestione dei casi \decision{NON\_DETERMINABILE} merita attenzione separata.
+Quando il Rule Engine restituisce questo esito, l'Orchestratore non sopprime
+la richiesta alla pipeline RAG: genera comunque una spiegazione, ma
+etichettata esplicitamente come \emph{informativa}, distinta dalla spiegazione
+di una decisione definitiva.
+Il testo informa il clinico su quali campi mancanti impediscono la
+determinazione e quali valori ipotetici, se confermati, porterebbero
+a un esito positivo o negativo; questa modalità è la base della funzionalità
+what-if, il quinto dei requisiti funzionali sopra elencati.
+
+I casi \decision{ROUTED} vengono invece gestiti con un pattern di rinvio:
+l'Orchestratore restituisce nella risposta l'identificatore della Nota
+verso cui il caso è stato instradato, lasciando al client il compito
+di reindirizzare la richiesta al percorso prescrittivo corretto.
+Il testo esplicativo accompagna il routing con le motivazioni normative
+(ad esempio: il farmaco prescritto non rientra nell'ambito della Nota~01
+ma potrebbe rientrare nella Nota~13 per indicazioni ipolipemizzanti).
+
+Sul piano della robustezza, l'Orchestratore implementa un meccanismo di
+timeout esplicito per le chiamate a Ollama: se il modello non risponde
+entro il limite configurato, viene restituito il template conservativo
+dell'invariante di sicurezza, che almeno garantisce al clinico la decisione
+simbolica corretta anche in assenza della spiegazione testuale.
+
+L'architettura sviluppata in questo capitolo si regge su un solo principio:
+la separazione netta fra il layer decisionale simbolico, formalmente
+verificabile e deterministico, e il layer esplicativo neurale, utile e ricco
+ma intrinsecamente stocastico. Il rule engine garantisce la correttezza
+normativa attraverso una pipeline a fasi ordinate con logica Kleene, regole
+YAML versionabili e ancore normative verificabili; la pipeline RAG garantisce
+la qualità della spiegazione attraverso un chunker sentence-aware, un
+retriever a due stadi e un controllo post-generazione che protegge il
+clinico da eventuali allucinazioni del modello. Il contratto fra i due
+layer è espresso da tipi Pydantic validati a runtime, e il sistema è
+integralmente deployato su hardware locale per rispettare i vincoli di
+privacy dei dati clinici. Questa separazione è anche ciò che rende
+nette le domande di ricerca: poiché la decisione non dipende mai dal modello
+generativo, RQ1 può chiedere se il solo layer simbolico decida come l'annotatore
+umano, e RQ3 e RQ6 possono interrogare la fedeltà e la verificabilità della
+spiegazione senza che un loro eventuale fallimento comprometta la correttezza
+dell'esito. Resta da mostrare come queste decisioni di
+progetto si traducono in codice eseguibile e riproducibile, dalla funzione
+\texttt{evaluate} ai parametri di generazione del modello linguistico: è
+il compito del \Cref{ch:implementazione}.

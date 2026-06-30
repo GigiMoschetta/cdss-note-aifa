@@ -1,0 +1,66 @@
+version: "97:2024-11"
+description: "Nota 97 — Anticoagulanti orali in FA non valvolare (FANV)"
+
+# PDF normativi (audit Day 1 fix F6-G3 BLOC):
+# Nota 97 si articola in 4 PDF: testo principale + 3 allegati.
+pdf_files:
+  - filename: "nota-97.pdf"
+    md5: "eb39b4834fee050de3dfa58b3ea07dfb"
+    sha256: "464e17ff5127a613..."
+    size_bytes: 535309
+    description: "Testo principale Nota 97 — Percorso decisionale A-D"
+    pdf_url: "https://www.aifa.gov.it/-/nota-97"
+    pdf_downloaded_at: "2026-01-XX"
+  - filename: "nota-97-all-1.pdf"
+    md5: "9757dfdba345a20133c29453a11b8202"
+    sha256: "b740f4b913f5c6fe..."
+    size_bytes: 200587
+    description: "Allegato 1 — Scheda di valutazione e prescrizione"
+    pdf_downloaded_at: "2026-01-XX"
+  - filename: "nota-97-all-2.pdf"
+    md5: "82b6f6aadc601f3eba908350da0a3fdc"
+    sha256: "1e47391422f22c13..."
+    size_bytes: 679035
+    description: "Allegato 2 — Guida alla prescrizione + Tab.4 dosaggi DOAC"
+    pdf_downloaded_at: "2026-01-XX"
+  - filename: "nota-97-all-3.pdf"
+    md5: "27e08ee9930c87356fe82edcdc81c3f0"
+    sha256: "463bd0e7490e9f79..."
+    size_bytes: 682279
+    description: "Allegato 3 — Gestione perioperatoria"
+    not_implemented_in_scope: true
+    not_implemented_reason: >
+      Allegato 3 (gestione perioperatoria di DOAC: sospensione/ripresa pre-
+      e post-intervento) richiederebbe un set di variabili cliniche aggiuntive
+      (procedura_chirurgica_prevista, livello_rischio_emorragico_intervento,
+      data_intervento_programmata) e un set di regole GUIDANCE_WARN dedicate.
+      Esula dallo scope triennale dichiarato (Note 1, 13, 97; Nota 66 inclusa
+      per copertura aggiuntiva). Documentato in LIMITATIONS.md e nel
+      manoscritto di tesi come "future work". Le citazioni RAG su questo PDF
+      restano disponibili per consultazione ma non innescano regole.
+    pdf_downloaded_at: "2026-01-XX"
+
+# Rule IDs declared in rules.yaml (audit V4 2026-05-12 — kept in sync via test_catalog_in_sync_with_rules)
+rules:
+  - N97_SCOPE_001
+  - N97_EXCL_HARD_001
+  - N97_EXCL_HARD_002
+  - N97_EXCL_HARD_ALL2_EMORRAGIA
+  - N97_EXCL_HARD_ALL2_DIATESI
+  - N97_EXCL_HARD_ALL2_GRAVIDANZA
+  - N97_EXCL_HARD_ALL2_IPERSENSIBILITA
+  - N97_EXCL_HARD_003
+  - N97_PATH_001
+  - N97_GDOSE_001
+  - N97_GDOSE_002
+  - N97_GDOSE_003
+  - N97_GDOSE_004
+  - N97_GDOSE_005
+  - N97_GPREF_001
+  - N97_GPREF_002
+  - N97_GPREF_003
+  - N97_GWARN_001
+  - N97_GWARN_002
+  - N97_GWARN_003
+  - N97_GWARN_004
+  - N97_GWARN_005

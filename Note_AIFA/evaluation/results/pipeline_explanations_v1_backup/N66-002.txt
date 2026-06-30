@@ -1,0 +1,28 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco ibuprofene è stato valutato come NON_RIMBORSABILE a causa delle sue proprietà farmacologiche e dei rischi associati. Come indicato nella FONTE 1, l'ibuprofene può aumentare il rischio di eventi trombotici, come infarto miocardico e ictus, soprattutto a dosi elevate e nel trattamento a lungo termine. Inoltre, come riportato nella FONTE 2, l'ibuprofene è associato a tossicità gastrointestinale grave, con un rischio maggiore negli anziani.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 3
+- Nota_66.pdf, p. 5
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_EXCL_HARD_001
+snippet_id: 0b5b378e8b
+Fonte: Nota_66.pdf, p. 4
+Testo: "A dosi elevate e nel trattamento a lungo termine, i FANS non selettivi potrebbero comportare un lieve aumento del rischio di
+eventi trombotici (come..."
+--- FINE ---

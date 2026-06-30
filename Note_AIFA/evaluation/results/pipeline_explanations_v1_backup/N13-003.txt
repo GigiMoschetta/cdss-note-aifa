@@ -1,0 +1,27 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco atorvastatina è motivata dalla valutazione della regola N13_SCOPE_001, che è stata valutata come FALSE. Questa regola è indicata nella FONTE 1 (nota-13.pdf, p. 5), che specifica che il trattamento di prima scelta per la terapia d'ingresso è sempre necessario assicurare l'ottimizzazione del dosaggio della statina prima di prendere in considerazione la sua sostituzione o la sua associazione. Inoltre, la FONTE 3 (nota-13.pdf, p. 3) indica che il farmaco di prima scelta per la dislipidemia familiare monogenica (FH) è l'atorvastatina, ma non specifica che debba essere utilizzato come trattamento di prima scelta.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 6
+
+
+--- PROVA NORMATIVA ---
+Regola: N13_SCOPE_001
+snippet_id: a4305e981b
+Fonte: nota-13.pdf, p. 5
+Testo: "Accanto a ciascun target terapeutico la Nota 13 identifica il trattamento di prima scelta per 
+la terapia d’ingresso. È sempre necessario assicurare..."
+--- FINE ---

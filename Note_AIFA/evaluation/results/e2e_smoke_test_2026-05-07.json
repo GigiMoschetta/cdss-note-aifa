@@ -1,0 +1,141 @@
+{
+  "results": [
+    {
+      "case_id": "N97-001",
+      "expected": "RIMBORSABILE",
+      "actual": "RIMBORSABILE",
+      "match": true,
+      "tokens": [
+        9781,
+        323
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 14.7
+    },
+    {
+      "case_id": "N97-008",
+      "expected": "NON_DETERMINABILE",
+      "actual": "NON_DETERMINABILE",
+      "match": true,
+      "tokens": [
+        8241,
+        357
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 14.0
+    },
+    {
+      "case_id": "N97-026",
+      "expected": "RIMBORSABILE",
+      "actual": "RIMBORSABILE",
+      "match": true,
+      "tokens": [
+        10051,
+        437
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 17.9
+    },
+    {
+      "case_id": "N01-001",
+      "expected": "NON_RIMBORSABILE",
+      "actual": "NON_RIMBORSABILE",
+      "match": true,
+      "tokens": [
+        5799,
+        460
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 13.8
+    },
+    {
+      "case_id": "N01-006",
+      "expected": null,
+      "actual": null,
+      "match": true,
+      "tokens": [
+        6241,
+        226
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 8.9
+    },
+    {
+      "case_id": "N13-003",
+      "expected": "NON_RIMBORSABILE",
+      "actual": "NON_RIMBORSABILE",
+      "match": true,
+      "tokens": [
+        4101,
+        420
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 11.4
+    },
+    {
+      "case_id": "N13-009",
+      "expected": "RIMBORSABILE",
+      "actual": "RIMBORSABILE",
+      "match": true,
+      "tokens": [
+        8853,
+        272
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 12.7
+    },
+    {
+      "case_id": "N66-005",
+      "expected": "NON_RIMBORSABILE",
+      "actual": "NON_RIMBORSABILE",
+      "match": true,
+      "tokens": [
+        8280,
+        740
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 23.1
+    },
+    {
+      "case_id": "N66-022",
+      "expected": "NON_RIMBORSABILE",
+      "actual": "NON_RIMBORSABILE",
+      "match": true,
+      "tokens": [
+        8286,
+        775
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 23.7
+    },
+    {
+      "case_id": "N66-024",
+      "expected": "NON_RIMBORSABILE",
+      "actual": "NON_RIMBORSABILE",
+      "match": true,
+      "tokens": [
+        8277,
+        530
+      ],
+      "redacted": false,
+      "consistent": true,
+      "elapsed_s": 18.1
+    }
+  ],
+  "summary": {
+    "n_ok": 10,
+    "n_total": 10,
+    "n_consistent": 10,
+    "n_redacted": 0,
+    "total_s": 158.4228000640869
+  }
+}

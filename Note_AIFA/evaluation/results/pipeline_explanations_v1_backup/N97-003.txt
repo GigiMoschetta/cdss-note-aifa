@@ -1,0 +1,33 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco apixaban è motivata dal fatto che il punteggio CHA2DS2-VASc è compreso nel range [4,7] e la soglia è ≥2, come indicato nella FONTE 1 (nota-97.pdf p.3). Ciò significa che il paziente non risponde alle condizioni per la copertura del farmaco.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Componenti mancanti: pregresso_ictus_tia_te, vasculopatia.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 7
+- nota-97-all-3.pdf, p. 3
+- nota-97-all-2.pdf, p. 2
+
+
+--- PROVA NORMATIVA ---
+Regola: N97_SCOPE_001
+snippet_id: 7786e4ee05
+Fonte: nota-97.pdf, p. 1
+Testo: "Farmaci inclusi 
+nella Nota AIFA:   
+  
+AVK:
+La prescrizione della terapia anticoagulante orale è a carico del 
+SSN limitatamente alla FANV e al..."
+--- FINE ---

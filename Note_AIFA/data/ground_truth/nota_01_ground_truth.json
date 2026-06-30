@@ -1,0 +1,76 @@
+{
+  "nota": "01",
+  "title": "Gastroprotettori (PPI) - Prevenzione complicanze gastrointestinali",
+  "source_pdf": "Nota_01.pdf",
+  "extracted": "2026-02-25",
+  "drugs_in_scope": [
+    "pantoprazolo",
+    "omeprazolo",
+    "misoprostolo",
+    "lansoprazolo",
+    "esomeprazolo"
+  ],
+  "inclusion_criteria": {
+    "description": "La prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore, purché sussista una delle seguenti condizioni di rischio.",
+    "therapy_conditions": {
+      "operator": "OR",
+      "conditions": [
+        {
+          "field": "uso_cronico_fans",
+          "description": "Trattamento cronico con FANS (farmaci antinfiammatori non steroidei)"
+        },
+        {
+          "field": "terapia_antiaggreg_asa",
+          "description": "Terapia antiaggregante con ASA a basse dosi"
+        }
+      ]
+    },
+    "risk_conditions": {
+      "operator": "OR",
+      "conditions": [
+        {
+          "field": "pregresse_emorragie_digestive",
+          "description": "Storia di pregresse emorragie digestive o di ulcera peptica non guarita con terapia eradicante"
+        },
+        {
+          "field": "terapia_anticoagulante",
+          "description": "Concomitante terapia con anticoagulanti o cortisonici"
+        },
+        {
+          "field": "terapia_corticosteroidea",
+          "description": "Concomitante terapia con cortisonici"
+        },
+        {
+          "field": "eta_avanzata",
+          "description": "Età avanzata (no numeric threshold in PDF — boolean clinician assessment)",
+          "ambiguity": "No numeric threshold specified in Nota_01.pdf"
+        }
+      ]
+    },
+    "logic": "therapy_condition AND risk_condition",
+    "pdf_verbatim": "La prescrizione a carico del SSN è limitata: alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore [in trattamento cronico con FANS | in terapia antiaggregante con ASA a basse dosi] purché sussista una delle seguenti condizioni di rischio [storia pregresse emorragie | terapia anticoagulanti/cortisonici | età avanzata]",
+    "source": "Nota_01.pdf p.2"
+  },
+  "exceptions": [
+    {
+      "rule_id": "N01_EXCEPT_001",
+      "description": "Misoprostolo + diclofenac association is reimbursed under Nota 66 conditions",
+      "action": "ROUTE_TO(nota_66)",
+      "pdf_verbatim": "La prescrizione dell'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66.",
+      "source": "Nota_01.pdf p.2 footnote"
+    }
+  ],
+  "guidance": [
+    {
+      "rule_id": "N01_GWARN_001",
+      "description": "General guidance warning for elderly patients and high-risk contexts",
+      "type": "GUIDANCE_WARN"
+    }
+  ],
+  "rules": [
+    {"rule_id": "N01_SCOPE_001", "phase": 1, "type": "SCOPE"},
+    {"rule_id": "N01_EXCEPT_001", "phase": 2, "type": "EXCEPTION"},
+    {"rule_id": "N01_INCL_001", "phase": 4, "type": "INCLUSION"},
+    {"rule_id": "N01_GWARN_001", "phase": 7, "type": "GUIDANCE_WARN"}
+  ]
+}

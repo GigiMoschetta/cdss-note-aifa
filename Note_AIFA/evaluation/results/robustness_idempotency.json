@@ -1,0 +1,9 @@
+{
+  "test": "rule_engine_idempotency",
+  "n_cases": 20,
+  "n_runs_per_case": 3,
+  "n_pass": 20,
+  "n_fail": 0,
+  "pass_rate": 1.0,
+  "failures": []
+}

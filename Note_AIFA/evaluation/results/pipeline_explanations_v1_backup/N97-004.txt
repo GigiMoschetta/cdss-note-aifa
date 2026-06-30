@@ -1,0 +1,33 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco valutato è l'apixaban, come indicato nella FONTE 1. La decisione di non rimborsarlo è stata determinata dalla valutazione della regola N97_SCOPE_001, come riportato nella FONTE 1. Questa regola è stata valutata come FALSE, il che ha determinato la decisione di non rimborsare il farmaco. Inoltre, il punteggio CHA2DS2-VASc è stato calcolato nel range [4,7], ma la soglia per la copertura è ≥2, come indicato nella FONTE 3. Ciò significa che il paziente non rispetta la soglia per la copertura.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   I campi mancanti sono: pregresso_ictus_tia_te e vasculopatia, come indicato nella FONTE 3. L'impatto clinico di questi dati mancanti potrebbe influire sulla valutazione del rischio trombo-embolico e del rischio emorragico del paziente.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 7
+- nota-97-all-3.pdf, p. 3
+- nota-97-all-2.pdf, p. 2
+
+
+--- PROVA NORMATIVA ---
+Regola: N97_SCOPE_001
+snippet_id: 7786e4ee05
+Fonte: nota-97.pdf, p. 1
+Testo: "Farmaci inclusi 
+nella Nota AIFA:   
+  
+AVK:
+La prescrizione della terapia anticoagulante orale è a carico del 
+SSN limitatamente alla FANV e al..."
+--- FINE ---

@@ -1,0 +1,28 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco è stata determinata dalla regola N66_EXCL_HARD_002, come indicato nella FONTE 1. Questa regola è stata valutata come TRUE, il che ha comportato l'esclusione del farmaco dalla copertura. La FONTE 1 specifica che il diclofenac e l'etoricoxib aumentano il rischio trombotico, mentre il naprossene è associato a un rischio inferiore. Inoltre, la FONTE 1 sottolinea l'importanza di utilizzare i FANS o gli inibitori selettivi della ciclossigenasi 2 nel trattamento sintomatico, alla dose minima efficace e per il periodo più breve possibile.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 5
+- Nota_66.pdf, p. 3
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_EXCL_HARD_002
+snippet_id: 0b5b378e8b
+Fonte: Nota_66.pdf, p. 4
+Testo: "A dosi elevate e nel trattamento a lungo termine, i FANS non selettivi potrebbero comportare un lieve aumento del rischio di
+eventi trombotici (come..."
+--- FINE ---

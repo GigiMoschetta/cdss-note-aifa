@@ -1,0 +1,218 @@
+{
+  "case_id": "N01-023",
+  "nota_id": "01",
+  "drug_id": "rabeprazolo",
+  "category": "RIMBORSABILE_inclusion",
+  "description": "RIMBORSABILE — rabeprazolo (PPI farmaco nuovo nel gold standard) con FANS cronico + età avanzata",
+  "tags": [
+    "rimborsabile",
+    "rabeprazolo",
+    "nota01",
+    "elderly",
+    "ppi"
+  ],
+  "input": {
+    "patient_data": {
+      "trattamento_cronico_fans": true,
+      "terapia_antiaggregante_asa": false,
+      "pregresse_emorragie_digestive": false,
+      "ulcera_peptica_non_guarita": false,
+      "terapia_concomitante_anticoagulanti": false,
+      "terapia_concomitante_cortisonici": false,
+      "eta_avanzata": true
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "RIMBORSABILE",
+        "rabeprazolo"
+      ],
+      "must_not_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Rabeprazolo è un PPI; valgono le stesse regole di Nota 01 per gli altri PPI."
+    },
+    "pdf_reference": {
+      "rule_id": "N01_INCL_001",
+      "pdf_file": "Nota_01.pdf",
+      "page": 2,
+      "section": "Box prescrittivo",
+      "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+    }
+  },
+  "engine": {
+    "actual_decision": "RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_01_0005_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_01_0006_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_01_0007_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_01_0008_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_01_0009_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_01_0004_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5969833135604858,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_01_0014_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.42031124234199524,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_01_0010_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.34797579050064087,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_01_0000_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "TABLE",
+        "stage": "semantic",
+        "score": 0.347941130399704,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_01_0011_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3242393136024475,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: RIMBORSABILE\n   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco rabeprazolo è rimborsabile in quanto è indicato per la prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con farmaci antinfiammatori non steroidei (FANS) e in terapia antiaggregante con ASA a basse dosi. Come indicato nella FONTE 6, la prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con FANS e in terapia antiaggregante con ASA a basse dosi, purché sussista una delle seguenti condizioni di rischio: storia di pregresse emorragie digestive o di ulcera peptica non guarita con terapia eradicante, concomitante terapia con anticoagulanti o cortisonici, età avanzata. Inoltre, come indicato nella FONTE 1, il misoprostolo è l'unico farmaco per il quale esistono dati convincenti che ne dimostrano l'efficacia nel ridurre l'incidenza delle complicanze gravi (emorragie, perforazioni e ostruzione pilorica) della gastropatia da FANS.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Informazione non disponibile nel testo normativo.\n\n5. FONTI\n- Nota_01.pdf, p. 2, righe 14-26, char 944-2465, sha:1acab81b63\n- Nota_01.pdf, p. 1, righe 1-16, char 0-1404, sha:097a83fcbe\n- Nota_01.pdf, p. 3, sha:be80034ea9",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'RIMBORSABILE'": true,
+        "contains:'rabeprazolo'": true,
+        "not_contains:'NON_RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 5744,
+      "completion_tokens": 426,
+      "total_tokens": 6170
+    },
+    "latency_s": 11.78
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N01-023",
+      "gold_pdf_file": "Nota_01.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 87,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.75,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.6667,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

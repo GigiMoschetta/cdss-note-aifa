@@ -1,0 +1,3344 @@
+{
+  "metric": "M3_semantic_faithfulness_v2",
+  "description": "NLI entailment of LLM motivation sentences against retrieved chunks (Italian via mDeBERTa-XNLI, GPU fp16)",
+  "model": "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7",
+  "tautological": false,
+  "limitations": [
+    "Multilingual model — not fine-tuned on Italian normative text",
+    "SF mean entailment is interpreted as a LOWER BOUND of actual faithfulness"
+  ],
+  "n_cases_total": 122,
+  "aggregate": {
+    "n_cases_evaluated": 122,
+    "n_cases_skipped": 0,
+    "sf_mean_entailment": 0.2953,
+    "sf_median_entailment": 0.2869,
+    "sf_std_entailment": 0.1791,
+    "sf_mean_contradiction": 0.3047,
+    "n_with_high_contradiction_total": 110
+  },
+  "per_case": [
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.2906,
+      "mean_max_contradiction": 0.0945,
+      "min_max_entailment": 0.0367,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 29, il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che supera la soglia d...",
+          "max_entailment": 0.459,
+          "max_contradiction": 0.1501
+        },
+        {
+          "sentence_preview": "Ciò significa che il paziente è a rischio alto di ictus e embolia arteriosa periferica.",
+          "max_entailment": 0.0407,
+          "max_contradiction": 0.0275
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 1, la scelta dell'anticoagulante da utilizzare deve considerare il rischio trombo-emb...",
+          "max_entailment": 0.0367,
+          "max_contradiction": 0.0041
+        }
+      ],
+      "case_id": "N97-001"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.4144,
+      "mean_max_contradiction": 0.1031,
+      "min_max_entailment": 0.1252,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 29, il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che supera la soglia d...",
+          "max_entailment": 0.7601,
+          "max_contradiction": 0.0479
+        },
+        {
+          "sentence_preview": "Ciò indica un alto rischio trombo-embolico per il paziente.",
+          "max_entailment": 0.1464,
+          "max_contradiction": 0.152
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 1, la scelta dell'anticoagulante da utilizzare deve considerare il rischio trombo-em...",
+          "max_entailment": 0.1252,
+          "max_contradiction": 0.0162
+        }
+      ],
+      "case_id": "N97-002"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.7068,
+      "mean_max_contradiction": 0.399,
+      "min_max_entailment": 0.0827,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato e la decisione è stata presa in base alla Nota AIFA 97.",
+          "max_entailment": 0.9919,
+          "max_contradiction": 0.0773
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la Nota AIFA 97 stabilisce che la prescrizione della terapia anticoagulante orale è a caric...",
+          "max_entailment": 0.9154,
+          "max_contradiction": 0.5143
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere nel range [4,7], ma la soglia per la scelta del trattamento...",
+          "max_entailment": 0.8372,
+          "max_contradiction": 0.0927
+        },
+        {
+          "sentence_preview": "Pertanto, il farmaco apixaban non è stato scelto in base a questa soglia.",
+          "max_entailment": 0.0827,
+          "max_contradiction": 0.9116
+        }
+      ],
+      "case_id": "N97-003"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.5792,
+      "mean_max_contradiction": 0.2384,
+      "min_max_entailment": 0.0429,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato e la decisione è stata presa in base alla Nota AIFA 97.",
+          "max_entailment": 0.9919,
+          "max_contradiction": 0.0773
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la Nota AIFA 97 stabilisce che la prescrizione della terapia anticoagulante orale è a caric...",
+          "max_entailment": 0.9154,
+          "max_contradiction": 0.5143
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere nel range [4,7], ma la soglia per la copertura è ≥2.",
+          "max_entailment": 0.3665,
+          "max_contradiction": 0.0588
+        },
+        {
+          "sentence_preview": "Pertanto, nonostante il punteggio sia nel range, la soglia non è stata superata e quindi il farmaco non è coperto.",
+          "max_entailment": 0.0429,
+          "max_contradiction": 0.3032
+        }
+      ],
+      "case_id": "N97-004"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.4485,
+      "mean_max_contradiction": 0.1816,
+      "min_max_entailment": 0.0242,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco apixaban è motivata dal fatto che il punteggio CHA2DS2-VASc è di 4, che è infe...",
+          "max_entailment": 0.0242,
+          "max_contradiction": 0.4389
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la terapia anticoagulante nella FANV deve essere personalizzata considerando il rischio tro...",
+          "max_entailment": 0.932,
+          "max_contradiction": 0.0349
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 2, la scelta dell'anticoagulante deve essere basata sulla valutazione del rischio tr...",
+          "max_entailment": 0.3894,
+          "max_contradiction": 0.071
+        }
+      ],
+      "case_id": "N97-005"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.0592,
+      "mean_max_contradiction": 0.6866,
+      "min_max_entailment": 0.0077,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco dabigatran è stata determinata dalla regola N97_EXCL_HARD_003, come indicato n...",
+          "max_entailment": 0.0239,
+          "max_contradiction": 0.6979
+        },
+        {
+          "sentence_preview": "Questa regola è stata valutata come TRUE, escludendo quindi la copertura del farmaco.",
+          "max_entailment": 0.0077,
+          "max_contradiction": 0.938
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato in [4, 4], ma la soglia per la copertura è ≥2, come indicato nella FONTE 25 ...",
+          "max_entailment": 0.1906,
+          "max_contradiction": 0.1278
+        },
+        {
+          "sentence_preview": "Pertanto, non è stato raggiunto il requisito per la copertura.",
+          "max_entailment": 0.0144,
+          "max_contradiction": 0.9829
+        }
+      ],
+      "case_id": "N97-006"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.1727,
+      "mean_max_contradiction": 0.594,
+      "min_max_entailment": 0.0036,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato come NON_RIMBORSABILE in base alla Nota AIFA 97.",
+          "max_entailment": 0.5611,
+          "max_contradiction": 0.9419
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [1, 1], ma la soglia per inizi...",
+          "max_entailment": 0.1213,
+          "max_contradiction": 0.3253
+        },
+        {
+          "sentence_preview": "Pertanto, il paziente non risulta essere eleggibile per la terapia con apixaban.",
+          "max_entailment": 0.0049,
+          "max_contradiction": 0.9876
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 3, la Nota 97 specifica che i NAO/DOAC sono generalmente preferibili per i pazienti ...",
+          "max_entailment": 0.0036,
+          "max_contradiction": 0.1211
+        }
+      ],
+      "case_id": "N97-007"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.424,
+      "mean_max_contradiction": 0.6063,
+      "min_max_entailment": 0.001,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato con un punteggio CHA2DS2-VASc di [5,6] e una soglia di None.",
+          "max_entailment": 0.6379,
+          "max_contradiction": 0.7775
+        },
+        {
+          "sentence_preview": "Secondo la FONTE 1, la scelta terapeutica finale dipenderà comunque dalla valutazione clinica e dovrà considerare la pre...",
+          "max_entailment": 0.8852,
+          "max_contradiction": 0.0536
+        },
+        {
+          "sentence_preview": "La FONTE 1 indica che la terapia anticoagulante dovrà essere iniziata in tutti i pazienti con punteggio CHA2DS2-VASc >2 ...",
+          "max_entailment": 0.1719,
+          "max_contradiction": 0.5995
+        },
+        {
+          "sentence_preview": "Tuttavia, non è stato possibile calcolare lo score CHA2DS2-VASc a causa della mancanza di informazioni sulla sessualità ...",
+          "max_entailment": 0.001,
+          "max_contradiction": 0.9947
+        }
+      ],
+      "case_id": "N97-008"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2216,
+      "mean_max_contradiction": 0.0865,
+      "min_max_entailment": 0.0178,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE è motivata dal fatto che il punteggio CHA2DS2-VASc è compreso nel range [1,2] e la sog...",
+          "max_entailment": 0.0178,
+          "max_contradiction": 0.2091
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per definire il rischio trombo-embolico e la soglia ...",
+          "max_entailment": 0.5736,
+          "max_contradiction": 0.0203
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 2, il rischio emorragico è considerato elevato in presenza di fattori come recente em...",
+          "max_entailment": 0.0734,
+          "max_contradiction": 0.0302
+        }
+      ],
+      "case_id": "N97-009"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 5,
+      "mean_max_entailment": 0.5664,
+      "mean_max_contradiction": 0.2341,
+      "min_max_entailment": 0.1627,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco dabigatran è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arte...",
+          "max_entailment": 0.6001,
+          "max_contradiction": 0.1599
+        },
+        {
+          "sentence_preview": "La scelta del farmaco è stata basata sul punteggio CHA2DS2-VASc, che è stato calcolato come 5,5.",
+          "max_entailment": 0.1627,
+          "max_contradiction": 0.1669
+        },
+        {
+          "sentence_preview": "La soglia per la prescrizione del farmaco è stata stabilita a ≥2.",
+          "max_entailment": 0.9563,
+          "max_contradiction": 0.3641
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per definire il rischio trombo-embolico e la scelta ...",
+          "max_entailment": 0.766,
+          "max_contradiction": 0.0291
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 29 indica che i NAO/DOAC, tra cui il dabigatran, possono essere considerati sovrapponibili per la prev...",
+          "max_entailment": 0.3467,
+          "max_contradiction": 0.4507
+        }
+      ],
+      "case_id": "N97-010"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.1321,
+      "mean_max_contradiction": 0.2583,
+      "min_max_entailment": 0.023,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco rivaroxaban è rimborsabile in quanto il punteggio CHA2DS2-VASc è di 4, che supera la soglia di 2, come indica...",
+          "max_entailment": 0.2411,
+          "max_contradiction": 0.5001
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota AIFA valuta che il farmaco sia efficace per la prevenzione dell'ictus e dell'embolia arteriosa periferi...",
+          "max_entailment": 0.023,
+          "max_contradiction": 0.0164
+        }
+      ],
+      "case_id": "N97-011"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 5,
+      "mean_max_entailment": 0.5012,
+      "mean_max_contradiction": 0.3354,
+      "min_max_entailment": 0.0086,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco warfarin è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.483,
+          "max_contradiction": 0.1897
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che supera la soglia di 2.",
+          "max_entailment": 0.7947,
+          "max_contradiction": 0.2011
+        },
+        {
+          "sentence_preview": "Ciò indica un alto rischio trombo-embolico.",
+          "max_entailment": 0.3453,
+          "max_contradiction": 0.3857
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta dell'anticoagulante da utilizzare dipende dalla valutazione clinica e dalla prese...",
+          "max_entailment": 0.8743,
+          "max_contradiction": 0.7819
+        },
+        {
+          "sentence_preview": "I NAO/DOAC sono generalmente preferibili per i pazienti con alto rischio trombo-embolico e basso rischio emorragico.",
+          "max_entailment": 0.0086,
+          "max_contradiction": 0.1187
+        }
+      ],
+      "case_id": "N97-012"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.5204,
+      "mean_max_contradiction": 0.3469,
+      "min_max_entailment": 0.2313,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta terapeutica finale dipenderà comunque dalla valutazione clinica e dovrà considera...",
+          "max_entailment": 0.8094,
+          "max_contradiction": 0.0272
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [2,2], che è inferiore alla soglia di 2.",
+          "max_entailment": 0.2313,
+          "max_contradiction": 0.8613
+        },
+        {
+          "sentence_preview": "Pertanto, il farmaco apixaban è stato considerato idoneo per la prescrizione.",
+          "max_entailment": 0.4151,
+          "max_contradiction": 0.3026
+        }
+      ],
+      "case_id": "N97-013"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.4666,
+      "mean_max_contradiction": 0.106,
+      "min_max_entailment": 0.0911,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta terapeutica finale dipenderà comunque dalla valutazione clinica e dovrà considera...",
+          "max_entailment": 0.8094,
+          "max_contradiction": 0.0272
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [3,3], che supera la soglia di 3.",
+          "max_entailment": 0.34,
+          "max_contradiction": 0.1763
+        },
+        {
+          "sentence_preview": "Pertanto, il farmaco è stato considerato idoneo per la prescrizione.",
+          "max_entailment": 0.0911,
+          "max_contradiction": 0.0242
+        }
+      ],
+      "case_id": "N97-014"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2374,
+      "mean_max_contradiction": 0.1309,
+      "min_max_entailment": 0.0078,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_RIMBORSABILITÀ del farmaco apixaban è motivata dal fatto che il punteggio CHA2DS2-VASc è di 2, che è...",
+          "max_entailment": 0.0214,
+          "max_contradiction": 0.3112
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per valutare il rischio trombo-embolico e il rischio...",
+          "max_entailment": 0.6829,
+          "max_contradiction": 0.0649
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 3, la Nota 97 specifica che la terapia anticoagulante orale deve essere personalizza...",
+          "max_entailment": 0.0078,
+          "max_contradiction": 0.0167
+        }
+      ],
+      "case_id": "N97-015"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.0458,
+      "mean_max_contradiction": 0.4834,
+      "min_max_entailment": 0.0043,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco dabigatran è stata determinata dalla regola N97_EXCL_HARD_002, come indicato n...",
+          "max_entailment": 0.0532,
+          "max_contradiction": 0.4351
+        },
+        {
+          "sentence_preview": "Questa regola è stata valutata come TRUE, escludendo quindi la copertura del farmaco.",
+          "max_entailment": 0.021,
+          "max_contradiction": 0.8488
+        },
+        {
+          "sentence_preview": "La motivazione principale è la presenza di controindicazioni, come riportato nella FONTE 1 (nota-97.pdf p.4).",
+          "max_entailment": 0.0043,
+          "max_contradiction": 0.5499
+        },
+        {
+          "sentence_preview": "Inoltre, il punteggio CHA2DS2-VASc è stato calcolato come [4, 4], che è inferiore alla soglia di 2, come riportato nella...",
+          "max_entailment": 0.1047,
+          "max_contradiction": 0.0998
+        }
+      ],
+      "case_id": "N97-016"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.407,
+      "mean_max_contradiction": 0.3178,
+      "min_max_entailment": 0.0296,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco edoxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.5277,
+          "max_contradiction": 0.2529
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta terapeutica finale dipenderà comunque dalla valutazione clinica e dovrà considera...",
+          "max_entailment": 0.8094,
+          "max_contradiction": 0.0272
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che è superiore alla soglia di 2, quindi il paziente...",
+          "max_entailment": 0.0296,
+          "max_contradiction": 0.0021
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 29, i NAO/DOAC possono essere considerati globalmente sovrapponibili per l'uso prevalente nell...",
+          "max_entailment": 0.2612,
+          "max_contradiction": 0.9891
+        }
+      ],
+      "case_id": "N97-017"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.3479,
+      "mean_max_contradiction": 0.1868,
+      "min_max_entailment": 0.1464,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 29, il punteggio CHA2DS2-VASc è stato calcolato e risulta essere 5, che è superiore alla sogli...",
+          "max_entailment": 0.3649,
+          "max_contradiction": 0.1664
+        },
+        {
+          "sentence_preview": "Ciò indica un alto rischio trombo-embolico per il paziente.",
+          "max_entailment": 0.1464,
+          "max_contradiction": 0.152
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 30, i NAO/DOAC, tra cui l'apixaban, possono essere considerati sovrapponibili per la ...",
+          "max_entailment": 0.2544,
+          "max_contradiction": 0.2326
+        }
+      ],
+      "case_id": "N97-018"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.3441,
+      "mean_max_contradiction": 0.1506,
+      "min_max_entailment": 0.0372,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 29, il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che supera la soglia d...",
+          "max_entailment": 0.459,
+          "max_contradiction": 0.1501
+        },
+        {
+          "sentence_preview": "Ciò significa che il paziente è a rischio elevato di ictus e embolia arteriosa periferica.",
+          "max_entailment": 0.0372,
+          "max_contradiction": 0.0232
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 30, i NAO/DOAC, tra cui l'apixaban, possono essere considerati sovrapponibili per la ...",
+          "max_entailment": 0.2544,
+          "max_contradiction": 0.2326
+        }
+      ],
+      "case_id": "N97-019"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 5,
+      "mean_max_entailment": 0.4493,
+      "mean_max_contradiction": 0.1268,
+      "min_max_entailment": 0.1464,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco edoxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.5277,
+          "max_contradiction": 0.2529
+        },
+        {
+          "sentence_preview": "La scelta del farmaco è stata influenzata dal punteggio CHA2DS2-VASc, che è stato calcolato come [4,4] e risulta superio...",
+          "max_entailment": 0.5089,
+          "max_contradiction": 0.0833
+        },
+        {
+          "sentence_preview": "Ciò indica un alto rischio trombo-embolico per il paziente.",
+          "max_entailment": 0.1464,
+          "max_contradiction": 0.152
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta del farmaco deve essere personalizzata considerando il rischio trombo-embolico e ...",
+          "max_entailment": 0.5775,
+          "max_contradiction": 0.0172
+        },
+        {
+          "sentence_preview": "In questo caso, il punteggio CHA2DS2-VASc e la soglia di 2 sono stati utilizzati come criteri per la scelta del farmaco.",
+          "max_entailment": 0.4858,
+          "max_contradiction": 0.1287
+        }
+      ],
+      "case_id": "N97-020"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.4518,
+      "mean_max_contradiction": 0.3249,
+      "min_max_entailment": 0.1719,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco edoxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.5277,
+          "max_contradiction": 0.2529
+        },
+        {
+          "sentence_preview": "La scelta del farmaco è stata basata sul punteggio CHA2DS2-VASc, che è stato calcolato come [4, 4] (FONTE 1, p.",
+          "max_entailment": 0.1719,
+          "max_contradiction": 0.2796
+        },
+        {
+          "sentence_preview": "La soglia per la scelta del farmaco è stata stabilita a ≥ 3 (FONTE 1, p.",
+          "max_entailment": 0.88,
+          "max_contradiction": 0.5953
+        },
+        {
+          "sentence_preview": "Il farmaco edoxaban è stato selezionato per la sua efficacia e sicurezza, nonché per la sua facilità di utilizzo e la su...",
+          "max_entailment": 0.2275,
+          "max_contradiction": 0.1717
+        }
+      ],
+      "case_id": "N97-021"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 5,
+      "mean_max_entailment": 0.5212,
+      "mean_max_contradiction": 0.1663,
+      "min_max_entailment": 0.0305,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che supera la soglia di 2.",
+          "max_entailment": 0.7947,
+          "max_contradiction": 0.2011
+        },
+        {
+          "sentence_preview": "Ciò indica un alto rischio trombo-embolico.",
+          "max_entailment": 0.3453,
+          "max_contradiction": 0.3857
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta terapeutica finale dipenderà comunque dalla valutazione clinica e dovrà considera...",
+          "max_entailment": 0.8094,
+          "max_contradiction": 0.0272
+        },
+        {
+          "sentence_preview": "In particolare, i NAO/DOAC sono generalmente preferibili per i pazienti che sono già in trattamento con AVK con scarsa q...",
+          "max_entailment": 0.0305,
+          "max_contradiction": 0.021
+        }
+      ],
+      "case_id": "N97-022"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.445,
+      "mean_max_contradiction": 0.4102,
+      "min_max_entailment": 0.2153,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco edoxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.5277,
+          "max_contradiction": 0.2529
+        },
+        {
+          "sentence_preview": "La scelta del farmaco è stata basata sul punteggio CHA2DS2-VASc, che è stato calcolato come [4,4] e sulla soglia di 2.",
+          "max_entailment": 0.2153,
+          "max_contradiction": 0.626
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per valutare il rischio trombo-embolico e la scelta ...",
+          "max_entailment": 0.8081,
+          "max_contradiction": 0.0197
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 29, i NAO/DOAC, tra cui l'edoxaban, sono stati considerati globalmente sovrapponibili...",
+          "max_entailment": 0.2286,
+          "max_contradiction": 0.7424
+        }
+      ],
+      "case_id": "N97-023"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 5,
+      "mean_max_entailment": 0.4863,
+      "mean_max_contradiction": 0.325,
+      "min_max_entailment": 0.0224,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco rivaroxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia art...",
+          "max_entailment": 0.5934,
+          "max_contradiction": 0.2742
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che supera la soglia di 2.",
+          "max_entailment": 0.7947,
+          "max_contradiction": 0.2011
+        },
+        {
+          "sentence_preview": "Ciò indica un alto rischio trombo-embolico per il paziente.",
+          "max_entailment": 0.1464,
+          "max_contradiction": 0.152
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta dell'anticoagulante da utilizzare dipende dalla valutazione clinica e dalla prese...",
+          "max_entailment": 0.8743,
+          "max_contradiction": 0.7819
+        },
+        {
+          "sentence_preview": "Il rivaroxaban è stato valutato come opzione per i pazienti con alto rischio trombo-embolico e basso rischio emorragico.",
+          "max_entailment": 0.0224,
+          "max_contradiction": 0.216
+        }
+      ],
+      "case_id": "N97-024"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 5,
+      "mean_max_entailment": 0.3695,
+      "mean_max_contradiction": 0.1657,
+      "min_max_entailment": 0.0074,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco dabigatran è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arte...",
+          "max_entailment": 0.6001,
+          "max_contradiction": 0.1599
+        },
+        {
+          "sentence_preview": "La scelta del farmaco è stata basata sul punteggio CHA2DS2-VASc, che è stato calcolato come 5,5.",
+          "max_entailment": 0.1627,
+          "max_contradiction": 0.1669
+        },
+        {
+          "sentence_preview": "La soglia per la scelta del farmaco è stata stabilita a ≥2.",
+          "max_entailment": 0.9208,
+          "max_contradiction": 0.2728
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per definire il rischio trombo-embolico e la scelta ...",
+          "max_entailment": 0.1566,
+          "max_contradiction": 0.2174
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 29, i NAO/DOAC sono preferibili per i pazienti con punteggio CHA2DS2-VASc >2 (se masc...",
+          "max_entailment": 0.0074,
+          "max_contradiction": 0.0116
+        }
+      ],
+      "case_id": "N97-025"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.4568,
+      "mean_max_contradiction": 0.3362,
+      "min_max_entailment": 0.0072,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco warfarin è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.483,
+          "max_contradiction": 0.1897
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4, 4], che supera la soglia di ≥2.",
+          "max_entailment": 0.4625,
+          "max_contradiction": 0.0942
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta dell'anticoagulante da utilizzare dipende dalla valutazione clinica e dalla prese...",
+          "max_entailment": 0.8743,
+          "max_contradiction": 0.7819
+        },
+        {
+          "sentence_preview": "I NAO/DOAC sono generalmente preferibili per i pazienti con scarsa qualità del controllo del trattamento con AVK o con p...",
+          "max_entailment": 0.0072,
+          "max_contradiction": 0.2791
+        }
+      ],
+      "case_id": "N97-026"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 5,
+      "mean_max_entailment": 0.3449,
+      "mean_max_contradiction": 0.1177,
+      "min_max_entailment": 0.0533,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 29, il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che supera la soglia d...",
+          "max_entailment": 0.459,
+          "max_contradiction": 0.1501
+        },
+        {
+          "sentence_preview": "Ciò significa che il paziente è a rischio alto per ictus e embolia arteriosa periferica.",
+          "max_entailment": 0.0533,
+          "max_contradiction": 0.0297
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 1, la scelta dell'anticoagulante da utilizzare deve considerare il rischio trombo-emb...",
+          "max_entailment": 0.1287,
+          "max_contradiction": 0.0179
+        },
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato come efficace e sicuro nella prevenzione dell'ictus e dell'embolia arteriosa perife...",
+          "max_entailment": 0.4577,
+          "max_contradiction": 0.1943
+        }
+      ],
+      "case_id": "N97-027"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.4558,
+      "mean_max_contradiction": 0.5436,
+      "min_max_entailment": 0.2492,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è RIMBORSABILE in quanto il punteggio CHA2DS2-VASc è di 4, che supera la soglia di 2, come indicato ...",
+          "max_entailment": 0.6624,
+          "max_contradiction": 0.5433
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 29 (nota-97.pdf p.3), i NAO/DOAC, tra cui l'apixaban, possono essere considerati glo...",
+          "max_entailment": 0.2492,
+          "max_contradiction": 0.5439
+        }
+      ],
+      "case_id": "N97-028"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.4801,
+      "mean_max_contradiction": 0.1603,
+      "min_max_entailment": 0.0261,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE è motivata dal fatto che il punteggio CHA2DS2-VASc è compreso nel range [2,3] e la sog...",
+          "max_entailment": 0.0261,
+          "max_contradiction": 0.3978
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per definire il rischio trombo-embolico e la soglia ...",
+          "max_entailment": 0.7038,
+          "max_contradiction": 0.0158
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 30, la scelta terapeutica finale dipenderà comunque dalla valutazione clinica e dovr...",
+          "max_entailment": 0.7103,
+          "max_contradiction": 0.0671
+        }
+      ],
+      "case_id": "N97-029"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.4253,
+      "mean_max_contradiction": 0.3399,
+      "min_max_entailment": 0.0643,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco dabigatran è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arte...",
+          "max_entailment": 0.6001,
+          "max_contradiction": 0.1599
+        },
+        {
+          "sentence_preview": "La scelta del farmaco è stata basata sul punteggio CHA2DS2-VASc, che è stato calcolato come [4,4] e la soglia è stata fi...",
+          "max_entailment": 0.88,
+          "max_contradiction": 0.1363
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per definire il rischio trombo-embolico e la scelta ...",
+          "max_entailment": 0.1566,
+          "max_contradiction": 0.2174
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 29, i NAO/DOAC sono considerati globalmente sovrapponibili e possono essere scelti in...",
+          "max_entailment": 0.0643,
+          "max_contradiction": 0.846
+        }
+      ],
+      "case_id": "N97-030"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.6731,
+      "mean_max_contradiction": 0.1016,
+      "min_max_entailment": 0.6001,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco dabigatran è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arte...",
+          "max_entailment": 0.6001,
+          "max_contradiction": 0.1599
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta terapeutica finale dipenderà comunque dalla valutazione clinica e dovrà considera...",
+          "max_entailment": 0.8094,
+          "max_contradiction": 0.0272
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4,4], che supera la soglia di 2, come indicato nella FONTE...",
+          "max_entailment": 0.6224,
+          "max_contradiction": 0.1341
+        },
+        {
+          "sentence_preview": "Pertanto, il farmaco dabigatran è stato considerato idoneo per la prevenzione dell'ictus e dell'embolia arteriosa perife...",
+          "max_entailment": 0.6605,
+          "max_contradiction": 0.0851
+        }
+      ],
+      "case_id": "N97-031"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.0578,
+      "mean_max_contradiction": 0.6391,
+      "min_max_entailment": 0.0077,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco dabigatran è stata determinata dalla regola N97_EXCL_HARD_003, come indicato n...",
+          "max_entailment": 0.0239,
+          "max_contradiction": 0.6979
+        },
+        {
+          "sentence_preview": "Questa regola è stata valutata come TRUE, escludendo quindi la copertura del farmaco.",
+          "max_entailment": 0.0077,
+          "max_contradiction": 0.938
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato in [4, 4], ma la soglia per la copertura è ≥2, come indicato nella FONTE 25 ...",
+          "max_entailment": 0.1906,
+          "max_contradiction": 0.1278
+        },
+        {
+          "sentence_preview": "Pertanto, nonostante il punteggio CHA2DS2-VASc sia superiore alla soglia, la regola N97_EXCL_HARD_003 ha determinato la ...",
+          "max_entailment": 0.0091,
+          "max_contradiction": 0.7927
+        }
+      ],
+      "case_id": "N97-032"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.6153,
+      "mean_max_contradiction": 0.2541,
+      "min_max_entailment": 0.2411,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco rivaroxaban è rimborsabile in quanto il punteggio CHA2DS2-VASc è di 4, che supera la soglia di 2, come indica...",
+          "max_entailment": 0.2411,
+          "max_contradiction": 0.5001
+        },
+        {
+          "sentence_preview": "La scelta terapeutica finale dipenderà comunque dalla valutazione clinica e dovrà considerare la presenza di fattori di ...",
+          "max_entailment": 0.9895,
+          "max_contradiction": 0.0082
+        }
+      ],
+      "case_id": "N97-033"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.5035,
+      "mean_max_contradiction": 0.3817,
+      "min_max_entailment": 0.162,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco rivaroxaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia art...",
+          "max_entailment": 0.5934,
+          "max_contradiction": 0.2742
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la scelta dell'anticoagulante da utilizzare in diversi tipi di pazienti è determinata dal p...",
+          "max_entailment": 0.162,
+          "max_contradiction": 0.5571
+        },
+        {
+          "sentence_preview": "La soglia per iniziare un trattamento anticoagulante è ≥2, quindi il paziente è eleggibile per il trattamento con rivaro...",
+          "max_entailment": 0.9812,
+          "max_contradiction": 0.0687
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 29, i NAO/DOAC, tra cui il rivaroxaban, possono essere considerati globalmente sovrap...",
+          "max_entailment": 0.2774,
+          "max_contradiction": 0.6268
+        }
+      ],
+      "case_id": "N97-034"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.3326,
+      "mean_max_contradiction": 0.1172,
+      "min_max_entailment": 0.1252,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 29, il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [5,5], che supera la soglia d...",
+          "max_entailment": 0.4331,
+          "max_contradiction": 0.1043
+        },
+        {
+          "sentence_preview": "Ciò indica un alto rischio trombo-embolico per il paziente.",
+          "max_entailment": 0.1464,
+          "max_contradiction": 0.152
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 1, la scelta dell'anticoagulante da utilizzare deve considerare il rischio trombo-em...",
+          "max_entailment": 0.1252,
+          "max_contradiction": 0.0162
+        }
+      ],
+      "case_id": "N97-035"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2374,
+      "mean_max_contradiction": 0.1309,
+      "min_max_entailment": 0.0078,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_RIMBORSABILITÀ del farmaco apixaban è motivata dal fatto che il punteggio CHA2DS2-VASc è di 2, che è...",
+          "max_entailment": 0.0214,
+          "max_contradiction": 0.3112
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per valutare il rischio trombo-embolico e il rischio...",
+          "max_entailment": 0.6829,
+          "max_contradiction": 0.0649
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 3, la Nota 97 specifica che la terapia anticoagulante orale deve essere personalizza...",
+          "max_entailment": 0.0078,
+          "max_contradiction": 0.0167
+        }
+      ],
+      "case_id": "N97-036"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2964,
+      "mean_max_contradiction": 0.3637,
+      "min_max_entailment": 0.008,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco warfarin è motivata dalla presenza di una condizione esclusiva (N97_EXCL_HARD_...",
+          "max_entailment": 0.0215,
+          "max_contradiction": 0.042
+        },
+        {
+          "sentence_preview": "Questa condizione esclude la copertura del farmaco.",
+          "max_entailment": 0.008,
+          "max_contradiction": 0.9981
+        },
+        {
+          "sentence_preview": "Inoltre, il punteggio CHA2DS2-VASc è di 2, che è inferiore alla soglia di 3, come indicato nella FONTE 2 (nota-97.pdf p....",
+          "max_entailment": 0.8596,
+          "max_contradiction": 0.051
+        }
+      ],
+      "case_id": "N97-037"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2945,
+      "mean_max_contradiction": 0.4414,
+      "min_max_entailment": 0.0337,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato come NON_RIMBORSABILE a causa di una regola esclusiva (N97_EXCL_HARD_ALL2_EMORRAGIA...",
+          "max_entailment": 0.287,
+          "max_contradiction": 0.8817
+        },
+        {
+          "sentence_preview": "Questa regola è indicata nella FONTE 1 (nota-97-all-2.pdf p.2) e riguarda le principali controindicazioni/avvertenze.",
+          "max_entailment": 0.0337,
+          "max_contradiction": 0.3787
+        },
+        {
+          "sentence_preview": "Il punteggio CHA2DS2-VASc è stato calcolato come [4, 4] e la soglia è ≥2, come indicato nella FONTE 2 (nota-97.pdf p.3).",
+          "max_entailment": 0.5627,
+          "max_contradiction": 0.064
+        }
+      ],
+      "case_id": "N97-038"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.522,
+      "mean_max_contradiction": 0.2737,
+      "min_max_entailment": 0.1566,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco dabigatran è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arte...",
+          "max_entailment": 0.6001,
+          "max_contradiction": 0.1599
+        },
+        {
+          "sentence_preview": "La scelta del farmaco è stata basata sul punteggio CHA2DS2-VASc, che è stato calcolato come [4,4] e la soglia è stata fi...",
+          "max_entailment": 0.993,
+          "max_contradiction": 0.0157
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per definire il rischio trombo-embolico e la scelta ...",
+          "max_entailment": 0.1566,
+          "max_contradiction": 0.2174
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 29, i NAO/DOAC, tra cui il dabigatran, possono essere considerati globalmente sovrapp...",
+          "max_entailment": 0.338,
+          "max_contradiction": 0.7017
+        }
+      ],
+      "case_id": "N97-039"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.3326,
+      "mean_max_contradiction": 0.1172,
+      "min_max_entailment": 0.1252,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione dell'ictus e dell'embolia arteri...",
+          "max_entailment": 0.6259,
+          "max_contradiction": 0.1964
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 29, il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [5,5], che supera la soglia d...",
+          "max_entailment": 0.4331,
+          "max_contradiction": 0.1043
+        },
+        {
+          "sentence_preview": "Ciò indica un alto rischio trombo-embolico per il paziente.",
+          "max_entailment": 0.1464,
+          "max_contradiction": 0.152
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 1, la scelta dell'anticoagulante da utilizzare deve considerare il rischio trombo-em...",
+          "max_entailment": 0.1252,
+          "max_contradiction": 0.0162
+        }
+      ],
+      "case_id": "N97-040"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2695,
+      "mean_max_contradiction": 0.2057,
+      "min_max_entailment": 0.0362,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco omeprazolo è motivata dalla presenza di condizioni di rischio che rendono nece...",
+          "max_entailment": 0.0362,
+          "max_contradiction": 0.0567
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 6, la prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tr...",
+          "max_entailment": 0.6766,
+          "max_contradiction": 0.54
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 1 sottolinea l'importanza della considerazione delle condizioni di rischio, tra cui storia di pregress...",
+          "max_entailment": 0.0956,
+          "max_contradiction": 0.0204
+        }
+      ],
+      "case_id": "N01-001"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.259,
+      "mean_max_contradiction": 0.3422,
+      "min_max_entailment": 0.1178,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco omeprazolo è rimborsabile in quanto è stato valutato come efficace nella prevenzione delle complicanze gravi ...",
+          "max_entailment": 0.2236,
+          "max_contradiction": 0.0358
+        },
+        {
+          "sentence_preview": "In particolare, la Nota AIFA valuta che l'omeprazolo sia efficace nella prevenzione delle ulcere gastriche e duodenali, ...",
+          "max_entailment": 0.4355,
+          "max_contradiction": 0.4549
+        },
+        {
+          "sentence_preview": "Ciò è confermato anche dalle evidenze disponibili riportate nella FONTE 2, che mostrano la superiorità dell'omeprazolo r...",
+          "max_entailment": 0.1178,
+          "max_contradiction": 0.536
+        }
+      ],
+      "case_id": "N01-002"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.326,
+      "mean_max_contradiction": 0.177,
+      "min_max_entailment": 0.0893,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di rimborso del farmaco pantoprazolo è motivata dalla presenza di condizioni di rischio per le complicanze ...",
+          "max_entailment": 0.3124,
+          "max_contradiction": 0.052
+        },
+        {
+          "sentence_preview": "In particolare, la Nota AIFA valuta che il trattamento cronico con farmaci antinfiammatori non steroidei (FANS) possa au...",
+          "max_entailment": 0.5763,
+          "max_contradiction": 0.136
+        },
+        {
+          "sentence_preview": "La prescrizione del farmaco è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore i...",
+          "max_entailment": 0.0893,
+          "max_contradiction": 0.3431
+        }
+      ],
+      "case_id": "N01-003"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3643,
+      "mean_max_contradiction": 0.3479,
+      "min_max_entailment": 0.0184,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco omeprazolo è stato valutato per la sua efficacia nella prevenzione delle complicanze gravi del tratto gastroi...",
+          "max_entailment": 0.8999,
+          "max_contradiction": 0.2389
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 6, la prescrizione dell'omeprazolo è limitata alla prevenzione delle complicanze gravi del tra...",
+          "max_entailment": 0.1746,
+          "max_contradiction": 0.7748
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 3, l'omeprazolo è stato confrontato con ranitidina e misoprostolo in due trial con u...",
+          "max_entailment": 0.0184,
+          "max_contradiction": 0.0298
+        }
+      ],
+      "case_id": "N01-004"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2882,
+      "mean_max_contradiction": 0.1204,
+      "min_max_entailment": 0.0248,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco è motivata dalla presenza di condizioni di rischio che possono aumentare il ri...",
+          "max_entailment": 0.0248,
+          "max_contradiction": 0.0138
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 6, la Nota AIFA limita la prescrizione a carico del SSN alla prevenzione delle complicanze gra...",
+          "max_entailment": 0.1798,
+          "max_contradiction": 0.2823
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 1, l'uso di anticoagulanti e l'età avanzata (65-75 anni) sono risultate essere condi...",
+          "max_entailment": 0.6601,
+          "max_contradiction": 0.0649
+        }
+      ],
+      "case_id": "N01-005"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3652,
+      "mean_max_contradiction": 0.7646,
+      "min_max_entailment": 0.2962,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco è soggetto alla Nota 66, come indicato nella Nota AIFA valutata.",
+          "max_entailment": 0.2962,
+          "max_contradiction": 0.6783
+        },
+        {
+          "sentence_preview": "La Nota 66 riguarda la prescrizione dell'associazione misoprostolo + diclofenac, che è rimborsata alle condizioni previs...",
+          "max_entailment": 0.3808,
+          "max_contradiction": 0.7138
+        },
+        {
+          "sentence_preview": "La Nota 66 è citata nella FONTE 6 (Nota_01.pdf p.1).",
+          "max_entailment": 0.4186,
+          "max_contradiction": 0.9018
+        }
+      ],
+      "case_id": "N01-006"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2239,
+      "mean_max_contradiction": 0.1692,
+      "min_max_entailment": 0.0126,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco omeprazolo è rimborsabile in quanto è stato valutato come efficace nella prevenzione delle complicanze gravi ...",
+          "max_entailment": 0.2236,
+          "max_contradiction": 0.0358
+        },
+        {
+          "sentence_preview": "In particolare, la Nota AIFA valuta che l'omeprazolo sia efficace nella prevenzione delle ulcere gastriche e duodenali, ...",
+          "max_entailment": 0.4355,
+          "max_contradiction": 0.4549
+        },
+        {
+          "sentence_preview": "La motivazione principale per la rimborsabilità dell'omeprazolo è la sua efficacia nella riduzione del rischio di ulcere...",
+          "max_entailment": 0.0126,
+          "max_contradiction": 0.0168
+        }
+      ],
+      "case_id": "N01-007"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.4443,
+      "mean_max_contradiction": 0.1814,
+      "min_max_entailment": 0.0042,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco omeprazolo è rimborsabile in quanto è stato valutato nella Nota AIFA 01.",
+          "max_entailment": 0.754,
+          "max_contradiction": 0.0569
+        },
+        {
+          "sentence_preview": "La motivazione principale per la rimborsabilità è la sua efficacia nella prevenzione delle complicanze gravi del tratto ...",
+          "max_entailment": 0.0042,
+          "max_contradiction": 0.1648
+        },
+        {
+          "sentence_preview": "In particolare, l'omeprazolo è stato valutato nella prevenzione delle ulcere gastriche e duodenali in pazienti trattati ...",
+          "max_entailment": 0.5559,
+          "max_contradiction": 0.0141
+        },
+        {
+          "sentence_preview": "La sua efficacia è stata dimostrata in studi clinici randomizzati e osservazionali, come riportato nella FONTE 1 e nella...",
+          "max_entailment": 0.463,
+          "max_contradiction": 0.4898
+        }
+      ],
+      "case_id": "N01-008"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3496,
+      "mean_max_contradiction": 0.1694,
+      "min_max_entailment": 0.2236,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco omeprazolo è rimborsabile in quanto è stato valutato come efficace nella prevenzione delle complicanze gravi ...",
+          "max_entailment": 0.2236,
+          "max_contradiction": 0.0358
+        },
+        {
+          "sentence_preview": "In particolare, la Nota AIFA valuta che l'omeprazolo sia efficace nella prevenzione delle ulcere gastriche e duodenali, ...",
+          "max_entailment": 0.4355,
+          "max_contradiction": 0.4549
+        },
+        {
+          "sentence_preview": "Ciò è supportato da studi clinici randomizzati e osservazionali, come riportato nella FONTE 1 e nella FONTE 2.",
+          "max_entailment": 0.3898,
+          "max_contradiction": 0.0175
+        }
+      ],
+      "case_id": "N01-009"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3062,
+      "mean_max_contradiction": 0.0527,
+      "min_max_entailment": 0.1239,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco omeprazolo è rimborsabile in quanto è stato valutato nella Nota AIFA e risulta essere efficace nella prevenzi...",
+          "max_entailment": 0.1877,
+          "max_contradiction": 0.0338
+        },
+        {
+          "sentence_preview": "In particolare, l'omeprazolo è stato confrontato con altri farmaci, come il misoprostolo e la ranitidina, e ha dimostrat...",
+          "max_entailment": 0.6069,
+          "max_contradiction": 0.1122
+        },
+        {
+          "sentence_preview": "Inoltre, l'omeprazolo è stato utilizzato nella prevenzione del sanguinamento gastrico causato dai FANS tradizionali e da...",
+          "max_entailment": 0.1239,
+          "max_contradiction": 0.0122
+        }
+      ],
+      "case_id": "N01-010"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.5417,
+      "mean_max_contradiction": 0.1954,
+      "min_max_entailment": 0.0062,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE per l'omeprazolo è motivata dalla presenza di condizioni che influiscono sulla sua eff...",
+          "max_entailment": 0.8445,
+          "max_contradiction": 0.0045
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, l'uso di anticoagulanti e l'età avanzata (65-75 anni) sono condizioni predisponenti al risc...",
+          "max_entailment": 0.9257,
+          "max_contradiction": 0.0144
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 2 sottolinea l'importanza dell'infezione da H.pylori nella strategia di prevenzione del sanguinamento ...",
+          "max_entailment": 0.3903,
+          "max_contradiction": 0.3302
+        },
+        {
+          "sentence_preview": "La FONTE 3 e la FONTE 4 evidenziano che la superiore efficacia dell'inibitore di pompa rispetto a misoprostolo e a dosi ...",
+          "max_entailment": 0.0062,
+          "max_contradiction": 0.4326
+        }
+      ],
+      "case_id": "N01-011"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.5056,
+      "mean_max_contradiction": 0.1469,
+      "min_max_entailment": 0.0219,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE per l'omeprazolo è motivata dalla presenza di condizioni che influiscono sulla sua eff...",
+          "max_entailment": 0.8445,
+          "max_contradiction": 0.0045
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, l'uso di anticoagulanti e l'età avanzata (65-75 anni) sono condizioni predisponenti al risc...",
+          "max_entailment": 0.9257,
+          "max_contradiction": 0.0144
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 3 sottolinea l'importanza dell'infezione da H.pylori nella strategia di prevenzione del sanguinamento ...",
+          "max_entailment": 0.2304,
+          "max_contradiction": 0.2752
+        },
+        {
+          "sentence_preview": "La FONTE 4 evidenzia come la superiore efficacia dell'inibitore di pompa rispetto a misoprostolo e a dosi usuali di H2 b...",
+          "max_entailment": 0.0219,
+          "max_contradiction": 0.2935
+        }
+      ],
+      "case_id": "N01-012"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.678,
+      "mean_max_contradiction": 0.2456,
+      "min_max_entailment": 0.2455,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE è motivata dalla presenza di condizioni di rischio che richiedono una gastroprotezione...",
+          "max_entailment": 0.9794,
+          "max_contradiction": 0.0147
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 10, la prescrizione del farmaco è limitata alla prevenzione delle complicanze gravi del tratto...",
+          "max_entailment": 0.2455,
+          "max_contradiction": 0.708
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 1, l'uso di anticoagulanti e l'età avanzata (65-75 anni) sono condizioni predisponen...",
+          "max_entailment": 0.8091,
+          "max_contradiction": 0.014
+        }
+      ],
+      "case_id": "N01-013"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.259,
+      "mean_max_contradiction": 0.3422,
+      "min_max_entailment": 0.1178,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco omeprazolo è rimborsabile in quanto è stato valutato come efficace nella prevenzione delle complicanze gravi ...",
+          "max_entailment": 0.2236,
+          "max_contradiction": 0.0358
+        },
+        {
+          "sentence_preview": "In particolare, la Nota AIFA valuta che l'omeprazolo sia efficace nella prevenzione delle ulcere gastriche e duodenali, ...",
+          "max_entailment": 0.4355,
+          "max_contradiction": 0.4549
+        },
+        {
+          "sentence_preview": "Ciò è confermato anche dalle evidenze disponibili riportate nella FONTE 2, che mostrano la superiorità dell'omeprazolo r...",
+          "max_entailment": 0.1178,
+          "max_contradiction": 0.536
+        }
+      ],
+      "case_id": "N01-014"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2695,
+      "mean_max_contradiction": 0.2057,
+      "min_max_entailment": 0.0362,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco omeprazolo è motivata dalla presenza di condizioni di rischio che rendono nece...",
+          "max_entailment": 0.0362,
+          "max_contradiction": 0.0567
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 6, la prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tr...",
+          "max_entailment": 0.6766,
+          "max_contradiction": 0.54
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 1 sottolinea l'importanza della considerazione delle condizioni di rischio, tra cui storia di pregress...",
+          "max_entailment": 0.0956,
+          "max_contradiction": 0.0204
+        }
+      ],
+      "case_id": "N01-015"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3643,
+      "mean_max_contradiction": 0.3479,
+      "min_max_entailment": 0.0184,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco omeprazolo è stato valutato per la sua efficacia nella prevenzione delle complicanze gravi del tratto gastroi...",
+          "max_entailment": 0.8999,
+          "max_contradiction": 0.2389
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 6, la prescrizione dell'omeprazolo è limitata alla prevenzione delle complicanze gravi del tra...",
+          "max_entailment": 0.1746,
+          "max_contradiction": 0.7748
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 3, l'omeprazolo è stato confrontato con ranitidina e misoprostolo in due trial con u...",
+          "max_entailment": 0.0184,
+          "max_contradiction": 0.0298
+        }
+      ],
+      "case_id": "N01-016"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.5332,
+      "mean_max_contradiction": 0.2373,
+      "min_max_entailment": 0.2078,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco esomeprazolo è rimborsabile in quanto è stato valutato come efficace nella prevenzione delle complicanze grav...",
+          "max_entailment": 0.2078,
+          "max_contradiction": 0.3477
+        },
+        {
+          "sentence_preview": "In particolare, la Nota AIFA valuta che il trattamento cronico con farmaci antinfiammatori non steroidei (FANS) possa de...",
+          "max_entailment": 0.5187,
+          "max_contradiction": 0.1003
+        },
+        {
+          "sentence_preview": "Pertanto, il farmaco esomeprazolo è considerato efficace nella prevenzione di tali complicanze, come riportato nella FON...",
+          "max_entailment": 0.8731,
+          "max_contradiction": 0.2638
+        }
+      ],
+      "case_id": "N01-017"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.318,
+      "mean_max_contradiction": 0.1704,
+      "min_max_entailment": 0.0893,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di rimborso del farmaco lansoprazolo è motivata dalla presenza di condizioni di rischio per le complicanze ...",
+          "max_entailment": 0.2883,
+          "max_contradiction": 0.032
+        },
+        {
+          "sentence_preview": "In particolare, la Nota AIFA valuta che il trattamento cronico con farmaci antinfiammatori non steroidei (FANS) possa au...",
+          "max_entailment": 0.5763,
+          "max_contradiction": 0.136
+        },
+        {
+          "sentence_preview": "La prescrizione del farmaco è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore i...",
+          "max_entailment": 0.0893,
+          "max_contradiction": 0.3431
+        }
+      ],
+      "case_id": "N01-018"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3652,
+      "mean_max_contradiction": 0.7646,
+      "min_max_entailment": 0.2962,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco è soggetto alla Nota 66, come indicato nella Nota AIFA valutata.",
+          "max_entailment": 0.2962,
+          "max_contradiction": 0.6783
+        },
+        {
+          "sentence_preview": "La Nota 66 riguarda la prescrizione dell'associazione misoprostolo + diclofenac, che è rimborsata alle condizioni previs...",
+          "max_entailment": 0.3808,
+          "max_contradiction": 0.7138
+        },
+        {
+          "sentence_preview": "La Nota 66 è citata nella FONTE 6 (Nota_01.pdf p.1).",
+          "max_entailment": 0.4186,
+          "max_contradiction": 0.9018
+        }
+      ],
+      "case_id": "N01-019"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3652,
+      "mean_max_contradiction": 0.7646,
+      "min_max_entailment": 0.2962,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco è soggetto alla Nota 66, come indicato nella Nota AIFA valutata.",
+          "max_entailment": 0.2962,
+          "max_contradiction": 0.6783
+        },
+        {
+          "sentence_preview": "La Nota 66 riguarda la prescrizione dell'associazione misoprostolo + diclofenac, che è rimborsata alle condizioni previs...",
+          "max_entailment": 0.3808,
+          "max_contradiction": 0.7138
+        },
+        {
+          "sentence_preview": "La Nota 66 è citata nella FONTE 6 (Nota_01.pdf p.1).",
+          "max_entailment": 0.4186,
+          "max_contradiction": 0.9018
+        }
+      ],
+      "case_id": "N01-020"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3652,
+      "mean_max_contradiction": 0.7646,
+      "min_max_entailment": 0.2962,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco è soggetto alla Nota 66, come indicato nella Nota AIFA valutata.",
+          "max_entailment": 0.2962,
+          "max_contradiction": 0.6783
+        },
+        {
+          "sentence_preview": "La Nota 66 riguarda la prescrizione dell'associazione misoprostolo + diclofenac, che è rimborsata alle condizioni previs...",
+          "max_entailment": 0.3808,
+          "max_contradiction": 0.7138
+        },
+        {
+          "sentence_preview": "La Nota 66 è citata nella FONTE 6 (Nota_01.pdf p.1).",
+          "max_entailment": 0.4186,
+          "max_contradiction": 0.9018
+        }
+      ],
+      "case_id": "N01-021"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3652,
+      "mean_max_contradiction": 0.7646,
+      "min_max_entailment": 0.2962,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco è soggetto alla Nota 66, come indicato nella Nota AIFA valutata.",
+          "max_entailment": 0.2962,
+          "max_contradiction": 0.6783
+        },
+        {
+          "sentence_preview": "La Nota 66 riguarda la prescrizione dell'associazione misoprostolo + diclofenac, che è rimborsata alle condizioni previs...",
+          "max_entailment": 0.3808,
+          "max_contradiction": 0.7138
+        },
+        {
+          "sentence_preview": "La Nota 66 è citata nella FONTE 6 (Nota_01.pdf p.1).",
+          "max_entailment": 0.4186,
+          "max_contradiction": 0.9018
+        }
+      ],
+      "case_id": "N01-022"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.4907,
+      "mean_max_contradiction": 0.5726,
+      "min_max_entailment": 0.2336,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco rabeprazolo è rimborsabile in quanto è indicato per la prevenzione delle complicanze gravi del tratto gastroi...",
+          "max_entailment": 0.2336,
+          "max_contradiction": 0.0325
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 6, la prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tr...",
+          "max_entailment": 0.2802,
+          "max_contradiction": 0.7106
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 1, il misoprostolo è l'unico farmaco per il quale esistono dati convincenti che ne di...",
+          "max_entailment": 0.9584,
+          "max_contradiction": 0.9748
+        }
+      ],
+      "case_id": "N01-023"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2856,
+      "mean_max_contradiction": 0.2543,
+      "min_max_entailment": 0.0043,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il misoprostolo è rimborsabile in quanto risulta essere l'unico farmaco per il quale esistono dati convincenti che ne di...",
+          "max_entailment": 0.0043,
+          "max_contradiction": 0.5185
+        },
+        {
+          "sentence_preview": "Ciò è confermato da uno studio di grandi dimensioni (8853 pazienti) che ha documentato una riduzione del 40% di dette co...",
+          "max_entailment": 0.8429,
+          "max_contradiction": 0.052
+        },
+        {
+          "sentence_preview": "Inoltre, una metanalisi di 24 studi ha confermato detta efficacia (FONTE 2).",
+          "max_entailment": 0.0096,
+          "max_contradiction": 0.1924
+        }
+      ],
+      "case_id": "N01-024"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.4023,
+      "mean_max_contradiction": 0.6487,
+      "min_max_entailment": 0.1507,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1507,
+          "max_contradiction": 0.2304
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, l'uso dei farmaci ipolipemizzanti deve essere continuativo e non occasionale, e la Nota 13 ...",
+          "max_entailment": 0.3368,
+          "max_contradiction": 0.9418
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 20, l'atorvastatina è indicata per i pazienti con rischio medio, moderato e alto, e ...",
+          "max_entailment": 0.7193,
+          "max_contradiction": 0.7739
+        }
+      ],
+      "case_id": "N13-001"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2736,
+      "mean_max_contradiction": 0.3784,
+      "min_max_entailment": 0.0329,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare l'atorvastatina è motivata dalla valutazione della regola N13_SCOPE_001, che è stata valu...",
+          "max_entailment": 0.0329,
+          "max_contradiction": 0.93
+        },
+        {
+          "sentence_preview": "Questa regola è descritta nella FONTE 1 (nota-13.pdf p.5), che indica che l'uso dei farmaci ipolipemizzanti deve essere ...",
+          "max_entailment": 0.5548,
+          "max_contradiction": 0.1162
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 2 (nota-13.pdf p.5) specifica che l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN ...",
+          "max_entailment": 0.233,
+          "max_contradiction": 0.0889
+        }
+      ],
+      "case_id": "N13-002"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2736,
+      "mean_max_contradiction": 0.3784,
+      "min_max_entailment": 0.0329,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare l'atorvastatina è motivata dalla valutazione della regola N13_SCOPE_001, che è stata valu...",
+          "max_entailment": 0.0329,
+          "max_contradiction": 0.93
+        },
+        {
+          "sentence_preview": "Questa regola è descritta nella FONTE 1 (nota-13.pdf p.5), che indica che l'uso dei farmaci ipolipemizzanti deve essere ...",
+          "max_entailment": 0.5548,
+          "max_contradiction": 0.1162
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 2 (nota-13.pdf p.5) specifica che l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN ...",
+          "max_entailment": 0.233,
+          "max_contradiction": 0.0889
+        }
+      ],
+      "case_id": "N13-003"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.0791,
+      "mean_max_contradiction": 0.326,
+      "min_max_entailment": 0.034,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare l'atorvastatina è motivata dalla valutazione della regola N13_PATH_001, che è stata valut...",
+          "max_entailment": 0.0522,
+          "max_contradiction": 0.8249
+        },
+        {
+          "sentence_preview": "Ciò è indicato nella FONTE 1 (nota-13.pdf p.1), che specifica i criteri di prescrivibilità.",
+          "max_entailment": 0.151,
+          "max_contradiction": 0.0995
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota 13 ha stabilito che l'atorvastatina non è la prima scelta per il trattamento dei pazienti con rischio m...",
+          "max_entailment": 0.034,
+          "max_contradiction": 0.0536
+        }
+      ],
+      "case_id": "N13-004"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1031,
+      "mean_max_contradiction": 0.4747,
+      "min_max_entailment": 0.0075,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco atorvastatina è motivata dalla valutazione della regola N13_INCL_001, che è st...",
+          "max_entailment": 0.0444,
+          "max_contradiction": 0.8593
+        },
+        {
+          "sentence_preview": "Ciò è indicato nella FONTE 1 (nota-13.pdf p.1).",
+          "max_entailment": 0.2575,
+          "max_contradiction": 0.5514
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota 13 specifica che la prescrizione a carico del SSN è limitata ai pazienti affetti da ipercolesterolemia ...",
+          "max_entailment": 0.0075,
+          "max_contradiction": 0.0134
+        }
+      ],
+      "case_id": "N13-005"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0275,
+      "mean_max_contradiction": 0.018,
+      "min_max_entailment": 0.0194,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di rimborso del farmaco atorvastatina è motivata dalla sua inclusione nella lista dei farmaci prescrivibili...",
+          "max_entailment": 0.0357,
+          "max_contradiction": 0.0172
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine, inclusa l'atorvastatina, è considerata utile e rimborsata dal SSN solo ...",
+          "max_entailment": 0.0194,
+          "max_contradiction": 0.0188
+        }
+      ],
+      "case_id": "N13-006"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.0873,
+      "mean_max_contradiction": 0.1753,
+      "min_max_entailment": 0.0124,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco ezetimibe è rimborsabile secondo la Nota AIFA 13, come indicato nella FONTE 2.",
+          "max_entailment": 0.2276,
+          "max_contradiction": 0.4916
+        },
+        {
+          "sentence_preview": "La Nota 13 ha riconsiderato il ruolo dell'associazione tra ezetimibe e statine, e ha stabilito che l'associazione tra ez...",
+          "max_entailment": 0.0124,
+          "max_contradiction": 0.0189
+        },
+        {
+          "sentence_preview": "Inoltre, nei pazienti che siano intolleranti alle statine, è altresì ammessa, a carico del SSN, la monoterapia con ezeti...",
+          "max_entailment": 0.0218,
+          "max_contradiction": 0.0153
+        }
+      ],
+      "case_id": "N13-007"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0575,
+      "mean_max_contradiction": 0.1428,
+      "min_max_entailment": 0.005,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1099,
+          "max_contradiction": 0.2623
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazienti nei quali le statine a do...",
+          "max_entailment": 0.005,
+          "max_contradiction": 0.0233
+        }
+      ],
+      "case_id": "N13-008"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0575,
+      "mean_max_contradiction": 0.1428,
+      "min_max_entailment": 0.005,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1099,
+          "max_contradiction": 0.2623
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazienti nei quali le statine a do...",
+          "max_entailment": 0.005,
+          "max_contradiction": 0.0233
+        }
+      ],
+      "case_id": "N13-009"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0654,
+      "mean_max_contradiction": 0.5464,
+      "min_max_entailment": 0.0178,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE per l'atorvastatina è motivata dalla presenza di regole superate (FONTE 1, p.4) e dall...",
+          "max_entailment": 0.0178,
+          "max_contradiction": 0.2482
+        },
+        {
+          "sentence_preview": "In particolare, la Nota AIFA valuta che l'atorvastatina non sia determinabile in base alle informazioni disponibili.",
+          "max_entailment": 0.1129,
+          "max_contradiction": 0.8447
+        }
+      ],
+      "case_id": "N13-010"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.2673,
+      "mean_max_contradiction": 0.0387,
+      "min_max_entailment": 0.0293,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE per l'atorvastatina è motivata dalla necessità di valutare ulteriormente la sua effica...",
+          "max_entailment": 0.0293,
+          "max_contradiction": 0.0131
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, l'uso dei farmaci ipolipemizzanti deve essere continuativo e non occasionale, e la scelta d...",
+          "max_entailment": 0.7972,
+          "max_contradiction": 0.1112
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota AIFA richiede che l'ottimizzazione del dosaggio della statina sia garantita prima di considerare la sua...",
+          "max_entailment": 0.0872,
+          "max_contradiction": 0.0232
+        },
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE è quindi motivata dalla necessità di valutare ulteriormente l'efficacia e la sicurezza...",
+          "max_entailment": 0.1554,
+          "max_contradiction": 0.0073
+        }
+      ],
+      "case_id": "N13-011"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2123,
+      "mean_max_contradiction": 0.1484,
+      "min_max_entailment": 0.0391,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1507,
+          "max_contradiction": 0.2304
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, l'uso dei farmaci ipolipemizzanti deve essere continuativo e non occasionale, e la Nota 13 ...",
+          "max_entailment": 0.4471,
+          "max_contradiction": 0.1874
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 2, l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazi...",
+          "max_entailment": 0.0391,
+          "max_contradiction": 0.0274
+        }
+      ],
+      "case_id": "N13-012"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1031,
+      "mean_max_contradiction": 0.4747,
+      "min_max_entailment": 0.0075,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco atorvastatina è motivata dalla valutazione della regola N13_INCL_001, che è st...",
+          "max_entailment": 0.0444,
+          "max_contradiction": 0.8593
+        },
+        {
+          "sentence_preview": "Ciò è indicato nella FONTE 1 (nota-13.pdf p.1).",
+          "max_entailment": 0.2575,
+          "max_contradiction": 0.5514
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota 13 specifica che la prescrizione a carico del SSN è limitata ai pazienti affetti da ipercolesterolemia ...",
+          "max_entailment": 0.0075,
+          "max_contradiction": 0.0134
+        }
+      ],
+      "case_id": "N13-013"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1031,
+      "mean_max_contradiction": 0.4747,
+      "min_max_entailment": 0.0075,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco atorvastatina è motivata dalla valutazione della regola N13_INCL_001, che è st...",
+          "max_entailment": 0.0444,
+          "max_contradiction": 0.8593
+        },
+        {
+          "sentence_preview": "Ciò è indicato nella FONTE 1 (nota-13.pdf p.1).",
+          "max_entailment": 0.2575,
+          "max_contradiction": 0.5514
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota 13 specifica che la prescrizione a carico del SSN è limitata ai pazienti affetti da ipercolesterolemia ...",
+          "max_entailment": 0.0075,
+          "max_contradiction": 0.0134
+        }
+      ],
+      "case_id": "N13-014"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1031,
+      "mean_max_contradiction": 0.4747,
+      "min_max_entailment": 0.0075,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco atorvastatina è motivata dalla valutazione della regola N13_INCL_001, che è st...",
+          "max_entailment": 0.0444,
+          "max_contradiction": 0.8593
+        },
+        {
+          "sentence_preview": "Ciò è indicato nella FONTE 1 (nota-13.pdf p.1).",
+          "max_entailment": 0.2575,
+          "max_contradiction": 0.5514
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota 13 specifica che la prescrizione a carico del SSN è limitata ai pazienti affetti da ipercolesterolemia ...",
+          "max_entailment": 0.0075,
+          "max_contradiction": 0.0134
+        }
+      ],
+      "case_id": "N13-015"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1031,
+      "mean_max_contradiction": 0.4747,
+      "min_max_entailment": 0.0075,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco atorvastatina è motivata dalla valutazione della regola N13_INCL_001, che è st...",
+          "max_entailment": 0.0444,
+          "max_contradiction": 0.8593
+        },
+        {
+          "sentence_preview": "Ciò è indicato nella FONTE 1 (nota-13.pdf p.1).",
+          "max_entailment": 0.2575,
+          "max_contradiction": 0.5514
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota 13 specifica che la prescrizione a carico del SSN è limitata ai pazienti affetti da ipercolesterolemia ...",
+          "max_entailment": 0.0075,
+          "max_contradiction": 0.0134
+        }
+      ],
+      "case_id": "N13-016"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0275,
+      "mean_max_contradiction": 0.018,
+      "min_max_entailment": 0.0194,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di rimborso del farmaco atorvastatina è motivata dalla sua inclusione nella lista dei farmaci prescrivibili...",
+          "max_entailment": 0.0357,
+          "max_contradiction": 0.0172
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine, inclusa l'atorvastatina, è considerata utile e rimborsata dal SSN solo ...",
+          "max_entailment": 0.0194,
+          "max_contradiction": 0.0188
+        }
+      ],
+      "case_id": "N13-017"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0589,
+      "mean_max_contradiction": 0.1365,
+      "min_max_entailment": 0.0079,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1099,
+          "max_contradiction": 0.2623
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine, inclusa l'atorvastatina, è utile e rimborsata dal SSN solo nei pazienti...",
+          "max_entailment": 0.0079,
+          "max_contradiction": 0.0106
+        }
+      ],
+      "case_id": "N13-018"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0575,
+      "mean_max_contradiction": 0.1428,
+      "min_max_entailment": 0.005,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1099,
+          "max_contradiction": 0.2623
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazienti nei quali le statine a do...",
+          "max_entailment": 0.005,
+          "max_contradiction": 0.0233
+        }
+      ],
+      "case_id": "N13-019"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0275,
+      "mean_max_contradiction": 0.018,
+      "min_max_entailment": 0.0194,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di rimborso del farmaco atorvastatina è motivata dalla sua inclusione nella lista dei farmaci prescrivibili...",
+          "max_entailment": 0.0357,
+          "max_contradiction": 0.0172
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine, inclusa l'atorvastatina, è considerata utile e rimborsata dal SSN solo ...",
+          "max_entailment": 0.0194,
+          "max_contradiction": 0.0188
+        }
+      ],
+      "case_id": "N13-020"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0573,
+      "mean_max_contradiction": 0.1407,
+      "min_max_entailment": 0.0047,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1099,
+          "max_contradiction": 0.2623
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazienti nei quali le statine a do...",
+          "max_entailment": 0.0047,
+          "max_contradiction": 0.0192
+        }
+      ],
+      "case_id": "N13-021"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0589,
+      "mean_max_contradiction": 0.1365,
+      "min_max_entailment": 0.0079,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1099,
+          "max_contradiction": 0.2623
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine, inclusa l'atorvastatina, è utile e rimborsata dal SSN solo nei pazienti...",
+          "max_entailment": 0.0079,
+          "max_contradiction": 0.0106
+        }
+      ],
+      "case_id": "N13-022"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3314,
+      "mean_max_contradiction": 0.7677,
+      "min_max_entailment": 0.0442,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La simvastatina è stata valutata come RIMBORSABILE in base alla Nota AIFA 13.",
+          "max_entailment": 0.578,
+          "max_contradiction": 0.323
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 20, la simvastatina è inclusa nella lista dei farmaci prescrivibili a carico del SSN per il tr...",
+          "max_entailment": 0.372,
+          "max_contradiction": 0.9928
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 23, la simvastatina è indicata come trattamento di prima scelta per i pazienti con r...",
+          "max_entailment": 0.0442,
+          "max_contradiction": 0.9872
+        }
+      ],
+      "case_id": "N13-023"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.256,
+      "mean_max_contradiction": 0.6575,
+      "min_max_entailment": 0.0215,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco valutato è la pravastatina, che è stata valutata come RIMBORSABILE secondo la Nota AIFA.",
+          "max_entailment": 0.3655,
+          "max_contradiction": 0.9669
+        },
+        {
+          "sentence_preview": "Ciò è motivato dal fatto che la pravastatina è stata inclusa nella lista dei farmaci prescrivibili a carico del SSN per ...",
+          "max_entailment": 0.0215,
+          "max_contradiction": 0.0129
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 20, la pravastatina è stata inclusa nella lista dei farmaci prescrivibili a carico del SSN per...",
+          "max_entailment": 0.381,
+          "max_contradiction": 0.9926
+        }
+      ],
+      "case_id": "N13-024"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3421,
+      "mean_max_contradiction": 0.6734,
+      "min_max_entailment": 0.1248,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La fluvastatina è stata valutata come RIMBORSABILE in base alla Nota AIFA 13.",
+          "max_entailment": 0.5944,
+          "max_contradiction": 0.3104
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 23, la fluvastatina è inclusa nella lista dei farmaci prescrivibili a carico del SSN per i paz...",
+          "max_entailment": 0.3071,
+          "max_contradiction": 0.989
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 20, la fluvastatina è indicata come trattamento di 1° livello per i pazienti con ris...",
+          "max_entailment": 0.1248,
+          "max_contradiction": 0.7208
+        }
+      ],
+      "case_id": "N13-025"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.0474,
+      "mean_max_contradiction": 0.067,
+      "min_max_entailment": 0.0076,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di rimborso del farmaco lovastatina è motivata dalla sua inclusione nella Nota AIFA 13 come trattamento di ...",
+          "max_entailment": 0.0076,
+          "max_contradiction": 0.0306
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, la Nota 13 identifica il trattamento di prima scelta per ciascun target terapeutico e racco...",
+          "max_entailment": 0.0435,
+          "max_contradiction": 0.1532
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 2 specifica che l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazienti ...",
+          "max_entailment": 0.0913,
+          "max_contradiction": 0.0172
+        }
+      ],
+      "case_id": "N13-026"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1158,
+      "mean_max_contradiction": 0.0217,
+      "min_max_entailment": 0.0055,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di rimborso per la rosuvastatina è motivata dalla sua inclusione nella Nota AIFA 13 come trattamento di pri...",
+          "max_entailment": 0.0055,
+          "max_contradiction": 0.0102
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, l'uso dei farmaci ipolipemizzanti deve essere continuativo e non occasionale, e la Nota 13 ...",
+          "max_entailment": 0.2506,
+          "max_contradiction": 0.0377
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 2 specifica che l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazienti ...",
+          "max_entailment": 0.0913,
+          "max_contradiction": 0.0172
+        }
+      ],
+      "case_id": "N13-027"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.0873,
+      "mean_max_contradiction": 0.1753,
+      "min_max_entailment": 0.0124,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco ezetimibe è rimborsabile secondo la Nota AIFA 13, come indicato nella FONTE 2.",
+          "max_entailment": 0.2276,
+          "max_contradiction": 0.4916
+        },
+        {
+          "sentence_preview": "La Nota 13 ha riconsiderato il ruolo dell'associazione tra ezetimibe e statine, e ha stabilito che l'associazione tra ez...",
+          "max_entailment": 0.0124,
+          "max_contradiction": 0.0189
+        },
+        {
+          "sentence_preview": "Inoltre, nei pazienti che siano intolleranti alle statine, è altresì ammessa, a carico del SSN, la monoterapia con ezeti...",
+          "max_entailment": 0.0218,
+          "max_contradiction": 0.0153
+        }
+      ],
+      "case_id": "N13-028"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1248,
+      "mean_max_contradiction": 0.4893,
+      "min_max_entailment": 0.0539,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco simvastatina è motivata dalla valutazione della regola N13_INCL_001, che è sta...",
+          "max_entailment": 0.0539,
+          "max_contradiction": 0.8761
+        },
+        {
+          "sentence_preview": "Ciò è indicato nella FONTE 1 (nota-13.pdf p.1).",
+          "max_entailment": 0.2575,
+          "max_contradiction": 0.5514
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota 13 specifica che la terapia farmacologica dovrebbe essere intrapresa contemporaneamente alla modifica d...",
+          "max_entailment": 0.063,
+          "max_contradiction": 0.0404
+        }
+      ],
+      "case_id": "N13-029"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.0575,
+      "mean_max_contradiction": 0.1446,
+      "min_max_entailment": 0.0051,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dal...",
+          "max_entailment": 0.1099,
+          "max_contradiction": 0.2623
+        },
+        {
+          "sentence_preview": "Inoltre, l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazienti nei quali le statine a do...",
+          "max_entailment": 0.0051,
+          "max_contradiction": 0.0269
+        }
+      ],
+      "case_id": "N13-030"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.0392,
+      "mean_max_contradiction": 0.5974,
+      "min_max_entailment": 0.0149,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di rimborso per l'atorvastatina è motivata dalla sua inclusione nella lista dei farmaci prescrivibili a car...",
+          "max_entailment": 0.0206,
+          "max_contradiction": 0.0116
+        },
+        {
+          "sentence_preview": "Inoltre, l'atorvastatina è considerata una delle opzioni terapeutiche più efficaci per la riduzione del colesterolo LDL,...",
+          "max_entailment": 0.0149,
+          "max_contradiction": 0.7877
+        },
+        {
+          "sentence_preview": "La Nota 13 prevede che l'atorvastatina sia utilizzata come trattamento di prima scelta per i pazienti con rischio alto o...",
+          "max_entailment": 0.0819,
+          "max_contradiction": 0.993
+        }
+      ],
+      "case_id": "N13-031"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2272,
+      "mean_max_contradiction": 0.4141,
+      "min_max_entailment": 0.0093,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La simvastatina è stata valutata come RIMBORSABILE in base alla Nota AIFA 13.",
+          "max_entailment": 0.578,
+          "max_contradiction": 0.3191
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, l'uso dei farmaci ipolipemizzanti deve essere continuativo e non occasionale, e la Nota 13 ...",
+          "max_entailment": 0.0944,
+          "max_contradiction": 0.9161
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 2, l'associazione tra ezetimibe e statine è utile e rimborsata dal SSN solo nei pazi...",
+          "max_entailment": 0.0093,
+          "max_contradiction": 0.007
+        }
+      ],
+      "case_id": "N13-032"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.2804,
+      "mean_max_contradiction": 0.0461,
+      "min_max_entailment": 0.247,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del dolore da lieve a moderato negli adulti se...",
+          "max_entailment": 0.3138,
+          "max_contradiction": 0.0104
+        },
+        {
+          "sentence_preview": "Ciò è confermato dalla FONTE 16 (Nota_66.pdf p.3) che specifica: \"La combinazione a dose fissa a base di ibuprofene/code...",
+          "max_entailment": 0.247,
+          "max_contradiction": 0.0819
+        }
+      ],
+      "case_id": "N66-001"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.2566,
+      "mean_max_contradiction": 0.0865,
+      "min_max_entailment": 0.0086,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco ibuprofene è motivata dalla presenza di controindicazioni e avvertenze relativ...",
+          "max_entailment": 0.0739,
+          "max_contradiction": 0.0737
+        },
+        {
+          "sentence_preview": "In particolare, si sottolinea che l'uso dei FANS, soprattutto ad alte dosi e nel trattamento a lungo termine, può essere...",
+          "max_entailment": 0.8131,
+          "max_contradiction": 0.0313
+        },
+        {
+          "sentence_preview": "Inoltre, si segnala che l'ibuprofene è controindicato in caso di ulcera peptica attiva o pregressa e che ogni peggiorame...",
+          "max_entailment": 0.0086,
+          "max_contradiction": 0.2317
+        },
+        {
+          "sentence_preview": "La FONTE 2 fornisce ulteriori informazioni sulla sicurezza dell'ibuprofene e sugli studi che hanno evidenziato i rischi ...",
+          "max_entailment": 0.1308,
+          "max_contradiction": 0.0094
+        }
+      ],
+      "case_id": "N66-002"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.4596,
+      "mean_max_contradiction": 0.4241,
+      "min_max_entailment": 0.0068,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco è motivata dalla presenza di regole esclusive che hanno bloccato la copertura.",
+          "max_entailment": 0.0068,
+          "max_contradiction": 0.0099
+        },
+        {
+          "sentence_preview": "In particolare, la regola N66_EXCL_HARD_002 è stata valutata come TRUE, escludendo quindi la copertura del farmaco.",
+          "max_entailment": 0.1867,
+          "max_contradiction": 0.9471
+        },
+        {
+          "sentence_preview": "Questa regola è indicata nella FONTE 2 (Nota_66.pdf, p.",
+          "max_entailment": 0.6946,
+          "max_contradiction": 0.7052
+        },
+        {
+          "sentence_preview": "4) come controindicazione per i FANS, in particolare per il diclofenac, che è associato a un rischio intermedio di effet...",
+          "max_entailment": 0.9504,
+          "max_contradiction": 0.0341
+        }
+      ],
+      "case_id": "N66-003"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.2532,
+      "mean_max_contradiction": 0.4639,
+      "min_max_entailment": 0.0194,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il celecoxib è motivata dalla presenza di regole esclusive che hanno bloccato la copertur...",
+          "max_entailment": 0.0194,
+          "max_contradiction": 0.026
+        },
+        {
+          "sentence_preview": "In particolare, la regola N66_EXCL_HARD_003 è stata valutata come vera, escludendo quindi la copertura del farmaco.",
+          "max_entailment": 0.223,
+          "max_contradiction": 0.932
+        },
+        {
+          "sentence_preview": "Questa regola è stata definita nella FONTE 2, che indica che i FANS sono controindicati in caso di ulcera peptica attiva...",
+          "max_entailment": 0.7323,
+          "max_contradiction": 0.892
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 3 sottolinea l'importanza di utilizzare i FANS con cautela negli anziani e nelle patologie allergiche.",
+          "max_entailment": 0.038,
+          "max_contradiction": 0.0054
+        }
+      ],
+      "case_id": "N66-004"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.0185,
+      "mean_max_contradiction": 0.3847,
+      "min_max_entailment": 0.0106,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco nimesulide è motivata dalla sua presenza nella lista dei farmaci non rimborsab...",
+          "max_entailment": 0.0252,
+          "max_contradiction": 0.0117
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 16, la Nota AIFA stabilisce che la prescrizione dei farmaci antinfiammatori non steroidei a ca...",
+          "max_entailment": 0.0197,
+          "max_contradiction": 0.9944
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 12 specifica che il nimesulide è controindicato nei pazienti epatopatici, in quelli con una storia di ...",
+          "max_entailment": 0.0106,
+          "max_contradiction": 0.148
+        }
+      ],
+      "case_id": "N66-005"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.1398,
+      "mean_max_contradiction": 0.0752,
+      "min_max_entailment": 0.064,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco nimesulide è rimborsabile in quanto è indicato per il trattamento di breve durata del dolore acuto di entità ...",
+          "max_entailment": 0.064,
+          "max_contradiction": 0.0372
+        },
+        {
+          "sentence_preview": "Ciò è confermato nella FONTE 17 (Nota_66.pdf p.3), che specifica che la combinazione ibuprofene/codeina è ammessa alla r...",
+          "max_entailment": 0.2156,
+          "max_contradiction": 0.1133
+        }
+      ],
+      "case_id": "N66-006"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.1722,
+      "mean_max_contradiction": 0.0217,
+      "min_max_entailment": 0.0843,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco ibuprofene è rimborsabile in quanto è indicato per il trattamento di breve durata del dolore acuto di entità ...",
+          "max_entailment": 0.0843,
+          "max_contradiction": 0.0312
+        },
+        {
+          "sentence_preview": "Ciò è confermato dalla FONTE 16 (Nota_66.pdf p.3), che specifica che la combinazione ibuprofene/codeina è indicata nel t...",
+          "max_entailment": 0.2601,
+          "max_contradiction": 0.0121
+        }
+      ],
+      "case_id": "N66-007"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1545,
+      "mean_max_contradiction": 0.5588,
+      "min_max_entailment": 0.0391,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco ibuprofene è NON_RIMBORSABILE perché non risponde alle condizioni per la copertura previste dalla Nota AIFA.",
+          "max_entailment": 0.1661,
+          "max_contradiction": 0.8764
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 8, la prescrizione dei farmaci antinfiammatori non steroidei a carico del SSN è limitata alle ...",
+          "max_entailment": 0.2583,
+          "max_contradiction": 0.7459
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 9, la combinazione ibuprofene/codeina è ammessa alla rimborsabilità limitatamente al ...",
+          "max_entailment": 0.0391,
+          "max_contradiction": 0.0542
+        }
+      ],
+      "case_id": "N66-008"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.6649,
+      "mean_max_contradiction": 0.377,
+      "min_max_entailment": 0.4637,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco nimesulide è stato valutato e classificato come NON_RIMBORSABILE a causa del suo rischio epatotossico maggior...",
+          "max_entailment": 0.9032,
+          "max_contradiction": 0.6486
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota AIFA ha specificato che il nimesulide è controindicato nei pazienti epatopatici, in quelli con una stor...",
+          "max_entailment": 0.4637,
+          "max_contradiction": 0.0507
+        },
+        {
+          "sentence_preview": "Queste informazioni sono state riportate nella FONTE 5.",
+          "max_entailment": 0.6277,
+          "max_contradiction": 0.4318
+        }
+      ],
+      "case_id": "N66-009"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.234,
+      "mean_max_contradiction": 0.0252,
+      "min_max_entailment": 0.2071,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco ibuprofene/codeina è rimborsabile limitatamente al trattamento di breve durata del dolore acuto di entità mod...",
+          "max_entailment": 0.2608,
+          "max_contradiction": 0.0225
+        },
+        {
+          "sentence_preview": "Ciò è confermato dalla FONTE 17, Nota_66.pdf p.3, che specifica: \"La combinazione ibuprofene/codeina è indicata nel trat...",
+          "max_entailment": 0.2071,
+          "max_contradiction": 0.028
+        }
+      ],
+      "case_id": "N66-010"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1175,
+      "mean_max_contradiction": 0.054,
+      "min_max_entailment": 0.0513,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco ibuprofene/codeina è motivata dalla valutazione della sua inclusione nella Not...",
+          "max_entailment": 0.0513,
+          "max_contradiction": 0.0198
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 1, il farmaco è incluso nella lista dei farmaci antinfiammatori non steroidei (FANS) in associ...",
+          "max_entailment": 0.2112,
+          "max_contradiction": 0.1247
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 17, la combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del do...",
+          "max_entailment": 0.0899,
+          "max_contradiction": 0.0177
+        }
+      ],
+      "case_id": "N66-011"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.0589,
+      "mean_max_contradiction": 0.1396,
+      "min_max_entailment": 0.0117,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco aspirina è motivata dalla sua inclusione nella Nota AIFA 66, che stabilisce le...",
+          "max_entailment": 0.0117,
+          "max_contradiction": 0.0043
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 16, la Nota AIFA 66 limita la prescrizione dei FANS alle seguenti condizioni patologiche: artr...",
+          "max_entailment": 0.1265,
+          "max_contradiction": 0.3644
+        },
+        {
+          "sentence_preview": "Inoltre, la combinazione ibuprofene/codeina è ammessa alla rimborsabilità limitatamente al trattamento di breve durata d...",
+          "max_entailment": 0.0384,
+          "max_contradiction": 0.0501
+        }
+      ],
+      "case_id": "N66-012"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.2804,
+      "mean_max_contradiction": 0.0461,
+      "min_max_entailment": 0.247,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del dolore da lieve a moderato negli adulti se...",
+          "max_entailment": 0.3138,
+          "max_contradiction": 0.0104
+        },
+        {
+          "sentence_preview": "Ciò è confermato dalla FONTE 16 (Nota_66.pdf p.3) che specifica: \"La combinazione a dose fissa a base di ibuprofene/code...",
+          "max_entailment": 0.247,
+          "max_contradiction": 0.0819
+        }
+      ],
+      "case_id": "N66-013"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1241,
+      "mean_max_contradiction": 0.2045,
+      "min_max_entailment": 0.0388,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco in questione è il diclofenac, e la sua rimborsabilità è motivata dalle indicazioni riportate nella Nota AIFA.",
+          "max_entailment": 0.0388,
+          "max_contradiction": 0.3807
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 16, la prescrizione dei farmaci antinfiammatori non steroidei a carico del SSN è limitata alle...",
+          "max_entailment": 0.2435,
+          "max_contradiction": 0.2151
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 17, la combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del do...",
+          "max_entailment": 0.0899,
+          "max_contradiction": 0.0177
+        }
+      ],
+      "case_id": "N66-014"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 6,
+      "mean_max_entailment": 0.4468,
+      "mean_max_contradiction": 0.4702,
+      "min_max_entailment": 0.0219,
+      "n_high_contradiction": 3,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco etoricoxib è motivata dalla presenza di regole esclusive che hanno bloccato la...",
+          "max_entailment": 0.0219,
+          "max_contradiction": 0.0354
+        },
+        {
+          "sentence_preview": "In particolare, la regola N66_EXCL_HARD_003 è stata valutata come vera, escludendo quindi la copertura del farmaco.",
+          "max_entailment": 0.223,
+          "max_contradiction": 0.932
+        },
+        {
+          "sentence_preview": "Questa regola è indicata nella FONTE 1 (Nota_66.pdf, p.",
+          "max_entailment": 0.7608,
+          "max_contradiction": 0.7096
+        },
+        {
+          "sentence_preview": "4) come controindicazione per i farmaci antinfiammatori non steroidei (FANS).",
+          "max_entailment": 0.8995,
+          "max_contradiction": 0.2427
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota AIFA limita la prescrizione dei FANS alle seguenti condizioni patologiche (FONTE 16, Nota_66.pdf, p.",
+          "max_entailment": 0.0338,
+          "max_contradiction": 0.0711
+        },
+        {
+          "sentence_preview": "2), e l'etoricoxib non è incluso in questa lista.",
+          "max_entailment": 0.7419,
+          "max_contradiction": 0.8303
+        }
+      ],
+      "case_id": "N66-015"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.2532,
+      "mean_max_contradiction": 0.4639,
+      "min_max_entailment": 0.0194,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il celecoxib è motivata dalla presenza di regole esclusive che hanno bloccato la copertur...",
+          "max_entailment": 0.0194,
+          "max_contradiction": 0.026
+        },
+        {
+          "sentence_preview": "In particolare, la regola N66_EXCL_HARD_003 è stata valutata come vera, escludendo quindi la copertura del farmaco.",
+          "max_entailment": 0.223,
+          "max_contradiction": 0.932
+        },
+        {
+          "sentence_preview": "Questa regola è stata definita nella FONTE 2, che indica che i FANS sono controindicati in caso di ulcera peptica attiva...",
+          "max_entailment": 0.7323,
+          "max_contradiction": 0.892
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 3 sottolinea l'importanza di utilizzare i FANS con cautela negli anziani e nelle patologie allergiche.",
+          "max_entailment": 0.038,
+          "max_contradiction": 0.0054
+        }
+      ],
+      "case_id": "N66-016"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.271,
+      "mean_max_contradiction": 0.4732,
+      "min_max_entailment": 0.0194,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il celecoxib è motivata dalla presenza di regole esclusive che hanno bloccato la copertur...",
+          "max_entailment": 0.0194,
+          "max_contradiction": 0.026
+        },
+        {
+          "sentence_preview": "In particolare, la regola N66_EXCL_HARD_003 è stata valutata come vera, escludendo quindi la copertura del farmaco.",
+          "max_entailment": 0.223,
+          "max_contradiction": 0.932
+        },
+        {
+          "sentence_preview": "Questa regola è indicata nella FONTE 2, che riporta le controindicazioni del celecoxib.",
+          "max_entailment": 0.8149,
+          "max_contradiction": 0.9168
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 3 e la FONTE 4 riportano ulteriori informazioni sulla sicurezza del celecoxib, sottolineando il rischi...",
+          "max_entailment": 0.0268,
+          "max_contradiction": 0.018
+        }
+      ],
+      "case_id": "N66-017"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 2,
+      "mean_max_entailment": 0.1404,
+      "mean_max_contradiction": 0.0208,
+      "min_max_entailment": 0.0816,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco ketoprofene è rimborsabile in quanto è indicato per il trattamento di breve durata del dolore acuto di entità...",
+          "max_entailment": 0.0816,
+          "max_contradiction": 0.0329
+        },
+        {
+          "sentence_preview": "Ciò è confermato dalla FONTE 17, Nota_66.pdf p.3, che specifica che la combinazione ibuprofene/codeina è indicata nel tr...",
+          "max_entailment": 0.1991,
+          "max_contradiction": 0.0087
+        }
+      ],
+      "case_id": "N66-018"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3628,
+      "mean_max_contradiction": 0.4512,
+      "min_max_entailment": 0.3501,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco valutato è il diclofenac, come indicato nella FONTE 16.",
+          "max_entailment": 0.3501,
+          "max_contradiction": 0.9139
+        },
+        {
+          "sentence_preview": "La combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del dolore da lieve a moderato negli adulti se...",
+          "max_entailment": 0.3628,
+          "max_contradiction": 0.1057
+        },
+        {
+          "sentence_preview": "Il dosaggio autorizzato nella popolazione adulta è di 1 compressa ogni 4-6 ore, con una dose massima giornaliera di 6 co...",
+          "max_entailment": 0.3755,
+          "max_contradiction": 0.3339
+        }
+      ],
+      "case_id": "N66-019"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 4,
+      "mean_max_entailment": 0.7149,
+      "mean_max_contradiction": 0.1228,
+      "min_max_entailment": 0.2093,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di NON_DETERMINABILE per il farmaco ibuprofene è motivata dalla presenza di diversi fattori di rischio asso...",
+          "max_entailment": 0.9754,
+          "max_contradiction": 0.0021
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 2, gli studi hanno dimostrato che l'uso dei FANS, soprattutto ad alte dosi e nel trattamento a...",
+          "max_entailment": 0.7134,
+          "max_contradiction": 0.0349
+        },
+        {
+          "sentence_preview": "Inoltre, come riportato nella FONTE 3, l'uso dei FANS può essere associato a un aumentato rischio di morte e di infarto ...",
+          "max_entailment": 0.2093,
+          "max_contradiction": 0.4439
+        },
+        {
+          "sentence_preview": "Questi fattori di rischio sono particolarmente rilevanti per il farmaco ibuprofene, che è stato classificato come uno de...",
+          "max_entailment": 0.9614,
+          "max_contradiction": 0.0101
+        }
+      ],
+      "case_id": "N66-020"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.2737,
+      "mean_max_contradiction": 0.2608,
+      "min_max_entailment": 0.2276,
+      "n_high_contradiction": 0,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco meloxicam è rimborsabile in quanto è incluso nella lista dei farmaci antinfiammatori non steroidei (FANS) amm...",
+          "max_entailment": 0.3459,
+          "max_contradiction": 0.4857
+        },
+        {
+          "sentence_preview": "Inoltre, il meloxicam è un principio attivo ammesso alla rimborsabilità (FONTE 16, p.",
+          "max_entailment": 0.2477,
+          "max_contradiction": 0.1772
+        },
+        {
+          "sentence_preview": "La combinazione ibuprofene/codeina, che include il meloxicam, è ammessa alla rimborsabilità limitatamente al trattamento...",
+          "max_entailment": 0.2276,
+          "max_contradiction": 0.1194
+        }
+      ],
+      "case_id": "N66-021"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.6649,
+      "mean_max_contradiction": 0.377,
+      "min_max_entailment": 0.4637,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco nimesulide è stato valutato e classificato come NON_RIMBORSABILE a causa del suo rischio epatotossico maggior...",
+          "max_entailment": 0.9032,
+          "max_contradiction": 0.6486
+        },
+        {
+          "sentence_preview": "Inoltre, la Nota AIFA ha specificato che il nimesulide è controindicato nei pazienti epatopatici, in quelli con una stor...",
+          "max_entailment": 0.4637,
+          "max_contradiction": 0.0507
+        },
+        {
+          "sentence_preview": "Queste informazioni sono state riportate nella FONTE 5.",
+          "max_entailment": 0.6277,
+          "max_contradiction": 0.4318
+        }
+      ],
+      "case_id": "N66-022"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.0163,
+      "mean_max_contradiction": 0.3394,
+      "min_max_entailment": 0.0028,
+      "n_high_contradiction": 1,
+      "per_sentence": [
+        {
+          "sentence_preview": "La decisione di non rimborsare il farmaco nimesulide è motivata dalla sua presenza nella lista dei farmaci non rimborsab...",
+          "max_entailment": 0.0252,
+          "max_contradiction": 0.0117
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 16, la Nota AIFA stabilisce che la prescrizione dei farmaci antinfiammatori non steroidei a ca...",
+          "max_entailment": 0.0208,
+          "max_contradiction": 0.9936
+        },
+        {
+          "sentence_preview": "Inoltre, la FONTE 12 specifica che nimesulide è controindicata nei pazienti epatopatici, in quelli con una storia di abu...",
+          "max_entailment": 0.0028,
+          "max_contradiction": 0.013
+        }
+      ],
+      "case_id": "N66-023"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.4257,
+      "mean_max_contradiction": 0.6038,
+      "min_max_entailment": 0.1446,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco ketorolac è stato valutato e la decisione è stata presa in base alle regole decisive riportate.",
+          "max_entailment": 0.903,
+          "max_contradiction": 0.0124
+        },
+        {
+          "sentence_preview": "La regola N66_INCL_001 ha valutato FALSE, determinando la NON_RIMBORSABILITÀ del farmaco.",
+          "max_entailment": 0.2295,
+          "max_contradiction": 0.932
+        },
+        {
+          "sentence_preview": "Questa regola è stata valutata in base alla FONTE 1 (Nota_66.pdf p.2), che indica che il farmaco è NON_RIMBORSABILE per ...",
+          "max_entailment": 0.1446,
+          "max_contradiction": 0.8669
+        }
+      ],
+      "case_id": "N66-024"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.3194,
+      "mean_max_contradiction": 0.5019,
+      "min_max_entailment": 0.0349,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco valutato, dexketoprofene, è stato valutato come NON_RIMBORSABILE in base alla Nota AIFA.",
+          "max_entailment": 0.509,
+          "max_contradiction": 0.5089
+        },
+        {
+          "sentence_preview": "Ciò è stato determinato dalla regola N66_INCL_001, che ha valutato FALSE e ha determinato la copertura come NON_RIMBORSA...",
+          "max_entailment": 0.0349,
+          "max_contradiction": 0.9454
+        },
+        {
+          "sentence_preview": "La Nota AIFA limita la copertura dei FANS in associazione fissa con altri analgesici, come il dexketoprofene, limitatame...",
+          "max_entailment": 0.4144,
+          "max_contradiction": 0.0514
+        }
+      ],
+      "case_id": "N66-025"
+    },
+    {
+      "skipped": false,
+      "n_sentences": 3,
+      "mean_max_entailment": 0.1448,
+      "mean_max_contradiction": 0.5735,
+      "min_max_entailment": 0.0513,
+      "n_high_contradiction": 2,
+      "per_sentence": [
+        {
+          "sentence_preview": "Il farmaco acido mefenamico è NON_RIMBORSABILE perché non rispetta le condizioni per la copertura previste dalla Nota AI...",
+          "max_entailment": 0.1246,
+          "max_contradiction": 0.9447
+        },
+        {
+          "sentence_preview": "Come indicato nella FONTE 8, la prescrizione dei farmaci antinfiammatori non steroidei a carico del SSN è limitata alle ...",
+          "max_entailment": 0.2583,
+          "max_contradiction": 0.7459
+        },
+        {
+          "sentence_preview": "Inoltre, come indicato nella FONTE 9, la combinazione ibuprofene/codeina è indicata nel trattamento sintomatico del dolo...",
+          "max_entailment": 0.0513,
+          "max_contradiction": 0.0299
+        }
+      ],
+      "case_id": "N66-026"
+    }
+  ]
+}

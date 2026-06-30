@@ -1,0 +1,67 @@
+{
+  "target_class": "NON_DETERMINABILE",
+  "n_cases_total": 122,
+  "overall": {
+    "true_positive": 9,
+    "false_positive": 0,
+    "false_negative": 0,
+    "true_negative": 113,
+    "support_positive": 9,
+    "support_negative": 113,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "per_nota": {
+    "01": {
+      "true_positive": 3,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 21,
+      "support_positive": 3,
+      "support_negative": 21,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "13": {
+      "true_positive": 2,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 30,
+      "support_positive": 2,
+      "support_negative": 30,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "66": {
+      "true_positive": 1,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 25,
+      "support_positive": 1,
+      "support_negative": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "97": {
+      "true_positive": 3,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 37,
+      "support_positive": 3,
+      "support_negative": 37,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "missing_fields_declaration_audit": {
+    "n_tp": 9,
+    "n_with_declared_missing_fields": 9,
+    "fraction_declared": 1.0
+  },
+  "interpretation": "Precision = of the cases the system FLAGS as NON_DETERMINABILE, what fraction were genuinely under-specified in the gold? Recall = of the gold-labelled NON_DETERMINABILE cases, what fraction did the system flag correctly? missing_fields_declaration_audit.fraction_declared = of TP (correctly flagged ND) cases, fraction that ALSO surface the specific missing fields — addresses the brief's 'declare insufficiency of information explicitly'."
+}

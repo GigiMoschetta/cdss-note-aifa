@@ -1,0 +1,17 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il lansoprazolo è rimborsabile in quanto è stato valutato come efficace nella prevenzione delle complicanze gravi del tratto gastrointestinale superiore, come indicato nella FONTE 7. In particolare, la Nota AIFA valuta che il trattamento cronico con farmaci antinfiammatori non steroidei (FANS) possa determinare un aumentato rischio di ulcera peptica e delle sue complicanze gravi, e che il lansoprazolo possa ridurre questo rischio. La FONTE 1 e la FONTE 2 riportano anche dati clinici che dimostrano l'efficacia del lansoprazolo nella prevenzione delle ulcere gastriche e duodenali.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- Nota_01.pdf, p. 2
+- Nota_01.pdf, p. 1
+- Nota_01.pdf, p. 3

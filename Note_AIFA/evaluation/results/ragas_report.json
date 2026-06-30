@@ -1,0 +1,1151 @@
+{
+  "metric": "ragas",
+  "judge_llm": "llama3.1:8b",
+  "embed_model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+  "n_cases": 122,
+  "wall_time_s": 81174.1,
+  "aggregate": {
+    "faithfulness": {
+      "mean": 0.6137,
+      "median": 0.5714,
+      "n": 51,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "answer_relevancy": {
+      "mean": 0.6274,
+      "median": 0.6557,
+      "n": 113,
+      "min": 0.2806,
+      "max": 0.8753
+    },
+    "context_precision": {
+      "mean": 0.5716,
+      "median": 0.5657,
+      "n": 73,
+      "min": 0.25,
+      "max": 1.0
+    },
+    "context_recall": {
+      "mean": 0.8375,
+      "median": 1.0,
+      "n": 67,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "answer_similarity": {
+      "mean": 0.7374,
+      "median": 0.7384,
+      "n": 122,
+      "min": 0.582,
+      "max": 0.8379
+    },
+    "answer_correctness": {
+      "mean": 0.4651,
+      "median": 0.4483,
+      "n": 120,
+      "min": 0.2566,
+      "max": 0.7686
+    }
+  },
+  "per_case": [
+    {
+      "case_id": "N97-001",
+      "faithfulness": null,
+      "answer_relevancy": 0.6844022483599427,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7135376260697297,
+      "answer_correctness": 0.3147480428810688
+    },
+    {
+      "case_id": "N97-002",
+      "faithfulness": null,
+      "answer_relevancy": 0.46673747722695397,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7177936312477726,
+      "answer_correctness": 0.3158120441755795
+    },
+    {
+      "case_id": "N97-003",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6472303976448064,
+      "context_precision": 0.7708333333140625,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7726139529378615,
+      "answer_correctness": 0.4074392025201797
+    },
+    {
+      "case_id": "N97-004",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.6458823253674044,
+      "context_precision": 0.9999999999833333,
+      "context_recall": 0.0,
+      "answer_similarity": 0.8026619438343398,
+      "answer_correctness": 0.4149512002442992
+    },
+    {
+      "case_id": "N97-005",
+      "faithfulness": 0.2,
+      "answer_relevancy": 0.7364275519032796,
+      "context_precision": 0.4166666666458333,
+      "context_recall": 0.75,
+      "answer_similarity": 0.6891017806337499,
+      "answer_correctness": null
+    },
+    {
+      "case_id": "N97-006",
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.791525747918302,
+      "context_precision": 0.5876433520450157,
+      "context_recall": 0.6666666666666666,
+      "answer_similarity": 0.6987081639547915,
+      "answer_correctness": 0.49046651467290847
+    },
+    {
+      "case_id": "N97-007",
+      "faithfulness": null,
+      "answer_relevancy": 0.764895590640983,
+      "context_precision": 0.6379795944834181,
+      "context_recall": null,
+      "answer_similarity": 0.80851186145757,
+      "answer_correctness": 0.6521279653643924
+    },
+    {
+      "case_id": "N97-008",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.61563666502051,
+      "context_precision": null,
+      "context_recall": 0.3333333333333333,
+      "answer_similarity": 0.632128763116975,
+      "answer_correctness": 0.28303219077924374
+    },
+    {
+      "case_id": "N97-009",
+      "faithfulness": 0.875,
+      "answer_relevancy": 0.6796721420285482,
+      "context_precision": null,
+      "context_recall": 1.0,
+      "answer_similarity": 0.5870571020447772,
+      "answer_correctness": 0.28312791187483066
+    },
+    {
+      "case_id": "N97-010",
+      "faithfulness": null,
+      "answer_relevancy": 0.4416840283481245,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7948529981117548,
+      "answer_correctness": 0.4294824802971694
+    },
+    {
+      "case_id": "N97-011",
+      "faithfulness": null,
+      "answer_relevancy": 0.4393574009015584,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7855905944801992,
+      "answer_correctness": 0.6130643152867165
+    },
+    {
+      "case_id": "N97-012",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.736217369644572,
+      "answer_correctness": 0.434054342411143
+    },
+    {
+      "case_id": "N97-013",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": 0.4630523846567934,
+      "context_recall": null,
+      "answer_similarity": 0.7107277574365438,
+      "answer_correctness": 0.25662930778018855
+    },
+    {
+      "case_id": "N97-014",
+      "faithfulness": null,
+      "answer_relevancy": 0.46673747722695397,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7201447848883887,
+      "answer_correctness": 0.41080542699132794
+    },
+    {
+      "case_id": "N97-015",
+      "faithfulness": null,
+      "answer_relevancy": 0.759896057370138,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.77674820064046,
+      "answer_correctness": 0.5403408963139611
+    },
+    {
+      "case_id": "N97-016",
+      "faithfulness": 0.2727272727272727,
+      "answer_relevancy": 0.7629376401458124,
+      "context_precision": 0.8833333333186111,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7161186633783163,
+      "answer_correctness": 0.5004582372731505
+    },
+    {
+      "case_id": "N97-017",
+      "faithfulness": null,
+      "answer_relevancy": 0.4726804384772387,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7097662018616941,
+      "answer_correctness": 0.45016882319269624
+    },
+    {
+      "case_id": "N97-018",
+      "faithfulness": null,
+      "answer_relevancy": 0.42188460596737426,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7929479748422065,
+      "answer_correctness": 0.4709642664378243
+    },
+    {
+      "case_id": "N97-019",
+      "faithfulness": null,
+      "answer_relevancy": 0.7097417935301245,
+      "context_precision": 0.5975227047261357,
+      "context_recall": null,
+      "answer_similarity": 0.7747412590311515,
+      "answer_correctness": 0.4436853147577879
+    },
+    {
+      "case_id": "N97-020",
+      "faithfulness": null,
+      "answer_relevancy": 0.4726804384772387,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7628393060072791,
+      "answer_correctness": 0.30609444188643514
+    },
+    {
+      "case_id": "N97-021",
+      "faithfulness": null,
+      "answer_relevancy": 0.4627974944233915,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7696450782166748,
+      "answer_correctness": 0.3174112695541687
+    },
+    {
+      "case_id": "N97-022",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": 0.5722951761042946,
+      "context_recall": null,
+      "answer_similarity": 0.778835701827678,
+      "answer_correctness": 0.4947089254569196
+    },
+    {
+      "case_id": "N97-023",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7942557748886722,
+      "answer_correctness": 0.448563943722168
+    },
+    {
+      "case_id": "N97-024",
+      "faithfulness": null,
+      "answer_relevancy": 0.48951934462075536,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7931981121054195,
+      "answer_correctness": 0.3136841434109703
+    },
+    {
+      "case_id": "N97-025",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.8110558208314853,
+      "answer_correctness": 0.43353318597710205
+    },
+    {
+      "case_id": "N97-026",
+      "faithfulness": null,
+      "answer_relevancy": 0.7984872241786762,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.8207467628525813,
+      "answer_correctness": 0.5051866907131454
+    },
+    {
+      "case_id": "N97-027",
+      "faithfulness": null,
+      "answer_relevancy": 0.4616830848077049,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7964604052381458,
+      "answer_correctness": 0.40366055585499094
+    },
+    {
+      "case_id": "N97-028",
+      "faithfulness": null,
+      "answer_relevancy": 0.8029154712977413,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7567105922490703,
+      "answer_correctness": 0.3255412844259039
+    },
+    {
+      "case_id": "N97-029",
+      "faithfulness": 0.25,
+      "answer_relevancy": 0.6493041290117323,
+      "context_precision": null,
+      "context_recall": 1.0,
+      "answer_similarity": 0.5955052343970668,
+      "answer_correctness": 0.39887630859926665
+    },
+    {
+      "case_id": "N97-030",
+      "faithfulness": null,
+      "answer_relevancy": 0.4416840283481245,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.786447539529925,
+      "answer_correctness": 0.44661188488248127
+    },
+    {
+      "case_id": "N97-031",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7280715485264331,
+      "answer_correctness": 0.2653512204649416
+    },
+    {
+      "case_id": "N97-032",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7613609148112824,
+      "context_precision": null,
+      "context_recall": 0.6666666666666666,
+      "answer_similarity": 0.6987081639547915,
+      "answer_correctness": 0.520830887142544
+    },
+    {
+      "case_id": "N97-033",
+      "faithfulness": null,
+      "answer_relevancy": 0.4569986463459472,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.773896489209915,
+      "answer_correctness": 0.42424335307170946
+    },
+    {
+      "case_id": "N97-034",
+      "faithfulness": null,
+      "answer_relevancy": 0.5075602194932446,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7388995038064718,
+      "answer_correctness": 0.6847248759516178
+    },
+    {
+      "case_id": "N97-035",
+      "faithfulness": null,
+      "answer_relevancy": 0.5637511344341818,
+      "context_precision": 0.49397418172713736,
+      "context_recall": null,
+      "answer_similarity": 0.7015642361534334,
+      "answer_correctness": 0.38967677332407263
+    },
+    {
+      "case_id": "N97-036",
+      "faithfulness": null,
+      "answer_relevancy": 0.7634378699815286,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.77674820064046,
+      "answer_correctness": 0.444187050160115
+    },
+    {
+      "case_id": "N97-037",
+      "faithfulness": 0.2857142857142857,
+      "answer_relevancy": 0.7454799670208946,
+      "context_precision": 0.6791666666496875,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6929257650078485,
+      "answer_correctness": null
+    },
+    {
+      "case_id": "N97-038",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6432064164318798,
+      "context_precision": 0.9305555555400462,
+      "context_recall": 1.0,
+      "answer_similarity": 0.713615720282845,
+      "answer_correctness": 0.42840393007071126
+    },
+    {
+      "case_id": "N97-039",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.8149785542864569,
+      "answer_correctness": 0.4646142037890056
+    },
+    {
+      "case_id": "N97-040",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7015642361534334,
+      "answer_correctness": 0.4481183317656311
+    },
+    {
+      "case_id": "N01-001",
+      "faithfulness": 0.8333333333333334,
+      "answer_relevancy": 0.6292308882537822,
+      "context_precision": 0.8782627865863615,
+      "context_recall": 1.0,
+      "answer_similarity": 0.8244384299994504,
+      "answer_correctness": 0.7686096074998626
+    },
+    {
+      "case_id": "N01-002",
+      "faithfulness": 0.42857142857142855,
+      "answer_relevancy": 0.5376555215617795,
+      "context_precision": 0.6246031745927646,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7342572060145129,
+      "answer_correctness": 0.45629157423090094
+    },
+    {
+      "case_id": "N01-003",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.5574740697527013,
+      "context_precision": 0.6925170067928279,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7101613242020467,
+      "answer_correctness": 0.5525403310505117
+    },
+    {
+      "case_id": "N01-004",
+      "faithfulness": 0.7142857142857143,
+      "answer_relevancy": 0.5521525162244484,
+      "context_precision": 0.6246031745927646,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7817173205723272,
+      "answer_correctness": 0.44542933014308184
+    },
+    {
+      "case_id": "N01-005",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.2805835389049239,
+      "context_precision": 0.4265873015766369,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7755099057944068,
+      "answer_correctness": 0.5688774764486018
+    },
+    {
+      "case_id": "N01-006",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.3054674717695482,
+      "context_precision": 0.4268253968168603,
+      "context_recall": 0.8,
+      "answer_similarity": 0.5820293625651417,
+      "answer_correctness": 0.3121740073079521
+    },
+    {
+      "case_id": "N01-007",
+      "faithfulness": 0.375,
+      "answer_relevancy": 0.6701784934272039,
+      "context_precision": 0.6246031745927646,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7342572060145129,
+      "answer_correctness": 0.5168976348369616
+    },
+    {
+      "case_id": "N01-008",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.4452160986713058,
+      "context_precision": 0.7295918367242711,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6342810062844029,
+      "answer_correctness": 0.45857025157110076
+    },
+    {
+      "case_id": "N01-009",
+      "faithfulness": 0.2,
+      "answer_relevancy": 0.5125176784507331,
+      "context_precision": 0.6246031745927646,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7342572060145129,
+      "answer_correctness": 0.5585643015036282
+    },
+    {
+      "case_id": "N01-010",
+      "faithfulness": 0.5714285714285714,
+      "answer_relevancy": 0.5830240368959586,
+      "context_precision": 0.4609523809431619,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7373925312418154,
+      "answer_correctness": 0.48434813281045386
+    },
+    {
+      "case_id": "N01-011",
+      "faithfulness": 0.625,
+      "answer_relevancy": 0.6967484392158029,
+      "context_precision": 0.249999999975,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7107013231165409,
+      "answer_correctness": 0.5526753307791353
+    },
+    {
+      "case_id": "N01-012",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7094198848229439,
+      "context_precision": 0.4777777777618519,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7005275283440195,
+      "answer_correctness": 0.4059011128552356
+    },
+    {
+      "case_id": "N01-013",
+      "faithfulness": 0.8333333333333334,
+      "answer_relevancy": null,
+      "context_precision": 0.45555555554644445,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6341633123611382,
+      "answer_correctness": 0.4585408280902846
+    },
+    {
+      "case_id": "N01-014",
+      "faithfulness": 0.7142857142857143,
+      "answer_relevancy": 0.7067769376901349,
+      "context_precision": 0.8843537414839651,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7342572060145129,
+      "answer_correctness": 0.45629157423090094
+    },
+    {
+      "case_id": "N01-015",
+      "faithfulness": 0.4444444444444444,
+      "answer_relevancy": 0.6292308882537822,
+      "context_precision": 0.748115079355728,
+      "context_recall": 1.0,
+      "answer_similarity": 0.8244384299994504,
+      "answer_correctness": 0.7061096074998626
+    },
+    {
+      "case_id": "N01-016",
+      "faithfulness": 0.375,
+      "answer_relevancy": 0.45374992753303456,
+      "context_precision": 0.5968253968154497,
+      "context_recall": 0.375,
+      "answer_similarity": 0.7602662121282929,
+      "answer_correctness": 0.4400665530320732
+    },
+    {
+      "case_id": "N01-017",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.7831303171293692,
+      "context_precision": 0.7295918367242711,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7214097370767139,
+      "answer_correctness": 0.4111216650384092
+    },
+    {
+      "case_id": "N01-018",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.6985189058853781,
+      "context_precision": 0.43035714284638393,
+      "context_recall": 1.0,
+      "answer_similarity": 0.705802109108029,
+      "answer_correctness": 0.3639505272770073
+    },
+    {
+      "case_id": "N01-019",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.36723257816223226,
+      "context_precision": 0.4553968253877174,
+      "context_recall": 0.8,
+      "answer_similarity": 0.5820293625651417,
+      "answer_correctness": 0.3121740073079521
+    },
+    {
+      "case_id": "N01-020",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.335769849160374,
+      "context_precision": 0.4553968253877174,
+      "context_recall": 0.8181818181818182,
+      "answer_similarity": 0.5820293625651417,
+      "answer_correctness": 0.3121740073079521
+    },
+    {
+      "case_id": "N01-021",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.3054674717695482,
+      "context_precision": 0.5021825396741699,
+      "context_recall": 0.8181818181818182,
+      "answer_similarity": 0.5820293625651417,
+      "answer_correctness": 0.3121740073079521
+    },
+    {
+      "case_id": "N01-022",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.335769849160374,
+      "context_precision": 0.3986111111011459,
+      "context_recall": 0.5185185185185185,
+      "answer_similarity": 0.5820293625651417,
+      "answer_correctness": 0.3121740073079521
+    },
+    {
+      "case_id": "N01-023",
+      "faithfulness": 0.25,
+      "answer_relevancy": 0.6103119698079352,
+      "context_precision": 0.5690476190381349,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7713970354562025,
+      "answer_correctness": 0.4928492588640507
+    },
+    {
+      "case_id": "N01-024",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6207453334379051,
+      "context_precision": 0.9888888888779013,
+      "context_recall": 0.5,
+      "answer_similarity": 0.7220429241036581,
+      "answer_correctness": 0.41127996179514525
+    },
+    {
+      "case_id": "N13-001",
+      "faithfulness": null,
+      "answer_relevancy": 0.5490205494109112,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.77154471335412,
+      "answer_correctness": 0.64288617833853
+    },
+    {
+      "case_id": "N13-002",
+      "faithfulness": 0.1,
+      "answer_relevancy": 0.7199705537248531,
+      "context_precision": 0.5961904761785524,
+      "context_recall": 0.6666666666666666,
+      "answer_similarity": 0.7894711405929489,
+      "answer_correctness": 0.3704447082251603
+    },
+    {
+      "case_id": "N13-003",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.6966589517918225,
+      "context_precision": 0.5178571428441964,
+      "context_recall": 0.6666666666666666,
+      "answer_similarity": 0.7894711405929489,
+      "answer_correctness": 0.3525401989413407
+    },
+    {
+      "case_id": "N13-004",
+      "faithfulness": null,
+      "answer_relevancy": 0.7758887991639319,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.8378744904683094,
+      "answer_correctness": 0.5094686226170774
+    },
+    {
+      "case_id": "N13-005",
+      "faithfulness": null,
+      "answer_relevancy": 0.7217583092439185,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7504283239454281,
+      "answer_correctness": 0.6320515254308015
+    },
+    {
+      "case_id": "N13-006",
+      "faithfulness": null,
+      "answer_relevancy": 0.8097560595005273,
+      "context_precision": 0.5641153227580508,
+      "context_recall": null,
+      "answer_similarity": 0.7176853927903695,
+      "answer_correctness": 0.5127546815309256
+    },
+    {
+      "case_id": "N13-007",
+      "faithfulness": 0.35714285714285715,
+      "answer_relevancy": 0.8752988388353783,
+      "context_precision": null,
+      "context_recall": 0.5,
+      "answer_similarity": 0.8146052600786593,
+      "answer_correctness": 0.6536513150196648
+    },
+    {
+      "case_id": "N13-008",
+      "faithfulness": null,
+      "answer_relevancy": 0.4845378585595225,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7114428836554699,
+      "answer_correctness": 0.5528607209138675
+    },
+    {
+      "case_id": "N13-009",
+      "faithfulness": null,
+      "answer_relevancy": 0.5377229186739197,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7972948332126779,
+      "answer_correctness": 0.3659903749698361
+    },
+    {
+      "case_id": "N13-010",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6832487472731877,
+      "context_precision": null,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7074196826216781,
+      "answer_correctness": 0.5518549206554195
+    },
+    {
+      "case_id": "N13-011",
+      "faithfulness": null,
+      "answer_relevancy": 0.6582797936137816,
+      "context_precision": 0.4722471821597573,
+      "context_recall": null,
+      "answer_similarity": 0.7080049811012294,
+      "answer_correctness": 0.42700124527530736
+    },
+    {
+      "case_id": "N13-012",
+      "faithfulness": null,
+      "answer_relevancy": 0.46742176350155606,
+      "context_precision": 0.5744967249814841,
+      "context_recall": null,
+      "answer_similarity": 0.7592877017674552,
+      "answer_correctness": 0.6898219254418638
+    },
+    {
+      "case_id": "N13-013",
+      "faithfulness": null,
+      "answer_relevancy": 0.7204829509423144,
+      "context_precision": 0.6742191481955442,
+      "context_recall": null,
+      "answer_similarity": 0.7504283239454281,
+      "answer_correctness": 0.637607080986357
+    },
+    {
+      "case_id": "N13-014",
+      "faithfulness": null,
+      "answer_relevancy": 0.7378024667104873,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7504283239454281,
+      "answer_correctness": 0.6876070809863569
+    },
+    {
+      "case_id": "N13-015",
+      "faithfulness": null,
+      "answer_relevancy": 0.5655728206736104,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7504283239454281,
+      "answer_correctness": 0.43760708098635703
+    },
+    {
+      "case_id": "N13-016",
+      "faithfulness": null,
+      "answer_relevancy": 0.655115701043055,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7504283239454281,
+      "answer_correctness": 0.562607080986357
+    },
+    {
+      "case_id": "N13-017",
+      "faithfulness": null,
+      "answer_relevancy": 0.8097560595005274,
+      "context_precision": 0.56957989113819,
+      "context_recall": null,
+      "answer_similarity": 0.7176853927903695,
+      "answer_correctness": 0.5127546815309257
+    },
+    {
+      "case_id": "N13-018",
+      "faithfulness": null,
+      "answer_relevancy": 0.4637286802903708,
+      "context_precision": 0.568278115990271,
+      "context_recall": null,
+      "answer_similarity": 0.7566958006180298,
+      "answer_correctness": 0.5641739501545074
+    },
+    {
+      "case_id": "N13-019",
+      "faithfulness": null,
+      "answer_relevancy": 0.5338785385409449,
+      "context_precision": 0.6252754340033994,
+      "context_recall": null,
+      "answer_similarity": 0.7114428836554699,
+      "answer_correctness": 0.35433130914916156
+    },
+    {
+      "case_id": "N13-020",
+      "faithfulness": null,
+      "answer_relevancy": 0.8095628592053803,
+      "context_precision": 0.5474464918979376,
+      "context_recall": null,
+      "answer_similarity": 0.7176853927903695,
+      "answer_correctness": 0.5127546815309256
+    },
+    {
+      "case_id": "N13-021",
+      "faithfulness": null,
+      "answer_relevancy": 0.5453820244464382,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7450521076537256,
+      "answer_correctness": 0.7317175723679769
+    },
+    {
+      "case_id": "N13-022",
+      "faithfulness": null,
+      "answer_relevancy": 0.6777540856216123,
+      "context_precision": 0.5656630710581005,
+      "context_recall": null,
+      "answer_similarity": 0.7566958006180298,
+      "answer_correctness": 0.6391739501545074
+    },
+    {
+      "case_id": "N13-023",
+      "faithfulness": null,
+      "answer_relevancy": 0.7449106939261947,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7891054200199177,
+      "answer_correctness": 0.4700036277322521
+    },
+    {
+      "case_id": "N13-024",
+      "faithfulness": null,
+      "answer_relevancy": 0.6625899857822309,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7622757670362893,
+      "answer_correctness": 0.726283227473358
+    },
+    {
+      "case_id": "N13-025",
+      "faithfulness": null,
+      "answer_relevancy": 0.7080232453689872,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7922229189832042,
+      "answer_correctness": 0.4980557297458011
+    },
+    {
+      "case_id": "N13-026",
+      "faithfulness": null,
+      "answer_relevancy": 0.7158009670348436,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.6988445893574308,
+      "answer_correctness": 0.4747111473393577
+    },
+    {
+      "case_id": "N13-027",
+      "faithfulness": null,
+      "answer_relevancy": 0.7894540161115503,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.724714101827042,
+      "answer_correctness": 0.3686785254567605
+    },
+    {
+      "case_id": "N13-028",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8752988388353783,
+      "context_precision": null,
+      "context_recall": 1.0,
+      "answer_similarity": 0.8188839170513161,
+      "answer_correctness": 0.4694268616157702
+    },
+    {
+      "case_id": "N13-029",
+      "faithfulness": null,
+      "answer_relevancy": 0.7142016353899248,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7538294318010019,
+      "answer_correctness": 0.35512402461691717
+    },
+    {
+      "case_id": "N13-030",
+      "faithfulness": null,
+      "answer_relevancy": 0.5938026224059,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7923946769657937,
+      "answer_correctness": 0.49809866924144847
+    },
+    {
+      "case_id": "N13-031",
+      "faithfulness": null,
+      "answer_relevancy": 0.8012892812569982,
+      "context_precision": null,
+      "context_recall": null,
+      "answer_similarity": 0.7188044619583533,
+      "answer_correctness": 0.45242838821686104
+    },
+    {
+      "case_id": "N13-032",
+      "faithfulness": null,
+      "answer_relevancy": 0.7106336961871826,
+      "context_precision": null,
+      "context_recall": 1.0,
+      "answer_similarity": 0.760057248265466,
+      "answer_correctness": 0.34790904890847174
+    },
+    {
+      "case_id": "N66-001",
+      "faithfulness": 0.875,
+      "answer_relevancy": 0.3949551179152396,
+      "context_precision": 0.544805040770853,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6965679765306512,
+      "answer_correctness": 0.4468692668599355
+    },
+    {
+      "case_id": "N66-002",
+      "faithfulness": null,
+      "answer_relevancy": 0.6982267019696096,
+      "context_precision": 0.6323168839790837,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7328683973187364,
+      "answer_correctness": 0.7189313850439698
+    },
+    {
+      "case_id": "N66-003",
+      "faithfulness": null,
+      "answer_relevancy": 0.6454288329633285,
+      "context_precision": 0.4028098739445447,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6964010608696892,
+      "answer_correctness": 0.6152767358056576
+    },
+    {
+      "case_id": "N66-004",
+      "faithfulness": null,
+      "answer_relevancy": 0.7187430930847896,
+      "context_precision": 0.5039519039283545,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6989744908805964,
+      "answer_correctness": 0.47474362272014914
+    },
+    {
+      "case_id": "N66-005",
+      "faithfulness": 0.9,
+      "answer_relevancy": 0.5542525383687535,
+      "context_precision": 0.5272430362589854,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7656011977073025,
+      "answer_correctness": 0.49140029942682567
+    },
+    {
+      "case_id": "N66-006",
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.8033227748797566,
+      "context_precision": 0.4881522283861635,
+      "context_recall": 0.3333333333333333,
+      "answer_similarity": 0.7746413904109668,
+      "answer_correctness": 0.38116034760274164
+    },
+    {
+      "case_id": "N66-007",
+      "faithfulness": null,
+      "answer_relevancy": 0.5773098983863622,
+      "context_precision": 0.5833724952339312,
+      "context_recall": 0.6666666666666666,
+      "answer_similarity": 0.7181171675295306,
+      "answer_correctness": 0.5545292918823826
+    },
+    {
+      "case_id": "N66-008",
+      "faithfulness": 0.5833333333333334,
+      "answer_relevancy": 0.7029008086791398,
+      "context_precision": 0.5311823593007194,
+      "context_recall": 0.3333333333333333,
+      "answer_similarity": 0.7328764271407615,
+      "answer_correctness": 0.5582191067851904
+    },
+    {
+      "case_id": "N66-009",
+      "faithfulness": null,
+      "answer_relevancy": 0.7576699762586285,
+      "context_precision": 0.7884897781890898,
+      "context_recall": 1.0,
+      "answer_similarity": 0.8190020278618146,
+      "answer_correctness": 0.750205052419999
+    },
+    {
+      "case_id": "N66-010",
+      "faithfulness": null,
+      "answer_relevancy": 0.5371883517536219,
+      "context_precision": 0.5480517940175831,
+      "context_recall": 0.5,
+      "answer_similarity": 0.7509557054119178,
+      "answer_correctness": 0.43773892635297945
+    },
+    {
+      "case_id": "N66-011",
+      "faithfulness": null,
+      "answer_relevancy": 0.7390533988944932,
+      "context_precision": 0.5833724952339312,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7379595763821086,
+      "answer_correctness": 0.3719898940955272
+    },
+    {
+      "case_id": "N66-012",
+      "faithfulness": 0.7142857142857143,
+      "answer_relevancy": 0.5922416394342324,
+      "context_precision": 0.6027135245748315,
+      "context_recall": 1.0,
+      "answer_similarity": 0.745797431639702,
+      "answer_correctness": 0.4364493579099255
+    },
+    {
+      "case_id": "N66-013",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.4759378836414652,
+      "context_precision": 0.5991781710395017,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6965679765306512,
+      "answer_correctness": 0.4241419941326628
+    },
+    {
+      "case_id": "N66-014",
+      "faithfulness": null,
+      "answer_relevancy": 0.4615146087952389,
+      "context_precision": 0.4569276556730864,
+      "context_recall": 0.5,
+      "answer_similarity": 0.7545111859102809,
+      "answer_correctness": 0.48862779647757026
+    },
+    {
+      "case_id": "N66-015",
+      "faithfulness": null,
+      "answer_relevancy": 0.7967405489014845,
+      "context_precision": 0.47570578142805,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6683311238590953,
+      "answer_correctness": 0.36708278096477387
+    },
+    {
+      "case_id": "N66-016",
+      "faithfulness": null,
+      "answer_relevancy": 0.7522364157795224,
+      "context_precision": 0.48458292574795475,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6989744908805964,
+      "answer_correctness": 0.566047970546236
+    },
+    {
+      "case_id": "N66-017",
+      "faithfulness": 0.5714285714285714,
+      "answer_relevancy": 0.7220198380641899,
+      "context_precision": 0.5824313033968468,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6950571067922027,
+      "answer_correctness": 0.3737642766980507
+    },
+    {
+      "case_id": "N66-018",
+      "faithfulness": null,
+      "answer_relevancy": 0.7873644588220182,
+      "context_precision": 0.3854893360814564,
+      "context_recall": 0.5,
+      "answer_similarity": 0.7206293370868915,
+      "answer_correctness": 0.3468240009383895
+    },
+    {
+      "case_id": "N66-019",
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.4792113463918158,
+      "context_precision": 0.4658376277822752,
+      "context_recall": 0.6666666666666666,
+      "answer_similarity": 0.7067379615496776,
+      "answer_correctness": 0.4494117631146921
+    },
+    {
+      "case_id": "N66-020",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7245905878536009,
+      "context_precision": 0.34142797469377384,
+      "context_recall": 0.23076923076923078,
+      "answer_similarity": 0.6227576721417247,
+      "answer_correctness": 0.2806894180354312
+    },
+    {
+      "case_id": "N66-021",
+      "faithfulness": null,
+      "answer_relevancy": 0.6556562134591654,
+      "context_precision": 0.3081290849621848,
+      "context_recall": 0.5,
+      "answer_similarity": 0.7641205088143715,
+      "answer_correctness": 0.34103012720359294
+    },
+    {
+      "case_id": "N66-022",
+      "faithfulness": null,
+      "answer_relevancy": 0.7589704247187484,
+      "context_precision": 0.7818328136438879,
+      "context_recall": 1.0,
+      "answer_similarity": 0.8190020278618146,
+      "answer_correctness": 0.5576916834360419
+    },
+    {
+      "case_id": "N66-023",
+      "faithfulness": null,
+      "answer_relevancy": 0.7564590397231856,
+      "context_precision": 0.45852202609807163,
+      "context_recall": 1.0,
+      "answer_similarity": 0.832570478295378,
+      "answer_correctness": 0.4331426195738445
+    },
+    {
+      "case_id": "N66-024",
+      "faithfulness": null,
+      "answer_relevancy": 0.8110402951581869,
+      "context_precision": 0.4143762183189825,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7882986656359392,
+      "answer_correctness": 0.33993180926612765
+    },
+    {
+      "case_id": "N66-025",
+      "faithfulness": 0.42857142857142855,
+      "answer_relevancy": 0.5851898909347752,
+      "context_precision": 0.43116054598916226,
+      "context_recall": 1.0,
+      "answer_similarity": 0.7226229778403787,
+      "answer_correctness": 0.35712633269538874
+    },
+    {
+      "case_id": "N66-026",
+      "faithfulness": 0.2222222222222222,
+      "answer_relevancy": 0.7416263753765273,
+      "context_precision": 0.44166666665930554,
+      "context_recall": 1.0,
+      "answer_similarity": 0.8210274947228657,
+      "answer_correctness": 0.43602610444994716
+    }
+  ]
+}

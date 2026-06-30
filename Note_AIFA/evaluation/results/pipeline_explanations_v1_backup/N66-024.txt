@@ -1,0 +1,38 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco ketorolac è stato valutato e classificato come NON_RIMBORSABILE in base alla Nota AIFA. Ciò è stato determinato dalla regola N66_INCL_001, che ha valutato FALSE e ha bloccato la copertura. Come indicato nella FONTE 1, il ketorolac è un farmaco antinfiammatorio non steroideo (FANS) e, secondo la FONTE 3, è associato a un maggior rischio di effetti gastrointestinali e trombotici. Inoltre, la FONTE 4 sottolinea che il ketorolac è uno dei farmaci con un maggior rischio di effetti indesiderati a livello del tratto gastrointestinale alto.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 5
+- Nota_66.pdf, p. 3
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_INCL_001
+snippet_id: 6f4dc43a00
+Fonte: Nota_66.pdf, p. 2
+Testo: "flurbiprofene;
+furprofene;
+ibuprofene;
+indometacina;
+ketoprofene;
+Lornoxicam;
+meloxicam;
+nabumetone;
+naprossene;
+oxaprozina;
+piroxicam;
+proglumetacina..."
+--- FINE ---

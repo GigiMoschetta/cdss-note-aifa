@@ -1,0 +1,22 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco apixaban è RIMBORSABILE in quanto risulta avere un punteggio CHA2DS2-VASc di 2, che è inferiore alla soglia di 2. Ciò significa che il paziente non presenta un alto rischio di trombo-embolismo. Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per valutare il rischio trombo-embolico e il farmaco è considerato RIMBORSABILE se il punteggio è inferiore o uguale a 2.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-2.pdf, p. 1

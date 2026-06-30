@@ -1,0 +1,33 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco apixaban è motivata dal fatto che il punteggio CHA2DS2-VASc è di 2, che è inferiore alla soglia di 3. Come indicato nella FONTE 1, i NAO/DOAC sono generalmente preferibili per i pazienti con scarsa qualità del controllo del trattamento con AVK o per i pazienti in AVK con pregressa emorragia intracranica o ad alto rischio di svilupparla. Tuttavia, nel caso specifico del paziente in questione, il punteggio CHA2DS2-VASc è troppo basso per giustificare l'uso di un NAO/DOAC come apixaban.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-97.pdf, p. 3
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97.pdf, p. 2
+
+
+--- PROVA NORMATIVA ---
+Regola: N97_PATH_001
+snippet_id: 205bff3462
+Fonte: nota-97.pdf, p. 3
+Testo: "Numerosi studi hanno ampiamente dimostrato una 
+comprovata efficacia ed un profilo di sicurezza favorevole sia 
+degli AVK sia dei NAO/DOAC, se..."
+--- FINE ---

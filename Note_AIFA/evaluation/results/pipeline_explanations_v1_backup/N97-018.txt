@@ -1,0 +1,22 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione degli ictus ed embolia sistemica in pazienti adulti con fibrillazione atriale non valvolare (FANV). La decisione di rimborsarlo è stata presa in base al punteggio CHA2DS2-VASc, che è stato calcolato come [5, 5] e risulta superiore alla soglia di 2. Ciò indica un alto rischio trombo-embolico per il paziente. Come indicato nella FONTE 1, il CHA2DS2-VASc è lo score validato per la definizione del rischio trombo-embolico attualmente più utilizzato e raccomandato dalla Società Europea di Cardiologia (ESC). Inoltre, la FONTE 6 sottolinea l'importanza di considerare il rischio trombo-embolico e emorragico individuale per la scelta del trattamento anticoagulante.
+
+3. RACCOMANDAZIONI
+   La raccomandazione di posologia per l'apixaban è di 2,5 mg × 2/die per pazienti con età ≥80 anni, peso ≤60 kg, creatinina ≥1,5 mg/dl, come indicato nella FONTE 9.
+
+4. DATI MANCANTI
+   I campi mancanti sono: difficolta_monitoraggio_inr, interazioni_farmacologiche_doac, pregressa_emorragia_intracranica, ttr_sotto_70.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-2.pdf, p. 3

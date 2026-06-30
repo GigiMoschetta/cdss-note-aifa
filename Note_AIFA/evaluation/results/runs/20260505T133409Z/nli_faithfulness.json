@@ -1,0 +1,495 @@
+{
+  "metric": "nli_faithfulness",
+  "model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+  "aggregate": {},
+  "per_case": [
+    {
+      "case_id": "N97-001",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-002",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-003",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-004",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-005",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-006",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-007",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-008",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-009",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-010",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-011",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-012",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-013",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-014",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-015",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-016",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-017",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-018",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-019",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-020",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-021",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-022",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-023",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-024",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-025",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-026",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-027",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-028",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-029",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-030",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-031",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-032",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-033",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-034",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-035",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-036",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-037",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-038",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-039",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N97-040",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-001",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-002",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-003",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-004",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-005",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-006",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-007",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-008",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-009",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-010",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-011",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-012",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-013",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-014",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-015",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-016",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-017",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-018",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-019",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-020",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-021",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-022",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-023",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N01-024",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-001",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-002",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-003",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-004",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-005",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-006",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-007",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-008",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-009",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-010",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-011",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-012",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-013",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-014",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-015",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-016",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-017",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-018",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-019",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-020",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-021",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-022",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-023",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-024",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-025",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-026",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-027",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-028",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-029",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-030",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-031",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N13-032",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-001",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-002",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-003",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-004",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-005",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-006",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-007",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-008",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-009",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-010",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-011",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-012",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-013",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-014",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-015",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-016",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-017",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-018",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-019",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-020",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-021",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-022",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-023",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-024",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-025",
+      "skip_reason": "no_chunks"
+    },
+    {
+      "case_id": "N66-026",
+      "skip_reason": "no_chunks"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+%% macros_finale.tex — Macro condivise per la tesi finale (Zamar, 2026-07-20)
+%% Le date e i numeri canonici fanno riferimento alla run overnight 2026-05-13
+%% (resume 2026-05-14 post-reboot), single source of truth: STATE.md root.
+
+\providecommand{\cleanroomrun}{run overnight 2026-05-13\xspace}
+
+\providecommand{\engineversion}{3.4.0\xspace}
+\providecommand{\schemaversion}{3.3\xspace}
+\providecommand{\llmmodel}{Llama~3.1~8B~Q4\_K\_M\xspace}
+\providecommand{\embedmodel}{\texttt{paraphrase-multilingual-mpnet-base-v2}\xspace}
+\providecommand{\reranker}{\texttt{nickprock/cross-encoder-italian-bert-stsb}\xspace}
+\providecommand{\nlimodel}{mDeBERTa-v3-base-xnli-multilingual-nli-2mil7\xspace}
+
+%% Conteggi canonici.
+\providecommand{\goldn}{122\xspace}
+\providecommand{\goldRimb}{69\xspace}
+\providecommand{\goldNonRimb}{39\xspace}
+\providecommand{\goldNonDet}{9\xspace}
+\providecommand{\goldRouted}{5\xspace}
+
+%% Identificatori delle quattro Note AIFA codificate nel sistema:
+%%   N01 = inibitori di pompa protonica (IPP) per gastroprotezione cronica
+%%   N13 = statine nella dislipidemia (ipolipemizzanti)
+%%   N66 = antinfiammatori non steroidei (FANS)
+%%   N97 = anticoagulanti orali diretti (DOAC) nella fibrillazione atriale
+%%         non valvolare (FANV)
+\providecommand{\notezero}{N01}
+\providecommand{\notetredici}{N13}
+\providecommand{\notesessanta}{N66}
+\providecommand{\notenova}{N97}
+\providecommand{\testcountengine}{433\xspace}
+\providecommand{\testcountorch}{590\xspace}
+\providecommand{\testcountall}{1023\xspace}
+
+%% Sezioni con piccole maiuscole per le decisioni cliniche.
+\providecommand{\decision}[1]{\textsc{#1}}
+
+%% Comandi per pesi ALES.
+\providecommand{\alesalpha}{0{,}40}
+\providecommand{\alesbeta}{0{,}30}
+\providecommand{\alesgamma}{0{,}20}
+\providecommand{\alesdelta}{0{,}10}

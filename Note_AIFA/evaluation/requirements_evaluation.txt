@@ -1,0 +1,21 @@
+# Phase 4 — Evaluation dependencies
+# Install with: pip install -r evaluation/requirements_evaluation.txt
+# (assumes aifa_rule_engine is already installed via pip install -e aifa_rule_engine/)
+
+# HTTP client for calling the orchestrator API
+httpx>=0.27.0
+
+# Data analysis + Jupyter notebooks
+pandas>=2.2.0
+numpy>=1.26.0
+matplotlib>=3.9.0
+seaborn>=0.13.0
+jupyter>=1.0.0
+ipykernel>=6.29.0
+ipywidgets>=8.1.0
+
+# NLI-based faithfulness scoring (Phase 4 stretch goal)
+# Uncomment if using the NLI faithfulness model:
+# transformers>=4.41.0
+# sentence-transformers>=3.0.0
+# torch>=2.0.0

@@ -1,0 +1,67 @@
+{
+  "metric": "wilson_ci_rule_engine",
+  "method": "wilson_score",
+  "confidence_level": 0.95,
+  "n_total": 122,
+  "n_pass": 122,
+  "pass_rate": 1.0,
+  "pass_rate_ci": [
+    0.9695,
+    1.0
+  ],
+  "note": "Wilson score interval is non-degenerate at p̂=1.0 (vs normal-percentile which collapses to [1.0, 1.0]). For n=122 with p̂=1.0, Wilson 95% CI is approximately [0.969, 1.000].",
+  "per_class": {
+    "RIMBORSABILE": {
+      "support": 69,
+      "recall": 1.0,
+      "recall_ci": [
+        0.9473,
+        1.0
+      ],
+      "precision": 1.0,
+      "precision_ci": [
+        0.9473,
+        1.0
+      ]
+    },
+    "NON_RIMBORSABILE": {
+      "support": 39,
+      "recall": 1.0,
+      "recall_ci": [
+        0.9104,
+        1.0
+      ],
+      "precision": 1.0,
+      "precision_ci": [
+        0.9104,
+        1.0
+      ]
+    },
+    "NON_DETERMINABILE": {
+      "support": 9,
+      "recall": 1.0,
+      "recall_ci": [
+        0.7011,
+        1.0
+      ],
+      "precision": 1.0,
+      "precision_ci": [
+        0.7011,
+        1.0
+      ]
+    },
+    "ROUTED": {
+      "support": 5,
+      "recall": 1.0,
+      "recall_ci": [
+        0.5657,
+        1.0
+      ],
+      "precision": 1.0,
+      "precision_ci": [
+        0.5657,
+        1.0
+      ]
+    }
+  }
+}

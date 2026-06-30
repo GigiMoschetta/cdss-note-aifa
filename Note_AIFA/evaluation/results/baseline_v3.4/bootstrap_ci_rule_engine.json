@@ -1,0 +1,80 @@
+{
+  "source_report": "evaluation/results/rule_engine_report.json",
+  "method": "bootstrap normal percentile, n_resamples=5000, seed=42",
+  "confidence_level": 0.95,
+  "metrics_with_ci": {
+    "pass_rate": {
+      "point": 1.0,
+      "ci_95_low": 1.0,
+      "ci_95_high": 1.0,
+      "n_successes": 122,
+      "n_total": 122
+    },
+    "per_class_ci": {
+      "RIMBORSABILE": {
+        "tp": 69,
+        "fp": 0,
+        "fn": 0,
+        "support": 69,
+        "precision": {
+          "point": 1.0,
+          "ci_95_low": 1.0,
+          "ci_95_high": 1.0
+        },
+        "recall": {
+          "point": 1.0,
+          "ci_95_low": 1.0,
+          "ci_95_high": 1.0
+        }
+      },
+      "NON_RIMBORSABILE": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 0,
+        "support": 39,
+        "precision": {
+          "point": 1.0,
+          "ci_95_low": 1.0,
+          "ci_95_high": 1.0
+        },
+        "recall": {
+          "point": 1.0,
+          "ci_95_low": 1.0,
+          "ci_95_high": 1.0
+        }
+      },
+      "NON_DETERMINABILE": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 0,
+        "support": 9,
+        "precision": {
+          "point": 1.0,
+          "ci_95_low": 1.0,
+          "ci_95_high": 1.0
+        },
+        "recall": {
+          "point": 1.0,
+          "ci_95_low": 1.0,
+          "ci_95_high": 1.0
+        }
+      },
+      "ROUTED": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "support": 5,
+        "precision": {
+          "point": 1.0,
+          "ci_95_low": 1.0,
+          "ci_95_high": 1.0
+        },
+        "recall": {
+          "point": 1.0,
+          "ci_95_low": 1.0,
+          "ci_95_high": 1.0
+        }
+      }
+    }
+  }
+}

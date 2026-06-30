@@ -1,0 +1,19 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il ketoprofene è un farmaco antinfiammatorio non steroideo (FANS) che è stato valutato per la sua efficacia e sicurezza. Come indicato nella FONTE 1, i FANS sono utilizzati per trattare il dolore acuto e l'infiammazione in diverse patologie, tra cui l'artrite reumatoide, l'osteoartrosi e il dolore neoplastico. Il ketoprofene è stato valutato per la sua efficacia nel trattamento del dolore acuto e per la sua sicurezza in termini di effetti collaterali. Come indicato nella FONTE 3, i FANS possono avere effetti collaterali gravi, tra cui la tossicità gastrointestinale e l'aumento del rischio di eventi trombotici. Tuttavia, il ketoprofene è stato valutato per la sua sicurezza e per la sua efficacia nel trattamento del dolore acuto.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 5
+- Nota_66.pdf, p. 3

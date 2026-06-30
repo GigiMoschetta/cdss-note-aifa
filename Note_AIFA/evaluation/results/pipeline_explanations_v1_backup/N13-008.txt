@@ -1,0 +1,20 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di rimborso del farmaco atorvastatina è motivata dalla sua inclusione nella lista dei farmaci prescrivibili a carico del SSN per i pazienti con rischio alto o molto alto di malattia cardiovascolare, come indicato nella FONTE 5. In particolare, l'atorvastatina è menzionata come trattamento di prima scelta per i pazienti con rischio molto alto (score ≥10%) e livelli di colesterolo LDL >100 mg/dL, come riportato nella FONTE 5. Inoltre, l'atorvastatina è anche menzionata come trattamento di seconda scelta per i pazienti con rischio alto (score >5% <10%) e livelli di colesterolo LDL >130 mg/dL, come riportato nella FONTE 5.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 6

@@ -1,0 +1,43 @@
+Progettazione e sviluppo di un sistema di supporto decisionale per l’interpretazione delle Note AIFA basato su Retrieval-Augmented Generation e regole cliniche deterministiche.
+
+l’obiettivo del progetto è sviluppare un sistema di supporto decisionale che aiuti il medico nell’interpretazione delle Note AIFA, recuperando automaticamente le parti rilevanti del testo normativo e applicando regole cliniche esplicite sul profilo del paziente, così da restituire una decisione motivata, verificabile e tracciabile.
+
+Dal punto di vista architetturale, le Note AIFA vengono prima convertite in un corpus documentale indicizzato. Il processo prevede due componenti distinte ma complementari.
+
+Da un lato, viene costruito un indice semantico per il recupero dei contenuti tramite una pipeline RAG. Le Note vengono suddivise in sezioni coerenti, che vengono poi trasformate in rappresentazioni vettoriali attraverso un modello di embedding e memorizzate in un database vettoriale (ad esempio ChromaDB). Questo consente di effettuare ricerche per similarità semantica, recuperando le parti più pertinenti rispetto al caso clinico analizzato.
+
+Dall’altro lato, i criteri decisionali presenti nelle Note (requisiti, esclusioni, eccezioni) vengono formalizzati in modo strutturato come regole deterministiche collegate a variabili cliniche esplicite. In questo modo la decisione finale non dipende dall’LLM, ma da un motore a regole trasparente e verificabile.
+
+Quando il sistema deve valutare un caso, riceve in input il farmaco (inclusi eventuali alias o nomi commerciali) e un insieme di informazioni cliniche essenziali del paziente. Il motore a regole confronta tali dati con i criteri previsti dalla Nota e produce un esito deterministico:
+
+rimborsabile
+
+non rimborsabile
+
+non determinabile (in presenza di dati mancanti o insufficienti)
+
+Parallelamente, la pipeline RAG recupera le sezioni della Nota rilevanti per giustificare la decisione presa. Il ruolo del modello linguistico è limitato alla generazione di una spiegazione chiara e comprensibile, basata esclusivamente sull’esito deterministico e sui passaggi logici effettuati, citando esplicitamente i punti recuperati. In questo modo, ogni risposta rimane sempre ancorata alle evidenze normative, evitando che l’LLM influenzi la decisione clinica.
+
+L’output del sistema consiste quindi in:
+
+esito decisionale,
+
+motivazione esplicita,
+
+citazioni puntuali delle sezioni rilevanti della Nota,
+
+eventuale segnalazione di dati mancanti.
+
+Come casi di studio, il progetto parte dalla Nota 97 (anticoagulanti orali nella fibrillazione atriale non valvolare), sviluppando un prototipo completo. Successivamente, il sistema viene esteso alla Nota 1 (gastroprotettori) e alla Nota 13 (ipolipemizzanti), così da verificare l’efficacia del metodo su regolamentazioni con diversa complessità interpretativa e struttura normativa. La scelta di queste tre Note consente di coprire livelli differenti di articolazione dei criteri, senza dover estendere l’analisi all’intero insieme delle Note AIFA.
+
+Una parte centrale del progetto riguarda la valutazione del sistema.
+
+La validazione non si limita alla qualità linguistica delle risposte, ma si concentra principalmente sulla correttezza decisionale. A tal fine viene costruito un insieme di casi clinici sintetici per ciascuna Nota, comprendente scenari chiaramente idonei, non idonei, borderline e con dati mancanti. Per ogni caso viene definito un gold standard manuale, che specifica l’esito corretto e i criteri normativi applicabili.
+
+La valutazione della componente decisionale avviene confrontando l’esito prodotto dal sistema con il gold standard, utilizzando metriche di classificazione (accuracy, precision, recall, F1-score) e analizzando eventuali errori per comprendere se derivino da formalizzazione incompleta delle regole, gestione dei dati mancanti o ambiguità normativa.
+
+In parallelo, viene valutata la componente di retrieval. Per un sottoinsieme di casi clinici vengono annotate manualmente le sezioni della Nota necessarie alla decisione, così da misurare la capacità del sistema di recuperare effettivamente i paragrafi rilevanti (ad esempio tramite Recall@k e metriche di ranking). Questo consente di isolare eventuali criticità nella fase di indicizzazione o segmentazione del testo.
+
+Infine, la qualità delle spiegazioni generate viene valutata in termini di fedeltà alle fonti e coerenza rispetto alla decisione deterministica. In particolare, si verifica che ogni affermazione contenuta nella spiegazione sia supportata da evidenze effettivamente presenti nelle sezioni recuperate, evitando allucinazioni o inferenze non giustificate.
+
+L’ideale è testare il sistema su scenari diversificati e in presenza di dati incompleti, per valutare non solo l’accuratezza delle decisioni ma anche la robustezza dell’intero flusso (regole → retrieval → spiegazione) e la capacità del sistema di dichiarare esplicitamente l’insufficienza delle informazioni quando necessario.

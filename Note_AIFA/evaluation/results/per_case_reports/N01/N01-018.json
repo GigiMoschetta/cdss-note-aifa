@@ -1,0 +1,223 @@
+{
+  "case_id": "N01-018",
+  "nota_id": "01",
+  "drug_id": "lansoprazolo",
+  "category": "RIMBORSABILE_inclusion",
+  "description": "RIMBORSABILE — lansoprazolo con scope FANS + cortisonici, nessun GWARN (anticoagulanti assenti)",
+  "tags": [
+    "rimborsabile",
+    "lansoprazolo",
+    "nota01",
+    "cortisonici"
+  ],
+  "input": {
+    "patient_data": {
+      "trattamento_cronico_fans": true,
+      "terapia_antiaggregante_asa": false,
+      "pregresse_emorragie_digestive": false,
+      "ulcera_peptica_non_guarita": false,
+      "terapia_concomitante_anticoagulanti": false,
+      "terapia_concomitante_cortisonici": true,
+      "eta_avanzata": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "lansoprazolo covered by Nota 01; FANS scope + cortisonici inclusion; no anticoagulanti so GWARN does NOT fire"
+    },
+    "pdf_reference": {
+      "rule_id": "N01_SCOPE_001",
+      "pdf_file": "Nota_01.pdf",
+      "page": 2,
+      "section": "Box prescrittivo",
+      "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+    }
+  },
+  "engine": {
+    "actual_decision": "RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_01_0005_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_01_0006_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_01_0007_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_01_0008_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_01_0009_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_01_0004_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5661517977714539,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_01_0014_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3745182156562805,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_01_0010_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.32480746507644653,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_01_0000_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "TABLE",
+        "stage": "semantic",
+        "score": 0.3182935118675232,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_01_0012_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.2843882143497467,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: RIMBORSABILE\n   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   La decisione di rimborso del farmaco lansoprazolo è motivata dalla presenza di condizioni di rischio per le complicanze gravi del tratto gastrointestinale superiore, come indicato nella FONTE 6. In particolare, la Nota AIFA valuta che il trattamento cronico con farmaci antinfiammatori non steroidei (FANS) possa aumentare il rischio di ulcera peptica e delle sue complicanze gravi. La prescrizione del farmaco è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con FANS, in terapia antiaggregante con ASA a basse dosi, purché sussista una delle seguenti condizioni di rischio: storia di pregresse emorragie digestive o di ulcera peptica non guarita con terapia eradicante, concomitante terapia con anticoagulanti o cortisonici, età avanzata.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- Nota_01.pdf, p. 2, righe 14-26, char 944-2465, sha:1acab81b63\n- Nota_01.pdf, p. 1, righe 1-16, char 0-1404, sha:097a83fcbe\n- Nota_01.pdf, p. 3, sha:be80034ea9",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'RIMBORSABILE'": true,
+        "not_contains:'NON_RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 5774,
+      "completion_tokens": 485,
+      "total_tokens": 6259
+    },
+    "latency_s": 12.98
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N01-018",
+      "gold_pdf_file": "Nota_01.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 87,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.75,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.6667,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {
+      "case_id": "N01-018",
+      "faithfulness": 0.2857142857142857,
+      "answer_relevancy": 0.6068629638190923,
+      "context_precision": 0.5618274582480035,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6067082861606168,
+      "answer_correctness": 0.3659627858258685
+    }
+  }
+}

@@ -1,0 +1,26 @@
+version: "66:2024-11"
+description: "Nota 66 — FANS (farmaci antinfiammatori non steroidei)"
+
+# PDF normativo (audit Day 1 fix F6-G3 BLOC):
+pdf_files:
+  - filename: "Nota_66.pdf"  # filesystem renamed 2026-05-06 (audit fix H3) — no trailing space
+    md5: "2c13fe04a8c14eb9bd23e0c65d338a2c"
+    sha256: "bfd134c23bc1d8ff..."
+    size_bytes: 378780
+    pdf_url: "https://www.aifa.gov.it/-/nota-66"
+    pdf_downloaded_at: "2026-01-XX"
+    normative_reference: "Determina AIFA G.U. n°197 del 24/08/2012; Modifica G.U. n°246 del 22/10/2018"
+
+# Rule IDs declared in rules.yaml (audit V4 2026-05-12 — kept in sync via test_catalog_in_sync_with_rules)
+rules:
+  - N66_SCOPE_001
+  - N66_INCL_001
+  - N66_EXCL_HARD_001
+  - N66_EXCL_HARD_002
+  - N66_EXCL_HARD_003
+  - N66_INCL_002
+  - N66_INCL_003
+  - N66_EXCL_HARD_004
+  - N66_EXCL_HARD_005
+  - N66_GWARN_001
+  - N66_GWARN_002

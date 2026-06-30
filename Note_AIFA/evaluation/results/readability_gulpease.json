@@ -1,0 +1,1362 @@
+{
+  "metric": "M6_readability_gulpease",
+  "description": "Gulpease readability index (Italian-specific) normalized to [0,1]",
+  "tautological": false,
+  "n_cases_total": 122,
+  "aggregate": {
+    "mean_gulpease_raw": 53.23,
+    "median_gulpease_raw": 51.25,
+    "std_gulpease_raw": 8.91,
+    "mean_gulpease_norm": 0.3872,
+    "median_gulpease_norm": 0.3542,
+    "buckets": {
+      "scuola_superiore": 94,
+      "scuola_media": 26,
+      "difficile": 2
+    }
+  },
+  "per_case": [
+    {
+      "case_id": "N01-001",
+      "gulpease_raw": 42.87,
+      "gulpease_norm": 0.2144,
+      "components": {
+        "F": 6,
+        "LP": 729,
+        "W": 119
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-002",
+      "gulpease_raw": 43.92,
+      "gulpease_norm": 0.232,
+      "components": {
+        "F": 6,
+        "LP": 730,
+        "W": 122
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-003",
+      "gulpease_raw": 42.43,
+      "gulpease_norm": 0.2072,
+      "components": {
+        "F": 6,
+        "LP": 804,
+        "W": 134
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-004",
+      "gulpease_raw": 41.14,
+      "gulpease_norm": 0.1857,
+      "components": {
+        "F": 6,
+        "LP": 917,
+        "W": 154
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-005",
+      "gulpease_raw": 40.62,
+      "gulpease_norm": 0.177,
+      "components": {
+        "F": 6,
+        "LP": 896,
+        "W": 148
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-006",
+      "gulpease_raw": 72.04,
+      "gulpease_norm": 0.7007,
+      "components": {
+        "F": 8,
+        "LP": 357,
+        "W": 69
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N01-007",
+      "gulpease_raw": 45.49,
+      "gulpease_norm": 0.2582,
+      "components": {
+        "F": 6,
+        "LP": 676,
+        "W": 114
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-008",
+      "gulpease_raw": 48.63,
+      "gulpease_norm": 0.3104,
+      "components": {
+        "F": 7,
+        "LP": 642,
+        "W": 107
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-009",
+      "gulpease_raw": 46.59,
+      "gulpease_norm": 0.2765,
+      "components": {
+        "F": 6,
+        "LP": 638,
+        "W": 108
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-010",
+      "gulpease_raw": 45.91,
+      "gulpease_norm": 0.2652,
+      "components": {
+        "F": 6,
+        "LP": 654,
+        "W": 110
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-011",
+      "gulpease_raw": 45.88,
+      "gulpease_norm": 0.2646,
+      "components": {
+        "F": 9,
+        "LP": 960,
+        "W": 160
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-012",
+      "gulpease_raw": 45.84,
+      "gulpease_norm": 0.264,
+      "components": {
+        "F": 8,
+        "LP": 827,
+        "W": 136
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-013",
+      "gulpease_raw": 34.09,
+      "gulpease_norm": 0.0682,
+      "components": {
+        "F": 7,
+        "LP": 1083,
+        "W": 159
+      },
+      "bucket": "difficile"
+    },
+    {
+      "case_id": "N01-014",
+      "gulpease_raw": 43.92,
+      "gulpease_norm": 0.232,
+      "components": {
+        "F": 6,
+        "LP": 730,
+        "W": 122
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-015",
+      "gulpease_raw": 42.87,
+      "gulpease_norm": 0.2144,
+      "components": {
+        "F": 6,
+        "LP": 729,
+        "W": 119
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-016",
+      "gulpease_raw": 41.93,
+      "gulpease_norm": 0.1989,
+      "components": {
+        "F": 6,
+        "LP": 886,
+        "W": 150
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-017",
+      "gulpease_raw": 46.7,
+      "gulpease_norm": 0.2783,
+      "components": {
+        "F": 6,
+        "LP": 603,
+        "W": 100
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-018",
+      "gulpease_raw": 42.43,
+      "gulpease_norm": 0.2072,
+      "components": {
+        "F": 6,
+        "LP": 804,
+        "W": 134
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N01-019",
+      "gulpease_raw": 72.04,
+      "gulpease_norm": 0.7007,
+      "components": {
+        "F": 8,
+        "LP": 357,
+        "W": 69
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N01-020",
+      "gulpease_raw": 72.04,
+      "gulpease_norm": 0.7007,
+      "components": {
+        "F": 8,
+        "LP": 357,
+        "W": 69
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N01-021",
+      "gulpease_raw": 72.04,
+      "gulpease_norm": 0.7007,
+      "components": {
+        "F": 8,
+        "LP": 357,
+        "W": 69
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N01-022",
+      "gulpease_raw": 72.04,
+      "gulpease_norm": 0.7007,
+      "components": {
+        "F": 8,
+        "LP": 357,
+        "W": 69
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N01-023",
+      "gulpease_raw": 39.55,
+      "gulpease_norm": 0.1592,
+      "components": {
+        "F": 6,
+        "LP": 986,
+        "W": 163
+      },
+      "bucket": "difficile"
+    },
+    {
+      "case_id": "N01-024",
+      "gulpease_raw": 50.88,
+      "gulpease_norm": 0.3479,
+      "components": {
+        "F": 6,
+        "LP": 546,
+        "W": 96
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-001",
+      "gulpease_raw": 44.83,
+      "gulpease_norm": 0.2472,
+      "components": {
+        "F": 6,
+        "LP": 657,
+        "W": 108
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-002",
+      "gulpease_raw": 60.23,
+      "gulpease_norm": 0.5038,
+      "components": {
+        "F": 10,
+        "LP": 628,
+        "W": 114
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-003",
+      "gulpease_raw": 60.23,
+      "gulpease_norm": 0.5038,
+      "components": {
+        "F": 10,
+        "LP": 628,
+        "W": 114
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-004",
+      "gulpease_raw": 71.07,
+      "gulpease_norm": 0.6845,
+      "components": {
+        "F": 10,
+        "LP": 456,
+        "W": 87
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-005",
+      "gulpease_raw": 59.31,
+      "gulpease_norm": 0.4885,
+      "components": {
+        "F": 8,
+        "LP": 525,
+        "W": 96
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-006",
+      "gulpease_raw": 47.7,
+      "gulpease_norm": 0.2949,
+      "components": {
+        "F": 5,
+        "LP": 530,
+        "W": 92
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-007",
+      "gulpease_raw": 50.94,
+      "gulpease_norm": 0.349,
+      "components": {
+        "F": 6,
+        "LP": 572,
+        "W": 103
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-008",
+      "gulpease_raw": 60.47,
+      "gulpease_norm": 0.5079,
+      "components": {
+        "F": 9,
+        "LP": 541,
+        "W": 95
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-009",
+      "gulpease_raw": 60.47,
+      "gulpease_norm": 0.5079,
+      "components": {
+        "F": 9,
+        "LP": 541,
+        "W": 95
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-010",
+      "gulpease_raw": 55.16,
+      "gulpease_norm": 0.4194,
+      "components": {
+        "F": 8,
+        "LP": 531,
+        "W": 86
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-011",
+      "gulpease_raw": 45.02,
+      "gulpease_norm": 0.2503,
+      "components": {
+        "F": 7,
+        "LP": 707,
+        "W": 113
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-012",
+      "gulpease_raw": 47.1,
+      "gulpease_norm": 0.2849,
+      "components": {
+        "F": 6,
+        "LP": 620,
+        "W": 105
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-013",
+      "gulpease_raw": 59.31,
+      "gulpease_norm": 0.4885,
+      "components": {
+        "F": 8,
+        "LP": 525,
+        "W": 96
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-014",
+      "gulpease_raw": 59.31,
+      "gulpease_norm": 0.4885,
+      "components": {
+        "F": 8,
+        "LP": 525,
+        "W": 96
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-015",
+      "gulpease_raw": 59.31,
+      "gulpease_norm": 0.4885,
+      "components": {
+        "F": 8,
+        "LP": 525,
+        "W": 96
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-016",
+      "gulpease_raw": 59.31,
+      "gulpease_norm": 0.4885,
+      "components": {
+        "F": 8,
+        "LP": 525,
+        "W": 96
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-017",
+      "gulpease_raw": 47.7,
+      "gulpease_norm": 0.2949,
+      "components": {
+        "F": 5,
+        "LP": 530,
+        "W": 92
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-018",
+      "gulpease_raw": 58.69,
+      "gulpease_norm": 0.4782,
+      "components": {
+        "F": 9,
+        "LP": 564,
+        "W": 97
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-019",
+      "gulpease_raw": 60.47,
+      "gulpease_norm": 0.5079,
+      "components": {
+        "F": 9,
+        "LP": 541,
+        "W": 95
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-020",
+      "gulpease_raw": 47.7,
+      "gulpease_norm": 0.2949,
+      "components": {
+        "F": 5,
+        "LP": 530,
+        "W": 92
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-021",
+      "gulpease_raw": 60.47,
+      "gulpease_norm": 0.5079,
+      "components": {
+        "F": 9,
+        "LP": 541,
+        "W": 95
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-022",
+      "gulpease_raw": 58.69,
+      "gulpease_norm": 0.4782,
+      "components": {
+        "F": 9,
+        "LP": 564,
+        "W": 97
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-023",
+      "gulpease_raw": 52.41,
+      "gulpease_norm": 0.3735,
+      "components": {
+        "F": 6,
+        "LP": 502,
+        "W": 88
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-024",
+      "gulpease_raw": 47.08,
+      "gulpease_norm": 0.2847,
+      "components": {
+        "F": 6,
+        "LP": 595,
+        "W": 99
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-025",
+      "gulpease_raw": 58.89,
+      "gulpease_norm": 0.4814,
+      "components": {
+        "F": 6,
+        "LP": 442,
+        "W": 87
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-026",
+      "gulpease_raw": 47.95,
+      "gulpease_norm": 0.2991,
+      "components": {
+        "F": 6,
+        "LP": 648,
+        "W": 114
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-027",
+      "gulpease_raw": 47.15,
+      "gulpease_norm": 0.2859,
+      "components": {
+        "F": 6,
+        "LP": 678,
+        "W": 119
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-028",
+      "gulpease_raw": 52.54,
+      "gulpease_norm": 0.3756,
+      "components": {
+        "F": 6,
+        "LP": 541,
+        "W": 99
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-029",
+      "gulpease_raw": 68.43,
+      "gulpease_norm": 0.6406,
+      "components": {
+        "F": 10,
+        "LP": 518,
+        "W": 106
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-030",
+      "gulpease_raw": 62.52,
+      "gulpease_norm": 0.5419,
+      "components": {
+        "F": 9,
+        "LP": 511,
+        "W": 91
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N13-031",
+      "gulpease_raw": 52.98,
+      "gulpease_norm": 0.383,
+      "components": {
+        "F": 6,
+        "LP": 551,
+        "W": 103
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N13-032",
+      "gulpease_raw": 47.05,
+      "gulpease_norm": 0.2841,
+      "components": {
+        "F": 6,
+        "LP": 696,
+        "W": 123
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-001",
+      "gulpease_raw": 50.58,
+      "gulpease_norm": 0.3431,
+      "components": {
+        "F": 7,
+        "LP": 598,
+        "W": 101
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-002",
+      "gulpease_raw": 48.56,
+      "gulpease_norm": 0.3093,
+      "components": {
+        "F": 7,
+        "LP": 760,
+        "W": 136
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-003",
+      "gulpease_raw": 60.51,
+      "gulpease_norm": 0.5085,
+      "components": {
+        "F": 8,
+        "LP": 485,
+        "W": 86
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N66-004",
+      "gulpease_raw": 54.42,
+      "gulpease_norm": 0.4069,
+      "components": {
+        "F": 7,
+        "LP": 542,
+        "W": 96
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-005",
+      "gulpease_raw": 48.49,
+      "gulpease_norm": 0.3081,
+      "components": {
+        "F": 6,
+        "LP": 654,
+        "W": 117
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-006",
+      "gulpease_raw": 51.02,
+      "gulpease_norm": 0.3503,
+      "components": {
+        "F": 7,
+        "LP": 605,
+        "W": 104
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-007",
+      "gulpease_raw": 51.58,
+      "gulpease_norm": 0.3597,
+      "components": {
+        "F": 10,
+        "LP": 880,
+        "W": 155
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-008",
+      "gulpease_raw": 41.42,
+      "gulpease_norm": 0.1903,
+      "components": {
+        "F": 6,
+        "LP": 751,
+        "W": 120
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-009",
+      "gulpease_raw": 52.57,
+      "gulpease_norm": 0.3762,
+      "components": {
+        "F": 6,
+        "LP": 486,
+        "W": 84
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-010",
+      "gulpease_raw": 51.47,
+      "gulpease_norm": 0.3579,
+      "components": {
+        "F": 7,
+        "LP": 559,
+        "W": 93
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-011",
+      "gulpease_raw": 44.24,
+      "gulpease_norm": 0.2373,
+      "components": {
+        "F": 6,
+        "LP": 744,
+        "W": 126
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-012",
+      "gulpease_raw": 42.83,
+      "gulpease_norm": 0.2139,
+      "components": {
+        "F": 6,
+        "LP": 794,
+        "W": 133
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-013",
+      "gulpease_raw": 50.58,
+      "gulpease_norm": 0.3431,
+      "components": {
+        "F": 7,
+        "LP": 598,
+        "W": 101
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-014",
+      "gulpease_raw": 44.15,
+      "gulpease_norm": 0.2359,
+      "components": {
+        "F": 8,
+        "LP": 1119,
+        "W": 196
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-015",
+      "gulpease_raw": 64.73,
+      "gulpease_norm": 0.5788,
+      "components": {
+        "F": 11,
+        "LP": 580,
+        "W": 103
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N66-016",
+      "gulpease_raw": 54.42,
+      "gulpease_norm": 0.4069,
+      "components": {
+        "F": 7,
+        "LP": 542,
+        "W": 96
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-017",
+      "gulpease_raw": 51.75,
+      "gulpease_norm": 0.3625,
+      "components": {
+        "F": 7,
+        "LP": 549,
+        "W": 91
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-018",
+      "gulpease_raw": 49.33,
+      "gulpease_norm": 0.3222,
+      "components": {
+        "F": 10,
+        "LP": 1014,
+        "W": 180
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-019",
+      "gulpease_raw": 52.83,
+      "gulpease_norm": 0.3805,
+      "components": {
+        "F": 7,
+        "LP": 597,
+        "W": 107
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-020",
+      "gulpease_raw": 48.85,
+      "gulpease_norm": 0.3142,
+      "components": {
+        "F": 7,
+        "LP": 744,
+        "W": 133
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-021",
+      "gulpease_raw": 51.38,
+      "gulpease_norm": 0.3563,
+      "components": {
+        "F": 9,
+        "LP": 729,
+        "W": 122
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-022",
+      "gulpease_raw": 52.57,
+      "gulpease_norm": 0.3762,
+      "components": {
+        "F": 6,
+        "LP": 486,
+        "W": 84
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-023",
+      "gulpease_raw": 48.04,
+      "gulpease_norm": 0.3007,
+      "components": {
+        "F": 6,
+        "LP": 651,
+        "W": 115
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-024",
+      "gulpease_raw": 62.72,
+      "gulpease_norm": 0.5453,
+      "components": {
+        "F": 8,
+        "LP": 445,
+        "W": 78
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N66-025",
+      "gulpease_raw": 59.57,
+      "gulpease_norm": 0.4928,
+      "components": {
+        "F": 10,
+        "LP": 612,
+        "W": 106
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N66-026",
+      "gulpease_raw": 42.42,
+      "gulpease_norm": 0.207,
+      "components": {
+        "F": 6,
+        "LP": 711,
+        "W": 114
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-001",
+      "gulpease_raw": 51.06,
+      "gulpease_norm": 0.351,
+      "components": {
+        "F": 8,
+        "LP": 737,
+        "W": 131
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-002",
+      "gulpease_raw": 47.7,
+      "gulpease_norm": 0.2951,
+      "components": {
+        "F": 6,
+        "LP": 626,
+        "W": 108
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-003",
+      "gulpease_raw": 52.48,
+      "gulpease_norm": 0.3746,
+      "components": {
+        "F": 7,
+        "LP": 714,
+        "W": 138
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-004",
+      "gulpease_raw": 57.2,
+      "gulpease_norm": 0.4533,
+      "components": {
+        "F": 7,
+        "LP": 598,
+        "W": 122
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-005",
+      "gulpease_raw": 65.15,
+      "gulpease_norm": 0.5859,
+      "components": {
+        "F": 8,
+        "LP": 457,
+        "W": 91
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-006",
+      "gulpease_raw": 73.12,
+      "gulpease_norm": 0.7187,
+      "components": {
+        "F": 11,
+        "LP": 484,
+        "W": 97
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-007",
+      "gulpease_raw": 54.3,
+      "gulpease_norm": 0.4051,
+      "components": {
+        "F": 7,
+        "LP": 609,
+        "W": 115
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-008",
+      "gulpease_raw": 52.13,
+      "gulpease_norm": 0.3689,
+      "components": {
+        "F": 8,
+        "LP": 734,
+        "W": 134
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-009",
+      "gulpease_raw": 40.04,
+      "gulpease_norm": 0.1674,
+      "components": {
+        "F": 7,
+        "LP": 915,
+        "W": 144
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-010",
+      "gulpease_raw": 51.56,
+      "gulpease_norm": 0.3594,
+      "components": {
+        "F": 11,
+        "LP": 1075,
+        "W": 199
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-011",
+      "gulpease_raw": 67.4,
+      "gulpease_norm": 0.6233,
+      "components": {
+        "F": 15,
+        "LP": 800,
+        "W": 162
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-012",
+      "gulpease_raw": 54.09,
+      "gulpease_norm": 0.4015,
+      "components": {
+        "F": 8,
+        "LP": 631,
+        "W": 112
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-013",
+      "gulpease_raw": 51.15,
+      "gulpease_norm": 0.3525,
+      "components": {
+        "F": 7,
+        "LP": 615,
+        "W": 107
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-014",
+      "gulpease_raw": 51.76,
+      "gulpease_norm": 0.3627,
+      "components": {
+        "F": 7,
+        "LP": 601,
+        "W": 105
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-015",
+      "gulpease_raw": 52.01,
+      "gulpease_norm": 0.3668,
+      "components": {
+        "F": 6,
+        "LP": 524,
+        "W": 93
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-016",
+      "gulpease_raw": 76.16,
+      "gulpease_norm": 0.7693,
+      "components": {
+        "F": 13,
+        "LP": 521,
+        "W": 102
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-017",
+      "gulpease_raw": 46.82,
+      "gulpease_norm": 0.2804,
+      "components": {
+        "F": 7,
+        "LP": 733,
+        "W": 124
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-018",
+      "gulpease_raw": 49.06,
+      "gulpease_norm": 0.3177,
+      "components": {
+        "F": 7,
+        "LP": 845,
+        "W": 159
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-019",
+      "gulpease_raw": 48.69,
+      "gulpease_norm": 0.3115,
+      "components": {
+        "F": 7,
+        "LP": 863,
+        "W": 162
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-020",
+      "gulpease_raw": 47.87,
+      "gulpease_norm": 0.2978,
+      "components": {
+        "F": 10,
+        "LP": 1065,
+        "W": 186
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-021",
+      "gulpease_raw": 58.57,
+      "gulpease_norm": 0.4761,
+      "components": {
+        "F": 11,
+        "LP": 820,
+        "W": 161
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-022",
+      "gulpease_raw": 50.48,
+      "gulpease_norm": 0.3413,
+      "components": {
+        "F": 8,
+        "LP": 814,
+        "W": 149
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-023",
+      "gulpease_raw": 51.36,
+      "gulpease_norm": 0.356,
+      "components": {
+        "F": 7,
+        "LP": 673,
+        "W": 123
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-024",
+      "gulpease_raw": 49.47,
+      "gulpease_norm": 0.3244,
+      "components": {
+        "F": 9,
+        "LP": 950,
+        "W": 172
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-025",
+      "gulpease_raw": 55.44,
+      "gulpease_norm": 0.424,
+      "components": {
+        "F": 8,
+        "LP": 683,
+        "W": 132
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-026",
+      "gulpease_raw": 46.46,
+      "gulpease_norm": 0.2743,
+      "components": {
+        "F": 7,
+        "LP": 695,
+        "W": 114
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-027",
+      "gulpease_raw": 50.15,
+      "gulpease_norm": 0.3358,
+      "components": {
+        "F": 8,
+        "LP": 749,
+        "W": 131
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-028",
+      "gulpease_raw": 71.44,
+      "gulpease_norm": 0.6906,
+      "components": {
+        "F": 9,
+        "LP": 407,
+        "W": 78
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-029",
+      "gulpease_raw": 52.66,
+      "gulpease_norm": 0.3777,
+      "components": {
+        "F": 6,
+        "LP": 547,
+        "W": 101
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-030",
+      "gulpease_raw": 47.85,
+      "gulpease_norm": 0.2975,
+      "components": {
+        "F": 9,
+        "LP": 1130,
+        "W": 209
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-031",
+      "gulpease_raw": 48.58,
+      "gulpease_norm": 0.3097,
+      "components": {
+        "F": 7,
+        "LP": 695,
+        "W": 120
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-032",
+      "gulpease_raw": 67.17,
+      "gulpease_norm": 0.6194,
+      "components": {
+        "F": 11,
+        "LP": 568,
+        "W": 109
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-033",
+      "gulpease_raw": 68.52,
+      "gulpease_norm": 0.6419,
+      "components": {
+        "F": 15,
+        "LP": 788,
+        "W": 165
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-034",
+      "gulpease_raw": 47.73,
+      "gulpease_norm": 0.2955,
+      "components": {
+        "F": 7,
+        "LP": 697,
+        "W": 118
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-035",
+      "gulpease_raw": 49.59,
+      "gulpease_norm": 0.3266,
+      "components": {
+        "F": 7,
+        "LP": 675,
+        "W": 118
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-036",
+      "gulpease_raw": 52.01,
+      "gulpease_norm": 0.3668,
+      "components": {
+        "F": 6,
+        "LP": 524,
+        "W": 93
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-037",
+      "gulpease_raw": 72.21,
+      "gulpease_norm": 0.7036,
+      "components": {
+        "F": 10,
+        "LP": 441,
+        "W": 84
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-038",
+      "gulpease_raw": 71.16,
+      "gulpease_norm": 0.686,
+      "components": {
+        "F": 10,
+        "LP": 457,
+        "W": 88
+      },
+      "bucket": "scuola_media"
+    },
+    {
+      "case_id": "N97-039",
+      "gulpease_raw": 50.68,
+      "gulpease_norm": 0.3447,
+      "components": {
+        "F": 7,
+        "LP": 689,
+        "W": 125
+      },
+      "bucket": "scuola_superiore"
+    },
+    {
+      "case_id": "N97-040",
+      "gulpease_raw": 49.59,
+      "gulpease_norm": 0.3266,
+      "components": {
+        "F": 7,
+        "LP": 675,
+        "W": 118
+      },
+      "bucket": "scuola_superiore"
+    }
+  ]
+}

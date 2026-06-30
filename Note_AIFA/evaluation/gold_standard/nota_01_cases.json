@@ -1,0 +1,1908 @@
+{
+  "schema_version": "1.0",
+  "nota_id": "01",
+  "generated": "2026-02-24",
+  "description": "Gold standard test cases for Nota 01 — Gastroprotettori (IPP) in pazienti in terapia con FANS o ASA. Covers scope, OR short-circuit, inclusion logic, routing to Nota 66, and guidance warnings.",
+  "cases": [
+    {
+      "id": "N01-001",
+      "description": "NON_RIMBORSABILE — base case: FANS=True, ASA=False, no risk factors for inclusion",
+      "category": "NON_RIMBORSABILE_no_inclusion",
+      "tags": [
+        "non_rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "inclusion_failure"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N01_INCL_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain that at least one risk factor (emorragie pregresse, ulcera, anticoagulanti, cortisonici, or eta avanzata) is required for reimbursement"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_INCL_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+      },
+      "gold_answer": "Il farmaco omeprazolo NON È RIMBORSABILE secondo la Nota AIFA 01. Motivazione: Il rimborso è condizionato alla presenza di almeno un fattore di rischio gastrointestinale documentato o clinicamente stimato (Fonte: Nota_01.pdf p.2). Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_INCL_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "In assenza di tutti i fattori di rischio elencati, il gastroprotettore non è rimborsabile a carico SSN",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-002",
+      "description": "RIMBORSABILE — pregresse emorragie digestive (high GI risk factor triggers inclusion)",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "emorragie"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Explanation must cite pregresse emorragie digestive as a decisive risk factor for gastroprotection"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-003",
+      "description": "RIMBORSABILE — eta avanzata as inclusion criterion",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "pantoprazolo",
+        "nota01",
+        "eta_avanzata"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "pantoprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Explanation must cite eta_avanzata as the decisive GI risk factor"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco pantoprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-004",
+      "description": "RIMBORSABILE con WARNING — concurrent anticoagulant therapy: triple therapy (FANS + anticoagulante + PPI) fires N01_GWARN_001 high bleeding risk",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "anticoagulanti",
+        "triple_therapy_warning"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": true,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": ["N01_GWARN_001"]
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain that anticoagulant combination with FANS dramatically increases GI bleeding risk"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-005",
+      "description": "NON_RIMBORSABILE — scope failure: neither FANS nor ASA (out of Nota 01 scope entirely)",
+      "category": "NON_RIMBORSABILE_scope",
+      "tags": [
+        "non_rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "scope"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N01_SCOPE_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must explain that Nota 01 requires chronic FANS or antiplatelet ASA therapy as a prerequisite"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo NON È RIMBORSABILE secondo la Nota AIFA 01. Motivazione: Prerequisito di indicazione: il farmaco gastroprotettore è rimborsabile solo se il paziente è in trattamento cronico con FANS oppure con ASA antiaggregante (Fonte: Nota_01.pdf p.2). Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "blocking"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Se né FANS né ASA antiaggregante sono in corso, nessuna prescrivibilità SSN",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-006",
+      "description": "ROUTED to Nota 66 — diclofenac+misoprostolo is a NSAID combination, routed to NSAID-specific note",
+      "category": "ROUTED_nota66",
+      "tags": [
+        "routed",
+        "diclofenac_misoprostolo",
+        "nota01",
+        "routing"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": null,
+        "decision_status": "ROUTED",
+        "route_to": "66",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "66"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE",
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 0,
+        "notes": "Explanation must clearly state that diclofenac+misoprostolo evaluation falls under Nota 66 (NSAID-specific criteria)"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Decisione: None. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è None.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-007",
+      "description": "RIMBORSABILE — OR short-circuit: ASA=True with FANS=null, missing coverage field empty",
+      "category": "RIMBORSABILE_short_circuit",
+      "tags": [
+        "rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "short_circuit",
+        "or_logic"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": null,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "missing_fields_coverage must be empty (OR short-circuit: ASA=True makes trattamento_cronico_fans irrelevant for scope); explanation should not mention FANS as a missing decisive field"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-008",
+      "description": "RIMBORSABILE with WARNING — FANS + anticoagulante = triple therapy (N01_GWARN_001 fires)",
+      "category": "RIMBORSABILE_with_guidance",
+      "tags": [
+        "rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "warning",
+        "triple_therapy"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": true,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": [
+          "N01_GWARN_001"
+        ]
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "N01_GWARN_001 triple-therapy warning must appear in RACCOMANDAZIONI; gastroprotection is reimbursed but prescriber must be alerted to enhanced bleeding risk"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Considerazioni cliniche: Segnalazione di rischio emorragico elevato per triplice terapia. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N01_GWARN_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 3,
+          "section": "Particolari avvertenze",
+          "decision_role": "guidance"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Segnalazione di rischio emorragico elevato per triplice terapia",
+          "must_appear": false,
+          "preferred": true
+        }
+      ]
+    },
+    {
+      "id": "N01-009",
+      "description": "RIMBORSABILE — ulcera peptica non guarita come fattore di rischio GI (N01_INCL_001 via ulcera path)",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "ulcera_peptica"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": true,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must cite ulcera peptica non guarita as a decisive GI risk factor per N01_INCL_001"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-010",
+      "description": "RIMBORSABILE — terapia concomitante con cortisonici come fattore di rischio GI (N01_INCL_001 via cortisonici path)",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "cortisonici"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": true,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Must cite cortisonici as a GI risk-amplifying factor per N01_INCL_001"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-011",
+      "description": "NON_DETERMINABILE — scope indeterminabile: entrambi FANS=null e ASA=null (OR di due UNKNOWN), con emorragie=True che fa passare l'inclusione",
+      "category": "NON_DETERMINABILE_scope",
+      "tags": [
+        "non_determinabile",
+        "omeprazolo",
+        "nota01",
+        "missing_data",
+        "scope"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": null,
+          "terapia_antiaggregante_asa": null,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_DETERMINABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [
+          "terapia_antiaggregante_asa",
+          "trattamento_cronico_fans"
+        ],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_DETERMINABILE"
+        ],
+        "must_not_contain_strings": [],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Scope is undecidable: OR(null, null) = UNKNOWN in Kleene 3VL; at least trattamento_cronico_fans must appear in DATI MANCANTI"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "La rimborsabilità del farmaco omeprazolo secondo la Nota AIFA 01 è NON DETERMINABILE per dati clinici insufficienti. Dati mancanti rilevanti per la decisione: terapia_antiaggregante_asa, trattamento_cronico_fans. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_DETERMINABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-012",
+      "description": "NON_DETERMINABILE — scope: FANS=null, ASA=False → OR(UNKNOWN, FALSE) = UNKNOWN in Kleene 3VL",
+      "category": "NON_DETERMINABILE_scope",
+      "tags": [
+        "non_determinabile",
+        "omeprazolo",
+        "nota01",
+        "missing_data",
+        "scope"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": null,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_DETERMINABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [
+          "trattamento_cronico_fans"
+        ],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_DETERMINABILE"
+        ],
+        "must_not_contain_strings": [],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "OR(UNKNOWN, FALSE) = UNKNOWN in Kleene; trattamento_cronico_fans is decisive and must appear in DATI MANCANTI"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "La rimborsabilità del farmaco omeprazolo secondo la Nota AIFA 01 è NON DETERMINABILE per dati clinici insufficienti. Dati mancanti rilevanti per la decisione: trattamento_cronico_fans. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_DETERMINABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-013",
+      "description": "NON_DETERMINABILE — inclusione indeterminabile: FANS=True, ASA=False, tutti i 5 fattori di rischio GI = null",
+      "category": "NON_DETERMINABILE_inclusion",
+      "tags": [
+        "non_determinabile",
+        "omeprazolo",
+        "nota01",
+        "missing_data",
+        "inclusion"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": null,
+          "ulcera_peptica_non_guarita": null,
+          "terapia_concomitante_anticoagulanti": null,
+          "terapia_concomitante_cortisonici": null,
+          "eta_avanzata": null
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_DETERMINABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [
+          "eta_avanzata",
+          "pregresse_emorragie_digestive",
+          "terapia_concomitante_anticoagulanti",
+          "terapia_concomitante_cortisonici",
+          "ulcera_peptica_non_guarita"
+        ],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_DETERMINABILE"
+        ],
+        "must_not_contain_strings": [],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Scope passes (FANS=True), but OR of 5 UNKNOWN factors = UNKNOWN; at least one risk factor must appear in DATI MANCANTI"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "La rimborsabilità del farmaco omeprazolo secondo la Nota AIFA 01 è NON DETERMINABILE per dati clinici insufficienti. Dati mancanti rilevanti per la decisione: eta_avanzata, pregresse_emorragie_digestive, terapia_concomitante_anticoagulanti, terapia_concomitante_cortisonici, ulcera_peptica_non_guarita. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_DETERMINABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-014",
+      "description": "RIMBORSABILE — scope via ASA solo (FANS=False, ASA=True) + pregresse emorragie digestive",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "asa_solo",
+        "emorragie"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Scope passes via ASA (not FANS); pregresse emorragie triggers inclusion; confirms ASA-only pathway"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-015",
+      "description": "NON_RIMBORSABILE — scope via ASA solo (FANS=False, ASA=True) ma nessun fattore di rischio GI (N01_INCL_001 fails)",
+      "category": "NON_RIMBORSABILE_no_inclusion",
+      "tags": [
+        "non_rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "asa_solo",
+        "inclusion_failure"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "NON_RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [
+          "N01_INCL_001"
+        ],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "ASA scope passes but no risk factor triggers inclusion; confirms that ASA alone without GI risk is insufficient"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_INCL_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"Limitatamente ai soggetti in trattamento cronico con FANS o in terapia antiaggregante con acido acetilsalicilico a basse dosi che presentino [fattori di rischio GI]\""
+      },
+      "gold_answer": "Il farmaco omeprazolo NON È RIMBORSABILE secondo la Nota AIFA 01. Motivazione: Il rimborso è condizionato alla presenza di almeno un fattore di rischio gastrointestinale documentato o clinicamente stimato (Fonte: Nota_01.pdf p.2). Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_INCL_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "blocking"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è NON_RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "In assenza di tutti i fattori di rischio elencati, il gastroprotettore non è rimborsabile a carico SSN",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-016",
+      "description": "RIMBORSABILE con GWARN — tutti i 5 fattori di rischio GI presenti simultaneamente + FANS + anticoagulanti (N01_GWARN_001 fires)",
+      "category": "RIMBORSABILE_with_guidance",
+      "tags": [
+        "rimborsabile",
+        "omeprazolo",
+        "nota01",
+        "warning",
+        "triple_therapy",
+        "all_risk_factors"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "omeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": true,
+          "terapia_concomitante_anticoagulanti": true,
+          "terapia_concomitante_cortisonici": true,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": [
+          "N01_GWARN_001"
+        ]
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "All 5 GI risk factors active; N01_GWARN_001 fires (FANS + anticoagulanti); RACCOMANDAZIONI must include triple-therapy alert"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco omeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Considerazioni cliniche: Segnalazione di rischio emorragico elevato per triplice terapia. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        },
+        {
+          "rank": 2,
+          "rule_id": "N01_GWARN_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 3,
+          "section": "Particolari avvertenze",
+          "decision_role": "guidance"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Segnalazione di rischio emorragico elevato per triplice terapia",
+          "must_appear": false,
+          "preferred": true
+        }
+      ]
+    },
+    {
+      "id": "N01-017",
+      "description": "RIMBORSABILE — esomeprazolo (IPP diverso da omeprazolo/pantoprazolo) con scope via ASA + ulcera_peptica_non_guarita",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "esomeprazolo",
+        "nota01",
+        "asa_solo",
+        "ulcera_peptica"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "esomeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": true,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Confirms that esomeprazolo is covered by Nota 01; ASA scope + ulcera non guarita triggers inclusion"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco esomeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-018",
+      "description": "RIMBORSABILE — lansoprazolo con scope FANS + cortisonici, nessun GWARN (anticoagulanti assenti)",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "lansoprazolo",
+        "nota01",
+        "cortisonici"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "lansoprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": true,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "lansoprazolo covered by Nota 01; FANS scope + cortisonici inclusion; no anticoagulanti so GWARN does NOT fire"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_SCOPE_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco lansoprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "scope"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-019",
+      "description": "ROUTED to Nota 66 — età avanzata + ASA antiaggregante; diclofenac+misoprostolo routed",
+      "category": "ROUTED_nota66",
+      "tags": [
+        "routed",
+        "diclofenac_misoprostolo",
+        "nota01",
+        "routing",
+        "asa",
+        "elderly"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": false,
+          "terapia_antiaggregante_asa": true,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": null,
+        "decision_status": "ROUTED",
+        "route_to": "66",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "66"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE",
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 0,
+        "notes": "Spiegazione deve indicare che diclofenac+misoprostolo è soggetto alla Nota 66"
+      },
+      "pdf_reference": {
+        "rule_id": "N01_EXCEPT_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo (asterisco)",
+        "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+      },
+      "gold_answer": "Decisione: None. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_EXCEPT_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo (asterisco)",
+          "decision_role": "routing"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è None.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Il farmaco è soggetto alla Nota 66.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-020",
+      "description": "ROUTED to Nota 66 — paziente con ulcera peptica non guarita; diclofenac+misoprostolo routed",
+      "category": "ROUTED_nota66",
+      "tags": [
+        "routed",
+        "diclofenac_misoprostolo",
+        "nota01",
+        "routing",
+        "ulcera"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": true,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": null,
+        "decision_status": "ROUTED",
+        "route_to": "66",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "66"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE",
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 0,
+        "notes": "Routing a Nota 66 anche in presenza di altri fattori; il routing è prioritario sul fattore ulcera."
+      },
+      "pdf_reference": {
+        "rule_id": "N01_EXCEPT_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo (asterisco)",
+        "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+      },
+      "gold_answer": "Decisione: None. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_EXCEPT_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo (asterisco)",
+          "decision_role": "routing"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è None.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Il farmaco è soggetto alla Nota 66.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-021",
+      "description": "ROUTED to Nota 66 — terapia anticoagulante concomitante; diclofenac+misoprostolo routed",
+      "category": "ROUTED_nota66",
+      "tags": [
+        "routed",
+        "diclofenac_misoprostolo",
+        "nota01",
+        "routing",
+        "anticoagulanti"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": true,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": null,
+        "decision_status": "ROUTED",
+        "route_to": "66",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "66"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE",
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 0,
+        "notes": "Routing prioritario; il flag triple-therapy non si applica perché il farmaco non è gastroprotettore PPI."
+      },
+      "pdf_reference": {
+        "rule_id": "N01_EXCEPT_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo (asterisco)",
+        "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+      },
+      "gold_answer": "Decisione: None. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_EXCEPT_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo (asterisco)",
+          "decision_role": "routing"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è None.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Il farmaco è soggetto alla Nota 66.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-022",
+      "description": "ROUTED to Nota 66 — cortisonici concomitanti; diclofenac+misoprostolo routed",
+      "category": "ROUTED_nota66",
+      "tags": [
+        "routed",
+        "diclofenac_misoprostolo",
+        "nota01",
+        "routing",
+        "cortisonici"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "diclofenac_misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": true,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": null,
+        "decision_status": "ROUTED",
+        "route_to": "66",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "66"
+        ],
+        "must_not_contain_strings": [
+          "RIMBORSABILE",
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 0,
+        "notes": "Routing prioritario su flag corticosteroidei multipli."
+      },
+      "pdf_reference": {
+        "rule_id": "N01_EXCEPT_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo (asterisco)",
+        "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+      },
+      "gold_answer": "Decisione: None. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_EXCEPT_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo (asterisco)",
+          "decision_role": "routing"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è None.",
+          "must_appear": true
+        },
+        {
+          "id": "c2",
+          "text": "Il farmaco è soggetto alla Nota 66.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-023",
+      "description": "RIMBORSABILE — rabeprazolo (PPI farmaco nuovo nel gold standard) con FANS cronico + età avanzata",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "rabeprazolo",
+        "nota01",
+        "elderly",
+        "ppi"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "rabeprazolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": false,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": true
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE",
+          "rabeprazolo"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Rabeprazolo è un PPI; valgono le stesse regole di Nota 01 per gli altri PPI."
+      },
+      "pdf_reference": {
+        "rule_id": "N01_INCL_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco rabeprazolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_INCL_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "inclusion"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    },
+    {
+      "id": "N01-024",
+      "description": "RIMBORSABILE — misoprostolo standalone (gastroprotettore alternativo ai PPI) con FANS cronico + emorragie pregresse",
+      "category": "RIMBORSABILE_inclusion",
+      "tags": [
+        "rimborsabile",
+        "misoprostolo",
+        "nota01",
+        "alternative",
+        "ppi"
+      ],
+      "input": {
+        "nota_id": "01",
+        "drug_id": "misoprostolo",
+        "patient_data": {
+          "trattamento_cronico_fans": true,
+          "terapia_antiaggregante_asa": false,
+          "pregresse_emorragie_digestive": true,
+          "ulcera_peptica_non_guarita": false,
+          "terapia_concomitante_anticoagulanti": false,
+          "terapia_concomitante_cortisonici": false,
+          "eta_avanzata": false
+        },
+        "clinician_asserted": {}
+      },
+      "expected_rule_engine": {
+        "reimbursement_decision": "RIMBORSABILE",
+        "decision_status": "FINAL",
+        "missing_fields_coverage": [],
+        "expected_blocking_rule_ids": [],
+        "expected_clinical_flag_rule_ids": []
+      },
+      "explanation_criteria": {
+        "must_contain_strings": [
+          "RIMBORSABILE",
+          "misoprostolo"
+        ],
+        "must_not_contain_strings": [
+          "NON_RIMBORSABILE"
+        ],
+        "required_sections": [
+          "1. DECISIONE",
+          "2. MOTIVAZIONE",
+          "3. RACCOMANDAZIONI",
+          "4. DATI MANCANTI",
+          "5. FONTI"
+        ],
+        "expected_citation_count_min": 1,
+        "notes": "Misoprostolo standalone (analogo prostaglandinico) è elencato in Nota 01 come gastroprotettore alternativo."
+      },
+      "pdf_reference": {
+        "rule_id": "N01_INCL_001",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "Box prescrittivo",
+        "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+      },
+      "gold_answer": "Il farmaco misoprostolo è RIMBORSABILE secondo la Nota AIFA 01. Riferimento normativo principale: Nota_01.pdf p.2.",
+      "gold_relevant_chunks": [
+        {
+          "rank": 1,
+          "rule_id": "N01_INCL_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "section": "Box prescrittivo",
+          "decision_role": "inclusion"
+        }
+      ],
+      "gold_claims": [
+        {
+          "id": "c1",
+          "text": "La decisione di rimborsabilità è RIMBORSABILE.",
+          "must_appear": true
+        }
+      ]
+    }
+  ]
+}

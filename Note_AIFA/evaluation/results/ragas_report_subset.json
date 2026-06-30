@@ -1,0 +1,233 @@
+{
+  "metric": "ragas",
+  "judge_llm": "llama3.1:8b",
+  "embed_model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+  "n_cases": 20,
+  "wall_time_s": 4729.6,
+  "aggregate": {
+    "faithfulness": {
+      "mean": 0.5153,
+      "median": 0.4375,
+      "n": 14,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "answer_relevancy": {
+      "mean": 0.6548,
+      "median": 0.6685,
+      "n": 17,
+      "min": 0.4303,
+      "max": 0.7461
+    },
+    "context_precision": {
+      "mean": 0.625,
+      "median": 0.6027,
+      "n": 20,
+      "min": 0.1333,
+      "max": 1.0
+    },
+    "context_recall": {
+      "mean": 0.9297,
+      "median": 1.0,
+      "n": 16,
+      "min": 0.375,
+      "max": 1.0
+    },
+    "answer_similarity": {
+      "mean": 0.3969,
+      "median": 0.4071,
+      "n": 20,
+      "min": 0.1225,
+      "max": 0.6067
+    },
+    "answer_correctness": {
+      "mean": 0.3153,
+      "median": 0.3112,
+      "n": 19,
+      "min": 0.1806,
+      "max": 0.4825
+    }
+  },
+  "per_case": [
+    {
+      "case_id": "N97-003",
+      "faithfulness": 0.375,
+      "answer_relevancy": 0.7349550590259248,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "answer_similarity": 0.2927361902591795,
+      "answer_correctness": 0.2606840475647949
+    },
+    {
+      "case_id": "N97-008",
+      "faithfulness": null,
+      "answer_relevancy": 0.4302754080726723,
+      "context_precision": 0.62499999996875,
+      "context_recall": 1.0,
+      "answer_similarity": 0.4347494980426261,
+      "answer_correctness": null
+    },
+    {
+      "case_id": "N97-026",
+      "faithfulness": null,
+      "answer_relevancy": 0.7022625304651696,
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "answer_similarity": 0.26867204248829346,
+      "answer_correctness": 0.25466801062207334
+    },
+    {
+      "case_id": "N97-030",
+      "faithfulness": 0.375,
+      "answer_relevancy": null,
+      "context_precision": 0.642857142825,
+      "context_recall": 1.0,
+      "answer_similarity": 0.30373013211291844,
+      "answer_correctness": 0.22593253302822963
+    },
+    {
+      "case_id": "N97-036",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.7186054843787217,
+      "context_precision": 0.4305555555469444,
+      "context_recall": 1.0,
+      "answer_similarity": 0.24535188134233726,
+      "answer_correctness": 0.36133797033558435
+    },
+    {
+      "case_id": "N01-001",
+      "faithfulness": 0.2857142857142857,
+      "answer_relevancy": 0.6367348786860632,
+      "context_precision": 0.7307679974265445,
+      "context_recall": 1.0,
+      "answer_similarity": 0.5455262405444311,
+      "answer_correctness": 0.48253540628995395
+    },
+    {
+      "case_id": "N01-003",
+      "faithfulness": 0.875,
+      "answer_relevancy": 0.6592407244799062,
+      "context_precision": 0.5761131725335138,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6051894225703611,
+      "answer_correctness": 0.424024628369863
+    },
+    {
+      "case_id": "N01-005",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.6684681714893417,
+      "context_precision": 0.571351267771677,
+      "context_recall": 1.0,
+      "answer_similarity": 0.5614071140278648,
+      "answer_correctness": 0.35463749279268053
+    },
+    {
+      "case_id": "N01-011",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6236028981061564,
+      "context_precision": 0.5804421768624562,
+      "context_recall": 1.0,
+      "answer_similarity": 0.5726271843305686,
+      "answer_correctness": 0.29315679608264217
+    },
+    {
+      "case_id": "N01-018",
+      "faithfulness": 0.2857142857142857,
+      "answer_relevancy": 0.6068629638190923,
+      "context_precision": 0.5618274582480035,
+      "context_recall": 1.0,
+      "answer_similarity": 0.6067082861606168,
+      "answer_correctness": 0.3659627858258685
+    },
+    {
+      "case_id": "N13-003",
+      "faithfulness": 0.25,
+      "answer_relevancy": null,
+      "context_precision": 0.8954648525949174,
+      "context_recall": 0.5,
+      "answer_similarity": 0.42858518153605574,
+      "answer_correctness": 0.3379155261532447
+    },
+    {
+      "case_id": "N13-009",
+      "faithfulness": null,
+      "answer_relevancy": 0.6115306679185925,
+      "context_precision": 0.7409090908905682,
+      "context_recall": null,
+      "answer_similarity": 0.4826607995589884,
+      "answer_correctness": 0.46681904604359326
+    },
+    {
+      "case_id": "N13-011",
+      "faithfulness": null,
+      "answer_relevancy": 0.7006974898893888,
+      "context_precision": 0.8868650793562107,
+      "context_recall": null,
+      "answer_similarity": 0.39713493633717056,
+      "answer_correctness": 0.28678373408429264
+    },
+    {
+      "case_id": "N13-018",
+      "faithfulness": null,
+      "answer_relevancy": 0.6564751011618165,
+      "context_precision": 0.7762225428805849,
+      "context_recall": null,
+      "answer_similarity": 0.3717573841437496,
+      "answer_correctness": 0.3429393460359374
+    },
+    {
+      "case_id": "N13-029",
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": 0.9300144300040966,
+      "context_recall": null,
+      "answer_similarity": 0.24598544131953476,
+      "answer_correctness": 0.21149636032988373
+    },
+    {
+      "case_id": "N66-001",
+      "faithfulness": 0.8571428571428571,
+      "answer_relevancy": 0.4875268321209634,
+      "context_precision": 0.13333333332666666,
+      "context_recall": 1.0,
+      "answer_similarity": 0.17329078322618122,
+      "answer_correctness": 0.316049968533818
+    },
+    {
+      "case_id": "N66-004",
+      "faithfulness": 0.125,
+      "answer_relevancy": 0.725296667792156,
+      "context_precision": 0.23276515150933239,
+      "context_recall": 0.375,
+      "answer_similarity": 0.4171221639364018,
+      "answer_correctness": 0.22928054098410044
+    },
+    {
+      "case_id": "N66-005",
+      "faithfulness": 0.5714285714285714,
+      "answer_relevancy": 0.7461353149976245,
+      "context_precision": 0.4733516483398145,
+      "context_recall": 1.0,
+      "answer_similarity": 0.541020478645112,
+      "answer_correctness": 0.28525511966127803
+    },
+    {
+      "case_id": "N66-020",
+      "faithfulness": 0.7142857142857143,
+      "answer_relevancy": 0.724499485513881,
+      "context_precision": 0.19166666666027776,
+      "context_recall": 1.0,
+      "answer_similarity": 0.12246062949651217,
+      "answer_correctness": 0.18061515737412806
+    },
+    {
+      "case_id": "N66-021",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6979279627903505,
+      "context_precision": 0.5214285714155358,
+      "context_recall": 1.0,
+      "answer_similarity": 0.3216810882878827,
+      "answer_correctness": 0.3111895028412014
+    }
+  ]
+}

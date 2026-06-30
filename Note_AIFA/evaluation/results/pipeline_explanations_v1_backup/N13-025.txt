@@ -1,0 +1,22 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La fluvastatina è stata valutata come trattamento di seconda scelta per i pazienti con dislipidemia aterogenica e ipertrigliceridemia, come indicato nella FONTE 1. La Nota AIFA ha riconsiderato il ruolo dell'associazione tra ezetimibe e statine, e la fluvastatina è stata inclusa nella lista dei farmaci prescrivibili a carico del SSN per i pazienti con rischio alto e molto alto, come indicato nella FONTE 5.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   irc_moderata, trigliceridi
+
+5. FONTI
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 6
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 2
+- nota-13.pdf, p. 10

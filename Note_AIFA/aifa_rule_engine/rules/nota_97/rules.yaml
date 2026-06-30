@@ -1,0 +1,646 @@
+- rule_id: N97_SCOPE_001
+  rule_type: SCOPE
+  nota: '97'
+  version: 3.3.0
+  description_it: Diagnosi di FA non valvolare (FANV) confermata con ECG e valutazione clinica.
+  evaluation_order: 1
+  normative_anchor:
+    pdf_file: nota-97.pdf
+    page: 1
+    section: Percorso A
+    excerpt: sempre confermata da un elettrocardiogramma e dalla valutazione clinica
+  structured_motivation:
+    rationale_it: La rimborsabilità degli anticoagulanti orali con Nota 97 presuppone diagnosi di FANV documentata (ECG) e valutazione clinica effettuata.
+    clinical_impact: Diagnosi non confermata → NON_RIMBORSABILE.
+  condition:
+    operator: AND
+    operands:
+    - operator: IS_TRUE
+      var: diagnosi_fanv
+    - operator: IS_TRUE
+      var: ecg_confermato
+    - operator: IS_TRUE
+      var: valutazione_clinica_eseguita
+- rule_id: N97_EXCL_HARD_001
+  rule_type: EXCL_HARD
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Protesi valvolari meccaniche: i DOAC sono controindicati.'
+  evaluation_order: 10
+  normative_anchor:
+    pdf_file: nota-97.pdf
+    page: 4
+    section: Controindicazioni
+    excerpt: anticoagulante indicato per i pazienti con protesi valvolari cardiache meccaniche
+  structured_motivation:
+    rationale_it: I DOAC non sono approvati per pazienti con protesi valvolari meccaniche; in questi pazienti rimane indicato il warfarin/acenocumarolo.
+    clinical_impact: NON_RIMBORSABILE per DOAC in presenza di protesi meccaniche.
+  condition:
+    operator: AND
+    operands:
+    - operator: IS_TRUE
+      var: protesi_valvolari_meccaniche
+    - operator: IN
+      var: farmaco
+      allowed_set:
+      - apixaban
+      - dabigatran
+      - edoxaban
+      - rivaroxaban
+- rule_id: N97_EXCL_HARD_002
+  rule_type: EXCL_HARD
+  nota: '97'
+  version: 3.3.0
+  description_it: 'FA valvolare (stenosi mitralica reumatica): i DOAC sono controindicati.'
+  evaluation_order: 11
+  normative_anchor:
+    pdf_file: nota-97.pdf
+    page: 4
+    section: Controindicazioni
+    excerpt: base reumatica, sostanzialmente la stenosi mitralica moderata o grave
+  structured_motivation:
+    rationale_it: La FA valvolare (stenosi mitralica reumatica moderata-grave) richiede la terapia con AVK; i DOAC non sono indicati.
+    clinical_impact: NON_RIMBORSABILE per DOAC in FA valvolare.
+  condition:
+    operator: AND
+    operands:
+    - operator: IS_TRUE
+      var: fa_valvolare
+    - operator: IN
+      var: farmaco
+      allowed_set:
+      - apixaban
+      - dabigatran
+      - edoxaban
+      - rivaroxaban
+- rule_id: N97_EXCL_HARD_ALL2_EMORRAGIA
+  rule_type: EXCL_HARD
+  nota: '97'
+  version: 3.4.0
+  description_it: 'Controindicazione assoluta: emorragia maggiore in atto. Anticoagulante (AVK o DOAC) NON deve essere iniziato.'
+  evaluation_order: 5
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 2
+    section: Principali controindicazioni/avvertenze
+    excerpt: '"sconsigliano fortemente l''inizio di una terapia anticoagulante con AVK o NAO/DOAC: una emorragia maggiore in atto"'
+  structured_motivation:
+    rationale_it: Una emorragia maggiore in atto è incompatibile con l'inizio di una terapia anticoagulante (peggiorerebbe il sanguinamento). PDF Allegato 2 esplicita il termine "sconsigliano fortemente";
+      modellata come EXCL_HARD per safety.
+    clinical_impact: NON_RIMBORSABILE per qualunque AVK/DOAC.
+  condition:
+    operator: IS_TRUE
+    var: emorragia_maggiore_in_atto
+- rule_id: N97_EXCL_HARD_ALL2_DIATESI
+  rule_type: EXCL_HARD
+  nota: '97'
+  version: 3.4.0
+  description_it: 'Controindicazione assoluta: diatesi emorragica congenita nota.'
+  evaluation_order: 6
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 2
+    section: Principali controindicazioni/avvertenze
+    excerpt: una diatesi emorragica congenita nota
+  structured_motivation:
+    rationale_it: Le diatesi emorragiche congenite (es. emofilia, von Willebrand) aumentano il rischio di sanguinamento spontaneo; aggiungere un anticoagulante è controindicato.
+    clinical_impact: NON_RIMBORSABILE per qualunque AVK/DOAC.
+  condition:
+    operator: IS_TRUE
+    var: diatesi_emorragica_congenita
+- rule_id: N97_EXCL_HARD_ALL2_GRAVIDANZA
+  rule_type: EXCL_HARD
+  nota: '97'
+  version: 3.4.0
+  description_it: 'Controindicazione assoluta: gravidanza.'
+  evaluation_order: 7
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 2
+    section: Principali controindicazioni/avvertenze
+    excerpt: '"sconsigliano fortemente l''inizio di una terapia anticoagulante con AVK o NAO/DOAC: la gravidanza"'
+  structured_motivation:
+    rationale_it: AVK (warfarin, acenocumarolo) sono teratogeni nel I trimestre; i DOAC hanno dati di sicurezza in gravidanza insufficienti. Il PDF AIFA "sconsiglia fortemente" l'inizio di entrambe le classi.
+    clinical_impact: NON_RIMBORSABILE per qualunque AVK/DOAC.
+  condition:
+    operator: IS_TRUE
+    var: gravidanza
+- rule_id: N97_EXCL_HARD_ALL2_IPERSENSIBILITA
+  rule_type: EXCL_HARD
+  nota: '97'
+  version: 3.4.0
+  description_it: 'Controindicazione assoluta: ipersensibilità documentata al farmaco.'
+  evaluation_order: 8
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 2
+    section: Principali controindicazioni/avvertenze
+    excerpt: una ipersensibilità documentata al farmaco
+  structured_motivation:
+    rationale_it: Ipersensibilità documentata (es. anafilassi pregressa) controindica la ri-esposizione al farmaco specifico.
+    clinical_impact: NON_RIMBORSABILE.
+  condition:
+    operator: IS_TRUE
+    var: ipersensibilita_farmaco
+- rule_id: N97_EXCL_HARD_003
+  rule_type: EXCL_HARD
+  nota: '97'
+  version: 3.3.0
+  description_it: Dabigatran controindicato se VFG < 30 ml/min.
+  evaluation_order: 12
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: Controindicato se VFG* <30 ml/min
+  structured_motivation:
+    rationale_it: Il dabigatran è controindicato in insufficienza renale grave (VFG < 30 ml/min) per l'accumulo del farmaco.
+    clinical_impact: NON_RIMBORSABILE.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: dabigatran
+      type_domain: string
+    - operator: LT
+      left:
+        operator: VAR
+        name: vfg_cockroft_gault
+      right:
+        operator: LITERAL
+        value: 30
+      type_domain: numeric
+- rule_id: N97_PATH_001
+  rule_type: PATHWAY
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Soglia CHA2DS2-VASc: ≥2 (M) o ≥3 (F) per rimborsabilità. Thresholds OCR-corrected per VEP-1.1 (nota-97.pdf p.3).'
+  evaluation_order: 20
+  normative_anchor:
+    pdf_file: nota-97.pdf
+    page: 3
+    section: Percorso C
+    excerpt: '"in tutti i pazienti con punteggio CHA2DS2-VASc: >2 (se maschi) e >3 (se femmine)"'
+  structured_motivation:
+    rationale_it: 'Il testo della Nota riporta letteralmente ">2 (se maschi) e >3 (se femmine)"; la soglia è operazionalizzata come ≥2 (M) e ≥3 (F), coerente con la raccomandazione di Classe I delle linee guida ESC sul CHA2DS2-VASc cui la Nota stessa rinvia (la dicitura ">2/>3" è ritenuta imprecisione redazionale per ≥2/≥3, dato che con punteggi interi ">2" escluderebbe erroneamente il valore 2 raccomandato da ESC). Uso di intervallo aritmetico (V3 Fix 1.1) per gestire componenti mancanti.'
+    clinical_impact: Score insufficiente → NON_RIMBORSABILE.
+  condition:
+    operator: SCORE_RANGE_GTE
+    score_range_var: cha2ds2vasc_range
+    threshold_var: cha2ds2vasc_threshold
+    anchor_note: '97'
+- rule_id: N97_GDOSE_001
+  rule_type: GUIDANCE_DOSE
+  nota: '97'
+  version: 3.3.0
+  flag_type: DOSE_RIDOTTA
+  description_it: 'Dabigatran 110mg×2/die: età ≥80 anni OPPURE se associato a verapamil. (V3.2 corrected: OR(eta≥80, uso_verapamil). V3.3 Patch 6: GTE inclusive.)'
+  evaluation_order: 30
+  detail: 'Dabigatran dose ridotta: 110 mg × 2/die — età ≥80 anni oppure, se associato a verapamil.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: " età >80 anni oppure, se associato a verapamil: \n fra i 75 e gli 80 anni"
+  structured_motivation:
+    rationale_it: 'Block A di Tab.4 (V3.2 visual correction): età ≥80 oppure uso verapamil sono trigger co-equivalenti per la dose ridotta di 110mg.'
+    clinical_impact: Dose ridotta raccomandata.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: dabigatran
+      type_domain: string
+    - operator: OR
+      operands:
+      - operator: GTE
+        left:
+          operator: VAR
+          name: paziente_eta
+        right:
+          operator: LITERAL
+          value: 80
+        type_domain: numeric
+      - operator: IS_TRUE
+        var: uso_verapamil
+- rule_id: N97_GDOSE_002
+  rule_type: GUIDANCE_DOSE
+  nota: '97'
+  version: 3.3.0
+  flag_type: DOSE_RIDOTTA
+  description_it: 'Apixaban 2.5mg×2/die: ≥2 criteri su 3 (età≥80, peso≤60kg, creat≥1.5mg/dl). Operatori inclusivi (GTE/LTE) per VEP-1.6 / V3.3 Patch 6.'
+  evaluation_order: 31
+  detail: 'Apixaban dose ridotta: 2.5 mg × 2/die — ≥2 delle seguenti: età ≥80 anni, peso ≤60 kg, creatinina ≥1.5 mg/dl.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: "In presenza di almeno 2 delle seguenti caratteristiche: \n- Età >80 anni, \n- Peso <60 kg, \n- Creatinina >1,5 mg/dl"
+  structured_motivation:
+    rationale_it: La riduzione di dose dell'apixaban segue la regola COUNT_GEQ (≥2 criteri su 3). Operatori inclusivi confermati visivamente (VEP-1.6).
+    clinical_impact: Dose ridotta raccomandata se 2/3 criteri soddisfatti.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: apixaban
+      type_domain: string
+    - operator: COUNT_GEQ
+      threshold: 2
+      conditions:
+      - operator: GTE
+        left:
+          operator: VAR
+          name: paziente_eta
+        right:
+          operator: LITERAL
+          value: 80
+        type_domain: numeric
+      - operator: LTE
+        left:
+          operator: VAR
+          name: paziente_peso_kg
+        right:
+          operator: LITERAL
+          value: 60
+        type_domain: numeric
+      - operator: GTE
+        left:
+          operator: VAR
+          name: creatinina_sierica
+        right:
+          operator: LITERAL
+          value: 1.5
+        type_domain: numeric
+- rule_id: N97_GDOSE_003
+  rule_type: GUIDANCE_DOSE
+  nota: '97'
+  version: 3.3.0
+  flag_type: DOSE_RIDOTTA
+  description_it: Apixaban 2.5mg×2/die se VFG 15-29 ml/min.
+  evaluation_order: 32
+  detail: 'Apixaban dose ridotta: 2.5 mg × 2/die — VFG 15–29 ml/min.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: "dl VFG 15-29 ml/min: \n \n \n \n \nIn caso di:"
+  structured_motivation:
+    rationale_it: VFG 15-29 ml/min richiede dose ridotta di apixaban.
+    clinical_impact: Dose ridotta raccomandata.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: apixaban
+      type_domain: string
+    - operator: BETWEEN
+      var: vfg_cockroft_gault
+      low: 15
+      high: 29
+- rule_id: N97_GDOSE_004
+  rule_type: GUIDANCE_DOSE
+  nota: '97'
+  version: 3.3.0
+  flag_type: DOSE_RIDOTTA
+  description_it: 'Edoxaban 30mg/die: VFG 15-50, peso≤60kg, o inibitori P-gp. (V3.3 Patch 6: LTE per peso≤60.)'
+  evaluation_order: 33
+  detail: 'Edoxaban dose ridotta: 30 mg/die — VFG 15–50 ml/min, oppure peso ≤60 kg, oppure inibitori P-gp.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: " peso <60 Kg \n associato con inibitori della P-glicoproteina"
+  structured_motivation:
+    rationale_it: Riduzione di dose dell'edoxaban in presenza di almeno uno dei tre criteri.
+    clinical_impact: Dose ridotta raccomandata.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: edoxaban
+      type_domain: string
+    - operator: OR
+      operands:
+      - operator: BETWEEN
+        var: vfg_cockroft_gault
+        low: 15
+        high: 50
+      - operator: LTE
+        left:
+          operator: VAR
+          name: paziente_peso_kg
+        right:
+          operator: LITERAL
+          value: 60
+        type_domain: numeric
+      - operator: IS_TRUE
+        var: uso_inibitori_pgp
+- rule_id: N97_GDOSE_005
+  rule_type: GUIDANCE_DOSE
+  nota: '97'
+  version: 3.3.0
+  flag_type: DOSE_RIDOTTA
+  description_it: 'Rivaroxaban 15mg/die: VFG 15-49 ml/min.'
+  evaluation_order: 34
+  detail: 'Rivaroxaban dose ridotta: 15 mg/die — VFG 15–49 ml/min.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: "caso di: \n insuf. renale moderata o grave \n(VFG* 15-50 ml/min) \n peso"
+  structured_motivation:
+    rationale_it: Riduzione di dose del rivaroxaban in moderata o grave insufficienza renale.
+    clinical_impact: Dose ridotta raccomandata.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: rivaroxaban
+      type_domain: string
+    - operator: OR
+      operands:
+      - operator: BETWEEN
+        var: vfg_cockroft_gault
+        low: 30
+        high: 49
+      - operator: BETWEEN
+        var: vfg_cockroft_gault
+        low: 15
+        high: 29
+- rule_id: N97_GPREF_001
+  rule_type: GUIDANCE_PREF
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Preferire DOAC: TTR<70% o difficoltà monitoraggio INR.'
+  evaluation_order: 40
+  detail: 'Preferire DOAC: TTR sotto 70% oppure difficoltà nel monitoraggio dell''INR.'
+  normative_anchor:
+    pdf_file: nota-97.pdf
+    page: 4
+    section: Percorso D — DOAC preferibili
+    excerpt: '"I NAO/DOAC sono generalmente preferibili: per i pazienti che sono già in trattamento con AVK con scarsa qualità del controllo (Tempo nel Range Terapeutico (TTR) <70% o percentuale dei controlli
+      in range <60% negli ultimi 6 mesi) e/o oggettive difficoltà ad accedere ad un regolare monitoraggio dell''INR"'
+  structured_motivation:
+    rationale_it: In pazienti con TTR instabile o difficoltà pratiche di monitoraggio, i DOAC offrono un profilo più maneggevole.
+    clinical_impact: Preferenza clinica (non vincolante).
+  condition:
+    operator: OR
+    operands:
+    - operator: IS_TRUE
+      var: ttr_sotto_70
+    - operator: IS_TRUE
+      var: difficolta_monitoraggio_inr
+- rule_id: N97_GPREF_002
+  rule_type: GUIDANCE_PREF
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Preferire AVK: VFG<15 o interazioni farmacologiche con DOAC.'
+  evaluation_order: 41
+  detail: 'Preferire AVK: VFG < 15 ml/min oppure interazioni farmacologiche con DOAC documentate.'
+  normative_anchor:
+    pdf_file: nota-97.pdf
+    page: 4
+    section: Percorso D
+    excerpt: '"Gli AVK sono generalmente preferibili: per i pazienti con grave riduzione della funzionalità renale (VFG <15 mL/min); per i pazienti che assumono farmaci che potrebbero interferire con i
+      NAO/DOAC"'
+  structured_motivation:
+    rationale_it: In insufficienza renale molto grave (VFG<15) o con farmaci che interagiscono significativamente con i DOAC, il warfarin può essere più sicuro.
+    clinical_impact: Preferenza clinica (non vincolante).
+  condition:
+    operator: OR
+    operands:
+    - operator: LT
+      left:
+        operator: VAR
+        name: vfg_cockroft_gault
+      right:
+        operator: LITERAL
+        value: 15
+      type_domain: numeric
+    - operator: IS_TRUE
+      var: interazioni_farmacologiche_doac
+- rule_id: N97_GPREF_003
+  rule_type: GUIDANCE_PREF
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Preferire DOAC: pregressa emorragia intracranica.'
+  evaluation_order: 42
+  detail: 'Preferire DOAC: pregressa emorragia intracranica — riduzione del rischio di recidiva rispetto agli AVK.'
+  normative_anchor:
+    pdf_file: nota-97.pdf
+    page: 4
+    section: Percorso D
+    excerpt: "accedere ad un regolare monitoraggio dell’INR18; \n per i pazienti in AVK con pregressa emorragia intracranica, o ad alto rischio di svilupparla."
+  structured_motivation:
+    rationale_it: I DOAC sono associati a minor rischio di emorragia intracranica rispetto agli AVK; in pazienti con pregressa emorragia IC, la preferenza va ai DOAC.
+    clinical_impact: Preferenza clinica (non vincolante).
+  condition:
+    operator: IS_TRUE
+    var: pregressa_emorragia_intracranica
+- rule_id: N97_GWARN_001
+  rule_type: GUIDANCE_WARN
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Apixaban: non raccomandato se VFG < 15 ml/min.'
+  evaluation_order: 50
+  detail: 'AVVISO: apixaban non raccomandato se VFG < 15 ml/min.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: Non raccomandato se VFG* <15 ml/min
+  structured_motivation:
+    rationale_it: In insufficienza renale molto grave (VFG < 15 ml/min) i dati su apixaban sono insufficienti; il farmaco non è raccomandato.
+    clinical_impact: Avviso di sicurezza.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: apixaban
+      type_domain: string
+    - operator: LT
+      left:
+        operator: VAR
+        name: vfg_cockroft_gault
+      right:
+        operator: LITERAL
+        value: 15
+      type_domain: numeric
+- rule_id: N97_GWARN_002
+  rule_type: GUIDANCE_WARN
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Edoxaban: non raccomandato se VFG<15 ml/min o in dialisi.'
+  evaluation_order: 51
+  detail: 'AVVISO: edoxaban non raccomandato se VFG < 15 ml/min o in dialisi.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: Non raccomandato se VFG* <15 ml/min o in dialisi
+  structured_motivation:
+    rationale_it: Edoxaban non raccomandato in IRC molto grave o dialisi.
+    clinical_impact: Avviso di sicurezza.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: edoxaban
+      type_domain: string
+    - operator: OR
+      operands:
+      - operator: LT
+        left:
+          operator: VAR
+          name: vfg_cockroft_gault
+        right:
+          operator: LITERAL
+          value: 15
+        type_domain: numeric
+      - operator: IS_TRUE
+        var: in_dialisi
+- rule_id: N97_GWARN_003
+  rule_type: GUIDANCE_WARN
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Rivaroxaban: non raccomandato se VFG < 15 ml/min.'
+  evaluation_order: 52
+  detail: 'AVVISO: rivaroxaban non raccomandato se VFG < 15 ml/min.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: Non raccomandato se VFG* <15ml/min
+  structured_motivation:
+    rationale_it: Rivaroxaban non raccomandato in IRC molto grave (VFG < 15 ml/min).
+    clinical_impact: Avviso di sicurezza.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: rivaroxaban
+      type_domain: string
+    - operator: LT
+      left:
+        operator: VAR
+        name: vfg_cockroft_gault
+      right:
+        operator: LITERAL
+        value: 15
+      type_domain: numeric
+- rule_id: N97_GWARN_004
+  rule_type: GUIDANCE_WARN
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Dabigatran età 75-80 + (VFG 30-50 o aumentato rischio sanguinamento): decidere caso per caso fra 300 e 220 mg/die. (V3.2: uso_verapamil RIMOSSO dalla condizione — appartiene solo a Block
+    A.)'
+  evaluation_order: 53
+  detail: 'AVVISO dabigatran 75–80 anni: decidere caso per caso fra i due dosaggi (300 o 220 mg/die) — VFG 30–50 ml/min oppure aumentato rischio sanguinamento.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: "calcolata con la formula di Cockgroft-Gault, come da studi clinici 110 mg x 2/die Decidere caso per caso fra i due dosaggi \n(300 o 220 mg/die) \n2,5"
+  structured_motivation:
+    rationale_it: 'Block B di Tab.4 (V3.2 visual correction): la fascia 75-80 anni con CKD o sanguinamento è oggetto di raccomandazione non deterministica ("caso per caso"). uso_verapamil appartiene esclusivamente
+      a Block A.'
+    clinical_impact: Avviso — non è una regola di dosaggio deterministica.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: dabigatran
+      type_domain: string
+    - operator: BETWEEN
+      var: paziente_eta
+      low: 75
+      high: 80
+    - operator: OR
+      operands:
+      - operator: BETWEEN
+        var: vfg_cockroft_gault
+        low: 30
+        high: 50
+      - operator: IS_TRUE
+        var: aumentato_rischio_sanguinamento
+- rule_id: N97_GWARN_005
+  rule_type: GUIDANCE_WARN
+  nota: '97'
+  version: 3.3.0
+  description_it: 'Rivaroxaban: usare con cautela se VFG 15-29 ml/min. (V3.1 aggiunta)'
+  evaluation_order: 54
+  detail: 'AVVISO: rivaroxaban — usare con cautela se VFG 15–29 ml/min.'
+  normative_anchor:
+    pdf_file: nota-97-all-2.pdf
+    page: 6
+    section: Tab. 4
+    excerpt: 'Usare con cautela se: VFG* 15-29 ml/min'
+  structured_motivation:
+    rationale_it: VFG 15-29 ml/min (IRC grave) con rivaroxaban richiede cautela; questo avviso integra la dose ridotta N97_GDOSE_005.
+    clinical_impact: Avviso di sicurezza — cautela nella sottopopolazione VFG 15-29.
+  condition:
+    operator: AND
+    operands:
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: rivaroxaban
+      type_domain: string
+    - operator: BETWEEN
+      var: vfg_cockroft_gault
+      low: 15
+      high: 29

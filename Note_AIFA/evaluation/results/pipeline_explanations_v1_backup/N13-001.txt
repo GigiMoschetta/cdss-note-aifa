@@ -1,0 +1,20 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco atorvastatina è rimborsabile in quanto è indicato per il trattamento dell'ipercolesterolemia non corretta dalla sola dieta e dell'ipercolesterolemia poligenica, come specificato nella FONTE 5. Inoltre, l'atorvastatina è considerata il farmaco di prima scelta per il trattamento dell'ipercolesterolemia familiare monogenica (FH) e dell'iperlipidemia familiare combinata, come riportato nella FONTE 8.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 6

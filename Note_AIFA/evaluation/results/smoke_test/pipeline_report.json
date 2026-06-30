@@ -1,0 +1,116 @@
+{
+  "case_results": [
+    {
+      "case_id": "N97-001",
+      "description": "Smoke test",
+      "category": "RIMBORSABILE_standard",
+      "decision_consistent": true,
+      "citation_complete": true,
+      "sections_complete": true,
+      "strings_ok": true,
+      "has_hallucination": false,
+      "overall_pass": true,
+      "details": {
+        "decision_consistent": true,
+        "decision_contradicted": false,
+        "citation_complete": true,
+        "missing_citations": [],
+        "suspected_hallucinations": [],
+        "justification_complete": true,
+        "missing_justification_rules": [],
+        "missing_supporting_citations": [],
+        "ungrounded_citations": [
+          "nota-97.pdf p.6",
+          "nota-97.pdf p.7"
+        ]
+      },
+      "token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "retrieved_chunks_metadata": [
+        {
+          "chunk_id": "nota-97_0000",
+          "pdf_file": "nota-97.pdf",
+          "page": 1,
+          "section": "",
+          "retrieval_stage": "anchor_guided",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "nota-97_0005",
+          "pdf_file": "nota-97.pdf",
+          "page": 4,
+          "section": "",
+          "retrieval_stage": "anchor_guided",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "nota-97-all-2_0008",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 6,
+          "section": "DOMANDE FREQUENTI",
+          "retrieval_stage": "anchor_guided",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "nota-97_0003",
+          "pdf_file": "nota-97.pdf",
+          "page": 3,
+          "section": "",
+          "retrieval_stage": "anchor_guided",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "nota-97_0004",
+          "pdf_file": "nota-97.pdf",
+          "page": 3,
+          "section": "",
+          "retrieval_stage": "anchor_guided",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "nota-97-all-2_0000",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 1,
+          "section": "",
+          "retrieval_stage": "semantic",
+          "score": -2.384495496749878
+        },
+        {
+          "chunk_id": "nota-97-all-2_0009",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 7,
+          "section": "DOMANDE FREQUENTI",
+          "retrieval_stage": "semantic",
+          "score": -2.524822473526001
+        },
+        {
+          "chunk_id": "nota-97_0001",
+          "pdf_file": "nota-97.pdf",
+          "page": 2,
+          "section": "",
+          "retrieval_stage": "semantic",
+          "score": -3.4282021522521973
+        },
+        {
+          "chunk_id": "nota-97-all-2_0002",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 2,
+          "section": "",
+          "retrieval_stage": "semantic",
+          "score": -3.472905158996582
+        },
+        {
+          "chunk_id": "nota-97-all-2_0004",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 3,
+          "section": "",
+          "retrieval_stage": "semantic",
+          "score": -3.706948757171631
+        }
+      ]
+    }
+  ]
+}

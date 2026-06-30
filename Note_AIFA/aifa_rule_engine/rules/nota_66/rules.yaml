@@ -1,0 +1,365 @@
+- rule_id: N66_SCOPE_001
+  rule_type: SCOPE
+  nota: '66'
+  version: 3.3.0
+  description_it: 'Prescrivibilità a carico SSN: indicazione clinica rientrante nelle
+    categorie previste dalla Nota 66.'
+  evaluation_order: 1
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 2
+    section: Box prescrittivo
+    excerpt: 'Artropatie su base connettivitica;
+
+      - Osteoartrosi in fase algica o infiammatoria;
+
+      - Dolore neoplastico'
+  structured_motivation:
+    rationale_it: Solo le indicazioni cliniche specificate sono rimborsabili a carico
+      SSN.
+    clinical_impact: Indicazione non coperta → NON_RIMBORSABILE.
+  condition:
+    operator: IN
+    var: indicazione_clinica
+    allowed_set:
+    - artropatia_connettivite
+    - osteoartrosi_algica
+    - dolore_neoplastico
+    - gotta_acuta
+- rule_id: N66_INCL_001
+  rule_type: INCLUSION
+  nota: '66'
+  version: 3.3.0
+  description_it: Il farmaco deve essere nella lista chiusa FANS rimborsabili (26 principi attivi singoli + 2 associazioni terapeutiche, diclofenac+misoprostolo e ibuprofene+codeina, per un totale di 28 voci accettate).
+  evaluation_order: 10
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 2
+    section: Limitatamente ai seguenti principi attivi
+    excerpt: '"La prescrizione dei farmaci antinfiammatori non steroidei a carico
+      del SSN è limitata alle seguenti condizioni patologiche [...] Limitatamente
+      ai seguenti principi attivi"'
+  structured_motivation:
+    rationale_it: Solo i farmaci inclusi nella lista chiusa sono rimborsabili con
+      Nota 66.
+    clinical_impact: Farmaco non in lista → NON_RIMBORSABILE.
+  condition:
+    operator: IN
+    var: farmaco
+    allowed_set:
+    - aceclofenac
+    - acemetacina
+    - acido_mefenamico
+    - acido_tiaprofenico
+    - amtolmetina_guacile
+    - celecoxib
+    - cinnoxicam
+    - dexibuprofene
+    - diclofenac
+    - diclofenac_misoprostolo
+    - etoricoxib
+    - fentiazac
+    - flurbiprofene
+    - furprofene
+    - ibuprofene
+    - ibuprofene_codeina
+    - indometacina
+    - ketoprofene
+    - lornoxicam
+    - meloxicam
+    - nabumetone
+    - naprossene
+    - nimesulide
+    - oxaprozina
+    - piroxicam
+    - proglumetacina
+    - sulindac
+    - tenoxicam
+- rule_id: N66_EXCL_HARD_001
+  rule_type: EXCL_HARD
+  nota: '66'
+  version: 3.3.0
+  description_it: 'Controindicazione assoluta: ulcera peptica attiva o pregressa.'
+  evaluation_order: 20
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 4
+    section: Controindicazioni
+    excerpt: Controindicati in caso di ulcera peptica attiva o pregressa
+  structured_motivation:
+    rationale_it: I FANS sono controindicati in presenza di ulcera peptica attiva
+      o pregressa per il rischio di emorragia gastrointestinale.
+    clinical_impact: NON_RIMBORSABILE.
+  condition:
+    operator: IS_TRUE
+    var: ulcera_peptica_attiva_pregressa
+- rule_id: N66_EXCL_HARD_002
+  rule_type: EXCL_HARD
+  nota: '66'
+  version: 3.3.0
+  description_it: 'Controindicazione assoluta: scompenso cardiaco grave.'
+  evaluation_order: 21
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 4
+    section: Controindicazioni
+    excerpt: controindicati nello scompenso cardiaco grave. Gli
+  structured_motivation:
+    rationale_it: I FANS possono peggiorare lo scompenso cardiaco grave (ritenzione
+      idrosalina, riduzione GFR).
+    clinical_impact: NON_RIMBORSABILE.
+  condition:
+    operator: IS_TRUE
+    var: scompenso_cardiaco_grave
+- rule_id: N66_EXCL_HARD_003
+  rule_type: EXCL_HARD
+  nota: '66'
+  version: 3.3.0
+  description_it: Coxib controindicati in cardiopatia ischemica, cerebrovascolare,
+    arteriosa periferica, o scompenso moderato-grave.
+  evaluation_order: 22
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 4
+    section: Controindicazioni
+    excerpt: ciclossigenasi 2 sono controindicati nella cardiopatia ischemica, nelle
+  structured_motivation:
+    rationale_it: I COX-2 selettivi (coxib) aumentano il rischio cardiovascolare;
+      sono controindicati nelle patologie vascolari.
+    clinical_impact: NON_RIMBORSABILE se farmaco è coxib e presenza di patologia CV.
+  condition:
+    operator: AND
+    operands:
+    - operator: IS_TRUE
+      var: is_coxib
+    - operator: OR
+      operands:
+      - operator: IS_TRUE
+        var: cardiopatia_ischemica
+      - operator: IS_TRUE
+        var: patologia_cerebrovascolare
+      - operator: IS_TRUE
+        var: patologia_arteriosa_periferica
+      - operator: IS_TRUE
+        var: scompenso_cardiaco_moderato_grave
+- rule_id: N66_INCL_002
+  rule_type: INCLUSION
+  nota: '66'
+  version: 3.3.0
+  description_it: 'Nimesulide: prescrivibile solo per uso breve durata e come seconda
+    linea.'
+  evaluation_order: 30
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 2
+    section: Nimesulide
+    excerpt: Trattamento di breve durata del dolore acuto
+  structured_motivation:
+    rationale_it: La nimesulide è rimborsabile solo se prescritta per breve durata
+      e come trattamento di seconda linea.
+    clinical_impact: Se il farmaco è nimesulide ma i requisiti non sono soddisfatti
+      → NON_RIMBORSABILE.
+  condition:
+    operator: OR
+    operands:
+    - operator: NEQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: nimesulide
+      type_domain: string
+    - operator: AND
+      operands:
+      - operator: IS_TRUE
+        var: uso_breve_durata
+      - operator: IS_TRUE
+        var: seconda_linea
+- rule_id: N66_INCL_003
+  rule_type: INCLUSION
+  nota: '66'
+  version: 3.4.0
+  description_it: 'Ibuprofene+codeina: prescrivibile solo per dolore acuto moderato
+    non controllato con singoli agenti, uso breve durata.'
+  evaluation_order: 31
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 2
+    section: Ibuprofene+codeina
+    # Audit fix V3-H4 (2026-05-06): excerpt riallineato alla clausola normativa
+    # effettiva ("La combinazione a dose fissa a base di ibuprofene/codeina viene
+    # ammessa alla rimborsabilità limitatamente al trattamento di breve durata
+    # del dolore acuto di entità moderata nei soggetti in cui il sintomo non sia
+    # adeguatamente controllato con altri antidolorifici assunti singolarmente.")
+    # estratta da audit/pdf_text/nota_66.txt:101-102. Pre-fix l'excerpt
+    # conteneva una lista di FANS scorrelati alla regola.
+    excerpt: 'La combinazione a dose fissa a base di ibuprofene/codeina viene
+      ammessa alla rimborsabilità limitatamente al trattamento di breve durata
+      del dolore acuto di entità moderata nei soggetti in cui il sintomo non
+      sia adeguatamente controllato con altri antidolorifici assunti
+      singolarmente.'
+  structured_motivation:
+    rationale_it: La combinazione ibuprofene+codeina è rimborsabile solo per dolore
+      acuto moderato non controllato da singoli principi attivi, per breve durata.
+    clinical_impact: Se farmaco è ibuprofene_codeina ma requisiti non soddisfatti
+      → NON_RIMBORSABILE.
+  condition:
+    operator: OR
+    operands:
+    - operator: NEQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: ibuprofene_codeina
+      type_domain: string
+    - operator: AND
+      operands:
+      - operator: IS_TRUE
+        var: dolore_acuto_moderato
+      - operator: IS_TRUE
+        var: non_controllato_con_singoli
+      - operator: IS_TRUE
+        var: uso_breve_durata
+- rule_id: N66_EXCL_HARD_004
+  rule_type: EXCL_HARD
+  nota: '66'
+  version: 3.4.0
+  description_it: 'Controindicazione assoluta nimesulide: epatopatia OR abuso alcool
+    OR farmaci epatotossici concomitanti. (Audit Day 2 fix F1-N66-Div#2 ALTO: pre-fix
+    copriva solo epatopatia.)'
+  evaluation_order: 23
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 4
+    section: Particolari avvertenze
+    excerpt: '"nimesulide ha un rischio epatotossico maggiore degli altri FANS ed
+      è controindicata nei pazienti epatopatici, in quelli con una storia di abuso
+      di alcool e negli assuntori di altri farmaci epatotossici"'
+  structured_motivation:
+    rationale_it: 'La nimesulide è associata a epatotossicità grave (EMA referral
+      2001); il testo normativo AIFA usa esplicitamente il termine "controindicata"
+      per le 3 popolazioni: epatopatici, abuso alcool cronico, assuntori di altri
+      farmaci epatotossici. Tutte e 3 le condizioni vanno modellate come EXCL_HARD
+      per safety.'
+    clinical_impact: NON_RIMBORSABILE. Sostituire con FANS privo di rischio epatotossico.
+  condition:
+    operator: AND
+    operands:
+    - operator: IN
+      var: farmaco
+      allowed_set:
+      - nimesulide
+    - operator: OR
+      operands:
+      - operator: IS_TRUE
+        var: epatopatia
+      - operator: IS_TRUE
+        var: abuso_alcool
+      - operator: IS_TRUE
+        var: farmaci_epatotossici_concomitanti
+- rule_id: N66_EXCL_HARD_005
+  rule_type: EXCL_HARD
+  nota: '66'
+  version: 3.4.0
+  description_it: 'Controindicazione assoluta: allergia documentata ad aspirina o
+    ad altro FANS (incluse forme respiratorie/dermatologiche scatenate da ASA/FANS).'
+  evaluation_order: 24
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 4
+    section: Particolari avvertenze
+    excerpt: '"I FANS ... sono controindicati nei soggetti con anamnesi positiva per
+      allergia ad aspirina o a un altro FANS, inclusi coloro in cui un episodio di
+      asma, angioedema, orticaria o rinite sia stato scatenato dall''assunzione di
+      aspirina o di un altro FANS"'
+  structured_motivation:
+    rationale_it: 'L''allergia ad ASA / FANS (sindrome di Samter / aspirin-exacerbated
+      respiratory disease) è una controindicazione assoluta. Il PDF è esplicito. Modellata
+      come EXCL_HARD per safety: rischio anafilattico potenzialmente fatale.'
+    clinical_impact: NON_RIMBORSABILE — rischio anafilassi.
+  condition:
+    operator: IS_TRUE
+    var: allergia_asa_o_fans
+- rule_id: N66_GWARN_001
+  rule_type: GUIDANCE_WARN
+  nota: '66'
+  version: 3.3.0
+  description_it: 'Nimesulide: avviso generale di epatotossicità per tutte le prescrizioni.'
+  evaluation_order: 40
+  detail: 'AVVISO: nimesulide associata a rischio di epatotossicità superiore rispetto
+    ad altri FANS — monitorare la funzionalità epatica. In caso di epatopatia accertata,
+    vedere N66_EXCL_HARD_004.'
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 4
+    section: Particolari avvertenze
+    excerpt: controindicata nei pazienti epatopatici
+  structured_motivation:
+    rationale_it: La nimesulide è associata a rischio di epatotossicità superiore;
+      questo avviso si applica a tutte le prescrizioni di nimesulide. La controindicazione
+      assoluta (epatopatia accertata) è gestita da N66_EXCL_HARD_004.
+    clinical_impact: Avviso di sicurezza — monitorare funzionalità epatica.
+  condition:
+    operator: IN
+    var: farmaco
+    allowed_set:
+    - nimesulide
+- rule_id: N66_GWARN_002
+  rule_type: GUIDANCE_WARN
+  nota: '66'
+  version: 3.3.0
+  description_it: 'FANS + ASA a basso dosaggio: aumento del rischio gastrointestinale.
+    (V3.1 addition, V3.3 patch 5: condizione ristretta a IN(farmaco, lista_fans))'
+  evaluation_order: 41
+  detail: La combinazione di FANS e acido acetilsalicilico a basso dosaggio aumenta
+    il rischio di effetti gastrointestinali; tale associazione deve essere utilizzata
+    solo se è assolutamente necessaria e il paziente è monitorato.
+  normative_anchor:
+    pdf_file: Nota_66.pdf
+    page: 4
+    section: Sicurezza
+    excerpt: '"La combinazione di FANS e acido acetilsalicilico a basso dosaggio aumenta
+      il rischio di effetti gastrointestinali"'
+  structured_motivation:
+    rationale_it: L'associazione FANS + ASA antiaggregante potenzia il rischio emorragico
+      GI. La condizione IN(farmaco, lista_fans) esclude la combinazione ibuprofene+codeina
+      e i gastroprotettori (V3.3 patch 5).
+    clinical_impact: Segnalazione di rischio GI aumentato.
+  condition:
+    operator: AND
+    operands:
+    - operator: IS_TRUE
+      var: terapia_antiaggregante_asa
+    - operator: IN
+      var: farmaco
+      allowed_set:
+      - aceclofenac
+      - acemetacina
+      - acido_mefenamico
+      - acido_tiaprofenico
+      - amtolmetina_guacile
+      - celecoxib
+      - cinnoxicam
+      - dexibuprofene
+      - diclofenac
+      - diclofenac_misoprostolo
+      - etoricoxib
+      - fentiazac
+      - flurbiprofene
+      - furprofene
+      - ibuprofene
+      - indometacina
+      - ketoprofene
+      - lornoxicam
+      - meloxicam
+      - nabumetone
+      - naprossene
+      - nimesulide
+      - oxaprozina
+      - piroxicam
+      - proglumetacina
+      - sulindac
+      - tenoxicam

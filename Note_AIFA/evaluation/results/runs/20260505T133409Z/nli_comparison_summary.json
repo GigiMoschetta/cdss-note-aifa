@@ -1,0 +1,43 @@
+{
+  "nli_models": [
+    {
+      "model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+      "metric": "M3_semantic_faithfulness_v2",
+      "n_evaluated": 122,
+      "mean_entailment": 0.0799,
+      "median_entailment": 0.0042,
+      "mean_contradiction": 0.2522,
+      "n_high_contradiction": 100,
+      "source_file": "semantic_faithfulness_v2.json"
+    },
+    {
+      "model": "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7",
+      "metric": "M3_semantic_faithfulness_v2",
+      "n_evaluated": 122,
+      "mean_entailment": 0.2953,
+      "median_entailment": 0.2869,
+      "mean_contradiction": 0.3047,
+      "n_high_contradiction": 110,
+      "source_file": "semantic_faithfulness_v2_mlaurer_2mil7.json"
+    },
+    {
+      "model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+      "metric": "M3_semantic_faithfulness_v2",
+      "n_evaluated": 122,
+      "mean_entailment": 0.0806,
+      "median_entailment": 0.0042,
+      "mean_contradiction": 0.2582,
+      "n_high_contradiction": 104,
+      "source_file": "semantic_faithfulness_v2_mlaurer_old.json"
+    }
+  ],
+  "italian_similarity": {
+    "model": "nickprock/cross-encoder-italian-bert-stsb",
+    "metric": "M3bis_semantic_similarity_italian",
+    "n_evaluated": 122,
+    "mean": 0.1063,
+    "median": 0.1104,
+    "n_low_support": 396,
+    "source_file": "semantic_similarity_italian.json"
+  }
+}

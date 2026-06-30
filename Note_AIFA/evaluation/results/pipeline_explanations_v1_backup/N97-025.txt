@@ -1,0 +1,24 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di rimborso del farmaco dabigatran è motivata dalla sua efficacia e sicurezza, come evidenziato dalle fonti normative. In particolare, il punteggio CHA2DS2-VASc calcolato è [5,5], che supera la soglia di 2, indicando un alto rischio trombo-embolico. Come indicato nella FONTE 1, il percorso decisionale per la terapia anticoagulante nella FANV prevede la valutazione del rischio trombo-embolico e del rischio emorragico individuale. Inoltre, come riportato nella FONTE 6, i NAO/DOAC, tra cui il dabigatran, sono considerati globalmente sovrapponibili e possono essere scelti in base ai criteri generali per la scelta dell'anticoagulante.
+
+3. RACCOMANDAZIONI
+   La raccomandazione per il dabigatran è di decidere caso per caso fra i due dosaggi (300 o 220 mg/die) in pazienti con età compresa tra 75-80 anni e con funzione renale moderata (VFG 30-50 ml/min) o con aumento del rischio di sanguinamento, come riportato nella FONTE 5.
+
+4. DATI MANCANTI
+   I campi mancanti per la guida clinica sono: difficolta_monitoraggio_inr, interazioni_farmacologiche_doac, pregressa_emorragia_intracranica, ttr_sotto_70, uso_verapamil. Questi dati mancanti potrebbero influire sulla scelta del farmaco e sulla sua posologia.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-3.pdf, p. 2
+- nota-97-all-2.pdf, p. 4

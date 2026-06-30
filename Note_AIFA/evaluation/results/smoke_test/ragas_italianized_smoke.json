@@ -1,0 +1,22 @@
+{
+  "metric": "ragas",
+  "judge_llm": "llama3.1:8b",
+  "embed_model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+  "n_cases": 1,
+  "wall_time_s": 70.5,
+  "aggregate": {
+    "faithfulness": {
+      "mean": 1.0,
+      "median": 1.0,
+      "n": 1,
+      "min": 1.0,
+      "max": 1.0
+    }
+  },
+  "per_case": [
+    {
+      "case_id": "N97-001",
+      "faithfulness": 1.0
+    }
+  ]
+}

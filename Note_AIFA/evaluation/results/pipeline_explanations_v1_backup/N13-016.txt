@@ -1,0 +1,45 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare l'atorvastatina è motivata dalla valutazione della regola N13_INCL_001, che è stata valutata come FALSE. Ciò significa che l'atorvastatina non è inclusa nella lista dei farmaci rimborsabili per i pazienti con rischio moderato di malattia cardiovascolare. Come indicato nella FONTE 1, l'atorvastatina è inclusa nella lista dei farmaci rimborsabili per i pazienti con rischio medio e moderato, ma solo se il paziente ha un rischio di malattia cardiovascolare superiore al 5%. Inoltre, come indicato nella FONTE 2, l'atorvastatina è preferenzialmente utilizzata se necessaria una riduzione del colesterolo LDL superiore al 50%.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 6
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 10
+
+
+--- PROVA NORMATIVA ---
+Regola: N13_INCL_001
+snippet_id: 9b1983efc7
+Fonte: nota-13.pdf, p. 1
+Testo: "Ipolipemizzanti 
+Fibrati 
+Statine 
+Altri 
+ 
+bezafibrato 
+ 
+fenofibrato 
+ 
+gemfibrozil
+ 
+simvastatina 
+ 
+pravastatina 
+ 
+fluvastatina 
+..."
+--- FINE ---

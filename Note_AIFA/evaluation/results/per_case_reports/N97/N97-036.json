@@ -1,0 +1,490 @@
+{
+  "case_id": "N97-036",
+  "nota_id": "97",
+  "drug_id": "apixaban",
+  "category": "NON_RIMBORSABILE_pathway",
+  "description": "NON_RIMBORSABILE — F, score=2 (HTN+Sc only) below F threshold=3",
+  "tags": [
+    "non_rimborsabile",
+    "apixaban",
+    "nota97",
+    "cha2ds2vasc",
+    "female"
+  ],
+  "input": {
+    "patient_data": {
+      "diagnosi_fanv": true,
+      "ecg_confermato": true,
+      "valutazione_clinica_eseguita": true,
+      "paziente_sesso": "F",
+      "paziente_eta": 60,
+      "scompenso_cardiaco": false,
+      "ipertensione_arteriosa": true,
+      "diabete_mellito": false,
+      "pregresso_ictus_tia_te": false,
+      "vasculopatia": false,
+      "protesi_valvolari_meccaniche": false,
+      "fa_valvolare": false,
+      "vfg_cockroft_gault": 85.0,
+      "paziente_peso_kg": 65.0,
+      "creatinina_sierica": 0.9,
+      "emorragia_maggiore_in_atto": false,
+      "diatesi_emorragica_congenita": false,
+      "gravidanza": false,
+      "ipersensibilita_farmaco": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N97_PATH_001"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "F score=2 below threshold 3"
+    },
+    "pdf_reference": {
+      "rule_id": "N97_PATH_001",
+      "pdf_file": "nota-97.pdf",
+      "page": 3,
+      "section": "Percorso C",
+      "excerpt": "≥3 (se femmine)"
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N97_PATH_001"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 0.4,
+    "recall_at_5": 0.6,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "nota-97_0029_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "nota-97_0030_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "nota-97_0027_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "nota-97_0028_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "nota-97-all-2_0042_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "nota-97_0031_v2",
+        "pdf_file": "nota-97.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "nota-97-all-2_0015_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "nota-97-all-2_0016_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "nota-97-all-2_0017_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "nota-97-all-2_0018_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "nota-97-all-2_0019_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "nota-97-all-2_0020_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 13,
+        "chunk_id": "nota-97-all-2_0021_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 14,
+        "chunk_id": "nota-97-all-2_0022_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 15,
+        "chunk_id": "nota-97-all-2_0023_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 16,
+        "chunk_id": "nota-97-all-2_0024_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 17,
+        "chunk_id": "nota-97-all-2_0025_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 18,
+        "chunk_id": "nota-97-all-2_0026_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 19,
+        "chunk_id": "nota-97-all-2_0027_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 20,
+        "chunk_id": "nota-97-all-2_0028_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 21,
+        "chunk_id": "nota-97-all-2_0029_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 22,
+        "chunk_id": "nota-97-all-2_0030_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 23,
+        "chunk_id": "nota-97-all-2_0031_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 24,
+        "chunk_id": "nota-97-all-2_0032_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 25,
+        "chunk_id": "nota-97-all-2_0033_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 26,
+        "chunk_id": "nota-97-all-2_0034_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 27,
+        "chunk_id": "nota-97-all-2_0035_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 28,
+        "chunk_id": "nota-97-all-2_0036_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 29,
+        "chunk_id": "nota-97-all-2_0037_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 30,
+        "chunk_id": "nota-97-all-2_0047_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 6,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 31,
+        "chunk_id": "nota-97-all-3_0000_v2",
+        "pdf_file": "nota-97-all-3.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.41169223189353943,
+        "text": ""
+      },
+      {
+        "rank": 32,
+        "chunk_id": "nota-97-all-2_0048_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 7,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4114821255207062,
+        "text": ""
+      },
+      {
+        "rank": 33,
+        "chunk_id": "nota-97-all-3_0001_v2",
+        "pdf_file": "nota-97-all-3.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.40634578466415405,
+        "text": ""
+      },
+      {
+        "rank": 34,
+        "chunk_id": "nota-97-all-2_0039_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.38674601912498474,
+        "text": ""
+      },
+      {
+        "rank": 35,
+        "chunk_id": "nota-97-all-2_0038_v2",
+        "pdf_file": "nota-97-all-2.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.38509222865104675,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   La decisione di NON_RIMBORSABILITÀ del farmaco apixaban è motivata dal fatto che il punteggio CHA2DS2-VASc è di 2, che è inferiore alla soglia di 3. Come indicato nella FONTE 1, il punteggio CHA2DS2-VASc è utilizzato per valutare il rischio trombo-embolico e il rischio emorragico. Inoltre, come riportato nella FONTE 3, la Nota 97 specifica che la terapia anticoagulante orale deve essere personalizzata considerando il rischio trombo-embolico ed emorragico individuale.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- nota-97.pdf, p. 3, righe 7-46, char 295-2070, sha:d1d7a85a22\n- nota-97.pdf, p. 1, righe 1-3, char 0-17, sha:43defa75d8\n- nota-97-all-2.pdf, p. 2, sha:22dee22ddc\n- nota-97.pdf, p. 4, sha:d61352c7de\n- nota-97-all-2.pdf, p. 6, riga 1, char 0-29, sha:cb206ccb9d\n- nota-97-all-3.pdf, p. 1, righe 1-16, char 0-901, sha:f390e3057a\n- nota-97-all-2.pdf, p. 7, righe 10-28, char 626-1719, sha:2c6a362971\n- nota-97-all-2.pdf, p. 1, righe 1-120, char 0-1881, sha:b3b4a1d5d9\n\n\n--- PROVA NORMATIVA ---\nRegola: N97_PATH_001\nsnippet_id: 345c39e5b6\nFonte: nota-97.pdf, p. 3, righe 7-46 (char 295-2070)\nTesto verbatim: «3 elenca i fattori, che correlano in modo indipendente \ncon l’aumento del rischio emorragico, inclusi nei diversi \nstrumenti e distinti in modificabili, potenzialmente modificabili, \nnon modificabili e legati a biomarker. C. LA TERAPIA ANTICOAGULANTE DOVRÀ ESSERE INIZIATA  \n \nin tutti i pazienti con punteggio CHA2DS2-VASc:  \n>2 (se maschi) e >3 (se femmine). La scelta terapeutica finale dipenderà comunque dalla \nvalutazione clinica e dovrà considerare la presenza di \nfattori di rischio emorragico anche in rapporto alle loro \ncaratteristiche. D. LA SCELTA DELL’ANTICOAGULANTE  DA UTILIZZARE \nGli anticoagulanti orali inibitori della vit. K (AVK) e inibitori \ndiretti della trombina o del fattore Xa (NAO/DOAC) sono gli \nunici farmaci attualmente disponibili di provata efficacia per \nla prevenzione dell’ictus e dell’embolia arteriosa periferica \nnei pazienti con FANV10.»\nSHA256 chunk: d1d7a85a22be65f5\nVerificato: SI\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 9598,
+      "completion_tokens": 284,
+      "total_tokens": 9882
+    },
+    "latency_s": 12.51
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N97-036",
+      "gold_pdf_file": "nota-97.pdf",
+      "gold_page": 3,
+      "gold_excerpt_len": 15,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.0,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {
+      "case_id": "N97-036",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.7186054843787217,
+      "context_precision": 0.4305555555469444,
+      "context_recall": 1.0,
+      "answer_similarity": 0.24535188134233726,
+      "answer_correctness": 0.36133797033558435
+    }
+  }
+}

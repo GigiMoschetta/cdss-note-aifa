@@ -1,0 +1,1346 @@
+{
+  "metric": "M1_citation_verbatim_accuracy",
+  "description": "% of LLM citations whose verbatim text exists in the PDF at the declared (page, char) position",
+  "tautological": false,
+  "n_cases_total": 122,
+  "aggregate": {
+    "n_cases_evaluated": 39,
+    "n_cases_skipped": 83,
+    "mean": 0.5128,
+    "median": 1.0,
+    "std": 0.5064,
+    "min": 0.0,
+    "max": 1.0,
+    "n_perfect": 20,
+    "n_zero": 19
+  },
+  "per_case": [
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-001"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-002"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_SCOPE_001",
+          "pdf_file": "nota-97.pdf",
+          "page": 1,
+          "verbatim_preview": "NOTA 97 \nFarmaci inclusi \nnella Nota AIFA:   \n  \nAVK:  \n Warfarin \n Acenocumarolo  \n  \nNAO/DOAC:  \n Dabigatran \n Api...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N97-003"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_SCOPE_001",
+          "pdf_file": "nota-97.pdf",
+          "page": 1,
+          "verbatim_preview": "NOTA 97 \nFarmaci inclusi \nnella Nota AIFA:   \n  \nAVK:  \n Warfarin \n Acenocumarolo  \n  \nNAO/DOAC:  \n Dabigatran \n Api...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N97-004"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_EXCL_HARD_001",
+          "pdf_file": "nota-97.pdf",
+          "page": 4,
+          "verbatim_preview": "La diagnosi di fibrillazione atriale valvolare comprende i portatori \ndi valvulopatia su base reumatica, sostanzialmente...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N97-005"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_EXCL_HARD_003",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 6,
+          "verbatim_preview": "DABIGATRAN\ncp da 110 e 150 mg RIVAROXABAN cp\nda 15 e 20 mg cp da 2,5 e 5 mg cp da 30 e 60 mg 60 mg/die\nmonosomministrazi...",
+          "found_in_pdf": false,
+          "similarity": 0.9039
+        }
+      ],
+      "case_id": "N97-006"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_PATH_001",
+          "pdf_file": "nota-97.pdf",
+          "page": 3,
+          "verbatim_preview": "3 elenca i fattori, che correlano in modo indipendente \ncon l’aumento del rischio emorragico, inclusi nei diversi \nstrum...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N97-007"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-008"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-009"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-010"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-011"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-012"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-013"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-014"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_PATH_001",
+          "pdf_file": "nota-97.pdf",
+          "page": 3,
+          "verbatim_preview": "3 elenca i fattori, che correlano in modo indipendente \ncon l’aumento del rischio emorragico, inclusi nei diversi \nstrum...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N97-015"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_EXCL_HARD_002",
+          "pdf_file": "nota-97.pdf",
+          "page": 4,
+          "verbatim_preview": "La diagnosi di fibrillazione atriale valvolare comprende i portatori \ndi valvulopatia su base reumatica, sostanzialmente...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N97-016"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-017"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-018"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-019"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-020"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-021"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-022"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-023"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-024"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-025"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-026"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-027"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-028"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-029"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-030"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-031"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_EXCL_HARD_003",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 6,
+          "verbatim_preview": "DABIGATRAN\ncp da 110 e 150 mg RIVAROXABAN cp\nda 15 e 20 mg cp da 2,5 e 5 mg cp da 30 e 60 mg 60 mg/die\nmonosomministrazi...",
+          "found_in_pdf": false,
+          "similarity": 0.9039
+        }
+      ],
+      "case_id": "N97-032"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-033"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-034"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-035"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_PATH_001",
+          "pdf_file": "nota-97.pdf",
+          "page": 3,
+          "verbatim_preview": "3 elenca i fattori, che correlano in modo indipendente \ncon l’aumento del rischio emorragico, inclusi nei diversi \nstrum...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N97-036"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_EXCL_HARD_ALL2_GRAVIDANZA",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 2,
+          "verbatim_preview": " \nrecente emorragia intracranica, intraoculare, spinale, retroperitoneale \n \nvarici esofagee accertate o sospette, mal...",
+          "found_in_pdf": false,
+          "similarity": 0.8307
+        }
+      ],
+      "case_id": "N97-037"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N97_EXCL_HARD_ALL2_EMORRAGIA",
+          "pdf_file": "nota-97-all-2.pdf",
+          "page": 2,
+          "verbatim_preview": " \nrecente emorragia intracranica, intraoculare, spinale, retroperitoneale \n \nvarici esofagee accertate o sospette, mal...",
+          "found_in_pdf": false,
+          "similarity": 0.8307
+        }
+      ],
+      "case_id": "N97-038"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-039"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N97-040"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N01_INCL_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "verbatim_preview": "Sulla base di studi clinici randomizzati e osservazionali anche l’uso di anticoagulanti e l’età avanzata (65-75 anni) so...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N01-001"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-002"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-003"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-004"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N01_SCOPE_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "verbatim_preview": "Sulla base di studi clinici randomizzati e osservazionali anche l’uso di anticoagulanti e l’età avanzata (65-75 anni) so...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N01-005"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-006"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-007"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-008"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-009"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-010"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-011"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-012"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-013"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-014"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N01_INCL_001",
+          "pdf_file": "Nota_01.pdf",
+          "page": 2,
+          "verbatim_preview": "Sulla base di studi clinici randomizzati e osservazionali anche l’uso di anticoagulanti e l’età avanzata (65-75 anni) so...",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N01-015"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-016"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-017"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-018"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-019"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-020"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-021"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-022"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-023"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N01-024"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-001"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "verbatim_preview": "L’uso dei farmaci ipolipemizzanti deve essere continuativo e non occasionale così come la \nmodifica dello stile di vita....",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N13-002"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_SCOPE_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 5,
+          "verbatim_preview": "L’uso dei farmaci ipolipemizzanti deve essere continuativo e non occasionale così come la \nmodifica dello stile di vita....",
+          "found_in_pdf": true,
+          "similarity": 1.0
+        }
+      ],
+      "case_id": "N13-003"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_PATH_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "verbatim_preview": "Ipolipemizzanti  bezafibrato\n fenofibrato\n gemfibrozil  simvastatina\n pravastatina\n fluvastatina\n lovastatina\n a...",
+          "found_in_pdf": false,
+          "similarity": 0.6371
+        }
+      ],
+      "case_id": "N13-004"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "verbatim_preview": "Ipolipemizzanti  bezafibrato\n fenofibrato\n gemfibrozil  simvastatina\n pravastatina\n fluvastatina\n lovastatina\n a...",
+          "found_in_pdf": false,
+          "similarity": 0.6371
+        }
+      ],
+      "case_id": "N13-005"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-006"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-007"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-008"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-009"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-010"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-011"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-012"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "verbatim_preview": "Ipolipemizzanti  bezafibrato\n fenofibrato\n gemfibrozil  simvastatina\n pravastatina\n fluvastatina\n lovastatina\n a...",
+          "found_in_pdf": false,
+          "similarity": 0.6371
+        }
+      ],
+      "case_id": "N13-013"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "verbatim_preview": "Ipolipemizzanti  bezafibrato\n fenofibrato\n gemfibrozil  simvastatina\n pravastatina\n fluvastatina\n lovastatina\n a...",
+          "found_in_pdf": false,
+          "similarity": 0.6371
+        }
+      ],
+      "case_id": "N13-014"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "verbatim_preview": "Ipolipemizzanti  bezafibrato\n fenofibrato\n gemfibrozil  simvastatina\n pravastatina\n fluvastatina\n lovastatina\n a...",
+          "found_in_pdf": false,
+          "similarity": 0.6371
+        }
+      ],
+      "case_id": "N13-015"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "verbatim_preview": "Ipolipemizzanti  bezafibrato\n fenofibrato\n gemfibrozil  simvastatina\n pravastatina\n fluvastatina\n lovastatina\n a...",
+          "found_in_pdf": false,
+          "similarity": 0.6371
+        }
+      ],
+      "case_id": "N13-016"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-017"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-018"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-019"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-020"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-021"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-022"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-023"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-024"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-025"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-026"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-027"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-028"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N13_INCL_001",
+          "pdf_file": "nota-13.pdf",
+          "page": 1,
+          "verbatim_preview": "Ipolipemizzanti  bezafibrato\n fenofibrato\n gemfibrozil  simvastatina\n pravastatina\n fluvastatina\n lovastatina\n a...",
+          "found_in_pdf": false,
+          "similarity": 0.6371
+        }
+      ],
+      "case_id": "N13-029"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-030"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-031"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N13-032"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-001"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_EXCL_HARD_001",
+          "pdf_file": "Nota_66.pdf",
+          "page": 4,
+          "verbatim_preview": "differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal prop...",
+          "found_in_pdf": false,
+          "similarity": 0.9429
+        }
+      ],
+      "case_id": "N66-002"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_EXCL_HARD_002",
+          "pdf_file": "Nota_66.pdf",
+          "page": 4,
+          "verbatim_preview": "differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal prop...",
+          "found_in_pdf": false,
+          "similarity": 0.9429
+        }
+      ],
+      "case_id": "N66-003"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_EXCL_HARD_003",
+          "pdf_file": "Nota_66.pdf",
+          "page": 4,
+          "verbatim_preview": "differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal prop...",
+          "found_in_pdf": false,
+          "similarity": 0.9429
+        }
+      ],
+      "case_id": "N66-004"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_INCL_002",
+          "pdf_file": "Nota_66.pdf",
+          "page": 2,
+          "verbatim_preview": "FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti princi...",
+          "found_in_pdf": true,
+          "similarity": 0.9798
+        }
+      ],
+      "case_id": "N66-005"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-006"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-007"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_SCOPE_001",
+          "pdf_file": "Nota_66.pdf",
+          "page": 2,
+          "verbatim_preview": "FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti princi...",
+          "found_in_pdf": true,
+          "similarity": 0.9798
+        }
+      ],
+      "case_id": "N66-008"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_EXCL_HARD_004",
+          "pdf_file": "Nota_66.pdf",
+          "page": 4,
+          "verbatim_preview": "differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal prop...",
+          "found_in_pdf": false,
+          "similarity": 0.9429
+        }
+      ],
+      "case_id": "N66-009"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-010"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_INCL_003",
+          "pdf_file": "Nota_66.pdf",
+          "page": 2,
+          "verbatim_preview": "FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti princi...",
+          "found_in_pdf": true,
+          "similarity": 0.9798
+        }
+      ],
+      "case_id": "N66-011"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_INCL_001",
+          "pdf_file": "Nota_66.pdf",
+          "page": 2,
+          "verbatim_preview": "FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti princi...",
+          "found_in_pdf": true,
+          "similarity": 0.9798
+        }
+      ],
+      "case_id": "N66-012"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-013"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-014"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_EXCL_HARD_003",
+          "pdf_file": "Nota_66.pdf",
+          "page": 4,
+          "verbatim_preview": "differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal prop...",
+          "found_in_pdf": false,
+          "similarity": 0.9429
+        }
+      ],
+      "case_id": "N66-015"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_EXCL_HARD_003",
+          "pdf_file": "Nota_66.pdf",
+          "page": 4,
+          "verbatim_preview": "differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal prop...",
+          "found_in_pdf": false,
+          "similarity": 0.9429
+        }
+      ],
+      "case_id": "N66-016"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_EXCL_HARD_003",
+          "pdf_file": "Nota_66.pdf",
+          "page": 4,
+          "verbatim_preview": "differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal prop...",
+          "found_in_pdf": false,
+          "similarity": 0.9429
+        }
+      ],
+      "case_id": "N66-017"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-018"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-019"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-020"
+    },
+    {
+      "skipped": false,
+      "n_citations": 0,
+      "n_match": 0,
+      "cva_score": null,
+      "citation_details": [],
+      "case_id": "N66-021"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 0,
+      "cva_score": 0.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_EXCL_HARD_004",
+          "pdf_file": "Nota_66.pdf",
+          "page": 4,
+          "verbatim_preview": "differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal prop...",
+          "found_in_pdf": false,
+          "similarity": 0.9429
+        }
+      ],
+      "case_id": "N66-022"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_INCL_002",
+          "pdf_file": "Nota_66.pdf",
+          "page": 2,
+          "verbatim_preview": "FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti princi...",
+          "found_in_pdf": true,
+          "similarity": 0.9798
+        }
+      ],
+      "case_id": "N66-023"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_INCL_001",
+          "pdf_file": "Nota_66.pdf",
+          "page": 2,
+          "verbatim_preview": "FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti princi...",
+          "found_in_pdf": true,
+          "similarity": 0.9798
+        }
+      ],
+      "case_id": "N66-024"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_INCL_001",
+          "pdf_file": "Nota_66.pdf",
+          "page": 2,
+          "verbatim_preview": "FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti princi...",
+          "found_in_pdf": true,
+          "similarity": 0.9798
+        }
+      ],
+      "case_id": "N66-025"
+    },
+    {
+      "skipped": false,
+      "n_citations": 1,
+      "n_match": 1,
+      "cva_score": 1.0,
+      "citation_details": [
+        {
+          "rule_id": "N66_SCOPE_001",
+          "pdf_file": "Nota_66.pdf",
+          "page": 2,
+          "verbatim_preview": "FANS IN ASSOCIAZIONE FISSA CON ALTRI ANALGESICI Limitatamente alle seguenti indicazioni Limitatamente ai seguenti princi...",
+          "found_in_pdf": true,
+          "similarity": 0.9798
+        }
+      ],
+      "case_id": "N66-026"
+    }
+  ]
+}

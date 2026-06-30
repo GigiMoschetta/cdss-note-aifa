@@ -1,0 +1,1257 @@
+{
+  "metric": "M2_citation_containment_score",
+  "description": "Containment |gold ∩ llm_chunk| / |gold|: fraction of the PDF-gold char span covered by the LLM-cited chunk window",
+  "primary_metric": "containment (CCS)",
+  "secondary_metric": "jaccard (legacy CRS, biased by chunk size mismatch)",
+  "tautological": false,
+  "n_cases_total": 122,
+  "aggregate": {
+    "n_cases_evaluated": 39,
+    "mean": 0.4615,
+    "median": 0.0,
+    "std": 0.505,
+    "min": 0.0,
+    "max": 1.0,
+    "n_perfect": 18,
+    "n_zero": 21
+  },
+  "per_case": [
+    {
+      "case_id": "N01-001",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N01_INCL_001",
+          "gold_range": [
+            97,
+            278
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N01-002",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-003",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-004",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-005",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N01_SCOPE_001",
+          "gold_range": [
+            152,
+            243
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N01-006",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-007",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-008",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-009",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-010",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-011",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-012",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-013",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-014",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-015",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N01_INCL_001",
+          "gold_range": [
+            97,
+            278
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N01-016",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-017",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-018",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-019",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-020",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-021",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-022",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-023",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N01-024",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-001",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-002",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N13_SCOPE_001",
+          "gold_range": [
+            529,
+            673
+          ],
+          "llm_range": [
+            903,
+            2549
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-003",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N13_SCOPE_001",
+          "gold_range": [
+            529,
+            673
+          ],
+          "llm_range": [
+            903,
+            2549
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N13-004",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0232,
+      "per_rule": [
+        {
+          "rule_id": "N13_PATH_001",
+          "gold_range": [
+            555,
+            590
+          ],
+          "llm_range": [
+            0,
+            1510
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0232
+        }
+      ]
+    },
+    {
+      "case_id": "N13-005",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0228,
+      "per_rule": [
+        {
+          "rule_id": "N13_INCL_001",
+          "gold_range": [
+            1624,
+            1659
+          ],
+          "llm_range": [
+            663,
+            2200
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0228
+        }
+      ]
+    },
+    {
+      "case_id": "N13-006",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-007",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-008",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-009",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-010",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-011",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-012",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-013",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0228,
+      "per_rule": [
+        {
+          "rule_id": "N13_INCL_001",
+          "gold_range": [
+            1624,
+            1659
+          ],
+          "llm_range": [
+            663,
+            2200
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0228
+        }
+      ]
+    },
+    {
+      "case_id": "N13-014",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0228,
+      "per_rule": [
+        {
+          "rule_id": "N13_INCL_001",
+          "gold_range": [
+            1624,
+            1659
+          ],
+          "llm_range": [
+            663,
+            2200
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0228
+        }
+      ]
+    },
+    {
+      "case_id": "N13-015",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0228,
+      "per_rule": [
+        {
+          "rule_id": "N13_INCL_001",
+          "gold_range": [
+            1624,
+            1659
+          ],
+          "llm_range": [
+            663,
+            2200
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0228
+        }
+      ]
+    },
+    {
+      "case_id": "N13-016",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0228,
+      "per_rule": [
+        {
+          "rule_id": "N13_INCL_001",
+          "gold_range": [
+            1624,
+            1659
+          ],
+          "llm_range": [
+            663,
+            2200
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0228
+        }
+      ]
+    },
+    {
+      "case_id": "N13-017",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-018",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-019",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-020",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-021",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-022",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-023",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-024",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-025",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-026",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-027",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-028",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-029",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0228,
+      "per_rule": [
+        {
+          "rule_id": "N13_INCL_001",
+          "gold_range": [
+            1624,
+            1659
+          ],
+          "llm_range": [
+            663,
+            2200
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0228
+        }
+      ]
+    },
+    {
+      "case_id": "N13-030",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-031",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N13-032",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-001",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-002",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0344,
+      "per_rule": [
+        {
+          "rule_id": "N66_EXCL_HARD_001",
+          "gold_range": [
+            8020,
+            8079
+          ],
+          "llm_range": [
+            7165,
+            8879
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0344
+        }
+      ]
+    },
+    {
+      "case_id": "N66-003",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0299,
+      "per_rule": [
+        {
+          "rule_id": "N66_EXCL_HARD_002",
+          "gold_range": [
+            7183,
+            7233
+          ],
+          "llm_range": [
+            5770,
+            7442
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0299
+        }
+      ]
+    },
+    {
+      "case_id": "N66-004",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0425,
+      "per_rule": [
+        {
+          "rule_id": "N66_EXCL_HARD_003",
+          "gold_range": [
+            7260,
+            7331
+          ],
+          "llm_range": [
+            5770,
+            7442
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0425
+        }
+      ]
+    },
+    {
+      "case_id": "N66-005",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N66_INCL_002",
+          "gold_range": [
+            703,
+            747
+          ],
+          "llm_range": [
+            940,
+            1116
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-006",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-007",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-008",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N66_SCOPE_001",
+          "gold_range": [
+            209,
+            311
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-009",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.126,
+      "per_rule": [
+        {
+          "rule_id": "N66_EXCL_HARD_004",
+          "gold_range": [
+            5822,
+            6035
+          ],
+          "llm_range": [
+            4345,
+            6036
+          ],
+          "containment": 1.0,
+          "jaccard": 0.126
+        }
+      ]
+    },
+    {
+      "case_id": "N66-010",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-011",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N66_INCL_003",
+          "gold_range": [
+            449,
+            524
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-012",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N66_INCL_001",
+          "gold_range": [
+            0,
+            163
+          ],
+          "llm_range": [
+            898,
+            939
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-013",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-014",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-015",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0425,
+      "per_rule": [
+        {
+          "rule_id": "N66_EXCL_HARD_003",
+          "gold_range": [
+            7260,
+            7331
+          ],
+          "llm_range": [
+            5770,
+            7442
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0425
+        }
+      ]
+    },
+    {
+      "case_id": "N66-016",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0425,
+      "per_rule": [
+        {
+          "rule_id": "N66_EXCL_HARD_003",
+          "gold_range": [
+            7260,
+            7331
+          ],
+          "llm_range": [
+            5770,
+            7442
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0425
+        }
+      ]
+    },
+    {
+      "case_id": "N66-017",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0425,
+      "per_rule": [
+        {
+          "rule_id": "N66_EXCL_HARD_003",
+          "gold_range": [
+            7260,
+            7331
+          ],
+          "llm_range": [
+            5770,
+            7442
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0425
+        }
+      ]
+    },
+    {
+      "case_id": "N66-018",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-019",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-020",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-021",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N66-022",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.126,
+      "per_rule": [
+        {
+          "rule_id": "N66_EXCL_HARD_004",
+          "gold_range": [
+            5822,
+            6035
+          ],
+          "llm_range": [
+            4345,
+            6036
+          ],
+          "containment": 1.0,
+          "jaccard": 0.126
+        }
+      ]
+    },
+    {
+      "case_id": "N66-023",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N66_INCL_002",
+          "gold_range": [
+            703,
+            747
+          ],
+          "llm_range": [
+            940,
+            1116
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-024",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N66_INCL_001",
+          "gold_range": [
+            0,
+            163
+          ],
+          "llm_range": [
+            898,
+            939
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-025",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N66_INCL_001",
+          "gold_range": [
+            0,
+            163
+          ],
+          "llm_range": [
+            898,
+            939
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N66-026",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N66_SCOPE_001",
+          "gold_range": [
+            209,
+            311
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-001",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-002",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-003",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N97_SCOPE_001",
+          "gold_range": [
+            848,
+            920
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-004",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N97_SCOPE_001",
+          "gold_range": [
+            848,
+            920
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-005",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N97_EXCL_HARD_001",
+          "gold_range": [
+            665,
+            747
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-006",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N97_EXCL_HARD_003",
+          "gold_range": [
+            1069,
+            1104
+          ],
+          "llm_range": [
+            0,
+            34
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-007",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0738,
+      "per_rule": [
+        {
+          "rule_id": "N97_PATH_001",
+          "gold_range": [
+            527,
+            658
+          ],
+          "llm_range": [
+            295,
+            2070
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0738
+        }
+      ]
+    },
+    {
+      "case_id": "N97-008",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-009",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-010",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-011",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-012",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-013",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-014",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-015",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0738,
+      "per_rule": [
+        {
+          "rule_id": "N97_PATH_001",
+          "gold_range": [
+            527,
+            658
+          ],
+          "llm_range": [
+            295,
+            2070
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0738
+        }
+      ]
+    },
+    {
+      "case_id": "N97-016",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N97_EXCL_HARD_002",
+          "gold_range": [
+            955,
+            1025
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-017",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-018",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-019",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-020",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-021",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-022",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-023",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-024",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-025",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-026",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-027",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-028",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-029",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-030",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-031",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-032",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N97_EXCL_HARD_003",
+          "gold_range": [
+            1069,
+            1104
+          ],
+          "llm_range": [
+            0,
+            34
+          ],
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-033",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-034",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-035",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-036",
+      "n_blocking_rules": 1,
+      "n_cited": 1,
+      "ccs": 1.0,
+      "crs_jaccard_legacy": 0.0738,
+      "per_rule": [
+        {
+          "rule_id": "N97_PATH_001",
+          "gold_range": [
+            527,
+            658
+          ],
+          "llm_range": [
+            295,
+            2070
+          ],
+          "containment": 1.0,
+          "jaccard": 0.0738
+        }
+      ]
+    },
+    {
+      "case_id": "N97-037",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N97_EXCL_HARD_ALL2_GRAVIDANZA",
+          "gold_range": [
+            202,
+            302
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-038",
+      "n_blocking_rules": 1,
+      "n_cited": 0,
+      "ccs": 0.0,
+      "crs_jaccard_legacy": 0.0,
+      "per_rule": [
+        {
+          "rule_id": "N97_EXCL_HARD_ALL2_EMORRAGIA",
+          "gold_range": [
+            202,
+            319
+          ],
+          "llm_range": null,
+          "containment": 0.0,
+          "jaccard": 0.0
+        }
+      ]
+    },
+    {
+      "case_id": "N97-039",
+      "skipped": true,
+      "reason": "no gold blocking"
+    },
+    {
+      "case_id": "N97-040",
+      "skipped": true,
+      "reason": "no gold blocking"
+    }
+  ]
+}

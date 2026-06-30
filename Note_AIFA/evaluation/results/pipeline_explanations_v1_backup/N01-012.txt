@@ -1,0 +1,17 @@
+1. DECISIONE
+   Il farmaco è: NON_DETERMINABILE
+   Dichiara che il farmaco è NON_DETERMINABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di NON_DETERMINABILE per l'omeprazolo è motivata dalla presenza di condizioni di rischio che richiedono una gastroprotezione farmacologica. Come indicato nella FONTE 7, la prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con farmaci antinfiammatori non steroidei (FANS) o in terapia antiaggregante con ASA a basse dosi, purché sussista una delle seguenti condizioni di rischio: storia di pregresse emorragie digestive o di ulcera peptica non guarita con terapia eradicante, concomitante terapia con anticoagulanti o cortisonici. Inoltre, come riportato nella FONTE 11, la gastroprotezione nei soggetti a rischio emorragico trattati "long-term" con ASA potrebbe essere giustificata specie in presenza dei fattori di rischio più rilevanti.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_01.pdf, p. 2
+- Nota_01.pdf, p. 1
+- Nota_01.pdf, p. 3

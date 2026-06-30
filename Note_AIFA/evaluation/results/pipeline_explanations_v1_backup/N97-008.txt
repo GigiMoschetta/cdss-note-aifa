@@ -1,0 +1,22 @@
+1. DECISIONE
+   Il farmaco è: NON_DETERMINABILE
+   Dichiara che il farmaco è NON_DETERMINABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco apixaban è stato valutato con un punteggio CHA2DS2-VASc compreso tra 5 e 6, ma non è stato possibile determinare la soglia di rischio emorragico a causa della mancanza di informazione sulla sessualità del paziente. Come indicato nella FONTE 1, la Nota AIFA richiede una valutazione accurata del rischio trombo-embolico e del rischio emorragico individuale per iniziare un trattamento anticoagulante. Inoltre, come riportato nella FONTE 2, sono presenti principali controindicazioni/avvertenze al trattamento anticoagulante con AVK o NAO/DOAC, tra cui l'emorragia maggiore in atto, la diatesi emorragica congenita nota, la gravidanza e l'ipersensibilità documentata al farmaco.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   I campi mancanti sono: paziente_sesso, che potrebbe cambiare la copertura se fornito.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97.pdf, p. 2

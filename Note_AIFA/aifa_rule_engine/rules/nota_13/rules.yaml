@@ -1,0 +1,244 @@
+- rule_id: N13_SCOPE_001
+  rule_type: SCOPE
+  nota: '13'
+  version: 3.3.0
+  description_it: Dislipidemia diagnosticata e ipotiroidismo escluso.
+  evaluation_order: 1
+  normative_anchor:
+    pdf_file: nota-13.pdf
+    page: 5
+    section: Premesse al trattamento farmacologico
+    excerpt: '"dopo aver escluso le dislipidemie dovute ad altre patologie (ad esempio
+      l''ipotiroidismo) si può valutare l''inizio della terapia farmacologica"'
+  structured_motivation:
+    rationale_it: La rimborsabilità degli ipolipemizzanti presuppone diagnosi di dislipidemia
+      e esclusione di cause secondarie (in particolare ipotiroidismo).
+    clinical_impact: Prerequisiti non soddisfatti → NON_RIMBORSABILE.
+  condition:
+    operator: AND
+    operands:
+    - operator: IS_TRUE
+      var: dislipidemia_diagnosticata
+    - operator: IS_TRUE
+      var: ipotiroidismo_escluso
+- rule_id: N13_INCL_001
+  rule_type: INCLUSION
+  nota: '13'
+  version: 3.3.0
+  description_it: Dieta appropriata seguita per almeno 3 mesi (clinician-asserted).
+  evaluation_order: 10
+  # KNOWN LIMITATION (documented in cap5 §Limitazioni, audit 2026-05-12):
+  # Il PDF Nota 13 prevede una soglia base di 3 mesi di dieta (p.5, "tre mesi
+  # di dieta") che è quella codificata qui. Tuttavia la stessa Nota raffina la
+  # soglia a 6 mesi per i pazienti a rischio medio (risk_score 1-4%, p.5,
+  # "modifica dello stile di vita per almeno 6 mesi prima di prendere in esame
+  # il trattamento farmacologico"). Questo refinement non è attualmente
+  # codificato: una regola condizionale che richieda 6 mesi quando
+  # `categoria_rischio == "medio"` è indicata come lavoro futuro per
+  # eliminare un falso positivo di rimborsabilità nella fascia di rischio medio.
+  normative_anchor:
+    pdf_file: nota-13.pdf
+    page: 1
+    section: Condizioni di prescrizione
+    excerpt: dieta, seguita per almeno tre mesi°
+  structured_motivation:
+    rationale_it: Il trattamento farmacologico è rimborsabile solo se è stata tentata
+      la correzione dietetica per almeno 3 mesi (salvo eccezioni bypass).
+    clinical_impact: Dieta non tentata → NON_RIMBORSABILE (salvo bypass).
+  condition:
+    operator: IS_TRUE
+    var: dieta_seguita_almeno_3_mesi
+- rule_id: N13_EXCEPT_001
+  rule_type: EXCEPTION
+  nota: '13'
+  version: 3.3.0
+  description_it: Bypass del requisito dietetico per rischio molto alto con LDL>70
+    o rischio alto con LDL>100.
+  evaluation_order: 5
+  outcome_if_true: BYPASS
+  bypasses:
+  - N13_INCL_001
+  normative_anchor:
+    pdf_file: nota-13.pdf
+    page: 5
+    section: Esenzioni dal requisito dietetico
+    excerpt: "pazienti a rischio molto alto con livelli di C-LDL >70 mg/dL e in quelli\
+      \ a rischio alto con livelli di LDL-C >100 mg/dL. \nL’uso dei farmaci ipolipemizzanti\
+      \ deve"
+  structured_motivation:
+    rationale_it: 'Per pazienti ad alto/molto alto rischio con LDL molto elevato,
+      il beneficio del trattamento farmacologico immediato supera il beneficio atteso
+      dalla sola dieta. Entrambe le soglie usano GT (stricto): molto_alto >70 mg/dL,
+      alto >100 mg/dL, per allineamento al testo PDF.'
+    clinical_impact: Bypass del requisito dei 3 mesi di dieta.
+  condition:
+    operator: OR
+    operands:
+    - operator: AND
+      operands:
+      - operator: IS_TRUE
+        var: categoria_molto_alto
+      - operator: GT
+        left:
+          operator: VAR
+          name: colesterolo_ldl
+        right:
+          operator: LITERAL
+          value: 70
+        type_domain: numeric
+    - operator: AND
+      operands:
+      - operator: IS_TRUE
+        var: categoria_alto
+      - operator: GT
+        left:
+          operator: VAR
+          name: colesterolo_ldl
+        right:
+          operator: LITERAL
+          value: 100
+        type_domain: numeric
+- rule_id: N13_EXCEPT_002
+  rule_type: EXCEPTION
+  nota: '13'
+  version: 3.3.0
+  description_it: 'Intolleranza alle statine: ezetimibe in monoterapia rimborsabile.'
+  evaluation_order: 6
+  outcome_if_true: BYPASS
+  bypasses:
+  - N13_INCL_001
+  normative_anchor:
+    pdf_file: nota-13.pdf
+    page: 4
+    section: Ezetimibe (intolleranza statine)
+    excerpt: '"Ezetimibe in monoterapia per i pazienti che non tollerano il trattamento
+      con statine o non possono eseguirlo"'
+  structured_motivation:
+    rationale_it: L'intolleranza documentata alle statine giustifica l'uso di ezetimibe
+      come alternativa, con bypass del requisito dietetico standard.
+    clinical_impact: Rimborso ezetimibe in monoterapia; bypass N13_INCL_001.
+  # AUDIT FIX 2026-05-29 (G03-01): il bypass del requisito dietetico vale SOLO per
+  # ezetimibe in monoterapia (PDF p.4), non per qualunque farmaco. Prima la
+  # condizione era il solo IS_TRUE intolleranza_statine, che avrebbe concesso il
+  # bypass anche a statine/altri farmaci nei pazienti intolleranti.
+  condition:
+    operator: AND
+    operands:
+    - operator: IS_TRUE
+      var: intolleranza_statine
+    - operator: EQ
+      left:
+        operator: VAR
+        name: farmaco
+      right:
+        operator: LITERAL
+        value: ezetimibe
+      type_domain: string
+- rule_id: N13_PATH_001
+  rule_type: PATHWAY
+  nota: '13'
+  version: 3.4.0
+  description_it: Categoria di rischio non bassa (moderato, alto, molto alto).
+  evaluation_order: 20
+  normative_anchor:
+    pdf_file: nota-13.pdf
+    page: 1
+    section: Criteri di prescrivibilità
+    # Audit fix V3-NEW-H10 (2026-05-06): excerpt riallineato alla clausola
+    # normativa che giustifica la stratificazione del rischio (rimborsabilità
+    # condizionata a categoria non bassa). Pre-fix conteneva 4 parole isolate
+    # ("del rischio cardiovascolare secondo") non dimostrative.
+    # Estratto da audit/pdf_text/nota_13.txt:40-46 (PRECISAZIONI).
+    excerpt: 'Il calcolo del rischio cardiovascolare secondo le carte va
+      effettuato solo per i pazienti senza evidenza di malattia. Sono
+      considerati per definizione a rischio alto, oltre a coloro che presentano
+      un risk score ≥5% e <10% per CVD fatale a 10 anni, i pazienti con
+      dislipidemie familiari, ipertensione severa, i pazienti diabetici senza
+      fattori di rischio CV e senza danno d''organo, i pazienti con IRC
+      moderata. Sono invece considerati a rischio molto alto i soggetti con
+      uno score ≥10%, malattia coronarica, stroke ischemico, arteriopatie
+      periferiche, pregresso infarto, bypass aorto-coronarico, i pazienti
+      diabetici con uno o più fattori di rischio CV.'
+  structured_motivation:
+    rationale_it: Il rimborso non si applica alle dislipidemie a basso rischio CV.
+    clinical_impact: Rischio basso → NON_RIMBORSABILE.
+  condition:
+    operator: NOT
+    operand:
+      operator: EQ
+      left:
+        operator: VAR
+        name: categoria_rischio
+      right:
+        operator: LITERAL
+        value: basso
+      type_domain: string
+- rule_id: N13_GWARN_001
+  rule_type: GUIDANCE_WARN
+  nota: '13'
+  version: 3.4.0
+  description_it: 'AVVISO: terapia di primo livello non documentata come tentata.
+    Per farmaci di 2°/3° linea (ezetimibe in combinazione, rosuvastatina come seconda
+    scelta in alto rischio, ecc.) il PDF richiede tentativo documentato di prima linea.'
+  evaluation_order: 25
+  detail: 'AVVISO: la prima linea terapeutica non risulta tentata. Per i farmaci di
+    seconda/terza scelta è richiesto tentativo documentato di prima linea a dosaggio
+    adeguato e per congruo periodo di tempo (PDF p.4).'
+  normative_anchor:
+    pdf_file: nota-13.pdf
+    page: 5
+    section: Approfondimenti — step-care
+    excerpt: '"L''impiego di farmaci di seconda ed eventualmente terza scelta può
+      essere ammesso solo quando il trattamento di prima linea a dosaggio adeguato
+      e per un congruo periodo di tempo si sia dimostrato insufficiente al raggiungimento
+      della riduzione attesa del colesterolo LDL e/o della riduzione di almeno il
+      50% del colesterolo LDL o abbia indotto effetti collaterali."'
+  structured_motivation:
+    rationale_it: 'Step-care: i farmaci di seconda/terza linea (ezetimibe, combinazioni,
+      rosuvastatina come seconda scelta) richiedono tentativo precedente di prima
+      linea. Modellata come WARNING anziché PATHWAY fail-fast perché il vincolo è
+      applicabile solo a farmaci 2°/3° linea, non universalmente a tutti i pazienti.'
+    clinical_impact: AVVISO informativo — non blocca la decisione.
+  condition:
+    operator: NOT
+    operand:
+      operator: IS_TRUE
+      var: terapia_primo_livello_tentata
+- rule_id: N13_GDOSE_001
+  rule_type: GUIDANCE_DOSE
+  nota: '13'
+  version: 3.3.0
+  flag_type: DOSE_STANDARD
+  description_it: 'IRC moderata o grave + trigliceridi ≥500 mg/dL: considerare PUFA-N3.'
+  evaluation_order: 30
+  detail: 'Suggerimento: PUFA-N3 (acidi grassi omega-3) in IRC moderata o grave con ipertrigliceridemia
+    ≥500 mg/dL.'
+  normative_anchor:
+    pdf_file: nota-13.pdf
+    page: 3
+    section: IRC e PUFA
+    excerpt: "SSN \n• per livelli di Trigliceridi ≥500 mg/dL PUFA-N3"
+  structured_motivation:
+    rationale_it: In pazienti con IRC moderata e ipertrigliceridemia severa, i PUFA-N3
+      sono rimborsabili come terapia specifica.
+    clinical_impact: Indicazione d'uso PUFA-N3.
+  condition:
+    operator: AND
+    operands:
+    # AUDIT FIX 2026-05-29 (G03-03): il PDF (p.3, "insufficienza renale cronica
+    # moderata e grave") indica PUFA-N3 sia per IRC moderata SIA grave; prima la
+    # regola copriva solo irc_moderata, escludendo i pazienti con IRC grave.
+    - operator: OR
+      operands:
+      - operator: IS_TRUE
+        var: irc_moderata
+      - operator: IS_TRUE
+        var: irc_grave
+    - operator: GTE
+      left:
+        operator: VAR
+        name: trigliceridi
+      right:
+        operator: LITERAL
+        value: 500
+      type_domain: numeric

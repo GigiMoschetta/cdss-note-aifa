@@ -1,0 +1,85 @@
+# ── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# ── Virtual environments ──────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Secrets & local config ────────────────────────────────────────────────
+.env
+.env.local
+*.env.secret
+
+# ── Runtime artifacts ──────────────────────────────────────────────────────
+.pids/
+*.pid
+*.log
+!Note_AIFA/audit/**/*.log
+
+# ── Data stores (large, regenerable) ──────────────────────────────────────
+Note_AIFA/rag_pipeline/chroma_db/
+Note_AIFA/model_cache/
+Note_AIFA/.audit_backups/
+Note_AIFA/evaluation/results/.checkpoints_backup_*/
+
+# ── Locally-generated artifacts (not project source) ──────────────────────
+risultati_completi_*.tar.gz
+email_aggiornamento_*.md
+
+# ── Per-case LLM explanations (regenerated each cleanroom) ────────────────
+# 122 .txt files reproduced verbatim by `tools/full_cleanroom_v2.sh`.
+# Tracking them would create churn on every run; the canonical snapshot is
+# instead under `evaluation/results/runs/<timestamp>/` and the per-run JSON
+# `pipeline_report.json` carries decision metadata for every case.
+Note_AIFA/evaluation/results/pipeline_explanations/
+
+# ── Editor / OS ───────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── LaTeX build artifacts ─────────────────────────────────────────────────
+texput.log
+*.aux
+*.toc
+*.out
+*.synctex.gz
+tesi_latex/**/*.aux
+tesi_latex/**/*.toc
+tesi_latex/**/*.log
+tesi_latex/**/*.out
+
+# Audit V4 2026-05-12: LaTeX-built PDFs should not be in git.
+tesi_latex/tesi.pdf
+tesi_latex/tesi_short.pdf
+tesi_latex/**/*.bbl
+tesi_latex/**/*.blg
+tesi_latex/**/*.lof
+tesi_latex/**/*.lot
+tesi_latex/**/*.loa
+tesi_latex/**/*.fls
+tesi_latex/**/*.fdb_latexmk
+
+# Historical reference theses (cited in bibliography, not redistributable).
+docs/historical/*.pdf
+
+# ── R history ─────────────────────────────────────────────────────────────
+.Rhistory
+.superpowers/
+demo-redesign-mockups/

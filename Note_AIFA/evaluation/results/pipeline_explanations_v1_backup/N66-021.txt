@@ -1,0 +1,19 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco valutato è il meloxicam, che è stato valutato nella Nota AIFA 66. Secondo la Nota AIFA 66, il meloxicam è un farmaco antinfiammatorio non steroideo (FANS) che è stato valutato per la sua efficacia e sicurezza nel trattamento del dolore acuto e della osteoartrosi. La Nota AIFA 66 cita la FONTE 1, che descrive le caratteristiche dei FANS e la loro azione farmacologica. Inoltre, la Nota AIFA 66 cita la FONTE 10, che elenca i farmaci antinfiammatori non steroidei che sono ammessi alla rimborsabilità, tra cui il meloxicam.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 5
+- Nota_66.pdf, p. 3

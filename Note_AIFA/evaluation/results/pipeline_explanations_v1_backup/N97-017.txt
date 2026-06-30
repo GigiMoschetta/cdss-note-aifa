@@ -1,0 +1,23 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di rimborsabilità del farmaco edoxaban è motivata dalla sua efficacia e sicurezza, come evidenziato dalle fonti. Il punteggio CHA2DS2-VASc del paziente è di [4,4], che supera la soglia di 2, rendendo il paziente ad alto rischio di ictus/embolia arteriosa periferica. Come indicato nella FONTE 1, il CHA2DS2-VASc è lo score validato per la definizione del rischio trombo-embolico attualmente più utilizzato e raccomandato dalla Società Europea di Cardiologia (ESC). Inoltre, come riportato nella FONTE 6, i NAO/DOAC, tra cui l'edoxaban, sono considerati globalmente sovrapponibili e possono essere scelti in base ai criteri generali per la scelta dell'anticoagulante da utilizzare in diverse tipologie di pazienti.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-3.pdf, p. 2
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-2.pdf, p. 1

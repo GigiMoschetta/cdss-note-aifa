@@ -1,0 +1,224 @@
+{
+  "case_id": "N01-011",
+  "nota_id": "01",
+  "drug_id": "omeprazolo",
+  "category": "NON_DETERMINABILE_scope",
+  "description": "NON_DETERMINABILE — scope indeterminabile: entrambi FANS=null e ASA=null (OR di due UNKNOWN), con emorragie=True che fa passare l'inclusione",
+  "tags": [
+    "non_determinabile",
+    "omeprazolo",
+    "nota01",
+    "missing_data",
+    "scope"
+  ],
+  "input": {
+    "patient_data": {
+      "trattamento_cronico_fans": null,
+      "terapia_antiaggregante_asa": null,
+      "pregresse_emorragie_digestive": true,
+      "ulcera_peptica_non_guarita": false,
+      "terapia_concomitante_anticoagulanti": false,
+      "terapia_concomitante_cortisonici": false,
+      "eta_avanzata": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_DETERMINABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [
+      "terapia_antiaggregante_asa",
+      "trattamento_cronico_fans"
+    ],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_DETERMINABILE"
+      ],
+      "must_not_contain_strings": [],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Scope is undecidable: OR(null, null) = UNKNOWN in Kleene 3VL; at least trattamento_cronico_fans must appear in DATI MANCANTI"
+    },
+    "pdf_reference": {
+      "rule_id": "N01_SCOPE_001",
+      "pdf_file": "Nota_01.pdf",
+      "page": 2,
+      "section": "Box prescrittivo",
+      "excerpt": "\"in trattamento cronico con FANS oppure in terapia antiaggregante con ASA a basse dosi\""
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_DETERMINABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_01_0005_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_01_0006_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_01_0007_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_01_0008_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_01_0009_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_01_0010_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5102121233940125,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_01_0011_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.49784910678863525,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_01_0000_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "TABLE",
+        "stage": "semantic",
+        "score": 0.49686774611473083,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_01_0014_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4582909941673279,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_01_0012_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.43622851371765137,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_DETERMINABILE\n   Dichiara che il farmaco è NON_DETERMINABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   La decisione di NON_DETERMINABILE per l'omeprazolo è motivata dalla presenza di condizioni che influiscono sulla sua efficacia e sicurezza. Come indicato nella FONTE 1, l'uso di anticoagulanti e l'età avanzata (65-75 anni) sono condizioni predisponenti al rischio di complicanze gravi del tratto gastrointestinale superiore. Inoltre, la FONTE 2 sottolinea l'importanza dell'infezione da H.pylori nella strategia di prevenzione del sanguinamento gastrico causato dai FANS tradizionali e dall'ASA a basso dosaggio. La FONTE 3 e la FONTE 4 evidenziano che la superiore efficacia dell'inibitore di pompa rispetto a misoprostolo e a dosi usuali di H2 bloccanti nel prevenire le ulcere da FANS potrebbe essere in parte solo apparente e dovuta a una diversa distribuzione dei pazienti con infezione nella popolazione studiata.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   I campi mancanti sono: terapia_antiaggregante_asa, trattamento_cronico_fans. L'impatto clinico è che la presenza di questi dati potrebbe cambiare la copertura del farmaco.\n\n5. FONTI\n- Nota_01.pdf, p. 2, righe 14-26, char 944-2465, sha:1acab81b63\n- Nota_01.pdf, p. 3, righe 1-12, char 0-1749, sha:c6217dd4fc",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_DETERMINABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 5870,
+      "completion_tokens": 546,
+      "total_tokens": 6416
+    },
+    "latency_s": 14.28
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N01-011",
+      "gold_pdf_file": "Nota_01.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 87,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.25,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {
+      "case_id": "N01-011",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6236028981061564,
+      "context_precision": 0.5804421768624562,
+      "context_recall": 1.0,
+      "answer_similarity": 0.5726271843305686,
+      "answer_correctness": 0.29315679608264217
+    }
+  }
+}

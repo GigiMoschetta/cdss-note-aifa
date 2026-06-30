@@ -1,0 +1,24 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco dabigatran è rimborsabile in quanto è stato valutato e approvato dalla Nota AIFA 97, come indicato nella FONTE 1. La valutazione è stata effettuata utilizzando il percorso decisionale illustrato ai punti A, B, C, D, come riportato nella FONTE 1. Il punteggio CHA2DS2-VASc è stato calcolato in [4, 4], che supera la soglia di 2, come riportato nella FONTE 1. Ciò indica un rischio trombo-embolico elevato, che giustifica l'utilizzo di un anticoagulante. Inoltre, non sono presenti controindicazioni o avvertenze che sconsigliano l'utilizzo del farmaco, come riportato nella FONTE 2.
+
+3. RACCOMANDAZIONI
+   La raccomandazione è di utilizzare la dose ridotta di 110 mg × 2/die per pazienti con età ≥80 anni o se associato a verapamil, come riportato nella FONTE 3.
+
+4. DATI MANCANTI
+   Sono presenti campi mancanti nella guida clinica, come la posologia e le avvertenze incomplete, come riportato nella FONTE 4.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-3.pdf, p. 2
+- nota-97-all-2.pdf, p. 4

@@ -1,0 +1,37 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco ibuprofene è stato valutato e classificato come NON_RIMBORSABILE in base alla Nota AIFA. Ciò è stato determinato dalla regola N66_SCOPE_001, che ha valutato FALSE. La regola N66_SCOPE_001 è descritta nella FONTE 1, p. 2, nella sezione "Box prescrittivo". La FONTE 1 specifica che il trattamento di breve durata del dolore acuto con ibuprofene non è coperto.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Informazione non disponibile nel testo normativo.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 3
+- Nota_66.pdf, p. 4
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_SCOPE_001
+snippet_id: 6f4dc43a00
+Fonte: Nota_66.pdf, p. 2
+Testo: "flurbiprofene;
+furprofene;
+ibuprofene;
+indometacina;
+ketoprofene;
+Lornoxicam;
+meloxicam;
+nabumetone;
+naprossene;
+oxaprozina;
+piroxicam;
+proglumetacina..."
+--- FINE ---

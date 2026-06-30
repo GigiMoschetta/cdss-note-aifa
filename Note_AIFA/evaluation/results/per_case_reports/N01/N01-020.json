@@ -1,0 +1,218 @@
+{
+  "case_id": "N01-020",
+  "nota_id": "01",
+  "drug_id": "diclofenac_misoprostolo",
+  "category": "ROUTED_nota66",
+  "description": "ROUTED to Nota 66 — paziente con ulcera peptica non guarita; diclofenac+misoprostolo routed",
+  "tags": [
+    "routed",
+    "diclofenac_misoprostolo",
+    "nota01",
+    "routing",
+    "ulcera"
+  ],
+  "input": {
+    "patient_data": {
+      "trattamento_cronico_fans": true,
+      "terapia_antiaggregante_asa": false,
+      "pregresse_emorragie_digestive": false,
+      "ulcera_peptica_non_guarita": true,
+      "terapia_concomitante_anticoagulanti": false,
+      "terapia_concomitante_cortisonici": false,
+      "eta_avanzata": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": null,
+    "expected_decision_status": "ROUTED",
+    "expected_blocking_rule_ids": [],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "66"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE",
+        "NON_RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 0,
+      "notes": "Routing a Nota 66 anche in presenza di altri fattori; il routing è prioritario sul fattore ulcera."
+    },
+    "pdf_reference": {
+      "rule_id": "N01_EXCEPT_001",
+      "pdf_file": "Nota_01.pdf",
+      "page": 2,
+      "section": "Box prescrittivo (asterisco)",
+      "excerpt": "\"L'associazione misoprostolo + diclofenac è rimborsata alle condizioni previste dalla Nota 66\""
+    }
+  },
+  "engine": {
+    "actual_decision": null,
+    "actual_decision_status": "ROUTED",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_01_0005_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_01_0006_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_01_0007_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_01_0008_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_01_0009_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_01_0004_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.6231347918510437,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_01_0011_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5695776343345642,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_01_0010_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5178090929985046,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_01_0014_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.51451575756073,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_01_0012_v2",
+        "pdf_file": "Nota_01.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.429566353559494,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: INDIRIZZATO ALLA NOTA 66\n   Dichiara che il farmaco è INDIRIZZATO ALLA NOTA 66 secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   Il farmaco è soggetto alla Nota 66, come indicato nella Nota AIFA valutata. La Nota 66 riguarda la prescrizione dell'associazione misoprostolo + diclofenac, che è rimborsata alle condizioni previste dalla Nota 66. La Nota 66 è citata nella FONTE 6 (Nota_01.pdf p.1).\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- Nota_01.pdf, p. 2, righe 14-26, char 944-2465, sha:1acab81b63\n- Nota_01.pdf, p. 1, righe 1-16, char 0-1404, sha:097a83fcbe\n- Nota_01.pdf, p. 3, righe 10-27, char 1519-3261, sha:7cf05e762c",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'66'": true,
+        "not_contains:'RIMBORSABILE'": true,
+        "not_contains:'NON_RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 6241,
+      "completion_tokens": 226,
+      "total_tokens": 6467
+    },
+    "latency_s": 4.81
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N01-020",
+      "gold_pdf_file": "Nota_01.pdf",
+      "gold_page": 2,
+      "gold_excerpt_len": 94,
+      "excerpt_in_llm": true,
+      "excerpt_coverage_llm": 0.8182,
+      "excerpt_in_retrieval": true,
+      "excerpt_coverage_retrieval": 0.9091,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

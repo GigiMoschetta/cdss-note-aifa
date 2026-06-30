@@ -1,0 +1,38 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco ibuprofene/codeina è motivata dalla valutazione della regola N66_INCL_003, che è stata valutata come FALSE. Ciò è indicato nella FONTE 1 (Nota_66.pdf, p. 2), che specifica le condizioni per la copertura dei farmaci antinfiammatori non steroidei (FANS). La regola N66_INCL_003 è stata valutata come FALSE, il che significa che il farmaco ibuprofene/codeina non rispetta le condizioni per la copertura. Inoltre, la FONTE 11 (Nota_66.pdf, p. 3) specifica che la combinazione ibuprofene/codeina è ammessa alla rimborsabilità limitatamente al trattamento di breve durata del dolore acuto di entità moderata nei soggetti in cui il sintomo non sia adeguatamente controllato con altri antidolorifici assunti singolarmente.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 3
+- Nota_66.pdf, p. 5
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_INCL_003
+snippet_id: 6f4dc43a00
+Fonte: Nota_66.pdf, p. 2
+Testo: "flurbiprofene;
+furprofene;
+ibuprofene;
+indometacina;
+ketoprofene;
+Lornoxicam;
+meloxicam;
+nabumetone;
+naprossene;
+oxaprozina;
+piroxicam;
+proglumetacina..."
+--- FINE ---

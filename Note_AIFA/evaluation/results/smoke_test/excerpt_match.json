@@ -1,0 +1,29 @@
+{
+  "metric": "excerpt_match",
+  "aggregate": {
+    "n_cases": 1,
+    "ngram_threshold": 0.8,
+    "excerpt_match_rate_llm": 0.0,
+    "excerpt_match_rate_retrieval": 0.0,
+    "gold_anchor_recall_at_3": 1.0,
+    "gold_anchor_recall_at_5": 1.0,
+    "gold_anchor_recall_at_10": 1.0,
+    "mean_excerpt_coverage_llm": 0.0,
+    "mean_excerpt_coverage_retrieval": 0.1111
+  },
+  "per_case": [
+    {
+      "case_id": "N97-001",
+      "gold_pdf_file": "nota-97.pdf",
+      "gold_page": 1,
+      "gold_excerpt_len": 68,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.1111,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    }
+  ]
+}

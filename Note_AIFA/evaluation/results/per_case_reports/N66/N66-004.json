@@ -1,0 +1,338 @@
+{
+  "case_id": "N66-004",
+  "nota_id": "66",
+  "drug_id": "celecoxib",
+  "category": "NON_RIMBORSABILE_excl_hard",
+  "description": "NON_RIMBORSABILE — EXCL_HARD: COX-2 inhibitor (celecoxib) + ischaemic heart disease (N66_EXCL_HARD_003)",
+  "tags": [
+    "non_rimborsabile",
+    "celecoxib",
+    "nota66",
+    "excl_hard",
+    "coxib",
+    "cardiovascular"
+  ],
+  "input": {
+    "patient_data": {
+      "indicazione_clinica": "osteoartrosi_algica",
+      "uso_breve_durata": true,
+      "seconda_linea": true,
+      "ulcera_peptica_attiva_pregressa": false,
+      "scompenso_cardiaco_grave": false,
+      "cardiopatia_ischemica": true,
+      "patologia_cerebrovascolare": false,
+      "patologia_arteriosa_periferica": false,
+      "scompenso_cardiaco_moderato_grave": false,
+      "epatopatia": false,
+      "terapia_antiaggregante_asa": false,
+      "dolore_acuto_moderato": false,
+      "non_controllato_con_singoli": false,
+      "abuso_alcool": false,
+      "farmaci_epatotossici_concomitanti": false,
+      "allergia_asa_o_fans": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N66_EXCL_HARD_003"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "Must explain that COX-2 selective inhibitors are absolutely contraindicated in patients with ischaemic heart disease due to thrombotic cardiovascular risk"
+    },
+    "pdf_reference": {
+      "rule_id": "N66_EXCL_HARD_003",
+      "pdf_file": "Nota_66.pdf",
+      "page": 4,
+      "section": "Controindicazioni",
+      "excerpt": "I coxib sono controindicati in cardiopatia ischemica accertata [...]"
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N66_EXCL_HARD_003"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 0.5,
+    "recall_at_5": 0.5,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_66_0006_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_66_0018_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_66_0019_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_66_0020_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_66_0021_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_66_0022_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_66_0023_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_66_0024_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_66_0000_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_66_0001_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "Nota_66_0002_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "Nota_66_0003_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 13,
+        "chunk_id": "Nota_66_0004_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 14,
+        "chunk_id": "Nota_66_0008_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 15,
+        "chunk_id": "Nota_66_0009_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 16,
+        "chunk_id": "Nota_66_0007_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5370367765426636,
+        "text": ""
+      },
+      {
+        "rank": 17,
+        "chunk_id": "Nota_66_0015_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.4638242721557617,
+        "text": ""
+      },
+      {
+        "rank": 18,
+        "chunk_id": "Nota_66_0016_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.41891974210739136,
+        "text": ""
+      },
+      {
+        "rank": 19,
+        "chunk_id": "Nota_66_0013_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.396089643239975,
+        "text": ""
+      },
+      {
+        "rank": 20,
+        "chunk_id": "Nota_66_0027_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 5,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.37740281224250793,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   La decisione di non rimborsare il celecoxib è motivata dalla presenza di regole decisive che hanno bloccato la copertura. In particolare, la regola N66_EXCL_HARD_003 è stata valutata come TRUE, escludendo quindi la copertura del farmaco. Questa regola è indicata nella FONTE 2 (Nota_66.pdf, p. 4), che riporta le controindicazioni del celecoxib. Inoltre, la Nota AIFA valuta che il celecoxib non sia indicato per il trattamento del dolore acuto di entità moderata, come riportato nella FONTE 16 (Nota_66.pdf, p. 2).\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- Nota_66.pdf, p. 4, riga 1, char 0-74, sha:4eee68e67a\n- Nota_66.pdf, p. 2, riga 41, char 809-856, sha:a76cd6a3b7\n- Nota_66.pdf, p. 1, righe 1-54, char 0-1576, sha:6d5d39cf1a\n- Nota_66.pdf, p. 3, righe 46-55, char 6031-7554, sha:00e5c19a90\n- Nota_66.pdf, p. 5, righe 35-51, char 3933-5714, sha:39974fcec2\n\n\n--- PROVA NORMATIVA ---\nRegola: N66_EXCL_HARD_003\nsnippet_id: f66f2b1316\nFonte: Nota_66.pdf, p. 4, righe 40-50 (char 5770-7442)\nTesto verbatim: «differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal proposito dalle agenzie regolatorie, quali EMA e FDA, possono sinteticamente\nriassumersi nella raccomandazione generale di utilizzare i FANS o gli inibitori selettivi della ciclossigenasi 2, nel trattamento sintomatico, alla dose minima efficace e\nper il periodo più breve possibile; si raccomanda, inoltre, nel caso di trattamento a lungo termine, di considerarne periodicamente la necessità. Recenti studi\nsuggeriscono che l’uso dei FANS (soprattutto ad alte dosi) e nel trattamento a lungo termine può essere associato a un piccolo aumento del rischio di eventi trombotici\narteriosi. Uno studio evidenzia che anche l’uso a breve termine (meno di una settimana) dei FANS può essere associato a un aumentato rischio di morte e di infarto\nmiocardico (IM) ricorrente  in pazienti con pregresso IM.»\nSHA256 chunk: 37e581b7d6e90ffe\nVerificato: NO\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 8362,
+      "completion_tokens": 306,
+      "total_tokens": 8668
+    },
+    "latency_s": 11.7
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N66-004",
+      "gold_pdf_file": "Nota_66.pdf",
+      "gold_page": 4,
+      "gold_excerpt_len": 68,
+      "excerpt_in_llm": false,
+      "excerpt_coverage_llm": 0.0,
+      "excerpt_in_retrieval": false,
+      "excerpt_coverage_retrieval": 0.1667,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {
+      "case_id": "N66-004",
+      "faithfulness": 0.125,
+      "answer_relevancy": 0.725296667792156,
+      "context_precision": 0.23276515150933239,
+      "context_recall": 0.375,
+      "answer_similarity": 0.4171221639364018,
+      "answer_correctness": 0.22928054098410044
+    }
+  }
+}

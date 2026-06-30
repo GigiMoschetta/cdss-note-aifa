@@ -1,0 +1,24 @@
+1. DECISIONE
+   Il farmaco è: NON_DETERMINABILE
+   Dichiara che il farmaco è NON_DETERMINABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco apixaban è stato valutato con un punteggio CHA2DS2-VASc nel range [1,2] e una soglia di ≥2. Tuttavia, la valutazione non è stata completata a causa della mancanza di dati relativi al diabete mellito. Come indicato nella FONTE 1, la prescrizione di una terapia anticoagulante richiede un'accurata valutazione del rischio trombo-embolico e del rischio emorragico individuale. La FONTE 1 sottolinea l'importanza di considerare le caratteristiche di ciascun paziente, comprese le terapie farmacologiche concomitanti, la storia clinica, le patologie concomitanti e la compliance al trattamento.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   I campi mancanti sono:
+   - diabete_mellito
+   L'impatto clinico della mancanza di questi dati è la mancanza di informazioni per valutare il rischio trombo-embolico e del rischio emorragico individuale.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-1.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97.pdf, p. 2

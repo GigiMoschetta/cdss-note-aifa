@@ -1,0 +1,127 @@
+{
+  "metric": "M4_explanation_uniqueness",
+  "description": "Case-specific quality of LLM output: 1 - duplicate_rate × 1 - mean_pairwise_cosine_TFIDF",
+  "tautological": false,
+  "n_cases_total": 122,
+  "aggregate": {
+    "exact_duplicate_rate": 0.2623,
+    "n_unique_hashes": 103,
+    "n_duplicate_groups": 13,
+    "n_cases_in_duplicate_groups": 32,
+    "mean_pairwise_jaccard": 0.292,
+    "mean_pairwise_cosine_tfidf": 0.3491,
+    "eu_score": 0.4802
+  },
+  "duplicate_groups": [
+    {
+      "sha256": "9da117389fbc195d",
+      "cases": [
+        "N01-006",
+        "N01-019",
+        "N01-020",
+        "N01-021",
+        "N01-022"
+      ],
+      "n": 5
+    },
+    {
+      "sha256": "00713e7e6093c24c",
+      "cases": [
+        "N13-006",
+        "N13-017",
+        "N13-020"
+      ],
+      "n": 3
+    },
+    {
+      "sha256": "3fe143d9fade6ca5",
+      "cases": [
+        "N13-008",
+        "N13-009",
+        "N13-019"
+      ],
+      "n": 3
+    },
+    {
+      "sha256": "af378bd067b43fe7",
+      "cases": [
+        "N13-014",
+        "N13-015",
+        "N13-016"
+      ],
+      "n": 3
+    },
+    {
+      "sha256": "d8925b5d9a89746b",
+      "cases": [
+        "N01-001",
+        "N01-015"
+      ],
+      "n": 2
+    },
+    {
+      "sha256": "0a734ac3a90d6fb2",
+      "cases": [
+        "N01-002",
+        "N01-014"
+      ],
+      "n": 2
+    },
+    {
+      "sha256": "c38f5903af8d54af",
+      "cases": [
+        "N13-002",
+        "N13-003"
+      ],
+      "n": 2
+    },
+    {
+      "sha256": "294bcd795f4a64b7",
+      "cases": [
+        "N13-005",
+        "N13-013"
+      ],
+      "n": 2
+    },
+    {
+      "sha256": "238d66caefbee952",
+      "cases": [
+        "N66-001",
+        "N66-013"
+      ],
+      "n": 2
+    },
+    {
+      "sha256": "d87857aae9fb2fe9",
+      "cases": [
+        "N66-004",
+        "N66-016"
+      ],
+      "n": 2
+    },
+    {
+      "sha256": "a9a4b0b60a08b150",
+      "cases": [
+        "N66-009",
+        "N66-022"
+      ],
+      "n": 2
+    },
+    {
+      "sha256": "2b64196e056ddbaa",
+      "cases": [
+        "N97-015",
+        "N97-036"
+      ],
+      "n": 2
+    },
+    {
+      "sha256": "2080ee2212070536",
+      "cases": [
+        "N97-035",
+        "N97-040"
+      ],
+      "n": 2
+    }
+  ]
+}

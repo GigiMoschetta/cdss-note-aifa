@@ -1,0 +1,20 @@
+1. DECISIONE
+   Il farmaco è: NON_DETERMINABILE
+   Dichiara che il farmaco è NON_DETERMINABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di NON_DETERMINABILE per l'atorvastatina è motivata dalla necessità di valutare ulteriormente la sua efficacia e sicurezza in base ai criteri specificati nella Nota AIFA. Come indicato nella FONTE 1, è necessario assicurare l'ottimizzazione del dosaggio della statina prima di prendere in considerazione la sua sostituzione o la sua associazione. Inoltre, la Nota AIFA specifica che l'atorvastatina è una delle statine preferenziali per la riduzione del colesterolo LDL >50% (FONTE 5). Tuttavia, la decisione finale di NON_DETERMINABILE potrebbe essere influenzata da fattori clinici specifici non presenti nelle fonti.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 6

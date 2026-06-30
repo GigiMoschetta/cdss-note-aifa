@@ -1,0 +1,24 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco dabigatran è stato valutato in base al percorso decisionale per la terapia anticoagulante nella FANV, come indicato nella FONTE 1. La valutazione del rischio trombo-embolico è stata effettuata utilizzando lo score CHA2DS2-VASc, che ha dato un range di [4,4] e una soglia di ≥3, come riportato nella FONTE 1. In base a queste informazioni, il farmaco dabigatran è stato considerato idoneo per la terapia anticoagulante nella FANV.
+
+3. RACCOMANDAZIONI
+   La raccomandazione per il farmaco dabigatran è di decidere caso per caso fra i due dosaggi (300 o 220 mg/die) per i pazienti con VFG 30-50 ml/min o con un aumento del rischio di sanguinamento, come riportato nella FONTE 5.
+
+4. DATI MANCANTI
+   I campi mancanti per la guida clinica sono: difficolta_monitoraggio_inr, interazioni_farmacologiche_doac, pregressa_emorragia_intracranica, ttr_sotto_70. Questi dati mancanti potrebbero influire sulla scelta del farmaco e sulla posologia, ma non sono disponibili nella Nota AIFA valutata.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-3.pdf, p. 2
+- nota-97-all-2.pdf, p. 4

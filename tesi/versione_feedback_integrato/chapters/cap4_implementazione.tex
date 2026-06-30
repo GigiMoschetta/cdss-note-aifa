@@ -1,0 +1,411 @@
+% ===========================================================================
+% Capitolo 4 — Implementazione
+% Tesi triennale: Francesco Zamar, UniTS, A.A. 2025-2026
+% Relatore: Prof. Andrea De Lorenzo
+% Single source of truth per numeri e macro: macros_finale.tex
+% ===========================================================================
+
+\chapter{Implementazione}
+\label{ch:implementazione}
+
+L'architettura del \Cref{ch:progettazione} è una scelta di responsabilità:
+cosa decide il layer simbolico, cosa spiega il layer neurale, come si
+contrattano via REST. Questo capitolo mostra come quelle responsabilità si
+traducono in codice eseguibile, riproducibile e testato, e quali compromessi
+tecnologici si sono dovuti accettare per rispettare i vincoli di
+determinismo, riproducibilità e deployment locale fissati a progetto. Le
+scelte concrete (Python 3.12, FastAPI, ChromaDB embedded, Ollama, Pydantic)
+non sono frutto di una rassegna comparativa esaustiva: sono le opzioni
+che la combinazione di richiesta clinica e ambiente di calcolo disponibile
+restringeva a un'unica soluzione naturale. La trattazione segue l'ordine
+logico dei componenti, dallo stack tecnologico alla demo interattiva,
+ricalcando la mappa concettuale del capitolo precedente per mantenerne la
+leggibilità.
+
+% ============================================================
+\section{Stack tecnologico e organizzazione del codice}
+\label{sec:stack}
+
+L'intero sistema è scritto in Python~3.12, scelto per la maturità
+dell'ecosistema scientifico, la tipizzazione statica progressiva introdotta
+dalle versioni recenti e la facilità di integrazione con le librerie di
+machine learning necessarie alla pipeline RAG (\emph{Retrieval-Augmented Generation}). Il codice di produzione ammonta
+a circa 10\,000 righe, distribuite fra quattro moduli principali contenuti
+nella directory \texttt{Note\_AIFA/} del repository.
+
+Il modulo \texttt{aifa\_rule\_engine/} implementa tutta la logica simbolica
+del motore: circa 3\,500 righe tra regole, valutatore, logica trivalente
+e API FastAPI~\cite{fastapi} esposta sulla porta 8000. Il modulo
+\texttt{rag\_pipeline/} comprende l'ingestione, il retriever ChromaDB, il
+costruttore di prompt, i backend LLM (\emph{Large Language Model}) e l'orchestratore FastAPI sulla porta
+8001, per circa 2\,500 righe. Il modulo \texttt{evaluation/} raccoglie i
+runner di metriche, i report JSON e gli script overnight (circa 3\,000
+righe), mentre il modulo \texttt{demo/} realizza l'interfaccia Streamlit in
+circa 1\,000 righe.
+
+Il modello linguistico locale è \llmmodel, servito tramite Ollama~\cite{ollama2024}
+in un container dedicato; gli embedding semantici sono generati da
+\embedmodel~\cite{reimers2019sbert} e il reranking utilizza
+\reranker~\cite{nickprock2023}. La persistenza semantica è affidata a
+ChromaDB~\cite{chromadb}, mentre la validazione degli schemi JSON è delegata
+a Pydantic~\cite{pydantic}.
+
+I tre servizi (rule engine, orchestratore e Ollama) sono orchestrati da
+Docker Compose su una rete interna isolata dal traffico esterno. La
+comunicazione avviene su socket TCP locali; l'orchestratore può caricare il
+rule engine direttamente in-process (variabile d'ambiente
+\texttt{AIFA\_RULES\_DIR}) per eliminare la latenza HTTP nei test di
+integrazione. La suite di test conta \testcountall{} casi verdi: \testcountengine{}
+per il rule engine e \testcountorch{} per l'orchestratore RAG.
+
+% ============================================================
+\section{Rule engine: implementazione}
+\label{sec:rule-engine-impl}
+
+Il rule engine deterministico è alla versione \engineversion{} ed è scritto
+in Python puro, senza dipendenze da framework di reasoning esterni, con
+l'obiettivo di mantenere ogni passo computazionale ispezionabile riga per
+riga. Il catalogo delle regole è codificato in file YAML per ciascuna nota
+(\texttt{rules/nota\_01/}, \texttt{nota\_13/}, \texttt{nota\_66/},
+\texttt{nota\_97/}) e caricato al momento dell'avvio del servizio dal
+modulo \texttt{engine/rule\_loader.py}. Ogni documento YAML è validato contro
+uno schema Pydantic che garantisce la presenza dei campi obbligatori prima
+che il motore entri in produzione.
+
+\subsection{Schema YAML delle regole}
+
+Ogni voce del catalogo specifica un identificatore univoco, il tipo logico
+della regola, la versione di schema, la descrizione in italiano, l'ordine di
+valutazione, un'\emph{anchor} normativa che punta alla pagina e alla sezione
+del PDF AIFA (Agenzia Italiana del Farmaco) di riferimento, e la condizione booleana strutturata. Il seguente
+estratto è tratto da \texttt{rules/nota\_13/rules.yaml} e illustra una regola
+di inclusione e una di eccezione:
+
+\begin{verbatim}
+- rule_id: N13_INCL_001
+  rule_type: INCLUSION
+  nota: '13'
+  version: 3.3.0
+  description_it: Dieta appropriata seguita per almeno 3 mesi.
+  evaluation_order: 10
+  normative_anchor:
+    pdf_file: nota-13.pdf
+    page: 1
+    section: Condizioni di prescrizione
+    excerpt: "dieta, seguita per almeno tre mesi"
+  condition:
+    operator: IS_TRUE
+    var: dieta_seguita_almeno_3_mesi
+\end{verbatim}
+
+\begin{verbatim}
+- rule_id: N13_EXCEPT_001
+  rule_type: EXCEPTION
+  nota: '13'
+  version: 3.3.0
+  outcome_if_true: BYPASS
+  bypasses:
+    - N13_INCL_001
+  condition:
+    operator: AND
+    operands:
+      - {operator: IS_TRUE, var: rischio_molto_alto}
+      - {operator: GTE, var: ldl, value: 70}
+\end{verbatim}
+
+Il campo \texttt{normative\_anchor} consente al motore di tracciare ogni
+decisione fino alla pagina esatta del documento normativo, soddisfacendo il
+requisito di spiegabilità citazionale discusso nel \Cref{ch:progettazione}.
+
+\subsection{Tipi di regole e fasi di valutazione}
+
+Il valutatore implementa dieci fasi sequenziali. La fase SCOPE verifica
+l'applicabilità della nota al caso clinico; la fase EXCEPTION identifica
+eventuali bypass delle regole di inclusione prima di valutarle; la fase
+EXCL\_HARD applica le esclusioni assolute con fail-fast su \texttt{TRUE}; la
+fase INCLUSION valuta i prerequisiti del trattamento con fail-fast su
+\texttt{FALSE}; la fase PATHWAY verifica il percorso terapeutico; le fasi
+GUIDANCE\_DOSE, GUIDANCE\_PREF e GUIDANCE\_WARN producono i flag clinici
+accessori senza influire sulla decisione binaria. La fase di finalizzazione
+aggrega le evidenze, applica l'invariante di sicurezza e determina l'esito.
+
+\subsection{Implementazione della logica Kleene}
+
+La semantica trivalente è stata richiamata nella \Cref{subsec:kleene};
+qui se ne descrive soltanto la codifica concreta. Il modulo
+\texttt{logic/three\_valued.py} esporta l'enum \texttt{TruthValue} con i
+valori \texttt{TRUE}, \texttt{FALSE} e \texttt{UNKNOWN}, e implementa le
+tavole di verità esplicitamente mediante confronti con \texttt{None}: ogni
+comparazione che coinvolge un campo non valorizzato restituisce
+\texttt{UNKNOWN}. La logica non è delegata a un solutore di terze parti,
+garantendo il pieno controllo sul comportamento in presenza di dati
+incompleti e la copertura analitica per test di unità.
+
+L'operatore esteso \texttt{SCORE\_RANGE\_GTE} implementa l'\emph{interval
+arithmetic} per i punteggi clinici compositi come il CHA\textsubscript{2}DS\textsubscript{2}-VASc: i
+componenti ignoti contribuiscono con il minimo pari a~0 e il massimo pari al
+loro peso massimo, e il confronto con la soglia $k$ restituisce \texttt{TRUE}
+se il punteggio minimo supera già $k$, \texttt{FALSE} se il massimo non la
+raggiunge, \texttt{UNKNOWN} negli altri casi~\cite{deStefano2014cha2ds2}.
+
+La decisione \decision{NON\_DETERMINABILE} viene emessa quando almeno un
+campo in \texttt{missing\_fields\_coverage} è determinante per l'esito e il
+motore non può concludere né \decision{RIMBORSABILE} né
+\decision{NON\_RIMBORSABILE}. La lista dei campi mancanti accompagna sempre
+la risposta, orientando il clinico verso la raccolta del dato necessario.
+
+\subsection{Algoritmo di valutazione}
+
+\Cref{alg:rule-eval} riporta il pseudocodice della funzione principale
+\texttt{evaluate(caso, indice\_regole)}.
+
+\begin{algorithm}[htbp]
+\caption{Valutazione di un caso clinico (\texttt{evaluate})}
+\label{alg:rule-eval}
+\begin{algorithmic}[1]
+\Require $caso$: dizionario campi clinici; $indice$: RuleIndex per la nota
+\Ensure EvaluationResult con decisione, audit, flag clinici
+\State $\mathit{vars} \gets \textsc{ComputaDerivedVariables}(caso)$
+\State $\mathit{bypass\_set} \gets \emptyset$
+\State \Comment{Fase EXCEPTION: identifica bypass prima di EXCL e INCLUSION}
+\ForAll{$r \in indice.\text{exception\_rules}$ in ordine}
+  \State $tv \gets \textsc{EvalCondizione}(r.\text{condition}, \mathit{vars})$
+  \State $\textsc{ScriviAudit}(r, tv)$
+  \If{$tv = \mathrm{TRUE}$}
+    \State $\mathit{bypass\_set} \gets \mathit{bypass\_set} \cup r.\text{bypasses}$
+  \EndIf
+\EndFor
+\State \Comment{Fasi SCOPE, EXCL\_HARD, INCLUSION, PATHWAY: pattern comune}
+\ForAll{$\mathit{fase} \in [\textsc{Scope},\textsc{ExclHard},\textsc{Inclusion},\textsc{Pathway}]$}
+  \State $\mathit{pending\_unknown} \gets \emptyset$
+  \ForAll{$r \in indice.\mathit{fase}.\text{rules}$ in ordine}
+    \If{$r.\text{id} \in \mathit{bypass\_set}$} \State \textbf{continua}
+    \EndIf
+    \State $tv \gets \textsc{EvalCondizione}(r.\text{condition}, \mathit{vars})$
+    \State $\textsc{ScriviAudit}(r, tv)$
+    \If{$tv = \mathit{fase}.\text{fail\_tv}$}
+      \State \Return $\textsc{Finalizza}(\decision{NON\_RIMBORSABILE}, \mathit{audit})$
+    \EndIf
+    \If{$tv = \mathrm{UNKNOWN}$}
+      \State $\mathit{pending\_unknown} \gets \mathit{pending\_unknown} \cup \{r\}$
+    \EndIf
+  \EndFor
+  \If{$\mathit{pending\_unknown} \neq \emptyset$}
+    \State \Return $\textsc{Finalizza}(\decision{NON\_DETERMINABILE}, \mathit{audit})$
+  \EndIf
+\EndFor
+\State \Comment{Fasi di guidance: producono flag, non modificano la decisione}
+\ForAll{$r \in indice.\text{guidance\_rules}$}
+  \State $tv \gets \textsc{EvalCondizione}(r.\text{condition}, \mathit{vars})$
+  \If{$tv = \mathrm{TRUE}$}
+    \State $\textsc{AggiungiFlagClinico}(r)$
+  \EndIf
+\EndFor
+\State \Return $\textsc{Finalizza}(\decision{RIMBORSABILE}, \mathit{audit})$
+\end{algorithmic}
+\end{algorithm}
+
+Il routing fra le quattro Note avviene prima dell'ingresso nel ciclo: il campo
+\texttt{note\_id} della richiesta seleziona l'oggetto \texttt{RuleIndex}
+corrispondente, evitando qualsiasi ambiguità fra i cataloghi. Se il campo è
+assente o non riconosciuto, l'orchestratore restituisce un errore 422 prima
+di invocare il motore.
+
+% ============================================================
+\section{Pipeline RAG: ingestione e recupero}
+\label{sec:rag-impl}
+
+\subsection{Ingestione del corpus normativo}
+
+Il modulo \texttt{rag\_pipeline/ingest\_v2.py} indicizza i PDF delle quattro
+Note AIFA in collezioni ChromaDB dedicate. La versione~2 dell'ingestione
+introduce il tracciamento degli offset di carattere all'interno di ogni
+pagina, le bounding box per chunk, il checksum SHA-256 del testo e il
+riconoscimento delle tabelle tramite \texttt{pdfplumber}.
+
+L'estrazione del testo è eseguita con PyMuPDF per i blocchi testuali e con
+\texttt{pdfplumber} per le tabelle, che vengono marcate con il flag
+\texttt{is\_in\_table=True} e suddivise in un chunk per riga. Il testo puro è
+tokenizzato in frasi con spaCy (modello italiano \texttt{it\_core\_news\_sm});
+i chunk sono costruiti con una finestra scorrevole di dimensione target
+\texttt{TARGET\_CHARS = 1800} caratteri e sovrapposizione di
+\texttt{OVERLAP\_SENTS = 2} frasi, bilanciando la densità informativa con la
+granularità necessaria alle ancore citazionali~\cite{gao2023ragsurvey}. I
+chunk sono inviati a ChromaDB in lotti da 100 elementi con i metadati di
+pagina, nota, offset e hash, usando il modello di embedding \embedmodel.
+
+Una nota sull'esclusione deliberata: il file \texttt{nota-97-all-1.pdf} è
+escluso dall'indicizzazione a causa di un problema di encoding Wingdings che
+produce mojibake non recuperabile con le librerie disponibili. Il contenuto
+normativo di Nota~97 è comunque coperto dai file \texttt{nota-97-all-2.pdf}
+e \texttt{nota-97-all-3.pdf}, privi del difetto.
+
+\Cref{alg:ingest} riporta il pseudocodice della funzione di indicizzazione
+per una singola nota.
+
+\begin{algorithm}[htbp]
+\caption{Indicizzazione di una nota AIFA (\texttt{indicizza\_nota})}
+\label{alg:ingest}
+\begin{algorithmic}[1]
+\Require $\mathit{pdf\_path}$: percorso del PDF; $\mathit{nota\_id}$: identificatore nota
+\Ensure Numero di chunk indicizzati in ChromaDB
+\State $\mathit{hash\_pdf} \gets \textsc{SHA256}(\mathit{pdf\_path})$
+\State $\mathit{pagine} \gets \textsc{EstraiPagine}(\mathit{pdf\_path})$
+\Comment{PyMuPDF rawdict + pdfplumber}
+\State $\mathit{chunk\_list} \gets [\,]$
+\ForAll{$p \in \mathit{pagine}$}
+  \State $\mathit{blocchi} \gets \textsc{EstraiBlockiTesto}(p)$
+  \State $\mathit{tabelle} \gets \textsc{EstraiTabelle}(p)$ \Comment{pdfplumber}
+  \ForAll{$b \in \mathit{blocchi}$}
+    \If{$|b.\text{text}| < \mathrm{MIN\_BLOCK\_CHARS}$} \State \textbf{salta}
+    \EndIf
+    \State $\mathit{frasi} \gets \textsc{TokenizzaFrasi}(b.\text{text})$ \Comment{spaCy it}
+    \State $\mathit{finestra} \gets [\,]$; $\mathit{char\_count} \gets 0$
+    \ForAll{$s \in \mathit{frasi}$}
+      \State $\mathit{finestra}.\text{append}(s)$; $\mathit{char\_count} \mathrel{+}= |s|$
+      \If{$\mathit{char\_count} \geq \mathrm{TARGET\_CHARS}$}
+        \State $\mathit{chunk\_list}.\text{append}(\textsc{BuildChunk}(\mathit{finestra}, p, \mathit{nota\_id}))$
+        \State $\mathit{finestra} \gets \mathit{finestra}[-\mathrm{OVERLAP\_SENTS}:]$
+        \State $\mathit{char\_count} \gets \sum_{s \in \mathit{finestra}} |s|$
+      \EndIf
+    \EndFor
+    \If{$\mathit{finestra} \neq [\,]$}
+      \State $\mathit{chunk\_list}.\text{append}(\textsc{BuildChunk}(\mathit{finestra}, p, \mathit{nota\_id}))$
+    \EndIf
+  \EndFor
+  \State \Comment{Tabelle: un chunk per riga}
+  \ForAll{$\mathit{riga} \in \textsc{AppiattisciTabelle}(\mathit{tabelle})$}
+    \State $\mathit{chunk\_list}.\text{append}(\textsc{BuildChunkTabella}(\mathit{riga}, p, \mathit{nota\_id}))$
+  \EndFor
+\EndFor
+\State \Comment{Upsert in batch da CHROMA\_BATCH=100}
+\State $\mathit{coll} \gets \textsc{GetOrCreateCollection}(\texttt{"nota\_"} + \mathit{nota\_id} + \texttt{"\_v2"})$
+\ForAll{$\mathit{batch} \in \textsc{Partition}(\mathit{chunk\_list}, 100)$}
+  \State $\mathit{coll}.\textsc{Upsert}(\mathit{batch})$
+\EndFor
+\State \Return $|\mathit{chunk\_list}|$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Recupero e reranking}
+
+La fase di recupero invoca ChromaDB con una query di embedding della domanda
+clinica e recupera i $k$ chunk più vicini per distanza coseno. I chunk
+restituiti vengono poi riordinati da un cross-encoder, \reranker, che calcola
+la rilevanza contestuale fra la query e ciascun testo in modo più accurato
+rispetto alla similarità vettoriale~\cite{nogueira2019passage}. Solo i chunk
+che superano la soglia di rilevanza del reranker vengono inclusi nel contesto
+del prompt LLM, limitando il rischio di allucinazioni indotte da passaggi
+normativi irrilevanti~\cite{ji2023hallucination}.
+
+% ============================================================
+\section{Orchestratore, riproducibilità e demo}
+\label{sec:orchestrator-impl}
+
+L'orchestratore è un servizio FastAPI esposto sulla porta 8001 che coordina
+sequenzialmente il rule engine, il retriever semantico e il modello
+linguistico. Il suo ciclo di vita è gestito dal context manager asincrono
+\texttt{lifespan}, che al momento dell'avvio inizializza il
+\texttt{CDSSOrchestrator} tentando prima il caricamento diretto del rule
+engine in-process e ricorrendo alla comunicazione HTTP solo in caso di
+fallimento, per eliminare la latenza di rete nei deployment integrati.
+
+\subsection{Endpoint pubblici}
+
+Il servizio espone due endpoint. L'endpoint \texttt{GET /health} restituisce
+lo stato di inizializzazione dell'orchestratore e viene usato dai healthcheck
+di Docker Compose per coordinare l'ordine di avvio dei container. L'endpoint
+principale è \texttt{POST /explain}, autenticato tramite l'header
+\texttt{X-API-Key}: la chiave attesa è letta dalla variabile d'ambiente
+\texttt{AIFA\_API\_KEY} e la sua assenza rende il servizio aperto, facilitando
+lo sviluppo locale senza configurazione aggiuntiva.
+
+La struttura di input del \texttt{POST /explain} comprende il campo
+\texttt{schema\_version} (valore atteso \texttt{3.3}), l'identificatore della
+nota (\texttt{note\_id}: uno fra \texttt{"01"}, \texttt{"13"}, \texttt{"66"},
+\texttt{"97"}), il farmaco (\texttt{drug\_id}) e due dizionari distinti:
+\texttt{patient\_data} per i dati clinici misurabili e
+\texttt{clinician\_asserted} per le asserzioni che richiedono giudizio clinico
+diretto e non sono automaticamente derivabili da valori numerici. La
+separazione dei due dizionari è una scelta progettuale deliberata: rende
+esplicito al chiamante quali informazioni provengono da sistemi automatici e
+quali richiedono l'intervento del medico.
+
+La risposta \texttt{CDSSResponse} include la decisione di rimborsabilità
+(\texttt{reimbursement\_decision}), la lista di flag clinici
+(\texttt{clinical\_flags}), i chunk normativi recuperati
+(\texttt{retrieved\_chunks}), la spiegazione testuale generata dall'LLM
+(\texttt{explanation}) e le citazioni delle ancore PDF
+(\texttt{citations}). Il motore non delega mai la decisione al modello
+linguistico: l'LLM produce esclusivamente la spiegazione in linguaggio naturale
+a partire da una decisione già fissata dal rule engine, in accordo con
+l'architettura neuro-simbolica descritta nel \Cref{ch:progettazione}.
+
+La gestione degli errori è progettata per non esporre i dati del paziente
+nei messaggi di risposta HTTP: eventuali eccezioni sono tracciate server-side
+nel log, mentre il client riceve soltanto un messaggio generico con codice
+500, prevenendo la fuga accidentale di informazioni cliniche sensibili.
+
+\subsection{Riproducibilità e cleanroom}
+\label{subsec:reproducibility-impl}
+
+La riproducibilità è garantita da tre meccanismi ortogonali. Il primo è il
+file \texttt{requirements.lock} con hash esatti di tutte le dipendenze Python,
+che impedisce aggiornamenti impliciti alle librerie. Il secondo è il manifest
+\texttt{ingestion\_manifest\_v2.json}, che registra il checksum SHA-256 di
+ogni PDF normativo ed è confrontato ad ogni avvio del servizio con i file
+presenti su disco. Il terzo è la fissazione dei parametri di generazione del
+modello linguistico a \texttt{temperature=0} e \texttt{seed=42}, che rende
+deterministica la risposta testuale a parità di input e contesto. La pipeline
+\texttt{run\_full\_overnight.sh} esegue la valutazione completa con
+checkpoint per stage (ingestione, rule engine, risposte RAG, RAGAS,
+QAEval) e può essere ripresa dal punto di interruzione in caso di riavvio.
+La riproducibilità profonda è garantita dallo script
+\texttt{full\_cleanroom\_v2.sh}, che cancella le collezioni ChromaDB,
+reingerisce i PDF da zero, esegue la suite di test e valuta: solo questa
+procedura, la \emph{cleanroom run}, esclude che i risultati siano
+condizionati da artefatti di esecuzioni precedenti residui nel database
+vettoriale, perché la valutazione sulla sola ChromaDB esistente può mascherare
+bug della fase di ingestione che non emergono fino al successivo wipe.
+
+\subsection{Suite di test e demo interattiva}
+\label{subsec:test-demo-impl}
+
+La suite conta \testcountall{} test verdi, organizzati in tre livelli. I test
+unitari verificano il comportamento delle singole funzioni della logica
+trivalente, degli operatori di confronto e del parser YAML. I test di
+integrazione eseguono scenari clinici completi sul rule engine
+(\testcountengine{} casi, di cui 131 specifici per le quattro Note AIFA) e
+sull'orchestratore RAG (\testcountorch{} casi). I test \emph{property-based}
+scritti con Hypothesis verificano invarianti come la
+simmetria delle tavole di Kleene, la monotonia dell'esito al crescere
+dell'informazione disponibile e la preservazione delle ancore normative in
+tutte le risposte non vuote. La copertura complessiva del codice è
+dell'85\%.
+
+La demo interattiva, infine, è realizzata in Streamlit sulla porta 8501.
+Streamlit è stata scelta per la possibilità di produrre un'interfaccia
+clinicamente leggibile in poche centinaia di righe di Python puro: la minore
+flessibilità di layout rispetto a un'applicazione React è accettabile per un
+prototipo destinato alla revisione clinica e non a un deployment prescrittivo.
+La sidebar espone in posizione fissa il disclaimer medico-legale obbligatorio;
+il client incapsula le chiamate al rule engine e all'orchestratore in un
+singolo modulo con gestione esplicita degli errori di connessione e
+degradazione graceful in caso di indisponibilità di uno dei servizi. La
+pagina di dettaglio include un pannello \emph{what-if} che consente di
+modificare i parametri clinici e rieseguire la pipeline completa (rule engine
+e generazione della spiegazione) aggiornando interattivamente sia la decisione
+sia la motivazione; le identità dei pazienti fittizi sono generate
+deterministicamente da seed fisso e gli avatar SVG sono prodotti localmente
+senza richiamare servizi esterni, nel rispetto della riservatezza dei dati
+anche nella fase dimostrativa.
+
+Le scelte descritte in questo capitolo non sono fini a sé stesse: sono ciò che
+rende le domande di ricerca verificabili. Il determinismo del rule engine e la
+fissazione dei parametri di generazione sono il presupposto di RQ4, che misura
+la stabilità dell'esito a ripetizioni e perturbazioni; la procedura di cleanroom
+e il \texttt{requirements.lock} con hash garantiscono che i numeri con cui il
+\Cref{ch:valutazione} risponde a tutte le RQ (\emph{Research Question}) provengano da una catena
+riproducibile da PDF a risultato, e non da artefatti accumulati in esecuzioni
+precedenti. È su questa base che il capitolo seguente affronta le sette domande
+in modo quantitativo.

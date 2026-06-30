@@ -1,0 +1,42 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco dabigatran è stata determinata dalla regola N97_EXCL_HARD_003, come indicato nella FONTE 1 (nota-97-all-2.pdf p.6). Questa regola è stata valutata come TRUE, escludendo quindi la copertura del farmaco. Il punteggio CHA2DS2-VASc è stato calcolato in [4, 4], ma la soglia per la copertura è ≥2, quindi il paziente non è eleggibile per la copertura. Inoltre, non sono presenti componenti mancanti.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-3.pdf, p. 2
+- nota-97-all-2.pdf, p. 4
+
+
+--- PROVA NORMATIVA ---
+Regola: N97_EXCL_HARD_003
+snippet_id: 042860ebd9
+Fonte: nota-97-all-2.pdf, p. 6
+Testo: "renale
+- in presenza di
+grave  
+(VFG* 15-29 
+ml/min)
+insuff. renale 
+moderata (VFG* 
+30-50 ml/min) 
+ 
+oppure
+VFG 15-29 ml/min:
+Posologia in..."
+--- FINE ---

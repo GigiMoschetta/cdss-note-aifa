@@ -1,0 +1,17 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco valutato è il pantoprazolo, che è stato valutato per la sua efficacia nella prevenzione delle complicanze gravi del tratto gastrointestinale superiore in pazienti trattati con farmaci antinfiammatori non steroidei (FANS) o con ASA a basse dosi. Come indicato nella FONTE 7, la prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con FANS o con ASA a basse dosi, purché sussista una delle seguenti condizioni di rischio: storia di pregresse emorragie digestive o di ulcera peptica non guarita con terapia eradicante, concomitante terapia con anticoagulanti o cortisonici. Inoltre, come indicato nella FONTE 1, il misoprostolo è stato dimostrato essere efficace nella prevenzione delle complicanze gravi del tratto gastrointestinale superiore, ma presenta una tollerabilità scarsa.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_01.pdf, p. 2
+- Nota_01.pdf, p. 1
+- Nota_01.pdf, p. 3

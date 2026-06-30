@@ -1,0 +1,28 @@
+1. DECISIONE
+   Il farmaco è: NON_RIMBORSABILE
+   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di non rimborsare il farmaco nimesulide è motivata dalla sua maggiore tossicità epatotossica rispetto agli altri farmaci antinfiammatori non steroidei (FANS). Come indicato nella FONTE 5, il nimesulide è stato oggetto di una riconsiderazione da parte dell'EMA nel 2012, che ha concluso che i benefici delle formulazioni sistemiche di nimesulide sono ancora superiori ai rischi, ma solo se l'uso è circoscritto alle condizioni acute e se nimesulide non è più impiegato nel trattamento dell'osteoartrosi dolorosa, che aumenta il rischio di danno epatico. Inoltre, come riportato nella FONTE 4, il nimesulide è controindicato nei pazienti epatopatici, in quelli con una storia di abuso di alcool e negli assuntori di altri farmaci epatotossici.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 3
+- Nota_66.pdf, p. 5
+
+
+--- PROVA NORMATIVA ---
+Regola: N66_EXCL_HARD_004
+snippet_id: 0b5b378e8b
+Fonte: Nota_66.pdf, p. 4
+Testo: "A dosi elevate e nel trattamento a lungo termine, i FANS non selettivi potrebbero comportare un lieve aumento del rischio di
+eventi trombotici (come..."
+--- FINE ---

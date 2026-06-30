@@ -1,0 +1,22 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di rimborso per il farmaco lovastatina è motivata dalla sua inclusione nella lista dei farmaci prescrivibili a carico del SSN per il trattamento dell'ipercolesterolemia non corretta dalla sola dieta e dell'ipercolesterolemia poligenica, come specificato nella FONTE 5. Inoltre, la Nota AIFA valuta che il lovastatina sia un trattamento di prima scelta per la terapia d'ingresso per i pazienti con rischio moderato e alto, come indicato nella FONTE 1.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-13.pdf, p. 5
+- nota-13.pdf, p. 4
+- nota-13.pdf, p. 1
+- nota-13.pdf, p. 3
+- nota-13.pdf, p. 11
+- nota-13.pdf, p. 6
+- nota-13.pdf, p. 10
+- nota-13.pdf, p. 2

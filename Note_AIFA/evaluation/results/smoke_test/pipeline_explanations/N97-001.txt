@@ -1,0 +1,23 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco apixaban è stato valutato per la sua efficacia e sicurezza nella prevenzione del rischio trombo-embolico nei pazienti con fibrillazione atriale non valvolare (FANV). Come indicato nella FONTE 1, la scelta dell'anticoagulante deve essere personalizzata considerando il rischio trombo-embolico ed emorragico individuale, ma anche le caratteristiche di ciascun paziente. Il punteggio CHA2DS2-VASc è stato calcolato e risulta essere [4, 4], che supera la soglia di 2, quindi il paziente è eleggibile per il trattamento con un anticoagulante. Come indicato nella FONTE 2, la terapia anticoagulante nella FANV deve essere personalizzata considerando innanzitutto il rischio trombo-embolico ed emorragico individuale, ma anche le caratteristiche di ciascun paziente.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-2.pdf, p. 1
+- nota-97-all-2.pdf, p. 7
+- nota-97.pdf, p. 2
+- nota-97-all-2.pdf, p. 2
+- nota-97-all-2.pdf, p. 3

@@ -1,0 +1,23 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   La decisione di rimborso del farmaco edoxaban è motivata dalla sua efficacia e sicurezza, come riportato nella FONTE 6 (nota-97.pdf p.3). In particolare, il punteggio CHA2DS2-VASc calcolato è [4, 4], che supera la soglia di 3, rendendo il paziente adatto a ricevere un trattamento anticoagulante. La FONTE 1 (nota-97.pdf p.1) specifica che la terapia anticoagulante nella FANV deve essere personalizzata considerando il rischio trombo-embolico ed emorragico individuale, e la FONTE 7 (nota-97.pdf p.3) sottolinea l'importanza di scegliere l'anticoagulante più adatto al paziente.
+
+3. RACCOMANDAZIONI
+   La raccomandazione di posologia per il farmaco edoxaban è di 30 mg/die, come riportato nella FONTE 5 (nota-97-all-2.pdf p.6). Inoltre, è consigliabile utilizzare una dose ridotta in caso di funzionalità renale ridotta o in presenza di inibitori P-gp.
+
+4. DATI MANCANTI
+   I campi mancanti sono: difficolta_monitoraggio_inr, interazioni_farmacologiche_doac, pregressa_emorragia_intracranica, ttr_sotto_70. Questi dati sono necessari per una valutazione più completa del paziente e per prendere decisioni informate.
+
+5. FONTI
+- nota-97.pdf, p. 1
+- nota-97-all-2.pdf, p. 2
+- nota-97.pdf, p. 4
+- nota-97-all-2.pdf, p. 6
+- nota-97.pdf, p. 3
+- nota-97-all-3.pdf, p. 2
+- nota-97-all-3.pdf, p. 1
+- nota-97-all-2.pdf, p. 3
+- nota-97-all-2.pdf, p. 1

@@ -1,0 +1,22 @@
+{
+  "ragas_version": "0.4.3",
+  "original_hash": 473898486773643360,
+  "language": "italian",
+  "instruction": "Given a question and an answer, analyze the complexity of each sentence in the answer. Break down each sentence into one or more fully understandable statements. Ensure that no pronouns are used in any statement. Format the outputs in JSON.",
+  "examples": [
+    {
+      "input": {
+        "question": "Chi era Albert Einstein e cosa è più noto?",
+        "answer": "Era un fisico teorico di origine tedesca, ampiamente riconosciuto come uno dei più grandi e influenti fisici di tutti i tempi. Era noto per aver sviluppato la teoria della relatività, ha anche fatto importanti contributi allo sviluppo della teoria della meccanica quantistica."
+      },
+      "output": {
+        "statements": [
+          "Albert Einstein era un fisico teorico di origine tedesca.",
+          "Albert Einstein è riconosciuto come uno dei più grandi e influenti fisici di tutti i tempi.",
+          "Albert Einstein è noto per aver sviluppato la teoria della relatività.",
+          "Albert Einstein ha anche fatto importanti contributi allo sviluppo della teoria della meccanica quantistica."
+        ]
+      }
+    }
+  ]
+}

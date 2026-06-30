@@ -1,0 +1,36 @@
+\chapter{Riproducibilità della valutazione}
+\label{app:riproducibilita}
+
+L'intera valutazione presentata in \Cref{ch:valutazione} è riproducibile a partire dal repository pubblico, in due modalità di livello crescente di rigore. La modalità leggera consiste nell'eseguire il solo rule engine sul dataset gold, che richiede pochi secondi su un portatile e non dipende dal LLM locale; la modalità completa consiste nell'eseguire l'intera pipeline overnight, che richiede una GPU NVIDIA con almeno 8\,GB di memoria e tempi dell'ordine delle quattordici-sedici ore. Le versioni dei componenti software fissati per la \cleanroomrun\ sono Python 3.12 per il rule engine e per le metriche di valutazione, contenitore CUDA Ubuntu 22.04 con Python 3.12 per la pipeline RAG, Ollama come runtime del LLM e il modello \llmmodel\ scaricato in formato GGUF Q4\_K\_M. Il modello di embedding è \embedmodel, il reranker è \reranker\ e il modello di NLI utilizzato per la metrica di fedeltà è \nlimodel.
+
+La modalità leggera si attiva con il comando di seguito riportato, da eseguire nella radice del repository dopo aver attivato l'ambiente virtuale del rule engine.
+
+\begin{verbatim}
+cd Note_AIFA/aifa_rule_engine
+source .venv/bin/activate
+python -m pytest tests/ -q                     # 433 test, 0,7 s
+python -m evaluation.scripts.evaluate_rule_engine \
+       --json-report evaluation/results/rule_engine_report.json
+\end{verbatim}
+
+L'output atteso è una Macro F1 pari a $1{,}0000$ su \goldn\ casi e una distribuzione delle classi conforme a quanto riportato in \Cref{tab:rule-engine}. La pipeline completa, comprensiva di indicizzazione delle Note, valutazione del retrieval, generazione delle spiegazioni LLM, calcolo delle metriche di fedeltà e produzione dei \emph{per-case report}, si attiva mediante lo script orchestratore di seguito riportato.
+
+\begin{verbatim}
+cd Note_AIFA
+bash tools/run_full_overnight.sh                 # ~14-16 ore
+bash tools/run_full_overnight.sh --resume        # ripresa post-interruzione
+bash tools/run_full_overnight.sh --skip-ragas    # esclude RAGAS (~3 ore)
+\end{verbatim}
+
+Lo script suddivide la pipeline in venti stage discreti, ciascuno con un checkpoint persistente in \texttt{evaluation/results/.checkpoints/}; il flag \texttt{--resume} riprende l'esecuzione dal primo stage non completato e consente di superare riavvii o sospensioni della macchina senza dover ripartire da zero. Lo stage di RAGAS, il più lungo a causa dell'inferenza ripetuta del LLM giudice, è opzionalmente disattivabile con \texttt{--skip-ragas}; in questo caso le metriche faithfulness e answer relevancy sono assenti dal report finale, mentre tutte le altre rimangono prodotte.
+
+Per garantire l'indipendenza dei risultati dallo stato precedente del sistema, esiste una modalità \emph{cleanroom} di livello superiore, che cancella esplicitamente lo store ChromaDB, la cartella dei risultati e tutti i checkpoint prima di rieseguire la pipeline. Si attiva con lo script di seguito riportato e produce, alla conclusione, uno snapshot con timestamp in \texttt{audit/.snapshots/}, utile per il confronto tra run successive.
+
+\begin{verbatim}
+cd Note_AIFA
+bash tools/full_cleanroom_v2.sh                  # wipe + ingest + tests + eval
+\end{verbatim}
+
+Tutti i risultati prodotti dalla \cleanroomrun\ sono salvati in \texttt{Note\_AIFA/evaluation/results/} sotto forma di file JSON canonici, accompagnati da un riepilogo testuale in \texttt{OVERNIGHT\_SUMMARY.md}. La verifica della consistenza fra i numeri citati nella tesi e quelli effettivamente presenti nei JSON è automatizzata da un piccolo script di check in \texttt{tools/verify\_thesis\_numbers.py}, che il revisore clinico può eseguire per confermare l'allineamento.
+
+Sul piano della validazione clinica del gold, un sottoinsieme di casi-frontiera è stato sottoposto a revisione esterna da parte di un medico di medicina generale con esperienza prescrittiva sulle quattro Note codificate. La revisione ha riguardato venti casi selezionati per soglie cliniche borderline (LDL al confine di $100$~mg/dL per \notetredici, CHA$_2$DS$_2$-VASc al confine $2{-}3$ per \notenova, doppia indicazione gastroprotettiva per \notezero, doppio fattore di rischio gastrointestinale per \notesessanta). Il pacchetto di revisione è documentato nel file \texttt{audit/CLINICAL\_REVIEW\_PACKET\_2026-05-13.pdf} ed è disponibile insieme al repository.

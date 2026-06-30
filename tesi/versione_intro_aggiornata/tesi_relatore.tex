@@ -1,0 +1,181 @@
+%% =============================================================
+%%  Tesi di Laurea Triennale — versione finale 2026-07-20
+%%  Un sistema di supporto alla decisione clinica neuro-simbolico
+%%  per la verifica della rimborsabilità delle Note AIFA
+%%
+%%  Laureando:  Francesco Zamar  (matricola SM3201464)
+%%  Relatore:   Prof. Andrea De Lorenzo
+%%  Sede:       Università degli Studi di Trieste, MIGE, Laurea triennale
+%%  Sessione:   Estiva 2026 (20 luglio 2026)
+%% =============================================================
+
+\documentclass[12pt,a4paper,oneside,openany]{book}
+
+%% Lingua ed encoding.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{textcomp}
+
+%% Geometria pagina e interlinea — leggermente compatti.
+\usepackage[a4paper,top=2.8cm,bottom=2.8cm,left=3.0cm,right=2.8cm,headheight=14pt]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{2pt plus 1pt minus 0pt}
+
+%% Tipografia (Latin Modern di default, niente font scaricati esoterici).
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xspace}
+
+%% Matematica e tabelle.
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,},group-minimum-digits=4}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+
+%% Grafica, TikZ, pgfplots.
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,fit,calc,backgrounds}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+%% Pseudocodice (algorithm + algpseudocode, italianizzazione manuale).
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\algorithmicwhile}{\textbf{finché}}
+\renewcommand{\algorithmicdo}{\textbf{fai}}
+\renewcommand{\algorithmicif}{\textbf{se}}
+\renewcommand{\algorithmicelse}{\textbf{altrimenti}}
+\renewcommand{\algorithmicthen}{\textbf{allora}}
+\renewcommand{\algorithmicfor}{\textbf{per}}
+\renewcommand{\algorithmicforall}{\textbf{per ogni}}
+\renewcommand{\algorithmicreturn}{\textbf{restituisci}}
+\renewcommand{\algorithmicend}{\textbf{fine}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\listalgorithmname}{Elenco degli algoritmi}
+
+%% Header e footer.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\nouppercase{\leftmark}}
+\fancyhead[R]{\small\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%% Citazioni — stile numerico ordinato per prima comparsa.
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+
+%% Teoremi e definizioni.
+\theoremstyle{definition}
+\newtheorem{definition}{Definizione}[chapter]
+\newtheorem{example}{Esempio}[chapter]
+
+%% Link e cleveref italiani.
+\usepackage[hidelinks,
+  pdftitle={Un sistema di supporto alla decisione clinica neuro-simbolico per le Note AIFA},
+  pdfauthor={Francesco Zamar},
+  pdfsubject={Tesi di Laurea Triennale, Università degli Studi di Trieste},
+  pdfkeywords={CDSS, Note AIFA, RAG, sistema neuro-simbolico, rule engine}
+]{hyperref}
+\usepackage[italian,nameinlink]{cleveref}
+\crefname{table}{Tabella}{Tabelle}
+\crefname{figure}{Figura}{Figure}
+\crefname{section}{Sezione}{Sezioni}
+\crefname{chapter}{Capitolo}{Capitoli}
+\crefname{equation}{Equazione}{Equazioni}
+\crefname{algorithm}{Algoritmo}{Algoritmi}
+\crefname{definition}{Definizione}{Definizioni}
+\crefname{example}{Esempio}{Esempi}
+
+%% Macros di progetto.
+\input{macros_finale}
+
+%% =============================================================
+\begin{document}
+
+%% -------------------- Frontespizio --------------------
+\begin{titlepage}
+  \centering
+  \vspace*{0.4cm}
+  {\large\scshape Università degli Studi di Trieste\par}
+  \vspace{0.2cm}
+  {\normalsize Dipartimento di Matematica, Informatica e Geoscienze\par}
+  \vspace{0.6cm}
+  \rule{0.7\textwidth}{0.4pt}\par
+  \vspace{0.6cm}
+  {\large Corso di Laurea in Intelligenza Artificiale e Analisi dei Dati\par}
+  \vspace{0.5cm}
+  {\large\scshape Prova Finale\par}
+  \vspace{1.6cm}
+  {\Large\bfseries Un sistema di supporto alla decisione clinica\\[0.2em] neuro-simbolico per la verifica della\\[0.2em] rimborsabilità delle Note AIFA\par}
+  \vspace{1.7cm}
+  \begin{minipage}{0.45\textwidth}
+    \raggedright
+    Francesco Zamar\\
+    Matricola SM3201464
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+    \raggedleft
+    \textbf{Relatore}\\[0.3em]
+    Prof. Andrea De Lorenzo
+  \end{minipage}
+  \vfill
+  \rule{0.5\textwidth}{0.4pt}\par
+  \vspace{0.4cm}
+  {\large Anno Accademico 2025 - 2026\par}
+\end{titlepage}
+
+%% Pagina bianca dopo frontespizio (oneside, blank).
+\cleardoublepage
+
+%% -------------------- Abstract --------------------
+\chapter*{Sommario}
+\addcontentsline{toc}{chapter}{Sommario}
+\input{chapters/abstract}
+
+%% -------------------- Indice e liste --------------------
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+\listoffigures
+\addcontentsline{toc}{chapter}{Elenco delle figure}
+\cleardoublepage
+\listoftables
+\addcontentsline{toc}{chapter}{Elenco delle tabelle}
+\cleardoublepage
+\listofalgorithms
+\addcontentsline{toc}{chapter}{Elenco degli algoritmi}
+
+%% -------------------- Corpo --------------------
+\cleardoublepage
+\input{chapters/introduzione}
+\input{chapters/cap1_contesto}
+\input{chapters/cap2_background}
+\input{chapters/cap3_progettazione}
+\input{chapters/cap4_implementazione}
+\input{chapters/cap5_valutazione}
+\input{chapters/cap6_conclusioni}
+
+%% -------------------- Appendici --------------------
+\appendix
+\input{chapters/appendice_a}
+
+%% -------------------- Bibliografia --------------------
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliografia}
+\bibliography{bibliography_finale}
+
+\end{document}

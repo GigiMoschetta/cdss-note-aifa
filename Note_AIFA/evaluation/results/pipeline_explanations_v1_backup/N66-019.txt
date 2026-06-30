@@ -1,0 +1,19 @@
+1. DECISIONE
+   Il farmaco è: RIMBORSABILE
+   Dichiara che il farmaco è RIMBORSABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco valutato è il diclofenac, che è stato valutato nella Nota AIFA 66. Secondo la Nota AIFA 66, il diclofenac è un farmaco antinfiammatorio non steroideo (FANS) che è stato valutato per la sua efficacia e sicurezza. La Nota AIFA 66 cita diverse fonti, tra cui la FONTE 1, che descrive le caratteristiche dei FANS e la loro azione farmacologica. La FONTE 2 cita la scala di valutazione del dolore proposta dall'Organizzazione Mondiale della Sanità (OMS), che consiglia di utilizzare i FANS per il trattamento del dolore acuto. La FONTE 3 cita le differenze nell'attività antinfiammatoria dei vari FANS e la necessità di utilizzare la dose minima efficace e per il periodo più breve possibile. La FONTE 4 cita le raccomandazioni per l'utilizzo dei FANS e la necessità di monitorare i pazienti con ulcera peptica o sanguinamento. La FONTE 5 cita le avvertenze per l'utilizzo dei FANS e la necessità di utilizzare la dose minima efficace e per il periodo più breve possibile.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 5
+- Nota_66.pdf, p. 3

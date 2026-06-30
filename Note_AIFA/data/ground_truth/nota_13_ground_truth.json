@@ -1,0 +1,141 @@
+{
+  "nota": "13",
+  "title": "Ipolipemizzanti - Trattamento ipercolesterolemia e dislipidemie",
+  "source_pdf": "nota-13.pdf",
+  "extracted": "2026-02-25",
+  "drugs_in_scope": {
+    "fibrati": ["bezafibrato", "fenofibrato", "gemfibrozil"],
+    "statine": ["simvastatina", "pravastatina", "fluvastatina", "lovastatina", "atorvastatina", "rosuvastatina"],
+    "altri": ["PUFA-N3", "ezetimibe"]
+  },
+  "admission_criterion": {
+    "description": "Ipercolesterolemia non corretta dalla sola dieta, seguita per almeno tre mesi, e ipercolesterolemia poligenica secondo i criteri specificati.",
+    "field": "ipercolesterolemia_dieta_3mesi",
+    "source": "nota-13.pdf p.1"
+  },
+  "risk_categories": [
+    {
+      "category": "rischio_medio",
+      "score_range": "2-3%",
+      "ldl_target_mg_dl": 130,
+      "ldl_operator": "LT",
+      "first_line": "lifestyle modification (6 months)",
+      "second_line": ["simvastatina", "pravastatina", "fluvastatina", "lovastatina", "atorvastatina"],
+      "source": "nota-13.pdf p.1"
+    },
+    {
+      "category": "rischio_moderato",
+      "score_range": "4-5%",
+      "ldl_target_mg_dl": 115,
+      "ldl_operator": "LT",
+      "first_line": ["simvastatina", "pravastatina", "fluvastatina", "lovastatina", "atorvastatina"],
+      "second_line": null,
+      "source": "nota-13.pdf p.2"
+    },
+    {
+      "category": "rischio_alto",
+      "score_range": ">5% and <10%",
+      "score_lower_bound": 5,
+      "score_lower_operator": "GT",
+      "score_upper_bound": 10,
+      "score_upper_operator": "LT",
+      "ldl_target_mg_dl": 100,
+      "ldl_operator": "LT",
+      "first_line": ["simvastatina", "pravastatina", "fluvastatina", "lovastatina", "atorvastatina"],
+      "second_line": ["rosuvastatina", "ezetimibe_piu_statine"],
+      "note": "Preferibilmente atorvastatina se riduzione LDL >50% necessaria",
+      "source": "nota-13.pdf p.2"
+    },
+    {
+      "category": "rischio_molto_alto",
+      "score_threshold": 10,
+      "score_operator": "GTE",
+      "ldl_target_mg_dl": 70,
+      "ldl_operator": "LT",
+      "ldl_reduction_percent": 50,
+      "first_line": ["atorvastatina_alta_dose", "pravastatina", "fluvastatina", "lovastatina", "simvastatina"],
+      "second_line": ["ezetimibe_piu_statine"],
+      "note_acs": "Pazienti con sindromi coronariche acute: atorvastatina >=40mg",
+      "source": "nota-13.pdf p.2"
+    }
+  ],
+  "special_categories": [
+    {
+      "category": "hdl_basse_trigliceridi_elevati",
+      "conditions": "HDL <40 M e <50 F e/o TG >200 mg/dL in pazienti in terapia con statine",
+      "drug": "fibrati (preferibilmente fenofibrato; gemfibrozil controindicato con statine)",
+      "source": "nota-13.pdf p.2 footnote ^"
+    }
+  ],
+  "exceptions": [
+    {
+      "rule_id": "N13_EXCEPT_001",
+      "description": "Statin intolerance: ezetimibe in monotherapy is reimbursed",
+      "condition": "intollerante_statine = TRUE",
+      "action": "ezetimibe monotherapy allowed",
+      "pdf_verbatim": "(**) Nei pazienti che siano intolleranti alle statine, per il conseguimento del target terapeutico è rimborsato il trattamento con ezetimibe in monoterapia",
+      "source": "nota-13.pdf p.2 footnote (**)"
+    },
+    {
+      "rule_id": "N13_EXCEPT_002",
+      "description": "Acute coronary syndrome / percutaneous revascularization: atorvastatina high dose (>=40mg)",
+      "condition": "sindrome_coronarica_acuta = TRUE OR rivascolarizzazione_percutanea = TRUE",
+      "action": "atorvastatina >=40mg",
+      "pdf_verbatim": "(§) Nei pazienti con sindromi coronariche acute o in quelli sottoposti a interventi di rivascolarizzazione percutanea è indicata atorvastatina a dosaggio elevato (≥40 mg).",
+      "source": "nota-13.pdf p.2 footnote §"
+    }
+  ],
+  "familial_dyslipidemias": [
+    {
+      "type": "IPERCOLESTEROLEMIA_FAMILIARE_MONOGENICA",
+      "first_line": ["simvastatina", "pravastatina", "fluvastatina", "lovastatina", "atorvastatina", "rosuvastatina"],
+      "second_line": ["ezetimibe_piu_statine"],
+      "third_line": ["resine_sequestranti_acidi_biliari"]
+    },
+    {
+      "type": "IPERLIPIDEMIA_FAMILIARE_COMBINATA",
+      "first_line": ["simvastatina", "pravastatina", "fluvastatina", "lovastatina", "atorvastatina"],
+      "second_line": ["rosuvastatina", "PUFA-N3", "ezetimibe_piu_statine"]
+    },
+    {
+      "type": "DISBETALIPOPROTEINEMIA",
+      "first_line": ["simvastatina", "pravastatina", "fluvastatina", "lovastatina", "atorvastatina"],
+      "second_line": ["rosuvastatina", "ezetimibe_piu_statine"],
+      "third_line": ["resine_sequestranti_acidi_biliari"]
+    },
+    {
+      "type": "IPERCHILOMICRONEMIA_IPERTRIGLICERIDEMIA_GRAVE",
+      "first_line": ["fibrati", "PUFA-N3"],
+      "second_line": ["fibrati_piu_PUFA-N3"]
+    }
+  ],
+  "ckd_table": {
+    "description": "Iperlipidemie in pazienti con insufficienza renale cronica moderata e grave",
+    "conditions": [
+      {
+        "condition": "TG >= 500 mg/dL",
+        "drug": "PUFA-N3"
+      },
+      {
+        "condition": "LDL-C >= 130 mg/dL",
+        "first_choice": "simvastatina + ezetimibe",
+        "second_choice": "altre statine a minima escrezione renale"
+      }
+    ],
+    "source": "nota-13.pdf p.3"
+  },
+  "drug_induced_dyslipidemia": {
+    "description": "Iperlipidemie indotte da farmaci (immunosoppressori, antiretrovirali, inibitori aromatasi)",
+    "haart_note": "Statine considerando la massima attenzione all'interferenza con HAART. Fibrati se iperTG predominante. Ezetimibe per intolleranti o chi non può eseguire statine.",
+    "source": "nota-13.pdf p.4"
+  },
+  "rules": [
+    {"rule_id": "N13_SCOPE_001", "phase": 1, "type": "SCOPE"},
+    {"rule_id": "N13_EXCEPT_001", "phase": 2, "type": "EXCEPTION"},
+    {"rule_id": "N13_EXCEPT_002", "phase": 2, "type": "EXCEPTION"},
+    {"rule_id": "N13_INCL_001", "phase": 4, "type": "INCLUSION"},
+    {"rule_id": "N13_PATH_001", "phase": 5, "type": "PATHWAY"},
+    {"rule_id": "N13_PATH_002", "phase": 5, "type": "PATHWAY"},
+    {"rule_id": "N13_GDOSE_001", "phase": 6, "type": "GUIDANCE_DOSE"}
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "case_id": "N66-022",
+  "nota_id": "66",
+  "drug_id": "nimesulide",
+  "category": "NON_RIMBORSABILE_excl_hard",
+  "description": "NON_RIMBORSABILE — nimesulide controindicata in epatopatia (PDF: 'controindicata nei pazienti epatopatici'); NON si tratta di semplice avviso ma di controindicazione assoluta",
+  "tags": [
+    "non_rimborsabile",
+    "nimesulide",
+    "nota66",
+    "excl_hard",
+    "epatopatia"
+  ],
+  "input": {
+    "patient_data": {
+      "indicazione_clinica": "osteoartrosi_algica",
+      "uso_breve_durata": true,
+      "seconda_linea": true,
+      "ulcera_peptica_attiva_pregressa": false,
+      "scompenso_cardiaco_grave": false,
+      "cardiopatia_ischemica": false,
+      "patologia_cerebrovascolare": false,
+      "patologia_arteriosa_periferica": false,
+      "scompenso_cardiaco_moderato_grave": false,
+      "is_coxib": false,
+      "epatopatia": true,
+      "terapia_antiaggregante_asa": true,
+      "dolore_acuto_moderato": false,
+      "non_controllato_con_singoli": false,
+      "abuso_alcool": false,
+      "farmaci_epatotossici_concomitanti": false,
+      "allergia_asa_o_fans": false
+    },
+    "clinician_asserted": {}
+  },
+  "gold": {
+    "expected_decision": "NON_RIMBORSABILE",
+    "expected_decision_status": "FINAL",
+    "expected_blocking_rule_ids": [
+      "N66_EXCL_HARD_004"
+    ],
+    "expected_clinical_flag_rule_ids": [],
+    "missing_fields_coverage": [],
+    "explanation_criteria": {
+      "must_contain_strings": [
+        "NON_RIMBORSABILE"
+      ],
+      "must_not_contain_strings": [
+        "RIMBORSABILE"
+      ],
+      "required_sections": [
+        "1. DECISIONE",
+        "2. MOTIVAZIONE",
+        "3. RACCOMANDAZIONI",
+        "4. DATI MANCANTI",
+        "5. FONTI"
+      ],
+      "expected_citation_count_min": 1,
+      "notes": "PATCHED: nimesulide is CONTRAINDICATED (not merely warned) in epatopatia per PDF normative text. N66_EXCL_HARD_004 must block this prescription. Explanation must cite 'controindicata nei pazienti epatopatici' and suggest alternative FANS without hepatotoxic risk."
+    },
+    "pdf_reference": {
+      "rule_id": "N66_EXCL_HARD_004",
+      "pdf_file": "Nota_66.pdf",
+      "page": 4,
+      "section": "Particolari avvertenze",
+      "excerpt": "\"nimesulide...è controindicata nei pazienti epatopatici, in quelli con una storia di abuso di alcool e negli assuntori di altri farmaci epatotossici\""
+    }
+  },
+  "engine": {
+    "actual_decision": "NON_RIMBORSABILE",
+    "actual_decision_status": "FINAL",
+    "rule_check_pass": true,
+    "actual_blocking_rule_ids": [
+      "N66_EXCL_HARD_004"
+    ],
+    "actual_clinical_flag_rule_ids": null
+  },
+  "retrieval": {
+    "recall_at_3": 0.5,
+    "recall_at_5": 0.5,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "anchors_expected": [],
+    "chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "Nota_66_0006_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 2,
+        "chunk_id": "Nota_66_0018_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 3,
+        "chunk_id": "Nota_66_0019_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 4,
+        "chunk_id": "Nota_66_0020_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 5,
+        "chunk_id": "Nota_66_0021_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 6,
+        "chunk_id": "Nota_66_0022_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 7,
+        "chunk_id": "Nota_66_0023_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 8,
+        "chunk_id": "Nota_66_0024_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 4,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 9,
+        "chunk_id": "Nota_66_0000_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 10,
+        "chunk_id": "Nota_66_0001_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 11,
+        "chunk_id": "Nota_66_0002_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 12,
+        "chunk_id": "Nota_66_0003_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 13,
+        "chunk_id": "Nota_66_0004_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "TABLE",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 14,
+        "chunk_id": "Nota_66_0008_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 15,
+        "chunk_id": "Nota_66_0009_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 2,
+        "section": "",
+        "stage": "anchor_guided",
+        "score": 0.0,
+        "text": ""
+      },
+      {
+        "rank": 16,
+        "chunk_id": "Nota_66_0007_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 1,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.5382985472679138,
+        "text": ""
+      },
+      {
+        "rank": 17,
+        "chunk_id": "Nota_66_0011_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.38451680541038513,
+        "text": ""
+      },
+      {
+        "rank": 18,
+        "chunk_id": "Nota_66_0015_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.36461180448532104,
+        "text": ""
+      },
+      {
+        "rank": 19,
+        "chunk_id": "Nota_66_0010_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 3,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.34857991337776184,
+        "text": ""
+      },
+      {
+        "rank": 20,
+        "chunk_id": "Nota_66_0029_v2",
+        "pdf_file": "Nota_66.pdf",
+        "page": 6,
+        "section": "",
+        "stage": "semantic",
+        "score": 0.3478013873100281,
+        "text": ""
+      }
+    ]
+  },
+  "llm": {
+    "explanation": "1. DECISIONE\n   Il farmaco è: NON_RIMBORSABILE\n   Dichiara che il farmaco è NON_RIMBORSABILE secondo la Nota AIFA valutata.\n\n2. MOTIVAZIONE\n   La decisione di non rimborsare il farmaco nimesulide è motivata dalla sua maggiore incidenza di effetti epatotossici rispetto agli altri farmaci antinfiammatori non steroidei (FANS). Ciò è confermato dalla FONTE 6, che riporta la conclusione del Committee for Medicinal Products for Human use (CHMP) secondo cui i benefici delle formulazioni sistemiche di nimesulide sono ancora superiori ai rischi, purché l'uso sia circoscritto alle condizioni in acuto e che nimesulide per uso sistemico non sia più impiegato nel trattamento dell'osteoartrosi dolorosa. Inoltre, la FONTE 5 sottolinea che nimesulide è controindicata nei pazienti epatopatici, in quelli con una storia di abuso di alcool e negli assuntori di altri farmaci epatotossici.\n\n3. RACCOMANDAZIONI\n   Nessuna raccomandazione aggiuntiva.\n\n4. DATI MANCANTI\n   Dati completi.\n\n5. FONTI\n- Nota_66.pdf, p. 4, riga 1, char 0-74, sha:4eee68e67a\n- Nota_66.pdf, p. 2, riga 41, char 809-856, sha:a76cd6a3b7\n- Nota_66.pdf, p. 1, righe 1-54, char 0-1576, sha:6d5d39cf1a\n- Nota_66.pdf, p. 3, righe 15-27, char 1450-3208, sha:07239bafa4\n- Nota_66.pdf, p. 6, righe 5-43, char 13-758, sha:9353e3a493\n\n\n--- PROVA NORMATIVA ---\nRegola: N66_EXCL_HARD_004\nsnippet_id: f66f2b1316\nFonte: Nota_66.pdf, p. 4, righe 29-41 (char 4345-6036)\nTesto verbatim: «differenti farmaci in studio [FitzGerald 2017; Grosser 2017; Pepine 2017]. Le diverse raccomandazioni emanate a tal proposito dalle agenzie regolatorie, quali EMA e FDA, possono sinteticamente\nriassumersi nella raccomandazione generale di utilizzare i FANS o gli inibitori selettivi della ciclossigenasi 2, nel trattamento sintomatico, alla dose minima efficace e\nper il periodo più breve possibile; si raccomanda, inoltre, nel caso di trattamento a lungo termine, di considerarne periodicamente la necessità. Recenti studi\nsuggeriscono che l’uso dei FANS (soprattutto ad alte dosi) e nel trattamento a lungo termine può essere associato a un piccolo aumento del rischio di eventi trombotici\narteriosi. Uno studio evidenzia che anche l’uso a breve termine (meno di una settimana) dei FANS può essere associato a un aumentato rischio di morte e di infarto\nmiocardico (IM) ricorrente  in pazienti con pregresso IM.»\nSHA256 chunk: badaa7a217710af1\nVerificato: NO\n--- FINE ---",
+    "validation": {
+      "decision_consistent": true,
+      "decision_contradicted": false,
+      "missing_citations": [],
+      "suspected_hallucinations": [],
+      "missing_sections": [],
+      "string_checks": {
+        "contains:'NON_RIMBORSABILE'": true,
+        "not_contains:'RIMBORSABILE'": true
+      },
+      "missing_justification_rules": []
+    },
+    "decision_consistent": true,
+    "citation_complete": true,
+    "sections_complete": true,
+    "strings_ok": true,
+    "has_hallucination": false,
+    "overall_pass": true,
+    "token_usage": {
+      "prompt_tokens": 8266,
+      "completion_tokens": 767,
+      "total_tokens": 9033
+    },
+    "latency_s": 21.5
+  },
+  "metrics": {
+    "excerpt_match": {
+      "case_id": "N66-022",
+      "gold_pdf_file": "Nota_66.pdf",
+      "gold_page": 4,
+      "gold_excerpt_len": 149,
+      "excerpt_in_llm": true,
+      "excerpt_coverage_llm": 1.0,
+      "excerpt_in_retrieval": true,
+      "excerpt_coverage_retrieval": 0.95,
+      "gold_anchor_in_top_3": true,
+      "gold_anchor_in_top_5": true,
+      "gold_anchor_in_top_10": true
+    },
+    "ragas": {}
+  }
+}

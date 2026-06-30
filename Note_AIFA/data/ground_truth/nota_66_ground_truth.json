@@ -1,0 +1,128 @@
+{
+  "nota": "66",
+  "title": "FANS/NSAIDs - Antinfiammatori non steroidei",
+  "source_pdf": "Nota_66 .pdf",
+  "extracted": "2026-02-25",
+  "drugs_in_scope": {
+    "fans_monoterapia": [
+      "aceclofenac",
+      "acemetacina",
+      "acido_mefenamico",
+      "acido_tiaprofenico",
+      "amtolmetina_guacile",
+      "celecoxib",
+      "cinnoxicam",
+      "dexibuprofene",
+      "diclofenac",
+      "diclofenac_misoprostolo",
+      "etoricoxib",
+      "fentiazac",
+      "flurbiprofene",
+      "furprofene",
+      "ibuprofene",
+      "indometacina",
+      "ketoprofene",
+      "lornoxicam",
+      "meloxicam",
+      "nabumetone",
+      "naprossene",
+      "oxaprozina",
+      "piroxicam",
+      "proglumetacina",
+      "sulindac",
+      "tenoxicam",
+      "nimesulide"
+    ],
+    "fans_associazione_fissa": [
+      "ibuprofene_codeina"
+    ]
+  },
+  "inclusion_criteria": {
+    "description": "La prescrizione dei farmaci antinfiammatori non steroidei a carico del SSN è limitata alle seguenti condizioni patologiche",
+    "conditions": [
+      {
+        "field": "artropatie_base_connettivita",
+        "description": "Artropatie su base connettivitica",
+        "applies_to": "all fans except nimesulide special rules, ibuprofene_codeina special rules"
+      },
+      {
+        "field": "osteoartrosi_fase_algica",
+        "description": "Osteoartrosi in fase algica o infiammatoria"
+      },
+      {
+        "field": "dolore_neoplastico",
+        "description": "Dolore neoplastico"
+      },
+      {
+        "field": "attacco_acuto_gotta",
+        "description": "Attacco acuto di gotta"
+      }
+    ],
+    "source": "Nota_66 .pdf p.2"
+  },
+  "nimesulide_special_rules": {
+    "indication": "Trattamento di breve durata del dolore acuto nell'ambito delle patologie sopra descritte",
+    "note": "Nimesulide: solo dolore acuto, breve durata. Uso cronico NON indicato.",
+    "hepatotoxicity_warning": "Nimesulide ha un rischio epatotossico maggiore degli altri FANS. Controindicata in epatopatici, abuso alcol, altri farmaci epatotossici.",
+    "ema_restriction": "EMA 2001 riesame: uso sistemico non sia prolungato; seconda linea per dolore acuto",
+    "source": "Nota_66 .pdf p.4 Particolari avvertenze"
+  },
+  "ibuprofene_codeina_special_rules": {
+    "indication": "Trattamento di breve durata del dolore acuto di entità moderata nei soggetti in cui il sintomo non sia adeguatamente controllato con altri antidolorifici assunti singolarmente.",
+    "source": "Nota_66 .pdf p.2 lower table"
+  },
+  "exclusions": [
+    {
+      "rule_id": "N66_EXCL_HARD_001",
+      "description": "Nimesulide: hepatic disease / alcohol abuse / other hepatotoxic drugs",
+      "condition": "drug = nimesulide AND (malattia_epatica OR abuso_alcol OR farmaci_epatotossici)",
+      "action": "NON_RIMBORSABILE",
+      "pdf_verbatim": "nimesulide ha un rischio epatotossico maggiore degli altri FANS ed è controindicata nei pazienti epatopatici, in quelli con una storia di abuso di alcol e negli assuntori di altri farmaci epatotossici.",
+      "source": "Nota_66 .pdf p.4"
+    },
+    {
+      "rule_id": "N66_EXCL_HARD_002",
+      "description": "All NSAIDs: severe cardiac failure",
+      "condition": "scompenso_cardiaco_grave = TRUE",
+      "action": "NON_RIMBORSABILE",
+      "pdf_verbatim": "Tutti i FANS sono controindicati nello scompenso cardiaco grave.",
+      "source": "Nota_66 .pdf p.4"
+    },
+    {
+      "rule_id": "N66_EXCL_HARD_003",
+      "description": "COX-2 selective inhibitors: ischemic heart disease, cerebrovascular disease, peripheral artery disease, moderate/severe cardiac failure",
+      "condition": "drug IN cox2_inhibitors AND (cardiopatia_ischemica OR patologie_cerebrovascolari OR arteriopatie_periferiche OR scompenso_cardiaco_moderato_grave)",
+      "cox2_drugs": ["celecoxib", "etoricoxib"],
+      "action": "NON_RIMBORSABILE",
+      "pdf_verbatim": "Gli inibitori selettivi della ciclossigenasi 2 sono controindicati nella cardiopatia ischemica, nelle patologie cerebrovascolari, nelle patologie arteriose periferiche e nello scompenso cardiaco moderato e grave.",
+      "source": "Nota_66 .pdf p.4"
+    }
+  ],
+  "guidance_warnings": [
+    {
+      "rule_id": "N66_GWARN_001",
+      "description": "Nimesulide general hepatotoxicity caution and short-term use",
+      "type": "GUIDANCE_WARN"
+    },
+    {
+      "rule_id": "N66_GWARN_002",
+      "description": "Ibuprofene/codeina combination: opioid side effects, dependency risk",
+      "type": "GUIDANCE_WARN"
+    }
+  ],
+  "note_on_routing": {
+    "description": "Nota 66 is a routing destination from Nota 01. When a patient is prescribed misoprostolo + diclofenac, Nota 01 routes to Nota 66 for eligibility evaluation.",
+    "source": "Nota_01.pdf p.2 footnote + N01_EXCEPT_001 implementation"
+  },
+  "rules": [
+    {"rule_id": "N66_SCOPE_001", "phase": 1, "type": "SCOPE"},
+    {"rule_id": "N66_INCL_001", "phase": 4, "type": "INCLUSION"},
+    {"rule_id": "N66_INCL_002", "phase": 4, "type": "INCLUSION"},
+    {"rule_id": "N66_INCL_003", "phase": 4, "type": "INCLUSION"},
+    {"rule_id": "N66_EXCL_HARD_001", "phase": 3, "type": "EXCL_HARD"},
+    {"rule_id": "N66_EXCL_HARD_002", "phase": 3, "type": "EXCL_HARD"},
+    {"rule_id": "N66_EXCL_HARD_003", "phase": 3, "type": "EXCL_HARD"},
+    {"rule_id": "N66_GWARN_001", "phase": 7, "type": "GUIDANCE_WARN"},
+    {"rule_id": "N66_GWARN_002", "phase": 7, "type": "GUIDANCE_WARN"}
+  ]
+}

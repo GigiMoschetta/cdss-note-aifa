@@ -1,0 +1,17 @@
+1. DECISIONE
+   Il farmaco è: INDIRIZZATO ALLA NOTA 66
+   Dichiara che il farmaco è INDIRIZZATO ALLA NOTA 66 secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco è soggetto alla Nota 66 in quanto, come indicato nella FONTE 7, la prescrizione a carico del SSN è limitata alla prevenzione delle complicanze gravi del tratto gastrointestinale superiore in trattamento cronico con farmaci antinfiammatori non steroidei (FANS) e in terapia antiaggregante con ASA a basse dosi. Inoltre, come riportato nella FONTE 7, il trattamento cronico con i FANS può determinare un aumentato rischio di ulcera peptica e delle sue complicanze gravi (emorragia, perforazione, ostruzione).
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   Dati completi.
+
+5. FONTI
+- Nota_01.pdf, p. 2
+- Nota_01.pdf, p. 1
+- Nota_01.pdf, p. 3

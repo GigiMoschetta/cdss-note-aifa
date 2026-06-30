@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-05-07T14:11:43",
+  "elapsed_seconds": 3.99,
+  "embedding_model": "paraphrase-multilingual-mpnet-base-v2",
+  "chunking_params": {
+    "target_chars": 1800,
+    "overlap_sents": 2,
+    "min_block_chars": 15
+  },
+  "db_dir": "/home/gigimoschetta/Desktop/Tesi_update/Tesi Triennale/Note_AIFA/rag_pipeline/chroma_db",
+  "pdf_dir": "/home/gigimoschetta/Desktop/Tesi_update/Tesi Triennale/Note_AIFA",
+  "files": [
+    {
+      "pdf_file": "Nota_01.pdf",
+      "nota_id": "01",
+      "n_blocks": 74,
+      "n_sentences": 113,
+      "n_chunks": 11,
+      "n_upserted": 11,
+      "elapsed_s": 0.71
+    },
+    {
+      "pdf_file": "Nota_66.pdf",
+      "nota_id": "66",
+      "n_blocks": 95,
+      "n_sentences": 207,
+      "n_chunks": 22,
+      "n_upserted": 22,
+      "elapsed_s": 0.81
+    },
+    {
+      "pdf_file": "nota-13.pdf",
+      "nota_id": "13",
+      "n_blocks": 95,
+      "n_sentences": 179,
+      "n_chunks": 28,
+      "n_upserted": 28,
+      "elapsed_s": 1.03
+    },
+    {
+      "pdf_file": "nota-97.pdf",
+      "nota_id": "97",
+      "n_blocks": 92,
+      "n_sentences": 123,
+      "n_chunks": 10,
+      "n_upserted": 10,
+      "elapsed_s": 0.41
+    },
+    {
+      "pdf_file": "nota-97-all-1.pdf",
+      "nota_id": "97",
+      "n_blocks": 35,
+      "n_sentences": 9,
+      "n_chunks": 7,
+      "n_upserted": 7,
+      "elapsed_s": 0.28
+    },
+    {
+      "pdf_file": "nota-97-all-2.pdf",
+      "nota_id": "97",
+      "n_blocks": 132,
+      "n_sentences": 74,
+      "n_chunks": 13,
+      "n_upserted": 13,
+      "elapsed_s": 0.48
+    },
+    {
+      "pdf_file": "nota-97-all-3.pdf",
+      "nota_id": "97",
+      "n_blocks": 34,
+      "n_sentences": 28,
+      "n_chunks": 6,
+      "n_upserted": 6,
+      "elapsed_s": 0.26
+    }
+  ],
+  "totals": {
+    "n_pdfs": 7,
+    "n_chunks": 97,
+    "n_upserted": 97,
+    "n_sentences": 733
+  }
+}

@@ -1,0 +1,19 @@
+1. DECISIONE
+   Il farmaco è: NON_DETERMINABILE
+   Dichiara che il farmaco è NON_DETERMINABILE secondo la Nota AIFA valutata.
+
+2. MOTIVAZIONE
+   Il farmaco ibuprofene è stato valutato e la decisione di NON_DETERMINABILE è stata presa in base alle informazioni presenti nella Nota AIFA. Come indicato nella FONTE 1, l'ibuprofene può comportare un lieve aumento del rischio di eventi trombotici, ma a dosi basse non aumenta il rischio di infarto miocardico. Inoltre, come riportato nella FONTE 2, l'ibuprofene è considerato il farmaco meglio tollerato tra quelli valutati. Tuttavia, come indicato nella FONTE 3, la combinazione di FANS e acido acetilsalicilico a basso dosaggio aumenta il rischio di effetti gastrointestinali.
+
+3. RACCOMANDAZIONI
+   Nessuna raccomandazione aggiuntiva.
+
+4. DATI MANCANTI
+   L'indicazione clinica è assente e potrebbe cambiare la copertura se fornita.
+
+5. FONTI
+- Nota_66.pdf, p. 4
+- Nota_66.pdf, p. 2
+- Nota_66.pdf, p. 1
+- Nota_66.pdf, p. 3
+- Nota_66.pdf, p. 5
