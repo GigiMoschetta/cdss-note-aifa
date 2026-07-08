@@ -1,0 +1,563 @@
+%% =============================================================
+%%  Capitolo 2 — Fondamenti
+%%  Sistemi a regole, retrieval-augmented generation
+%%  e approcci neuro-simbolici
+%%
+%%  Tesi di Laurea Triennale — Francesco Zamar
+%%  Università degli Studi di Trieste, DIA
+%%  Relatore: Prof. Andrea De Lorenzo
+%%  A.A. 2025/2026
+%% =============================================================
+
+\chapter{Fondamenti}
+\label{ch:background}
+
+Il \Cref{ch:contesto} ha mostrato perché la verifica di una Nota AIFA (Agenzia Italiana del Farmaco) è un
+problema clinico e regolatorio insieme, e perché un CDSS (\emph{Clinical Decision Support System}) rule-based puro,
+pur essendo lo stato dell'arte nei gestionali italiani, non basta a produrre
+quella spiegazione tracciabile che il medico richiede di fronte a una decisione
+che giudica controintuitiva. Per costruire un sistema che affronti entrambi i
+limiti servono tre strumenti tecnici, di cui questo capitolo offre un'esposizione
+mirata al solo livello di dettaglio che i capitoli successivi assumeranno come
+acquisito. Il primo è un linguaggio per rappresentare l'incertezza clinica
+quando un parametro di laboratorio è assente: la logica trivalente di Kleene,
+discussa nella \Cref{sec:rule-based} insieme al paradigma dei sistemi a regole
+che la ospita. Il secondo è il meccanismo con cui ancorare le spiegazioni al
+testo normativo ufficiale invece che alla memoria parametrica di un modello
+generativo: la \Cref{sec:rag} descrive l'architettura RAG e le sue varianti di
+retrieval. Il terzo è il framework concettuale che permette di combinare i due:
+la \Cref{sec:neurosymbolic} colloca il sistema nel paesaggio degli approcci
+neuro-simbolici e motiva la scelta dell'accoppiamento debole. Il capitolo si
+chiude con il vocabolario delle metriche che ricompariranno nel
+\Cref{ch:valutazione}.
+
+
+% ------------------------------------------------------------------
+\section{Sistemi a regole e reasoning simbolico}
+\label{sec:rule-based}
+% ------------------------------------------------------------------
+
+La nozione di ragionamento automatico su base simbolica ha radici profonde
+nell'informatica e nella logica matematica. Un sistema a regole, detto
+anche \emph{sistema di produzione} o \emph{rule engine}, rappresenta la
+conoscenza come un insieme di proposizioni condizionali della forma
+\textit{se condizione allora azione}, che un motore di inferenza valuta
+sistematicamente su un insieme di fatti~\cite{hripcsak1994arden}. La
+semplicità della struttura nasconde una potenza espressiva considerevole: ogni
+regola è leggibile da un esperto di dominio, ogni passo inferenziale è
+tracciabile e ogni decisione può essere motivata elencando le regole che
+hanno contribuito ad attivarla. Queste proprietà rendono i sistemi a regole
+particolarmente adatti a contesti safety-critical, dove la trasparenza del
+processo decisionale non è un lusso ma un requisito
+normativo~\cite{greenes2007cdss}.
+
+Il meccanismo di inferenza più comune nei sistemi a regole orientati ai fatti
+è il \emph{forward chaining}: partendo dai fatti noti, il motore cerca le
+regole le cui condizioni siano soddisfatte, ne applica le azioni, aggiunge i
+nuovi fatti all'insieme di lavoro e itera fino a quando non è più possibile
+attivare alcuna regola. L'alternativa, il \emph{backward chaining}, parte
+dall'obiettivo da dimostrare e cerca a ritroso le condizioni che lo
+implicano; è la strategia tipica dei sistemi Prolog-like e degli oracoli
+di interrogazione. Il forward chaining è più naturale per la verifica di
+ammissibilità normativa, dove si parte da un insieme di parametri clinici
+noti e si vuole determinare se soddisfano cumulativamente i criteri di una
+Nota AIFA: il motore applica le regole nell'ordine in cui i fatti
+si rendono disponibili, senza bisogno di conoscere a priori l'obiettivo.
+
+Una proprietà del forward chaining rilevante per l'applicazione clinica è
+la \emph{monotonicità} dell'inferenza rispetto all'acquisizione di nuovi
+dati: aggiungere un fatto all'insieme di lavoro non può rendere false le
+conclusioni già raggiunte a meno che non si disponga di regole di
+retrazione esplicita. Questa caratteristica, nota anche come \emph{closed-world
+monotonicity} nel senso in cui l'insieme dei fatti cresce ma non contrae
+le conclusioni già validate, è importante perché garantisce che la
+decisione prodotta dal rule engine rimanga stabile durante la sessione
+clinica, finché non arrivano nuovi dati contraddittori.
+
+% ──────────────────────────────────────────────────────
+\subsection{Logica di Kleene a tre valori}
+\label{subsec:kleene}
+% ──────────────────────────────────────────────────────
+
+La logica classica binaria postula che ogni proposizione sia vera o falsa.
+In un contesto clinico reale, questo assunto è quasi sempre violato: un
+parametro di laboratorio può essere non ancora disponibile, un referto può
+essere atteso, un campo della cartella clinica può non essere stato compilato.
+Un sistema binario che gestisce queste situazioni come \emph{false} è
+strutturalmente inadeguato, perché equipara l'assenza di informazione alla
+confutazione. La logica trivalente di Kleene (K3)~\cite{kleene1952introduction}
+introduce un terzo valore, convenzionalmente indicato come $\mathbf{U}$
+(\emph{Undefined} o \emph{Unknown}), che denota una proposizione il cui valore
+di verità non è ancora determinabile. Bochvar aveva formulato
+indipendentemente un calcolo analogo~\cite{bochvar1938}, ma è la
+caratterizzazione algebrica di Kleene a essere adottata nei sistemi a regole
+moderni per la sua coerenza con le operazioni proposizionali standard.
+
+Formalmente, sia $\mathcal{V} = \{\mathbf{T}, \mathbf{F}, \mathbf{U}\}$
+l'insieme dei valori di verità. Le operazioni fondamentali si definiscono
+come estensione delle tavole di verità classiche con il principio di
+minima informazione: se almeno un operando è $\mathbf{U}$ e il risultato
+non è determinabile dagli altri operandi, il risultato è $\mathbf{U}$.
+Le tavole di verità per congiunzione e disgiunzione rispettano questo principio:
+\[
+  A \land B = \min(A,\, B) \quad\text{e}\quad A \lor B = \max(A,\, B)
+\]
+rispetto all'ordine $\mathbf{F} < \mathbf{U} < \mathbf{T}$. La negazione
+si comporta classicamente su $\mathbf{T}$ e $\mathbf{F}$, mentre
+$\lnot\mathbf{U} = \mathbf{U}$. Alcune proprietà notevoli emergono
+immediatamente: $A \land \mathbf{F} = \mathbf{F}$ indipendentemente da $A$,
+il che significa che una condizione falsificante nota è sufficiente a
+determinare un risultato negativo anche in presenza di dati mancanti; dualmente,
+$A \lor \mathbf{T} = \mathbf{T}$ indipendentemente da $A$.
+
+Oltre all'ordine di verità, K3 ammette un distinto \emph{ordine informativo}
+$\sqsubseteq$ definito da $\mathbf{U} \sqsubseteq \mathbf{T}$ e
+$\mathbf{U} \sqsubseteq \mathbf{F}$, con $\mathbf{T}$ e $\mathbf{F}$
+incomparabili tra loro. Rispetto a $\sqsubseteq$, le operazioni $\land$,
+$\lor$ e $\lnot$ sono monotone: se $A \sqsubseteq A'$ e $B \sqsubseteq B'$,
+allora $A \land B \sqsubseteq A' \land B'$ e $A \lor B \sqsubseteq A' \lor B'$.
+Operativamente questo significa che acquisire nuovi dati clinici, cioè
+sostituire $\mathbf{U}$ con un valore determinato, raffina monotonicamente
+l'esito della formula complessiva, senza mai ribaltarne arbitrariamente il
+segno: il sistema può passare da $\mathbf{U}$ a $\mathbf{T}$ o a $\mathbf{F}$,
+ma sempre in modo coerente con la struttura logica delle regole.
+
+Nel sistema di questa tesi, il valore $\mathbf{U}$ corrisponde al campo clinico
+non compilato o al parametro non ancora misurato. Quando tutte le condizioni
+di una Nota AIFA producono $\mathbf{T}$, il rule engine emette la decisione
+\decision{RIMBORSABILE}; quando almeno una condizione produce $\mathbf{F}$
+e nessun cammino alternativo è percorribile, emette \decision{NON\_RIMBORSABILE};
+quando la presenza di $\mathbf{U}$ in posizione critica rende il risultato
+non determinabile con i dati disponibili, emette \decision{NON\_DETERMINABILE}.
+Questa tricotomia è un'istanza diretta della semantica K3 e la sua
+implementazione nel motore è verificata analiticamente da test di unità
+sulle tavole di verità.
+
+Il quadro storico dei sistemi esperti a regole in medicina (da MYCIN
+\cite{shortliffe1974mycin} ad Arden Syntax \cite{hripcsak1994arden} ai CDSS
+moderni \cite{greenes2007cdss,berner2007cdss,sutton2020overview}) è già
+stato richiamato nella \Cref{sec:cdss-overview}. Qui basta osservare che i
+sistemi rule-based puri offrono tracciabilità completa e aggiornabilità
+normativa ma soffrono di rigidità espressiva, mentre i modelli di
+apprendimento automatico offrono espressività ma soffrono di opacità: nessuna
+delle due famiglie è da sola sufficiente per un sistema che debba essere allo
+stesso tempo corretto per costruzione sul piano normativo e capace di produrre
+una spiegazione in linguaggio naturale auditabile. È la motivazione che porta,
+nella \Cref{sec:neurosymbolic}, alla scelta neuro-simbolica.
+
+
+% ------------------------------------------------------------------
+\section{Recupero e generazione condizionata}
+\label{sec:rag}
+% ------------------------------------------------------------------
+
+I grandi modelli linguistici (\emph{Large Language Model}, LLM) sono addestrati su corpora testuali di
+dimensioni enormi e acquisiscono conoscenza del mondo in forma distribuita
+nei loro parametri. Questa \emph{conoscenza parametrica} è però statica:
+il modello non può aggiornare autonomamente ciò che sa senza un nuovo ciclo
+di addestramento, e non ha accesso diretto a documenti che non ha visto
+durante il training. In un dominio a conoscenza chiusa come le Note AIFA,
+dove i criteri di rimborsabilità cambiano per decreto ministeriale e devono
+essere applicati nella loro formulazione letterale, fare affidamento
+esclusivo sulla memoria parametrica del modello produce due categorie di
+errori: l'allucinazione di criteri inesistenti e l'omissione di criteri
+aggiornati dopo la data di cutoff~\cite{ji2023hallucination}. La
+\emph{Retrieval-Augmented Generation} (RAG) è stata proposta da Lewis et al.
+come soluzione a questo problema: invece di rispondere esclusivamente da
+memoria, il modello riceve come contesto i passaggi documentali recuperati
+da un corpus esterno che il sistema può aggiornare indipendentemente
+dall'addestramento~\cite{lewis2020rag}.
+
+% ──────────────────────────────────────────────────────
+\subsection{Architettura di un sistema RAG}
+\label{subsec:rag-arch}
+% ──────────────────────────────────────────────────────
+
+Una pipeline RAG canonica si articola in due fasi temporalmente separate.
+La fase \emph{offline}, eseguita una tantum o ad ogni aggiornamento
+del corpus, costruisce un indice dei documenti: il testo viene segmentato
+in unità, ciascuna unità viene convertita in un vettore numerico tramite un
+modello di embedding, e i vettori vengono memorizzati in un database
+specializzato per la ricerca per similarità. La fase \emph{online}, eseguita
+ad ogni interrogazione, converte la domanda dello stesso modello di
+embedding in un vettore query, recupera i vettori di documento più simili,
+e fornisce al modello generativo tanto la domanda originale quanto i passaggi
+recuperati come contesto esplicito. Il modello produce così una risposta
+che è condizionata sui documenti, non soltanto sulla propria memoria
+parametrica~\cite{gao2023ragsurvey}.
+
+Un sistema RAG combina quindi un componente di recupero, che seleziona dai
+documenti i passaggi rilevanti per una domanda, con un modello generativo,
+che produce una risposta condizionata su quei passaggi. Quando i documenti
+hanno valore normativo (come accade per le Nota AIFA, dove ogni frase
+è vincolante) questa architettura riduce gli errori di allucinazione e,
+soprattutto, fornisce una catena di citazioni che il revisore umano può
+controllare in tempo lineare rispetto al numero di fonti citate.
+
+% ──────────────────────────────────────────────────────
+\subsection{Chunking e indicizzazione}
+\label{subsec:chunking}
+% ──────────────────────────────────────────────────────
+
+Il \emph{chunking}, la segmentazione del testo in unità di dimensione
+adatta all'embedding, è una delle scelte progettuali più critiche in
+una pipeline RAG, perché condiziona sia la qualità del retrieval sia la
+lunghezza del contesto consegnato al modello generativo. Unità troppo grandi
+contengono più informazione ma diluiscono il segnale semantico e rischiano
+di superare la finestra di contesto del modello; unità troppo piccole sono
+più precise ma possono separare passaggi che il modello deve leggere insieme
+per costruire una risposta coerente.
+
+Le strategie di chunking si suddividono grossolanamente in due famiglie.
+Il \emph{fixed-size chunking} divide il testo ogni $w$ token, eventualmente
+con una finestra di sovrapposizione di ampiezza $s < w$ per preservare la
+continuità semantica ai confini: produce chunk di dimensione prevedibile e
+si implementa in modo semplice, ma ignora la struttura del documento.
+Il \emph{semantic chunking} invece sfrutta la struttura del documento
+(paragrafi, sezioni, elenchi) per produrre unità semanticamente coerenti;
+richiede un analizzatore sintattico o una conoscenza della struttura del
+documento, ma produce chunk che corrispondono a unità informative discrete,
+particolarmente utili con testi normativi dove ogni paragrafo di solito
+esprime un criterio autonomo.
+
+L'indicizzazione dei chunk avviene in un \emph{database vettoriale}, una
+struttura dati specializzata per la ricerca per similarità in spazi ad
+alta dimensione. I database vettoriali moderni implementano algoritmi di
+indicizzazione approssimata come HNSW (\emph{Hierarchical Navigable Small
+World})~\cite{chromadb}, che costruiscono un grafo navigabile a più livelli
+gerarchici e permettono di trovare i vicini approssimati di un vettore query
+in tempo logaritmico rispetto alla dimensione del corpus, a fronte di un
+costo di costruzione dell'indice proporzionale al numero di chunk.
+
+% ──────────────────────────────────────────────────────
+\subsection{Embedding, similarità densa e reranking}
+\label{subsec:embedding}
+% ──────────────────────────────────────────────────────
+
+Il modello di embedding è il componente che trasforma testo in vettori.
+I modelli basati su trasformatori a doppio encoder (\emph{bi-encoder})
+producono una rappresentazione densa per ogni sequenza di input calcolando
+l'embedding da una singola passata attraverso il modello~\cite{vaswani2017attention}.
+L'architettura originale del trasformatore, introdotta da Vaswani et al.
+con il meccanismo di \emph{self-attention}~\cite{vaswani2017attention}, ha
+reso possibile la costruzione di encoder contestuali di alta qualità: il
+vettore di embedding di un token non è fisso ma dipende da tutti gli altri
+token della sequenza, permettendo di catturare relazioni semantiche a lunga
+distanza. BERT~\cite{devlin2019bert} ha poi mostrato come il pre-addestramento
+su grandi corpora tramite predizione mascherata produca rappresentazioni
+trasferibili che, con un minimo di fine-tuning, raggiungono prestazioni
+all'avanguardia su decine di task di elaborazione del linguaggio naturale (\emph{Natural Language Processing}, NLP).
+
+Sentence-BERT (SBERT)~\cite{reimers2019sbert} ha risolto il problema
+specifico della similarità semantica fra frasi: BERT originale produce
+embedding per token, non per sequenze, e la media o l'aggregazione dei token
+embedding produce rappresentazioni di scarsa qualità per il confronto
+semantico inter-frase. SBERT addestra reti siamesi con pooling sul token
+\texttt{[CLS]} o con mean-pooling sull'output dell'encoder, ottimizzando
+esplicitamente la similarità coseno fra coppie di frasi simili e dissimili.
+Il modello \embedmodel{}, adottato in questo lavoro per l'indicizzazione
+dei chunk, è la variante multilingue di SBERT addestrata su 50 lingue,
+che garantisce la coerenza delle rappresentazioni fra il testo normativo
+italiano e le domande cliniche degli utenti.
+
+La similarità fra un vettore query $\mathbf{q}$ e un vettore chunk
+$\mathbf{d}$ si misura con la \emph{cosine similarity}:
+\[
+  \text{cos}(\mathbf{q}, \mathbf{d}) = \frac{\mathbf{q} \cdot \mathbf{d}}{\|\mathbf{q}\|\,\|\mathbf{d}\|}
+\]
+che varia tra $-1$ e $1$ ed è invariante per riscalamento dei vettori. Quando
+i vettori sono già normalizzati a norma unitaria, come accade nell'implementazione
+standard di SBERT e dei database vettoriali, la cosine similarity si riduce
+al prodotto scalare $\mathbf{q} \cdot \mathbf{d}$, che può essere calcolato
+efficientemente con operazioni BLAS e permette la ricerca del nearest neighbor
+approssimato mediante strutture HNSW.
+
+Il retrieval denso tramite bi-encoder è rapido ma approssimato: il bi-encoder
+codifica query e documento indipendentemente, senza modellare l'interazione
+fra i due. Un approccio alternativo, storicamente dominante prima dell'era
+degli embedding neurali, è il \emph{retrieval lessicale} basato sulla
+frequenza dei termini. Il modello BM25 (Best Match 25, nella tradizione
+del probabilistic relevance framework di Robertson e Zaragoza) assegna ad
+ogni documento un punteggio che tiene conto della frequenza del termine nella
+query all'interno del documento (\emph{term frequency}, TF) e della rarità
+del termine nel corpus (\emph{inverse document frequency}, IDF), con una
+funzione di saturazione che attenua l'effetto dei documenti molto lunghi.
+Il punteggio BM25 per un documento $d$ rispetto a una query con termine $t$
+è:
+\[
+  \text{BM25}(d,t) = \text{IDF}(t) \cdot
+    \frac{\text{TF}(t,d) \cdot (k_1+1)}{\text{TF}(t,d) + k_1 \cdot \left(1 - b + b \cdot \frac{|d|}{\overline{|d|}}\right)}
+\]
+dove $k_1$ e $b$ sono iperparametri che controllano rispettivamente la
+saturazione della frequenza e la normalizzazione per lunghezza, e
+$\overline{|d|}$ è la lunghezza media dei documenti nel corpus. BM25 eccelle
+quando la query contiene termini tecnici rari e specifici, come i codici
+ATC (\emph{Anatomical Therapeutic Chemical}) o i nomi di molecole nelle Note AIFA, ma fatica con le parafrasi
+semantiche, dove il documento risponde alla domanda ma usa vocabolario
+diverso. Il retrieval denso tramite embedding ha il comportamento opposto:
+cattura la vicinanza semantica ma può perdere l'ancoraggio lessicale esatto.
+
+Questa complementarietà ha portato allo sviluppo di pipeline di retrieval
+ibride che combinano il punteggio BM25 e il punteggio coseno, e di
+un secondo stadio di ordinamento a latenza maggiore ma precisione più alta:
+il \emph{cross-encoder reranker}~\cite{nogueira2019passage}. Mentre il
+bi-encoder encode query e documento separatamente, il cross-encoder li
+concatena come singolo input al modello, permettendo al meccanismo di
+self-attention di modellare direttamente le interazioni fra i token della
+query e quelli del chunk. Il risultato è uno score di rilevanza più
+preciso, a costo di $O(k)$ passate forward aggiuntive per i $k$ candidati
+da riordinare. La pipeline \emph{two-stage} (bi-encoder a bassa latenza
+per il recupero di un sovrainsieme di $K$ candidati, seguito da cross-encoder
+per la selezione finale dei top-$k$) è diventata l'architettura standard
+per i sistemi RAG ad alta precisione~\cite{gao2023ragsurvey}. In questo
+lavoro, il cross-encoder \reranker{} è addestrato in italiano su coppie di
+similarità semantica e opera come secondo stadio di selezione sui chunk
+preliminarmente recuperati dal database vettoriale.
+
+
+% ------------------------------------------------------------------
+\section{Approcci neuro-simbolici}
+\label{sec:neurosymbolic}
+% ------------------------------------------------------------------
+
+Un sistema \emph{neuro-simbolico} integra componenti di apprendimento
+automatico (tipicamente reti neurali profonde) con componenti di
+ragionamento simbolico (tipicamente regole, ontologie o logiche formali).
+La motivazione è duplice: i sistemi puramente simbolici sono precisi e
+auditabili ma fragili di fronte a dati rumorosi o incompleti e incapaci di
+gestire input non strutturati come il testo libero; i sistemi puramente
+neurali generalizzano bene e gestiscono l'incertezza, ma producono ragionamenti
+opachi e sono inclini ad allucinazioni su fatti specifici di dominio. Un
+sistema neuro-simbolico mira a ereditare i pregi di entrambi, e la sua
+realizzazione concreta dipende dal tipo e dal grado di accoppiamento fra le
+due componenti~\cite{yu2023neuro}.
+
+La letteratura distingue tradizionalmente fra accoppiamento debole
+(\emph{loose coupling}) e accoppiamento stretto (\emph{tight coupling}).
+Nell'accoppiamento debole, i due sistemi interagiscono tramite interfacce
+ben definite: il modulo simbolico riceve l'output del modulo neurale (ad
+esempio un'entità estratta da testo) e vi applica regole; oppure il modulo
+neurale riceve l'output del modulo simbolico (ad esempio un fact verificato)
+e lo usa come contesto aggiuntivo. I due moduli sono addestrabili e
+verificabili in isolamento. Nell'accoppiamento stretto, la componente neurale
+e quella simbolica sono interconnesse in modo end-to-end, spesso con
+gradienti che fluiscono attraverso entrambe: è il caso di DeepProbLog, dove
+le probabilità di regole logiche sono parametri appresi dalla rete
+neurale~\cite{deraedt2019deepproblog}, oppure di sistemi dove i vincoli
+simbolici sono incorporati come strati differenziabili.
+
+Nell'ambito clinico, Yu et al. argomentano che l'accoppiamento debole è
+spesso preferibile perché preserva la verificabilità indipendente dei due
+moduli~\cite{yu2023neuro}: un auditor può ispezionare le regole simboliche
+senza dover comprendere i pesi della rete neurale, e viceversa. Questa
+proprietà è particolarmente preziosa in contesti regolamentati come la
+rimborsabilità farmaceutica, dove il medico prescrittore deve poter
+giustificare la decisione di fronte a un controllo normativo senza fare
+riferimento a meccanismi opachi. Il sistema descritto in questa tesi adotta
+un accoppiamento debole con separazione architettuale esplicita: la componente
+simbolica, il rule engine che decide la rimborsabilità, non riceve
+mai output dalla componente neurale né viene influenzata da essa; la
+componente neurale, la pipeline RAG che produce la spiegazione in
+linguaggio naturale, riceve invece i risultati della componente simbolica
+come contesto strutturato da citare e amplificare.
+
+La separazione non è soltanto una scelta di ingegneria del software: è una
+garanzia di correttezza formale. La decisione di rimborsabilità è una
+funzione deterministica dei dati clinici del paziente e del testo della Nota
+AIFA; non dipende dal modello linguistico, dalla sua versione, dal suo
+sampling o dal suo stato interno. Questo è esattamente ciò che differenzia
+il sistema sia dai CDSS rule-based puri, che non producono spiegazione in
+linguaggio naturale, sia dai sistemi RAG clinici, che non garantiscono
+la correttezza normativa della decisione. I modelli basati su grandi modelli
+linguistici come Med-PaLM~\cite{singhal2023medpalm} o i sistemi LLM per la
+medicina in generale~\cite{thirunavukarasu2023llm} ottengono risultati
+impressionanti su benchmark clinici, ma la loro correttezza rimane
+probabilistica e non auditabile riga per riga; non sono adatti a sostituire
+un sistema normativo dove ogni errore ha conseguenze legali e sanitarie.
+
+La separazione fra decisione deterministica ed esplicazione probabilistica
+è pertanto non una limitazione del sistema ma il suo principale vantaggio
+architetturale: essa rende la componente di decisione formalmente verificabile
+a prescindere dalla qualità della generazione testuale, e rende la componente
+di generazione migliorabile o sostituibile senza toccare la logica normativa.
+
+
+% ------------------------------------------------------------------
+\section{Valutazione di sistemi RAG e CDSS}
+\label{sec:metriche-rag}
+% ------------------------------------------------------------------
+
+Valutare un sistema RAG in un contesto clinico non è riducibile alla misura
+di un'unica cifra. Il sistema deve essere corretto nella decisione, preciso
+nel retrieval, fedele alle fonti nella generazione e utile all'utente nel
+complesso. Questi quattro aspetti sono parzialmente indipendenti: un sistema
+può avere un retrieval perfetto e un LLM allucinante, oppure una generazione
+fluente che cita fonti inesistenti, oppure, come nel sistema di questa tesi,
+una decisione formalmente corretta e una spiegazione di qualità variabile.
+Le metriche che seguono, e che sono utilizzate nella valutazione quantitativa
+del \Cref{ch:valutazione}, devono essere intese non come giudici assoluti ma
+come sonde su dimensioni distinte del comportamento del sistema.
+
+% ──────────────────────────────────────────────────────
+\subsection{Metriche di retrieval}
+\label{subsec:metr-retrieval}
+% ──────────────────────────────────────────────────────
+
+La \emph{Recall@k} misura la frazione di documenti rilevanti effettivamente
+restituiti fra i $k$ risultati:
+\[
+  \text{Recall@}k = \frac{|D_k \cap \text{rel}(q)|}{|\text{rel}(q)|}
+\]
+dove $D_k$ è l'insieme dei chunk recuperati e $\text{rel}(q)$ l'insieme dei
+chunk di riferimento per la query $q$. Con $k$ grande la recall tende a crescere ma la
+precisione decade, perché il retriever include sempre più chunk non pertinenti
+che occupano la finestra di contesto del modello. La \emph{Precision@k}
+complementa la recall misurando la frazione di chunk recuperati che sono
+effettivamente rilevanti:
+\[
+  \text{Precision@}k = \frac{|D_k \cap \text{rel}(q)|}{k}
+\]
+Nel sistema di questa tesi, la Precision@3 e la Precision@5 sono
+particolarmente alte ($0{,}989$ e $0{,}970$ rispettivamente), il che indica
+che quasi tutti i chunk recuperati sono pertinenti. Questo risultato è
+spiegabile con la struttura delle Note AIFA, dove ogni chunk corrisponde a
+un criterio autonomo e i criteri non pertinenti sono raramente recuperati
+perché condividono poco vocabolario con la query del caso in esame.
+
+Il \emph{Mean Reciprocal Rank} (MRR) valuta la posizione del primo documento
+rilevante nella lista ordinata, mediata su tutte le query:
+\[
+  \text{MRR} = \frac{1}{|Q|} \sum_{q \in Q} \frac{1}{\text{rank}_1(q)}
+\]
+dove $\text{rank}_1(q)$ è la posizione del primo chunk rilevante per $q$.
+Un MRR pari a $1{,}0$ indica che il chunk rilevante è sempre in prima
+posizione: è il risultato osservato nel sistema di questa tesi, coerente
+con la struttura di retrieval two-stage dove il cross-encoder affina
+l'ordinamento del bi-encoder. Il \emph{Normalized Discounted Cumulative Gain}
+(NDCG@k) generalizza MRR pesando la posizione di tutti i documenti rilevanti
+con una funzione logaritmica decrescente, ma risulta meno informativo in
+questo contesto perché il corpus ha una struttura binaria (un chunk è
+rilevante o non lo è) e la Recall@k ne cattura già il comportamento saliente.
+
+% ──────────────────────────────────────────────────────
+\subsection{Metriche di fedeltà}
+\label{subsec:metr-faithfulness}
+% ──────────────────────────────────────────────────────
+
+La \emph{fedeltà} (\emph{faithfulness}) di una risposta misura in quale misura
+le affermazioni contenute nella risposta sono supportate dai chunk recuperati,
+indipendentemente dalla loro correttezza assoluta rispetto alla realtà. Una
+risposta può essere fattualmente corretta ma non fedele ai chunk (se il
+modello attinge alla propria memoria parametrica) o fedele ai chunk ma
+fattualmente errata (se i chunk stessi contengono un errore). In un contesto
+normativo, la fedeltà è la proprietà più critica, perché garantisce che la
+spiegazione prodotta dal sistema sia ancorata ai documenti ufficiali e non
+a inferenze autonome del modello.
+
+Il framework RAGAS~\cite{ragas2024} implementa la fedeltà come stima della
+frazione di affermazioni nella risposta entailed dai chunk di contesto: il
+modello LLM-giudice decompone prima la risposta in proposizioni atomiche,
+poi verifica per ciascuna se è logicamente implicata dal contesto recuperato,
+e infine calcola la proporzione delle proposizioni supportate. Questo approccio
+è semantico ma dipende dalla qualità dell'LLM-giudice e risente dell'ambiguità
+nelle definizioni di entailment, motivo per cui la versione \emph{strict},
+che richiede entailment letterale anziché semantico, è computata
+separatamente come limite superiore di rigore.
+
+Un approccio complementare si basa sull'inferenza del linguaggio naturale
+(\emph{Natural Language Inference}, NLI): un modello NLI multi-label (nel sistema di questa tesi il modello
+\nlimodel{}) classifica ogni frase della risposta come entailed, neutral
+o contraddittoria rispetto alla concatenazione dei chunk di contesto, e la
+fedeltà NLI è la proporzione di frasi entailed. L'NLI ha il vantaggio di
+essere locale e non dipendente dall'LLM-giudice, ma è più rigida della
+fedeltà semantica e tende a sottostimare la fedeltà quando la risposta
+parafrasa il testo normativo invece di citarlo letteralmente.
+
+% ──────────────────────────────────────────────────────
+\subsection{Qualità della risposta, compositi e statistica}
+\label{subsec:metr-quality}
+% ──────────────────────────────────────────────────────
+
+La fedeltà valuta la relazione fra risposta e contesto, ma non misura se
+la risposta sia utile per chi ha posto la domanda. La \emph{Answer Relevancy}
+di RAGAS~\cite{ragas2024} misura invece la coerenza fra la risposta e la
+domanda originale: il modello genera $n$ domande sintetiche a partire dalla
+risposta prodotta, le codifica come vettori di embedding, e calcola la
+similarità coseno media fra i vettori delle domande sintetiche e il vettore
+della domanda originale. Un punteggio alto indica che la risposta contiene
+l'informazione necessaria a rispondere alla domanda; uno basso segnala
+che la risposta è fuori tema o generica.
+
+QAEval~\cite{deutsch2021qaeval} offre un approccio alternativo alla valutazione
+della qualità basato su micro-domande: a partire dalla risposta di
+riferimento (\emph{gold answer}), viene generato un insieme di domande
+di verifica elementari, ciascuna delle quali sonda un fatto specifico
+della risposta attesa. La risposta candidata è poi valutata controllando
+quante di queste micro-domande ricevono la risposta corretta, producendo
+una misura di copertura fattuale fine-grained. Il QAEval F1 combina
+precision e recall sulle micro-domande analogamente a una misura di
+information extraction. Nel sistema di questa tesi il QAEval F1 medio
+è $0{,}172$, un valore basso che riflette la difficoltà di coprire
+tutti i dettagli normativi della risposta di riferimento con un modello locale di
+8 miliardi di parametri quantizzato a 4 bit (\llmmodel).
+
+Le metriche descritte finora sono eterogenee per scala, natura e peso
+diagnostico. Per produrre una valutazione globale del sistema occorre
+aggregarle in modo esplicito e giustificato. Il composito \emph{ALES}
+(\emph{Aggregated LLM Evaluation Score}) adottato in questa tesi è una
+media pesata di quattro componenti:
+\[
+  \text{ALES} = \alesalpha \cdot D + \alesbeta \cdot E + \alesgamma \cdot U + \alesdelta \cdot Q
+\]
+dove $D$ è il \emph{DecisionScore} (correttezza della decisione normativa),
+$E$ è l'\emph{EvidenceSupport} (fedeltà alle fonti, combinazione pesata con pesi
+efficaci $0{,}435$ per la copertura \emph{verbatim} a 3-grammi (il componente
+dominante), $0{,}174$ per l'entailment NLI e $0{,}261$ per la RAGAS
+faithfulness; la variante \emph{strict} non è prodotta dal backend RAGAS
+impiegato e non contribuisce al punteggio), $U$ è la \emph{ContextualUtility}
+(media pesata $0{,}75$ della \emph{context precision} e $0{,}25$ della
+\emph{context recall}, poiché la \emph{context relevancy} non è restituita dal
+backend RAGAS adottato) e $Q$ è la \emph{AnswerQuality} (combinazione $0{,}70$ di
+QAEval F1 e $0{,}30$ di Answer Relevancy). Il peso dominante assegnato a $D$ ($\alesalpha$) riflette
+la gerarchia di priorità del sistema: la correttezza della decisione normativa
+è il requisito non negoziabile, e gli altri componenti ne misurano la
+qualità della spiegazione. I valori dei pesi sono impostati come costanti nel
+modulo di valutazione e non vengono ottimizzati sui dati di test, per evitare
+di adattare la misura ai risultati.
+
+Poiché molte metriche producono proporzioni o medie su campioni di dimensione
+finita, la loro incertezza statistica deve essere quantificata per non
+confondere la variabilità campionaria con differenze sistemiche. Il metodo
+del \emph{bootstrap percentile}~\cite{efron1979bootstrap} ricampiona con
+rimpiazzo l'insieme dei $n$ casi per $B = 5000$ iterazioni e calcola
+l'intervallo di confidenza al 95\% come il 2,5° e il 97,5° percentile della
+distribuzione dei campioni bootstrap. Per le proporzioni binarie (come il
+\emph{pass rate} del rule engine) è disponibile anche l'intervallo esatto
+di Wilson~\cite{wilson1927ci}, che per proporzioni vicine a 0 o 1 è
+superiore al bootstrap percentile perché non richiede approssimazione normale.
+L'intervallo di Wilson per una proporzione osservata $\hat{p}$ su $n$
+osservazioni con livello di confidenza corrispondente a $z$ è:
+\[
+  \frac{\hat{p} + \frac{z^2}{2n} \pm z\sqrt{\frac{\hat{p}(1-\hat{p})}{n} + \frac{z^2}{4n^2}}}{1 + \frac{z^2}{n}}
+\]
+Con $\hat{p} = 1{,}000$ e $n = \goldn$ casi, l'intervallo di Wilson al 95\%
+è $[0{,}970;\,1{,}000]$: il rule engine ottiene una classificazione senza errori
+sul corpus di riferimento, con un limite inferiore conservativo del 97\%.
+
+
+I tre pilastri concettuali (reasoning simbolico con logica trivalente,
+pipeline RAG con retrieval two-stage, integrazione neuro-simbolica a basso
+accoppiamento) non sono stati scelti per completezza enciclopedica ma
+perché ciascuno risponde a un requisito preciso del sistema descritto nel
+\Cref{ch:progettazione}, dove i loro contorni concettuali diventano contorni
+architetturali e i loro vincoli formali diventano vincoli di sicurezza
+clinica.
+
+È anche il vocabolario di queste pagine a rendere formulabili le domande di
+ricerca. La logica trivalente fissa il significato delle tre decisioni che RQ1
+mette alla prova; le metriche di retrieval (Recall@$k$, MRR) sono le sonde di
+RQ2; le metriche di fedeltà e il composito ALES traducono in numeri le domande
+sulla spiegazione (RQ3 e RQ6) e sul giudizio complessivo (RQ7); gli intervalli
+di confidenza bootstrap e di Wilson danno alle risposte la cautela statistica
+che ciascuna richiede. Gli strumenti, insomma, non valgono per sé, ma per le
+domande che permettono di porre in modo misurabile.

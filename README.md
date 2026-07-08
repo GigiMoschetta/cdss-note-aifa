@@ -26,7 +26,7 @@ dataset *gold* di 122 casi clinici annotati manualmente.
 | `Note_AIFA/evaluation/` | Dataset gold, metriche, baseline, report dei risultati |
 | `Note_AIFA/demo/`, `Note_AIFA/webapp/` | Interfacce dimostrative (Streamlit e web app) |
 | `Note_AIFA/docker/`, `docker-compose.yml`, `Makefile` | Deployment e automazione |
-| `tesi/` | Elaborato finale: sorgenti LaTeX e PDF delle due versioni |
+| `tesi/` | Elaborato finale: sorgenti LaTeX e PDF delle versioni successive |
 
 Per i dettagli tecnici, il setup e i comandi vedere
 [`Note_AIFA/README.md`](Note_AIFA/README.md).
@@ -40,13 +40,16 @@ suite di test e ricalcola tutte le metriche.
 
 ## L'elaborato
 
-La cartella [`tesi/`](tesi/) contiene i PDF e i sorgenti LaTeX dell'elaborato in due
-versioni con lo stesso contenuto:
+La cartella [`tesi/`](tesi/) contiene i PDF e i sorgenti LaTeX delle versioni
+successive dell'elaborato:
 
-- `Tesi_Zamar_intro_aggiornata.pdf` — introduzione rivista e correzioni applicate
-  lungo tutto il testo;
+- `Tesi_Zamar_round2.pdf` — **versione corrente** (secondo round di revisione):
+  aggiunta la baseline LLM+RAG+reranker che chiude l'ablation di RQ5, verifica
+  puntuale dei numeri riportati, rifiniture di grafici e impaginazione;
 - `Tesi_Zamar_feedback_integrato.pdf` — indice e corpo riorganizzati attorno alle
-  domande di ricerca.
+  domande di ricerca;
+- `Tesi_Zamar_intro_aggiornata.pdf` — introduzione rivista e correzioni applicate
+  lungo tutto il testo.
 
 ---
 

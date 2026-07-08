@@ -61,14 +61,37 @@ Risposta:"""
 sys.path.insert(0, str(_ROOT))
 from evaluation.metrics._chroma_helpers import get_chroma_collection as _get_chroma_collection  # noqa: E402
 
+# Reranker variant (--rerank): same cross-encoder and two-stage parameters as
+# the production retriever (rag_pipeline/orchestrator/retriever.py): over-fetch
+# _FETCH_K candidates by cosine, rerank with the Italian cross-encoder, keep k.
+# This closes the RQ5 ablation gap: LLM+RAG+rerank, still without rule engine.
+_RERANKER_MODEL = "nickprock/cross-encoder-italian-bert-stsb"
+_FETCH_K = 15
+_reranker = None
 
-def _retrieve_chunks(nota_id: str, query: str, k: int = _DEFAULT_K) -> list[str]:
+
+def _get_reranker():
+    global _reranker
+    if _reranker is None:
+        from sentence_transformers import CrossEncoder
+        _reranker = CrossEncoder(_RERANKER_MODEL)
+    return _reranker
+
+
+def _retrieve_chunks(nota_id: str, query: str, k: int = _DEFAULT_K,
+                     rerank: bool = False) -> list[str]:
     col = _get_chroma_collection(nota_id)
     if col is None:
         return []
     try:
-        res = col.query(query_texts=[query], n_results=k)
-        return res.get("documents", [[]])[0] or []
+        fetch_k = _FETCH_K if rerank else k
+        res = col.query(query_texts=[query], n_results=fetch_k)
+        docs = res.get("documents", [[]])[0] or []
+        if not rerank or len(docs) <= k:
+            return docs[:k]
+        scores = _get_reranker().predict([(query, d) for d in docs])
+        ranked = sorted(zip(scores, docs), key=lambda p: p[0], reverse=True)
+        return [d for _, d in ranked[:k]]
     except Exception as exc:
         print(f"  WARN: chunk query failed for nota_{nota_id}: {exc}", file=sys.stderr)
         return []
@@ -110,7 +133,7 @@ def parse_decision(text: str | None) -> str:
     return "PARSE_FAIL"
 
 
-def evaluate_case(case: dict, k: int) -> dict:
+def evaluate_case(case: dict, k: int, rerank: bool = False) -> dict:
     inp = case["input"]
     patient_str = json.dumps(inp.get("patient_data", {}), indent=2, ensure_ascii=False)
     if inp.get("clinician_asserted"):
@@ -119,7 +142,7 @@ def evaluate_case(case: dict, k: int) -> dict:
 
     # Retrieve chunks
     query = _build_query(inp)
-    chunks = _retrieve_chunks(inp["nota_id"], query, k=k)
+    chunks = _retrieve_chunks(inp["nota_id"], query, k=k, rerank=rerank)
     if chunks:
         chunks_block = "\n\n".join(f"[{i+1}] {c}" for i, c in enumerate(chunks))
     else:
@@ -162,12 +185,15 @@ def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--k", type=int, default=_DEFAULT_K, help=f"top-k chunks to retrieve (default {_DEFAULT_K})")
     p.add_argument("--limit", type=int, default=None, help="limit cases (for smoke testing)")
+    p.add_argument("--rerank", action="store_true",
+                   help=f"two-stage retrieval: fetch {_FETCH_K} candidates, rerank with {_RERANKER_MODEL}, keep k")
     args = p.parse_args()
 
     cases = load_all_cases()
     if args.limit:
         cases = cases[:args.limit]
-    print(f"LLM+RAG baseline — {len(cases)} cases (k={args.k})")
+    variant = "LLM+RAG+rerank" if args.rerank else "LLM+RAG"
+    print(f"{variant} baseline — {len(cases)} cases (k={args.k})")
     print("Calling Ollama llama3.1:8b for each case (slow: ~15-40 min)...\n")
 
     smoke = call_ollama("Rispondi con la singola parola: RIMBORSABILE")
@@ -178,7 +204,7 @@ def main() -> int:
     results = []
     for i, case in enumerate(cases, 1):
         print(f"  [{i}/{len(cases)}] {case['id']} ...", end=" ", flush=True)
-        r = evaluate_case(case, k=args.k)
+        r = evaluate_case(case, k=args.k, rerank=args.rerank)
         results.append(r)
         status = "✓" if r["match"] else "✗"
         print(f"{status} pred={r['pred']} true={r['true']}")
@@ -208,7 +234,7 @@ def main() -> int:
     n_parse_fail = sum(1 for r in results if r["pred"] == "PARSE_FAIL")
 
     print(f"\n{'='*60}")
-    print(f"LLM+RAG baseline (Llama 3.1 8B + retrieval, no rule engine, k={args.k})")
+    print(f"{variant} baseline (Llama 3.1 8B + retrieval, no rule engine, k={args.k})")
     print(f"{'='*60}")
     print(f"Accuracy:        {accuracy*100:.2f}%")
     print(f"Macro F1:        {macro_f1:.4f}")
@@ -218,9 +244,11 @@ def main() -> int:
     print(f"{'='*60}\n")
 
     out = {
-        "baseline": "llm_rag",
+        "baseline": "llm_rag_rerank" if args.rerank else "llm_rag",
         "model": "llama3.1:8b",
         "k_chunks": args.k,
+        "reranker": _RERANKER_MODEL if args.rerank else None,
+        "fetch_k": _FETCH_K if args.rerank else None,
         "n_cases": len(results),
         "accuracy": round(accuracy, 4),
         "macro_f1": round(macro_f1, 4),
@@ -228,7 +256,8 @@ def main() -> int:
         "per_class": per_class,
         "case_results": results,
     }
-    out_path = _RESULTS_DIR / "baseline_llm_rag.json"
+    out_name = "baseline_llm_rag_rerank.json" if args.rerank else "baseline_llm_rag.json"
+    out_path = _RESULTS_DIR / out_name
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2, ensure_ascii=False)
