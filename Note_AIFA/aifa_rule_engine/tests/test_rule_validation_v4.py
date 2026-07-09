@@ -6,7 +6,7 @@
 import pytest
 from pydantic import ValidationError
 
-from aifa_rule_engine.models.conditions import LogicalNode, VarNode, BinaryCompNode
+from aifa_rule_engine.models.conditions import BinaryCompNode, LogicalNode, VarNode
 
 
 def _bool_leaf(var: str) -> dict:

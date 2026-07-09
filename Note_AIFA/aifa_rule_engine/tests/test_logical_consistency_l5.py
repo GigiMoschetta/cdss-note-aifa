@@ -9,7 +9,7 @@ _HERE = Path(__file__).resolve().parents[2]
 if str(_HERE) not in sys.path:
     sys.path.insert(0, str(_HERE))
 
-from evaluation.metrics.logical_consistency import _check_l5_semantic_clinical
+from evaluation.metrics.logical_consistency import _check_l5_semantic_clinical  # noqa: E402
 
 
 class TestL5:

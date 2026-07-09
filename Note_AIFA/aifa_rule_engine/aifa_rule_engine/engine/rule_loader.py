@@ -151,7 +151,7 @@ def _phase_s1_parse(
                 with open(yaml_file) as f:
                     content = yaml.safe_load(f)
             except yaml.YAMLError as exc:
-                raise StartupError(f"YAML parse error in {yaml_file}: {exc}")
+                raise StartupError(f"YAML parse error in {yaml_file}: {exc}") from exc
 
             if content is None:
                 continue
@@ -179,11 +179,13 @@ def _phase_s2_validate(raw_rules: list[dict[str, Any]]) -> list[BaseRule]:
             rule = _parse_rule_spec(raw)
             validated.append(rule)
         except ValidationError as exc:
-            raise StartupError(f"Schema validation failed for rule '{rule_id}': {exc}")
+            raise StartupError(
+                f"Schema validation failed for rule '{rule_id}': {exc}"
+            ) from exc
         except Exception as exc:
             raise StartupError(
                 f"Unexpected error validating rule '{rule_id}': {exc}"
-            )
+            ) from exc
     return validated
 
 
@@ -256,7 +258,6 @@ def _phase_s3_integrity(rules: list[BaseRule]) -> None:
     for rule in rules:
         by_nota_type.setdefault((rule.nota, rule.rule_type), []).append(rule)
     for (nota, rule_type), bucket in by_nota_type.items():
-        orders = [r.evaluation_order for r in bucket]
         seen_orders: dict[int, str] = {}
         for r in bucket:
             if r.evaluation_order in seen_orders:

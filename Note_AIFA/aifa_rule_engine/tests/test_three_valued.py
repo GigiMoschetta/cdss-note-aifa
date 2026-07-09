@@ -82,7 +82,7 @@ def _make_count_geq(conditions_tvs: list[TruthValue], threshold: int) -> CountGe
     # We use distinct var names, set them in data
     vars_ = [f"v{i}" for i in range(len(conditions_tvs))]
     data = {}
-    for var, tv in zip(vars_, conditions_tvs):
+    for var, tv in zip(vars_, conditions_tvs, strict=True):
         if tv == TruthValue.TRUE:
             data[var] = True
         elif tv == TruthValue.FALSE:
@@ -148,8 +148,8 @@ class TestCountGeq:
 # Numeric comparisons with None → UNKNOWN
 # ---------------------------------------------------------------------------
 
-from aifa_rule_engine.logic.three_valued import eval_condition
-from aifa_rule_engine.models.conditions import BinaryCompNode
+from aifa_rule_engine.logic.three_valued import eval_condition  # noqa: E402
+from aifa_rule_engine.models.conditions import BinaryCompNode  # noqa: E402
 
 
 class TestNumericComparison:

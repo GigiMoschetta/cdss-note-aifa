@@ -31,8 +31,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/anpiglaucoma/aifa-cdss-thesis"
-Repository = "https://github.com/anpiglaucoma/aifa-cdss-thesis"
+Homepage = "https://github.com/GigiMoschetta/cdss-note-aifa"
+Repository = "https://github.com/GigiMoschetta/cdss-note-aifa"
 
 [project.optional-dependencies]
 dev = [
@@ -42,6 +42,7 @@ dev = [
     "ruff>=0.6.0",
     "bandit>=1.7.9",
     "mypy>=1.10.0",
+    "hypothesis>=6.100",  # property-based tests (test_kleene_laws.py)
 ]
 
 [tool.setuptools.packages.find]
@@ -66,7 +67,8 @@ select = ["E", "W", "F", "B", "I", "UP", "ASYNC"]
 ignore = [
     "E501",  # line too long — handled informally
     "B008",  # function call in arg defaults — frequent FastAPI pattern
-    "UP038", # isinstance(x, (A, B)) — readability ≥ tuple unpacking
+    "UP042", # str+Enum kept: StrEnum changes str() semantics of members,
+             # too risky to alter serialization behaviour pre-consegna
 ]
 
 [tool.ruff.lint.per-file-ignores]

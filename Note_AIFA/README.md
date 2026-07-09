@@ -1,7 +1,7 @@
 # AIFA CDSS — Sistema di Supporto Decisionale per Note AIFA
 ### Rule Engine deterministico + RAG/LLM (Llama 3.1 8B locale)
 
-![tests](https://img.shields.io/badge/tests-977%20passing-brightgreen)
+![tests](https://img.shields.io/badge/tests-1025%20passing-brightgreen)
 ![rule_engine_F1](https://img.shields.io/badge/rule_engine_F1-1.0-brightgreen)
 ![python](https://img.shields.io/badge/python-3.12-blue)
 ![scope](https://img.shields.io/badge/scope-Note%201%20%7C%2013%20%7C%2097%20%2B%2066-informational)

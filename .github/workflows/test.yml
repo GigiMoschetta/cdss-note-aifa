@@ -1,0 +1,127 @@
+name: tests
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  lint-and-static:
+    name: Linter + static analysis (ruff, bandit)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: Note_AIFA
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install lint deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "aifa_rule_engine[dev]"
+
+      - name: Ruff lint (rule engine + orchestrator)
+        run: |
+          ruff check aifa_rule_engine rag_pipeline/orchestrator --output-format=concise
+
+      - name: Bandit security scan (rule engine + orchestrator)
+        run: |
+          bandit -r aifa_rule_engine rag_pipeline/orchestrator -ll
+
+      - name: Validate gold standard consistency
+        run: |
+          python evaluation/scripts/validate_gold_consistency.py
+
+  rule-engine-and-orchestrator:
+    name: Rule Engine + Orchestrator unit + integration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: Note_AIFA
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install rule engine + orchestrator deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "aifa_rule_engine[dev]"
+          # Orchestrator runtime deps needed for the orchestrator unit tests.
+          # GPU/embedder deps are skipped — orchestrator tests mock them.
+          pip install httpx pydantic fastapi pytest-asyncio pytest-cov
+          pip install ollama openai
+
+      - name: Run pytest (rule engine + orchestrator + integration) with coverage
+        env:
+          # Tests assume the suffix is unset (collection name "nota_XX").
+          CHROMA_COLLECTION_SUFFIX: ""
+        run: |
+          pytest aifa_rule_engine/tests/ rag_pipeline/orchestrator/tests/ \
+            -q --tb=short \
+            --cov=aifa_rule_engine --cov=rag_pipeline \
+            --cov-report=xml --cov-report=term-missing:skip-covered \
+            --cov-fail-under=85
+
+  rule-engine-eval:
+    name: Rule Engine evaluation (122 gold cases must reach F1=1.0)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: rule-engine-and-orchestrator
+    defaults:
+      run:
+        working-directory: Note_AIFA
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install rule engine
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "aifa_rule_engine[dev]"
+
+      - name: Run rule engine eval
+        run: |
+          python -m evaluation.scripts.evaluate_rule_engine \
+            --json-report evaluation/results/rule_engine_report.json
+
+      - name: Assert macro F1 == 1.0 and pass_rate == 1.0
+        run: |
+          python - <<'PY'
+          import json
+          r = json.load(open("evaluation/results/rule_engine_report.json"))
+          assert r["pass_rate"] == 1.0, f"pass_rate={r['pass_rate']} != 1.0"
+          # Macro F1 lives under per_class_metrics.macro_f1 if available
+          pcm = r.get("per_class_metrics") or {}
+          mf1 = pcm.get("macro_f1") or pcm.get("macro_avg", {}).get("f1")
+          if mf1 is not None:
+              assert abs(mf1 - 1.0) < 1e-9, f"macro_f1={mf1} != 1.0"
+          print("rule engine: pass_rate=1.0, macro_f1=1.0")
+          PY
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rule_engine_report
+          path: Note_AIFA/evaluation/results/rule_engine_report.json

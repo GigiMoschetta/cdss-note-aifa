@@ -74,7 +74,9 @@ def _normalize_snippet_text(text: str) -> str:
 
 def _make_snippet_id(snippet: str) -> str:
     """Deterministic 10-char hex snippet ID from SHA-1 of normalized text."""
-    return hashlib.sha1(_normalize_snippet_text(snippet).encode()).hexdigest()[:10]
+    return hashlib.sha1(
+        _normalize_snippet_text(snippet).encode(), usedforsecurity=False
+    ).hexdigest()[:10]
 
 
 _SELECTOR_STOPWORDS = frozenset({

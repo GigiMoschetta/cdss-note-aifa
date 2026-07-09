@@ -77,7 +77,7 @@ La quinta domanda confronta il sistema completo con tre baseline. La prima, deno
 
 \begin{table}[t]
   \centering
-  \caption{Confronto Macro F1 fra il sistema completo e quattro baseline alternative su \goldn\ casi di riferimento. La baseline a classe maggioritaria assegna a tutti i casi la classe più frequente dell'insieme di riferimento (\decision{RIMBORSABILE}). La baseline LLM+RAG+reranker replica il retrieval a due stadi del sistema completo (l'unico componente assente è il rule engine) e isola quindi il contributo del layer simbolico.}
+  \caption{Confronto Macro F1 fra il sistema completo e quattro baseline alternative su \goldn\ casi di riferimento. La baseline a classe maggioritaria assegna a tutti i casi la classe più frequente dell'insieme di riferimento (\decision{RIMBORSABILE}). La baseline LLM+RAG+reranker replica il retrieval a due stadi del sistema completo (l'unico componente assente è il rule engine) e isola quindi il contributo del layer simbolico. La Macro F1 delle baseline è calcolata sulle tre classi emettibili dall'LLM; i \goldRouted\ casi \decision{ROUTED}, mai predicibili dalle baseline, restano nell'insieme e ne penalizzano la precisione: il confronto è conservativo a loro favore.}
   \label{tab:baselines}
   \small
   \begin{tabular}{lc}

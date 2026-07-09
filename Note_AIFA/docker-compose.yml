@@ -1,5 +1,3 @@
-version: "3.9"
-
 # ── AIFA CDSS — Docker Compose ────────────────────────────────────────────────
 # Services:
 #   rule_engine   — Deterministic Rule Engine API  (CPU, port 8000)

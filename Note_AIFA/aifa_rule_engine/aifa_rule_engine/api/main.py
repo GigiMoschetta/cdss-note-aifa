@@ -112,7 +112,7 @@ class EvaluateRequest(BaseModel):
         try:
             self.drug_id = normalize_drug_id(self.drug_id)
         except ValueError as exc:
-            raise ValueError(str(exc))
+            raise ValueError(str(exc)) from exc
         return self
 
     @model_validator(mode="after")
