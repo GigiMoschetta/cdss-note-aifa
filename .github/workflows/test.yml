@@ -66,6 +66,9 @@ jobs:
           # GPU/embedder deps are skipped — orchestrator tests mock them.
           pip install httpx pydantic fastapi pytest-asyncio pytest-cov
           pip install ollama openai
+          # test_retriever_anchor.py usa un PersistentClient effimero (tmp_path):
+          # serve chromadb reale, pinnato alla versione del requirements.lock.
+          pip install chromadb==1.5.1
 
       - name: Run pytest (rule engine + orchestrator + integration) with coverage
         env:
