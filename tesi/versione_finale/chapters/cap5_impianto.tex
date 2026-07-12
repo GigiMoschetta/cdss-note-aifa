@@ -1,0 +1,38 @@
+\chapter{Impianto della valutazione}
+\label{ch:impianto}
+
+Il sistema descritto nei capitoli precedenti è costruito, gira e produce
+risposte. La domanda che conta, in un contesto clinico, è una sola:
+funziona oppure no? Questo capitolo e il successivo rispondono nell'unico modo
+difendibile in un contesto clinico: non accumulando metriche, ma
+formulando sette domande di ricerca operative, ciascuna rispondibile
+con un giudizio binario, e usando la metrica come strumento di quella
+risposta e non come fine in sé. Questo capitolo ne fissa il terreno
+(l'insieme dei casi di riferimento, il protocollo sperimentale e l'enunciato delle sette domande)
+e il capitolo successivo le affronta una per una. Le sette domande indagano dimensioni
+parzialmente indipendenti del comportamento del sistema (correttezza
+della decisione, recupero, fedeltà, robustezza, vantaggio sulle baseline,
+verificabilità clinica, utilità composita) e l'intero impianto
+sperimentale ha lo scopo di sostenere o respingere tali risposte con
+evidenze numeriche tracciabili agli artefatti pubblicati nella cartella
+\texttt{evaluation/results/} del repository.
+
+\section{L'insieme dei casi di riferimento}
+\label{sec:gold}
+
+L'insieme dei casi di riferimento (il \emph{gold standard} della valutazione, nella terminologia della letteratura) è stato costruito manualmente a partire dal testo ufficiale delle quattro Note AIFA (Agenzia Italiana del Farmaco), con annotazione caso per caso da parte dell'autore. Ogni caso descrive un paziente reale plausibile, codificato attraverso i campi clinici rilevanti per la Nota di pertinenza, e riceve dall'annotatore tre etichette: la decisione di rimborsabilità, l'insieme dei \emph{rule\_id} che la motivano e, dove applicabile, l'\emph{excerpt verbatim} del passaggio della Nota che giustifica la decisione. La cardinalità complessiva è di \goldn\ casi, suddivisi in $24$ per \notezero, $32$ per \notetredici, $26$ per \notesessanta\ e $40$ per \notenova; la distribuzione lungo le classi decisionali è di \goldRimb\ \decision{RIMBORSABILE}, \goldNonRimb\ \decision{NON\_RIMBORSABILE}, \goldNonDet\ \decision{NON\_DETERMINABILE} e \goldRouted\ \decision{ROUTED}. La stratificazione non è perfettamente bilanciata sulle classi, poiché la classe minoritaria \decision{ROUTED} compare solo nel sottoinsieme di \notezero\ a causa del routing IPP$\to$FANS (rispettivamente inibitori di pompa protonica e antinfiammatori non steroidei), ma è bilanciata sulle Note e copre per ognuna le condizioni di confine clinicamente significative.
+
+L'annotazione è stata svolta consultando il PDF ufficiale AIFA come unica fonte; per i casi-frontiera con interpretazione ambigua, è stato fatto verificare un sottoinsieme da un revisore clinico esterno (\Cref{app:riproducibilita} riporta la procedura). Sul piano metodologico, si impone un'osservazione importante: gli stessi \emph{rule\_id} dei casi di riferimento sono usati dal rule engine, e l'insieme non è quindi un campione indipendente. La conseguenza è che le metriche sulla decisione di rimborsabilità riflettono in primo luogo la coerenza fra codice e intenzione di codifica, non la validità clinica esterna del sistema. È una limitazione intrinseca all'unica strategia praticabile per un progetto di tesi triennale, in cui non si dispone di un insieme di casi annotato da un panel di medici prescrittori, e se ne discutono le conseguenze metodologiche in \Cref{sec:limitazioni}. Da questa osservazione discende il modo corretto di leggere i risultati che seguono: per costruzione, RQ1 (coerenza della decisione) e RQ4 (determinismo e robustezza) devono avvicinarsi al risultato pieno, e il loro valore è quello di un controllo di sanità, il cui fallimento segnalerebbe un difetto di implementazione più che una scoperta. I risultati scientificamente più informativi sono quelli delle domande il cui esito non è vincolato dalla costruzione: la qualità del recupero (RQ2), la fedeltà della spiegazione alle fonti (RQ3), il confronto con le baseline (RQ5), la verificabilità clinica (RQ6) e il giudizio composito (RQ7).
+
+\section{Protocollo sperimentale e riproducibilità statistica}
+\label{sec:protocollo}
+
+Tutte le metriche del capitolo sono prodotte dalla pipeline \texttt{run\_full\_overnight.sh}, eseguita in modalità \emph{cleanroom}: prima della valutazione vengono cancellati lo store ChromaDB, la cartella dei risultati e i checkpoint precedenti; quindi la pipeline reindicizza i PDF AIFA da zero, esegue la suite di test, valuta il rule engine sui \goldn\ casi di riferimento, avvia i servizi e produce le esplicazioni LLM (\emph{Large Language Model}), calcola tutte le metriche derivate e produce i \emph{per-case report}. Il run canonical su cui si basano i numeri di questo capitolo è la \cleanroomrun, conclusa il 14 maggio 2026 dopo un riavvio del sistema. Tutti i checkpoint sono conservati nella cartella \texttt{evaluation/results/.checkpoints/}.
+
+Sul piano statistico, l'incertezza sulle metriche aggregate è quantificata mediante bootstrap non parametrico con $5000$ resamples e seed fisso $42$, da cui si derivano gli intervalli di confidenza al 95\% (metodo del percentile). Per il \emph{pass rate} del rule engine, in cui la stima campionaria coincide con $1{,}0000$ su \goldn\ prove, il bootstrap normale produce un intervallo degenere $[1{,}0000;1{,}0000]$: in questi casi si riporta in parallelo l'intervallo di Wilson, che per una proporzione campionaria pari a uno restituisce $[0{,}9695;1{,}0000]$ ed è il riferimento clinicamente più informativo. La pseudocasualità è ulteriormente vincolata fissando i seed dei componenti stocastici (campionamento stratificato, generazione delle perturbazioni di robustezza), mentre la fonte residua di variabilità, l'LLM Llama 3.1 8B, è disattivata operativamente impostando \texttt{temperature=0}.
+
+\section{Le sette domande di ricerca}
+\label{sec:rq}
+
+Le sette domande di ricerca (RQ, dall'inglese \emph{Research Question}) che strutturano la valutazione esplicitano il messaggio sperimentale come una sequenza di risposte binarie, ciascuna ancorata a una metrica tracciabile. La prima riguarda la correttezza della decisione: se il rule engine decide sui casi di riferimento come decide l'annotatore. La seconda riguarda il recupero: se il retriever, per ogni caso, individua i passaggi delle Note che sostengono la decisione. La terza riguarda la fedeltà: se le spiegazioni generate dall'LLM si appoggiano effettivamente ai passaggi recuperati, senza introdurre informazioni esterne. La quarta riguarda la robustezza: se il sistema produce risposte stabili su input idempotenti e su perturbazioni controllate dei valori-soglia. La quinta riguarda l'efficacia comparativa: se il sistema neuro-simbolico è strettamente migliore di una baseline con solo LLM e di una baseline con LLM e retrieval ma senza rule engine, quest'ultima considerata anche nella variante con reranker che isola il contributo del solo componente simbolico. La sesta riguarda la verificabilità clinica: se la spiegazione consente al revisore di ricondurre in tempo lineare ogni claim al testo della Nota. La settima, infine, riguarda l'utilità complessiva sintetizzata da un composito ispirato alla letteratura sulla valutazione dei sistemi RAG (\emph{Retrieval-Augmented Generation}). Le sette domande sono trattate in ordine, una per sezione, nel \Cref{ch:valutazione}, e nella \Cref{sec:sintesi-rq} la tabella di sintesi raccoglie le sette risposte con la metrica primaria associata.
+

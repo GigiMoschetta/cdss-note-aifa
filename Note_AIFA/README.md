@@ -4,7 +4,8 @@
 ![tests](https://img.shields.io/badge/tests-1025%20passing-brightgreen)
 ![rule_engine_F1](https://img.shields.io/badge/rule_engine_F1-1.0-brightgreen)
 ![python](https://img.shields.io/badge/python-3.12-blue)
-![scope](https://img.shields.io/badge/scope-Note%201%20%7C%2013%20%7C%2097%20%2B%2066-informational)
+![scope](https://img.shields.io/badge/scope-Note%2001%20%7C%2013%20%7C%2066%20%7C%2097-informational)
+![coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)
 
 Implementazione neuro-simbolica per l'interpretazione delle **Note AIFA 1, 13, 66, 97**.
 
@@ -84,7 +85,7 @@ make up-local
                                   │
               ┌───────────────────┴───────────────────┐
               │                                       │
-   Rule Engine (38+1 regole YAML)         RAG ingest (PyMuPDF + NLTK + sent-transformers)
+   Rule Engine (44 regole YAML)           RAG ingest (PyMuPDF + NLTK + sent-transformers)
    aifa_rule_engine/                      rag_pipeline/ingest.py
               │                                       │
               ▼                                       ▼
@@ -115,19 +116,17 @@ make up-local
 |------|-------------------------------------------|--------|----------------------------------------|
 | 01   | Gastroprotettori (PPI, misoprostolo)      | 4      | Nota_01.pdf                            |
 | 13   | Ipolipemizzanti (statine, ezetimibe, ...) | 7      | nota-13.pdf                            |
-| 66   | FANS (antinfiammatori non steroidei)      | 10     | Nota_66 .pdf                           |
-| 97   | Anticoagulanti orali in FANV              | 18     | nota-97.pdf + 3 allegati               |
+| 66   | FANS (antinfiammatori non steroidei)      | 11     | Nota_66.pdf                            |
+| 97   | Anticoagulanti orali in FANV              | 22     | nota-97.pdf + 3 allegati               |
 
 **Versioning PDF:** ogni `aifa_rule_engine/rules/nota_{N}/_catalog.yaml` riporta MD5/SHA256/URL/data download del PDF su cui sono state estratte le regole. `tools/verify_pdf_integrity.py` valida l'integrità.
 
 ## Documentazione tecnica
 
-- **Operativo / difesa:** `RUNBOOK.md` — comando unico cleanroom + lista verifica pre-difesa + diagnostica fail-mode.
-- **Limiti dichiarati:** `LIMITATIONS.md` — scope (Note 1, 13, 97 + 66 bonus), Allegato 3 N97 fuori scope, M3 NLI lower-bound, RAGAS subset stratificato, modello LLM Q4_K_M, dataset sintetico.
-- **Audit completo del progetto:** `audit/REPORT_FINALE.md` (riassunto) + `audit/0X_*.md` (dettagli per fase: PDF→regole, implementazione, profili, LLM, metriche, riproducibilità).
-- **Refactor v2:** `REFACTOR_V2_SUMMARY.md`.
-- **Tesi LaTeX:** `tesi_latex/` — sorgenti del manoscritto.
-- **Plan piano evolutivo:** `NOTE_AIFA_Improvement_Plan_v1_1_1.md`.
+- **Limiti dichiarati:** [`LIMITATIONS.md`](LIMITATIONS.md) — scope (Note 01, 13, 66, 97), Allegato 3 N97 fuori scope, M3 NLI lower-bound, RAGAS subset stratificato, modello LLM Q4_K_M, dataset sintetico.
+- **Runbook valutazione overnight:** [`docs/OVERNIGHT_RUNBOOK.md`](docs/OVERNIGHT_RUNBOOK.md) — esecuzione completa della valutazione con checkpoint e ripresa.
+- **Tesi:** [`../tesi/`](../tesi/) — PDF finale e sorgenti LaTeX del manoscritto.
+- **Tutti i comandi:** `make help` (target principali) e `make help-full` (elenco completo).
 
 ## Limitazioni note
 
