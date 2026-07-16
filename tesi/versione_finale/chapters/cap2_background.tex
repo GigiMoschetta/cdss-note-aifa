@@ -465,8 +465,9 @@ che richiede entailment letterale anziché semantico, è computata
 separatamente come limite superiore di rigore.
 
 Un approccio complementare si basa sull'inferenza del linguaggio naturale
-(\emph{Natural Language Inference}, NLI): un modello NLI multi-label (nel sistema di questa tesi il modello
-\nlimodel{}) classifica ogni frase della risposta come entailed, neutral
+(\emph{Natural Language Inference}, NLI): un modello NLI multi-label (nel sistema di questa tesi, a seconda
+della metrica, il checkpoint \texttt{mDeBERTa-v3-base-mnli-xnli} o la sua
+evoluzione \nlimodel{}) classifica ogni frase della risposta come entailed, neutral
 o contraddittoria rispetto alla concatenazione dei chunk di contesto, e la
 fedeltà NLI è la proporzione di frasi entailed. L'NLI ha il vantaggio di
 essere locale e non dipendente dall'LLM-giudice, ma è più rigida della
@@ -511,10 +512,13 @@ media pesata di quattro componenti:
 \]
 dove $D$ è il \emph{DecisionScore} (correttezza della decisione normativa),
 $E$ è l'\emph{EvidenceSupport} (fedeltà alle fonti, combinazione pesata con pesi
-efficaci $0{,}435$ per la copertura \emph{verbatim} a 3-grammi (il componente
-dominante), $0{,}174$ per l'entailment NLI e $0{,}261$ per la RAGAS
-faithfulness; la variante \emph{strict} non è prodotta dal backend RAGAS
-impiegato e non contribuisce al punteggio), $U$ è la \emph{ContextualUtility}
+di base $0{,}50$ per la copertura \emph{verbatim} a 3-grammi (il componente
+dominante), $0{,}20$ per l'entailment NLI e $0{,}30$ per la RAGAS
+faithfulness; pesi che già sommano a 1 e sono quindi quelli realmente usati
+nel calcolo, poiché la quarta componente prevista, la variante \emph{strict}
+della RAGAS faithfulness (che ridistribuirebbe i pesi a $0{,}435$/$0{,}174$/
+$0{,}261$/$0{,}130$), non è prodotta dal backend RAGAS impiegato e non
+contribuisce mai al punteggio), $U$ è la \emph{ContextualUtility}
 (media pesata $0{,}75$ della \emph{context precision} e $0{,}25$ della
 \emph{context recall}, poiché la \emph{context relevancy} non è restituita dal
 backend RAGAS adottato) e $Q$ è la \emph{AnswerQuality} (combinazione $0{,}70$ di

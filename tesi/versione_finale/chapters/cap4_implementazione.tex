@@ -48,15 +48,18 @@ circa 1\,100 righe.
 
 \begin{sloppypar}
 Il modello linguistico locale è \llmmodel, servito tramite Ollama~\cite{ollama2024}
-in un container dedicato; gli embedding semantici sono generati da
+in esecuzione sull'host (raggiunto dai container tramite
+\texttt{host.docker.internal}, non containerizzato a sua volta); gli
+embedding semantici sono generati da
 \embedmodel~\cite{reimers2019sbert} e il reranking utilizza
 \reranker~\cite{nickprock2023}. La persistenza semantica è affidata a
 ChromaDB~\cite{chromadb}, mentre la validazione degli schemi JSON è delegata
 a Pydantic~\cite{pydantic}.
 \end{sloppypar}
 
-I tre servizi (rule engine, orchestratore e Ollama) sono orchestrati da
-Docker Compose su una rete interna isolata dal traffico esterno. La
+I due servizi applicativi (rule engine e orchestratore RAG) sono orchestrati
+da Docker Compose su una rete interna isolata dal traffico esterno; Ollama
+resta un processo host esterno alla composizione. La
 comunicazione avviene su socket TCP locali; l'orchestratore può caricare il
 rule engine direttamente in-process (variabile d'ambiente
 \texttt{AIFA\_RULES\_DIR}) per eliminare la latenza HTTP nei test di
@@ -107,16 +110,31 @@ di inclusione e una di eccezione:
 - rule_id: N13_EXCEPT_001
   rule_type: EXCEPTION
   nota: '13'
-  version: 3.3.0
   outcome_if_true: BYPASS
   bypasses:
     - N13_INCL_001
   condition:
-    operator: AND
+    operator: OR
     operands:
-      - {operator: IS_TRUE, var: rischio_molto_alto}
-      - {operator: GTE, var: ldl, value: 70}
+      - operator: AND
+        operands:
+          - {operator: IS_TRUE, var: categoria_molto_alto}
+          - {operator: GT,
+             left: {operator: VAR, name: colesterolo_ldl},
+             right: {operator: LITERAL, value: 70},
+             type_domain: numeric}
+      - operator: AND
+        operands:
+          - {operator: IS_TRUE, var: categoria_alto}
+          - {operator: GT,
+             left: {operator: VAR, name: colesterolo_ldl},
+             right: {operator: LITERAL, value: 100},
+             type_domain: numeric}
 \end{verbatim}
+La regola implementa il bypass del requisito dietetico su due rami alternativi:
+rischio molto alto con colesterolo LDL sopra 70~mg/dL, oppure rischio alto
+con LDL sopra 100~mg/dL; entrambe le soglie usano il confronto stretto
+(\texttt{GT}), che esclude il valore di soglia stesso.
 
 Il campo \texttt{normative\_anchor} consente al motore di tracciare ogni
 decisione fino alla pagina esatta del documento normativo, soddisfacendo il
@@ -231,12 +249,15 @@ Il modulo \texttt{rag\_pipeline/ingest\_v2.py} indicizza i PDF delle quattro
 Note AIFA in collezioni ChromaDB dedicate. La versione~2 dell'ingestione
 introduce il tracciamento degli offset di carattere all'interno di ogni
 pagina, le bounding box per chunk, il checksum SHA-256 del testo e il
-riconoscimento delle tabelle tramite \texttt{pdfplumber}.
+riconoscimento delle tabelle tramite l'API nativa \texttt{find\_tables} di
+PyMuPDF.
 
-L'estrazione del testo è eseguita con PyMuPDF per i blocchi testuali e con
-\texttt{pdfplumber} per le tabelle, che vengono marcate con il flag
-\texttt{is\_in\_table=True} e suddivise in un chunk per riga. Il testo puro è
-tokenizzato in frasi con spaCy (modello italiano \texttt{it\_core\_news\_sm});
+L'estrazione del testo e delle tabelle è eseguita interamente con PyMuPDF
+(\texttt{rawdict} per i blocchi testuali, \texttt{find\_tables} per le
+tabelle), scelta che evita la conversione fra sistemi di coordinate di
+librerie diverse; le celle di tabella non vuote vengono marcate con il flag
+\texttt{is\_in\_table=True} e indicizzate una per cella. Il testo puro è
+tokenizzato in frasi con NLTK (modello italiano \texttt{punkt\_tab});
 i chunk sono costruiti con una finestra scorrevole di dimensione target
 \texttt{TARGET\_CHARS = 1800} caratteri e sovrapposizione di
 \texttt{OVERLAP\_SENTS = 2} frasi, bilanciando la densità informativa con la
@@ -261,15 +282,15 @@ per una singola nota.
 \Ensure Numero di chunk indicizzati in ChromaDB
 \State $\mathit{hash\_pdf} \gets \textsc{SHA256}(\mathit{pdf\_path})$
 \State $\mathit{pagine} \gets \textsc{EstraiPagine}(\mathit{pdf\_path})$
-\Comment{PyMuPDF rawdict + pdfplumber}
+\Comment{PyMuPDF rawdict: testo e tabelle}
 \State $\mathit{chunk\_list} \gets [\,]$
 \ForAll{$p \in \mathit{pagine}$}
   \State $\mathit{blocchi} \gets \textsc{EstraiBlockiTesto}(p)$
-  \State $\mathit{tabelle} \gets \textsc{EstraiTabelle}(p)$ \Comment{pdfplumber}
+  \State $\mathit{tabelle} \gets \textsc{EstraiTabelle}(p)$ \Comment{PyMuPDF find\_tables}
   \ForAll{$b \in \mathit{blocchi}$}
     \If{$|b.\text{text}| < \mathrm{MIN\_BLOCK\_CHARS}$} \State \textbf{salta}
     \EndIf
-    \State $\mathit{frasi} \gets \textsc{TokenizzaFrasi}(b.\text{text})$ \Comment{spaCy it}
+    \State $\mathit{frasi} \gets \textsc{TokenizzaFrasi}(b.\text{text})$ \Comment{NLTK it, punkt\_tab}
     \State $\mathit{finestra} \gets [\,]$; $\mathit{char\_count} \gets 0$
     \ForAll{$s \in \mathit{frasi}$}
       \State $\mathit{finestra}.\text{append}(s)$; $\mathit{char\_count} \mathrel{+}= |s|$
@@ -283,9 +304,9 @@ per una singola nota.
       \State $\mathit{chunk\_list}.\text{append}(\textsc{BuildChunk}(\mathit{finestra}, p, \mathit{nota\_id}))$
     \EndIf
   \EndFor
-  \State \Comment{Tabelle: un chunk per riga}
-  \ForAll{$\mathit{riga} \in \textsc{AppiattisciTabelle}(\mathit{tabelle})$}
-    \State $\mathit{chunk\_list}.\text{append}(\textsc{BuildChunkTabella}(\mathit{riga}, p, \mathit{nota\_id}))$
+  \State \Comment{Tabelle: un chunk per cella non vuota}
+  \ForAll{$\mathit{cella} \in \textsc{AppiattisciTabelle}(\mathit{tabelle})$}
+    \State $\mathit{chunk\_list}.\text{append}(\textsc{BuildChunkTabella}(\mathit{cella}, p, \mathit{nota\_id}))$
   \EndFor
 \EndFor
 \State \Comment{Upsert in batch da CHROMA\_BATCH=100}
@@ -342,12 +363,11 @@ esplicito al chiamante quali informazioni provengono da sistemi automatici e
 quali richiedono l'intervento del medico.
 
 \begin{sloppypar}
-La risposta \texttt{CDSSResponse} include la decisione di rimborsabilità
-(\texttt{reimbursement\_decision}), la lista di flag clinici
-(\texttt{clinical\_flags}), i chunk normativi recuperati
-(\texttt{retrieved\_chunks}), la spiegazione testuale generata dall'LLM
-(\texttt{explanation}) e le citazioni delle ancore PDF
-(\texttt{citations}). Il motore non delega mai la decisione al modello
+La risposta \texttt{CDSSResponse} include l'esito del rule engine, immutato
+(\texttt{evaluation\_result}, che racchiude a sua volta decisione e flag
+clinici), i chunk normativi recuperati (\texttt{retrieved\_chunks}), la
+spiegazione testuale generata dall'LLM (\texttt{generated\_explanation}) e
+le evidenze normative a supporto (\texttt{normative\_evidence}). Il motore non delega mai la decisione al modello
 linguistico: l'LLM produce esclusivamente la spiegazione in linguaggio naturale
 a partire da una decisione già fissata dal rule engine, in accordo con
 l'architettura neuro-simbolica descritta nel \Cref{ch:progettazione}.
@@ -363,11 +383,14 @@ nel log, mentre il client riceve soltanto un messaggio generico con codice
 
 \begin{sloppypar}
 La riproducibilità è garantita da tre meccanismi ortogonali. Il primo è il
-file \texttt{requirements.lock} con hash esatti di tutte le dipendenze Python,
-che impedisce aggiornamenti impliciti alle librerie. Il secondo è il manifest
-\texttt{ingestion\_manifest\_v2.json}, che registra il checksum SHA-256 di
-ogni PDF normativo ed è confrontato ad ogni avvio del servizio con i file
-presenti su disco. Il terzo è la fissazione dei parametri di generazione del
+file \texttt{requirements.lock}, che fissa la versione esatta di ogni
+dipendenza Python (senza hash crittografici) e impedisce aggiornamenti
+impliciti alle librerie. Il secondo è il manifest
+\texttt{ingestion\_manifest\_v2.json}, prodotto a fine ingestione, che
+registra il checksum SHA-256 di ogni PDF normativo indicizzato: non è
+confrontato automaticamente a un successivo avvio del servizio, ma
+costituisce la prova ex post di quali PDF abbiano generato quali collezioni
+ChromaDB. Il terzo è la fissazione dei parametri di generazione del
 modello linguistico a \texttt{temperature=0} e \texttt{seed=42}, che rende
 deterministica la risposta testuale a parità di input e contesto. La pipeline
 \texttt{run\_full\_overnight.sh} esegue la valutazione completa con
@@ -418,7 +441,7 @@ Le scelte descritte in questo capitolo non sono fini a sé stesse: sono ciò che
 rende le domande di ricerca verificabili. Il determinismo del rule engine e la
 fissazione dei parametri di generazione sono il presupposto di RQ4, che misura
 la stabilità dell'esito a ripetizioni e perturbazioni; la procedura di cleanroom
-e il \texttt{requirements.lock} con hash garantiscono che i numeri con cui il
+e il \texttt{requirements.lock} con versioni fissate garantiscono che i numeri con cui il
 \Cref{ch:valutazione} risponde a tutte le RQ (\emph{Research Question}) provengano da una catena
 riproducibile da PDF a risultato, e non da artefatti accumulati in esecuzioni
 precedenti. È su questa base che il capitolo seguente affronta le sette domande

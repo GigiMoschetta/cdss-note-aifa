@@ -316,12 +316,17 @@ non tecnico e aggiornabile al ritmo degli aggiornamenti normativi senza
 che l'interprete debba essere ricompilato.
 Ogni regola include obbligatoriamente cinque campi: un identificatore univoco
 (\texttt{rule\_id}), il tipo di regola nell'insieme
-\{\texttt{SCOPE}, \texttt{PATH}, \texttt{DOSE}, \texttt{EXCEPTION},
-\texttt{EXCLUSION}\}, un campo \texttt{evaluation\_order} che determina
+\{\texttt{SCOPE}, \texttt{EXCL\_HARD}, \texttt{INCLUSION}, \texttt{PATHWAY},
+\texttt{EXCEPTION}, \texttt{GUIDANCE\_DOSE}, \texttt{GUIDANCE\_PREF},
+\texttt{GUIDANCE\_WARN}\}, un campo \texttt{evaluation\_order} che determina
 la posizione nella pipeline, un'ancora normativa con file PDF, pagina
 e estratto verbatim, e un albero di condizioni espresso tramite operatori
 logici componibili (\texttt{AND}, \texttt{OR}, \texttt{NOT}, \texttt{IS\_TRUE},
-\texttt{SCORE\_RANGE\_GTE} e altri).
+\texttt{SCORE\_RANGE\_GTE} e altri). I tre tipi \texttt{GUIDANCE\_*} non
+concorrono alla decisione di rimborsabilità: accumulano flag clinici
+(dosaggio standard/ridotto/controindicato, preferenza terapeutica,
+avvertenza) che il motore espone accanto al verdetto, come descritto
+nella \Cref{def:decisione}.
 Si è preferito YAML rispetto a JSON per la leggibilità della sintassi e
 rispetto a un linguaggio di regole proprietario per la disponibilità di
 tooling standard; il costo è l'assenza di tipizzazione statica,
@@ -332,19 +337,27 @@ compensata dalla validazione Pydantic all'avvio del servizio.
 
 Le regole del DSL si articolano in tre famiglie logiche distinte, corrispondenti
 ai nodi decisionali delle Note AIFA.
-Le \emph{regole di inclusione} (tipo \texttt{PATH} e \texttt{INCLUSION})
+Le \emph{regole di inclusione} (tipo \texttt{PATHWAY} e \texttt{INCLUSION})
 verificano che il paziente soddisfi almeno uno dei criteri positivi previsti
 dalla Nota: se nessun criterio di inclusione risulta soddisfatto,
 l'esito è \decision{NON\_RIMBORSABILE} con short-circuit immediato.
-Le \emph{regole di esclusione} (tipo \texttt{EXCLUSION}) verificano
+Le \emph{regole di esclusione} (tipo \texttt{EXCL\_HARD}) verificano
 l'assenza di controindicazioni assolute: se almeno una esclusione vale
 \texttt{TRUE}, l'esito è \decision{NON\_RIMBORSABILE} con priorità
 sulle inclusioni.
 Le \emph{regole di eccezione} (tipo \texttt{EXCEPTION}) gestiscono
-i casi di routing verso un'altra Nota o di bypass anticipato della pipeline:
-il loro esito non è né rimborsabilità né non-rimborsabilità, ma
-\decision{ROUTED}, che indica al clinico di rivolgersi al percorso
-prescrittivo di una Nota diversa.
+i casi che devono essere intercettati prima delle esclusioni e delle
+inclusioni, tramite il campo \texttt{outcome\_if\_true}: \texttt{ROUTE}
+produce l'esito \decision{ROUTED} verso il percorso prescrittivo di
+un'altra Nota; \texttt{BYPASS} salta un sottoinsieme di regole successive
+senza determinare da solo l'esito finale; \texttt{NON\_RIMBORSABILE} nega
+direttamente il rimborso; \texttt{DEFER}, non ancora impiegato in alcuna
+regola di produzione, condivide nell'implementazione attuale la stessa
+gestione di \texttt{ROUTE}. Nelle regole di produzione sono attualmente in uso
+\texttt{ROUTE} (\notezero, instradamento verso \notesessanta per
+diclofenac+misoprostolo) e \texttt{BYPASS}, con due occorrenze in
+\notetredici: rischio cardiovascolare molto alto e intolleranza alle
+statine trattata con ezetimibe in monoterapia.
 
 \begin{definition}[Processo decisionale del Rule Engine]
 \label{def:decisione}
@@ -428,9 +441,18 @@ I vettori sono indicizzati in ChromaDB con metrica coseno, organizzati
 in quattro collezioni distinte (una per Nota), così da concentrare il
 retrieval sulla Nota pertinente alla richiesta in esame.
 
-Il retriever applica una strategia in due passi: recupero top-$k$ per
+Il retriever applica in realtà due stadi distinti, non uno solo. Il primo
+stadio, \emph{anchor-guided}, è deterministico: per ciascuna regola che ha
+determinato il verdetto (\texttt{blocking\_rules} e \texttt{passed\_rules}
+dell'\texttt{EvaluationResult}) recupera per match esatto di metadati
+\{\texttt{pdf\_file}, \texttt{page}\} il passaggio normativo che l'ha
+generata, con precisione del 100\% per costruzione, poiché non è coinvolta
+alcuna similarità. Questo stadio è ciò che garantisce che ogni spiegazione
+citi, come minimo, la fonte esatta della decisione del motore. Il secondo
+stadio, \emph{semantico}, arricchisce il contesto: recupero top-$k$ per
 similarità coseno, seguito da un reranker cross-encoder \reranker{}
-che riordina i candidati per rilevanza contestuale~\cite{nogueira2019passage}.
+che riordina i candidati per rilevanza contestuale~\cite{nogueira2019passage},
+deduplicati rispetto ai chunk già recuperati dal primo stadio.
 Il reranker è stato scelto specificamente per il dominio italiano, in quanto
 è addestrato su coppie di frasi in italiano, e consente di distinguere
 chunk tematicamente vicini ma normalmente irrilevanti (ad esempio,
@@ -445,9 +467,10 @@ Ollama~\cite{ollama2024} con parametri fissi (\texttt{temperature=0},
 \texttt{seed=42}) per garantire la riproducibilità della generazione.
 Il prompt è strutturato in sezioni rigide: la \emph{decisione del Rule Engine}
 viene iniettata prima del contesto normativo, in una sezione marcata
-\texttt{[DECISIONE DETERMINISTICA --- NON CONTRADDIRE]};
-il \emph{contesto normativo} contiene i chunk recuperati, ognuno preceduto
-da un'etichetta \texttt{[FONTE: \textit{pdf}, p.\,\textit{n}]};
+\texttt{[DECISIONE DETERMINISTICA --- NON CONTRADDIRE QUESTA SEZIONE]};
+il \emph{contesto normativo} contiene i chunk recuperati, ognuno delimitato
+da marcatori \texttt{--- FONTE \textit{i}: \textit{pdf} p.\,\textit{n} ---}
+e \texttt{--- FINE FONTE \textit{i} ---};
 una sezione \emph{FONTI} in coda al prompt è ricomposta deterministicamente
 dal sistema, non dall'LLM.
 
@@ -455,12 +478,17 @@ dal sistema, non dall'LLM.
 \label{def:chunk-rilevanti}
 Sia $\mathcal{C}$ l'insieme di tutti i chunk indicizzati per una Nota.
 Dato un profilo paziente $p$ e un \texttt{EvaluationResult} $e$,
-l'insieme dei chunk rilevanti $\mathcal{C}^*(p, e) \subseteq \mathcal{C}$
-è l'output del retriever a due stadi: la prima fase seleziona i $k_1$
+l'insieme dei chunk rilevanti $\mathcal{C}^*(p, e) = \mathcal{A}(e) \cup \mathcal{S}(p, e)
+\subseteq \mathcal{C}$ è l'unione dell'output dei due stadi del retriever.
+Lo stadio anchor-guided seleziona $\mathcal{A}(e)$: i chunk il cui metadato
+$\{\texttt{pdf\_file}, \texttt{page}\}$ coincide esattamente con l'ancora
+normativa di una regola in \texttt{blocking\_rules} o \texttt{passed\_rules}
+di $e$; il recupero è deterministico, senza soglie né similarità. Lo stadio
+semantico seleziona $\mathcal{S}(p, e)$: la prima fase individua i $k_1$
 chunk con similarità coseno massima rispetto alla query $q(p, e)$;
 la seconda fase applica il reranker \reranker{} e seleziona i $k_2 \leq k_1$
 chunk con score cross-encoder più alto, dove $k_2$ è un parametro
-del sistema fissato a progetto.
+del sistema fissato a progetto, al netto dei duplicati già in $\mathcal{A}(e)$.
 Il testo della spiegazione finale deve citare almeno un chunk in
 $\mathcal{C}^*(p, e)$ e non può contraddire la decisione contenuta in $e$.
 \end{definition}
